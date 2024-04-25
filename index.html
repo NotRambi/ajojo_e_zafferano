@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Div che Scende al Clic</title>
+<style>
+    #contenitore {
+        position: relative;
+        overflow: hidden; /* Nasconde il contenuto extra */
+        height: 0; /* Inizialmente senza altezza */
+        transition: height 0.5s ease-in-out; /* Transizione per l'altezza */
+    }
+
+    #contenuto {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(55, 196, 102);
+    }
+</style>
+</head>
+<body>
+
+<button onclick="mostraDiv()">Mostra Div</button>
+
+<div id="contenitore">
+    <div id="contenuto">
+        er carbonaro
+    </div>
+</div>
+
+<script>
+function mostraDiv() {
+    var contenitore = document.getElementById("contenitore");
+    var contenuto = document.getElementById("contenuto");
+    var altezzaCorrente = contenitore.clientHeight;
+    var altezzaFinale = altezzaCorrente === 0 ? contenuto.clientHeight : 0;
+    contenitore.style.height = altezzaFinale + "px";
+}
+</script>
+
+</body>
+</html>
