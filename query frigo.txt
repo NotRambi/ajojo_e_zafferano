@@ -1,3 +1,4 @@
+//ingredienti
 insert into ingredienti values 
 	('carbonara','pasta'),
 	('carbonara','uovo'),
@@ -42,3 +43,16 @@ insert into ingredienti values
 	('tiramisu','cacao'),
 	('tiramisu','zucchero'),
 	('tiramisu','uovo');
+
+//ricetta
+insert into ricetta values 
+	('carbonara',30,'primo',2,false,false,false,false,false,'a mejo pasta de roma'),
+	('cacio e pepe',30,'primo',2,false,false,false,false,false,'spacca'),
+	('gricia',30,'primo',2,false,false,false,false,false,'spacca ma col guanciale'),
+	('risotto alla milanese',40,'primo',2,false,false,true,true,false,'bono'),
+	('involtini zucchine e speck',15,'antipasto',1,false,false,false,true,false,'bella robetta'),
+	('saccottini di bresaola',15,'antipasto',2,false,true,false,true,false,'te senti no chef'),
+	('crostini in salsa tonnata',5,'antipasto',1,false,false,false,false,false,'cazzatina bona'),
+	('salti in bocca alla romana',20,'secondo',2,false,false,false,false,false,'spinto'),
+	('straccetti alle olive taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
+	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di');
