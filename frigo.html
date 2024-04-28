@@ -26,19 +26,30 @@
       left: 0;
       width: 100%;
       z-index: 10;
-      font-size: 45px;
+      font-size: 55px;
     }
     nav a {
       float: left;
       display: block;
       color: white;
       text-align: center;
-      padding: 14px 20px;
+      padding: 15px 25px 10px;
       text-decoration: none;
       border-right: 1px solid white; /* Separatore tra i link */
     }
+    nav a img{
+      padding-top: 6px;
+      height: 50px;
+      width: 50px;
+    }
+    .ricettarioButton{
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
     .loginButton{
       float: right;
+      padding-top: 10px;
+      padding-bottom: 20px;
     }
 
     nav a:last-child {
@@ -46,8 +57,7 @@
     }
 
     nav a:hover {
-      background-color: #ddd;
-      color: black;
+      background-color: #6c6a6a;
     }
 
     #myForm {
@@ -104,7 +114,9 @@
     .modal-content {
       background-color: #fdfdfdce;
       margin: 15% auto;
-      padding: 20px;
+      margin-top: 0%;
+      top: 15%;
+      padding: 0px;
       border: 1px solid #888;
       width: 80%;
       max-width: 600px;
@@ -120,6 +132,9 @@
       display: inline-block;
       border: 1px solid #ccc;
       box-sizing: border-box;
+      font-size: 20px;
+      font-style: normal;
+      text-align: center;
     }
     #loginForm button {
       background-color: #4CAF50;
@@ -129,6 +144,8 @@
       border: none;
       cursor: pointer;
       width: 80%;
+      font-size: 20px;
+      font-style: normal;
     }
     
     #loginForm button:hover {
@@ -136,16 +153,20 @@
     }
     /* Stili per il link di chiusura del modal */
     .close {
+      background-color: white;
       color: #aaa;
+      border: 1px solid black;
       float: right;
       font-size: 28px;
       font-weight: bold;
       width: 40px;
+      height: 50px;
       position:absolute;
       right:5%;
     }
     .close:hover,
     .close:focus {
+      background-color: white;
       color: black;
       text-decoration: none;
       cursor: pointer;
@@ -157,7 +178,7 @@
   <nav>
       <a href="index.html"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
       <a href="frigo.html"><img src="frigo.jpg" width="50" height="50"> </a>
-      <a href="ricettario.php">ricettario</a>
+      <a href="ricettario.php" class="ricettarioButton">ricettario</a>
       <a class="loginButton" onclick="openModal()">Login</a> 
   </nav>
   
@@ -188,16 +209,16 @@
     <!-- Contenuto del modal -->
     <div class="modal-content">
       <button class="close" onclick="closeModal()">&times;</button>
-      <h2>Accedi</h2>
-      <form id="loginForm">
+      <h2 style="font-weight: normal; text-align: center;">Accedi</h2>
+      <form id="loginForm" style="text-align: center;">
         <input type="text" id="username" placeholder="Username" required><br>
         <input type="password" id="password" placeholder="Password" required><br>
         <button type="submit">Login</button>
         <div>
-          <h4>Non hai un account? <a href="#" id="registerLink">Registrati</a></h4>
+          <h4 style="font-weight: normal; text-align: center;">Non hai un account? <a href="#" id="registerLink">Registrati</a></h4>
         </div>
         <div>
-          <h4><a href="#" id="forgotPasswordLink">Hai dimenticato la password?</a></h4>
+          <h4 style="font-weight: normal; text-align: center;"><a href="#" id="forgotPasswordLink">Hai dimenticato la password?</a></h4>
         </div>
     </form>
   </div>
