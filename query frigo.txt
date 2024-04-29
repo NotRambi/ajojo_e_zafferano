@@ -1,3 +1,18 @@
+//creazione table
+create TABLE ingredienti(ricetta varchar(100),
+						 ingrediente varchar(100))
+
+create TABLE ricetta(nomericetta varchar(100) primary key,
+					 tempo integer,
+					 tipologia varchar(20),
+					 difficolta integer,
+					 isspicy boolean,
+					 isglutenfree boolean,
+					 isvegan boolean,
+					 islite boolean,
+					 isstar boolean,
+					 descrizione varchar(500))
+
 //ingredienti
 insert into ingredienti values 
 	('carbonara','pasta'),
