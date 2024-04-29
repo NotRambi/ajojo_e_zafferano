@@ -1,4 +1,4 @@
-//creazione table
+--creazione table
 create TABLE ingredienti(ricetta varchar(100),
 						 ingrediente varchar(100))
 
@@ -13,7 +13,7 @@ create TABLE ricetta(nomericetta varchar(100) primary key,
 					 isstar boolean,
 					 descrizione varchar(500))
 
-//ingredienti
+--ingredienti
 insert into ingredienti values 
 	('carbonara','pasta'),
 	('carbonara','uovo'),
@@ -59,7 +59,7 @@ insert into ingredienti values
 	('tiramisu','zucchero'),
 	('tiramisu','uovo');
 
-//ricetta
+--ricetta
 insert into ricetta values 
 	('carbonara',30,'primo',2,false,false,false,false,false,'a mejo pasta de roma'),
 	('cacio e pepe',30,'primo',2,false,false,false,false,false,'spacca'),
