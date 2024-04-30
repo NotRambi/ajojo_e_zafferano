@@ -1,43 +1,263 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Div che Scende al Clic</title>
-<style>
-    #contenitore {
-        position: relative;
-        overflow: hidden; /* Nasconde il contenuto extra */
-        height: 0; /* Inizialmente senza altezza */
-        transition: height 0.5s ease-in-out; /* Transizione per l'altezza */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--per qualche motivo con questi due il titolo non è piu in grassetto-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <title>Ajojo & Zafferano</title>
+    <link rel="icon" href="logohome.jpg" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fadd;
+            padding: 30px;
+            font-size: 20px;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+        }
 
-    #contenuto {
-        width: 100px;
-        height: 100px;
-        background-color: rgb(55, 196, 102);
-    }
-</style>
+        
+        /* Stili della barra di navigazione */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            font-size: 55px;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 0px 25px 10px;
+            text-decoration: none;
+            border-right: 1px solid white; /* Separatore tra i link */
+        }
+        .loginButton{
+            float: right;
+        }
+        /* Rimuove il bordo destro dall'ultimo link */
+        nav a:last-child {
+            border-right: none;
+        }
+
+        nav a:hover {
+            background-color: #6c6a6a;
+        }
+
+        /* Stili per lo scorrimento delle img */
+
+        .carousel-item img {
+            width: 40%;
+            height: auto; /* Imposta l'altezza in proporzione alla larghezza */
+            object-fit: cover; /* Per mantenere le proporzioni e riempire l'area */
+        }
+        .carousel-control-prev,.carousel-control-next{
+            width: 25%;
+            height: auto;
+            
+        }
+
+        /* Stili per il modal */
+        .modal {
+            display: none; /* Il modal è nascosto per impostazione predefinita */
+            position: fixed;
+            z-index: 11;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        body.modal-open, html.modal-open {overflow: hidden;}
+
+        .modal-content {
+            background-color: #fdfdfdce;
+            margin: 15% auto;
+            margin-top: 0%;
+            top: 15%;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            height: 550px;
+            position:relative;
+        }
+
+        /* Stili per il form di login */
+        #loginForm input[type=text], 
+        #loginForm input[type=password] {
+            width: 80%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        #loginForm button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+        }
+
+        #loginForm button:hover {
+            opacity: 0.8;
+        }
+        /* Stili per il link di chiusura del modal */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            width: 40px;
+            position:absolute;
+            right:5%;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+    
 </head>
-<body>
+<body class="text-center">
 
-<button onclick="mostraDiv()">Mostra Div</button>
+    <nav>
+        <a href="index.html"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
+        <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
+        <a href="ricettario.php">ricettario</a>
+        <a class="loginButton" onclick="openModal()">Login</a> 
+    </nav>
 
-<div id="contenitore">
-    <div id="contenuto">
-        er carbonaro
+    <br><br><br>
+    
+    <h1>Ricette consigliate</h1>
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-indicators">
+            <button data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+            <button data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+            <button data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+            <button data-bs-target="#myCarousel" data-bs-slide-to="3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="immaginihome/homeimg1.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="immaginihome/homeimg2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="immaginihome/homeimg3.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="immaginihome/homeimg4.jpg">
+            </div>
+            
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
-</div>
+    <br><br>
+    
+    <h1>Antipasti</h1>
+
+    <div id="myCarousel2" class="carousel slide">
+        <div class="carousel-indicators">
+            <button data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+            <button data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+            <button data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+            <button data-bs-target="#myCarousel" data-bs-slide-to="3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="immaginihome/homeimg1.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="immaginihome/homeimg2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="immaginihome/homeimg3.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="immaginihome/homeimg4.jpg">
+            </div>
+            
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#myCarousel2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#myCarousel2" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Button per aprire il modal -->
+
+
+    <!-- Modal -->
+    <div id="loginModal" class="modal">
+
+    <!-- Contenuto del modal -->
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()">&times;</button>
+        <h2>Accedi</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+            <div>
+                <h4>Non hai un account? <a href="#" id="registerLink">Registrati</a></h4>
+            </div>
+            <div>
+                <h4><a href="#" id="forgotPasswordLink">Hai dimenticato la password?</a></h4>
+            </div>
+        </form>
+    </div>
+
+    </div>
 
 <script>
-function mostraDiv() {
-    var contenitore = document.getElementById("contenitore");
-    var contenuto = document.getElementById("contenuto");
-    var altezzaCorrente = contenitore.clientHeight;
-    var altezzaFinale = altezzaCorrente === 0 ? contenuto.clientHeight : 0;
-    contenitore.style.height = altezzaFinale + "px";
-}
-</script>
+    // Funzione per aprire il modal
+    function openModal() {
+        document.getElementById('loginModal').style.display = 'block';
+    }
 
+    // Funzione per chiudere il modal
+    function closeModal() {
+        document.getElementById('loginModal').style.display = 'none';
+    }
+
+    // Chiudi il modal quando l'utente clicca al di fuori di esso
+    window.onclick = function(event) {
+        var modal = document.getElementById('loginModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
