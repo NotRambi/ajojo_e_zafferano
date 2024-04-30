@@ -161,7 +161,7 @@
     <?php
     
     //database:
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
     or die('Could not connect: ' . pg_last_error());
     
     
@@ -172,6 +172,7 @@
         $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
         $campi_valori = array();
 
+        //vado a prendere gli ingredienti
         $i = 1;
         while (true) {
             $ingrediente = "campo$i";
@@ -186,7 +187,7 @@
         $i++;
         }
         
-
+        //li metto nella query
         $condizioni = array();
         foreach ($campi_valori as $ingrediente => $valore) {
             $condizioni[] = "ingrediente != '$valore'";
@@ -234,8 +235,69 @@
             echo "</p>";
         echo "</div>";
       }
-      if($vuota==true)
-      echo "<h2>vai a fa la spesa</h2>";
+      
+      if($vuota==true){
+        echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
+        //stampo ricette incmplete
+        /*query esempio
+        select * from ricetta where nomericetta in(
+        select distinct ricetta from ingredienti
+            where ingrediente='pasta' or ingrediente='pecorino')
+        */
+        $query="select * from ricetta where nomericetta in (select distinct ricetta from ingredienti";
+        $condizioni = array();
+        foreach ($campi_valori as $ingrediente => $valore) {
+            $condizioni[] = "ingrediente = '$valore'";
+        }  
+        $condizioni_sql = implode(" OR ", $condizioni); 
+        if (!empty($condizioni_sql)) {
+            $query .= " WHERE $condizioni_sql";
+        }
+        $query.= ")";
+
+        //stampa query
+        $result = pg_query($dbconn,$query);
+        echo "<div class='content'>";
+        $vuota=true;
+        while ($row = pg_fetch_assoc($result)) {
+            $vuota=false;
+            echo "<div class='recipe'>";
+                echo "<h2>";
+                    echo $row['nomericetta'];
+                echo "</h2>";
+                echo "<p>";
+
+                    $ricetta=$row['nomericetta'];
+                    $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
+                    $result2=pg_query($dbconn,$query2);
+                    while($ingrediente=pg_fetch_assoc($result2)){
+                        echo $ingrediente['ingrediente'];
+                        
+                        //ESEMPIO CONTROLLO SE HAI INGREDIENTE
+                        if(!in_array($ingrediente['ingrediente'],$campi_valori))
+                            echo "<span style='color: red;'> (ti manca)</span>";
+
+                        echo "<br>";
+                    }
+                    pg_free_result($result2);
+                    echo "<br>";
+
+
+                    echo $row['descrizione'];
+                    echo "<br>";
+                    echo $row['tempo'];
+                    echo " minuti";
+                echo "</p>";
+            echo "</div>";
+        }
+
+
+
+        
+
+
+      }
+      
       echo "</div>";
     
     
