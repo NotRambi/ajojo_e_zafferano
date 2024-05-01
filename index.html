@@ -135,6 +135,9 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .immaginecliccabile {
+            cursor: pointer;
+        }
     </style>
 
     
@@ -161,19 +164,20 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="immaginihome/homeimg1.jpg">
+                <img src="immaginihome/homeimg1.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="ajojo">
             </div>
             <div class="carousel-item">
-                <img src="immaginihome/homeimg2.jpg">
+                <img src="immaginihome/homeimg2.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="carbonara">
             </div>
             <div class="carousel-item">
-                <img src="immaginihome/homeimg3.jpg">
+                <img src="immaginihome/homeimg3.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="amatriciana">
             </div>
             <div class="carousel-item">
-                <img src="immaginihome/homeimg4.jpg">
+                <img src="immaginihome/homeimg4.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="puntarelle">
             </div>
-            
         </div>
+        
+
         <button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
@@ -182,6 +186,7 @@
         </button>
     </div>
     <br><br>
+
     
     <h1>Antipasti</h1>
 
@@ -194,16 +199,16 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="immaginihome/homeimg1.jpg">
+                <img src="immaginihome/homeimg1.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="ajojo">
             </div>
             <div class="carousel-item">
-                <img src="immaginihome/homeimg2.jpg">
+                <img src="immaginihome/homeimg2.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="carbonara">
             </div>
             <div class="carousel-item">
-                <img src="immaginihome/homeimg3.jpg">
+                <img src="immaginihome/homeimg3.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="amatriciana">
             </div>
             <div class="carousel-item">
-                <img src="immaginihome/homeimg4.jpg">
+                <img src="immaginihome/homeimg4.jpg" alt="Immagine Cliccabile" class="immaginecliccabile" id="puntarelle">
             </div>
             
         </div>
@@ -215,7 +220,36 @@
         </button>
     </div>
 
-    <!-- Button per aprire il modal -->
+
+
+
+    <!-- FUNZIONE CLICK SULL'IMMAGINE CHE TI MANDA AL RICETTARIO -->
+    <script>
+        // Funzione per gestire il clic sull'immagine del carousel
+        function inviaForm(event) {
+            // Creazione form
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "ricettario.php");
+
+            // Creazione input nascosto
+            var input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", "ricetta");
+            input.setAttribute("value", event.target.id);
+
+            // Aggiunta input alla form e submit
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        // Aggiungi un evento di click a tutte le immagini
+        var immaginiCliccabili = document.getElementsByClassName("immaginecliccabile");
+        for (var i = 0; i < immaginiCliccabili.length; i++) {
+            immaginiCliccabili[i].addEventListener("click", inviaForm);
+        }
+    </script>
 
 
     <!-- Modal -->

@@ -189,7 +189,7 @@
   <!-- vado a prendere gli ingredienti possibili dal db -->
   <?php
     //connessione al db
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
     or die('Could not connect: ' . pg_last_error());
     $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
     //creao la datalist
@@ -210,7 +210,6 @@
     <label>Ingredienti</label><br><br>
     <input list="suggerimenti" id="campo1" name="campo1">
     <div id="errore1" style="color: red;"></div>
-    <!--TI SFIDO A SPOSTARE IL SUBMIT DUE RIGHE SOTTO-->
   </div>
   
 </form>
@@ -218,7 +217,7 @@
 
 <button onclick="aggiungiCampo(); ">Aggiungi Campo</button>
 <button onclick="rimuoviCampo(); ">Rimuovi Ultimo Campo</button>
-<button type="button" onclick="submitForm()">prepara</button>
+<button type="button" onclick="return submitForm()">prepara</button>
 
 <!-- Modal -->
 <div id="loginModal" class="modal">
@@ -240,73 +239,12 @@
     </form>
   </div>
 </div>
-
+      
 <script>
 
   var nuovoCampoNum=1;
   var invalid=0;
-
-
-  function submitForm() {
-  document.getElementById("myForm").submit();
-  }
-
-
-  function aggiungiCampo() {
-    if(!validaInput()){
-      document.getElementById("errore"+nuovoCampoNum).innerText = 'prima di creare un nuovo campo insierire un ingrediente valido nel campo precedente';
-      return false;
-    }
-    var form = document.getElementById("myForm");
-    var ultimoCampo = form.lastElementChild;
-    nuovoCampoNum = parseInt(ultimoCampo.querySelector('input').id.replace('campo', '')) + 1;
-    
-    var campoprecedente = "campo"+(nuovoCampoNum-1);
-    var campoerrprec = "errore"+(nuovoCampoNum-1);
-
-    
-    if(document.getElementById(campoprecedente).value=="" || invalid){
-      document.getElementById(campoerrprec).innerText = 'prima di creare un nuovo campo insierire un ingrediente valido nel campo precedente';
-      nuovoCampoNum--;
-      return false;
-    }
-    document.getElementById(campoerrprec).innerText ="";
-
-    var nuovoCampo = document.createElement("div");
-    nuovoCampo.className = "input-group";
-    //ho perso due ore e mezza per questa linea:
-    nuovoCampo.innerHTML = '<input list="suggerimenti" id="campo' + nuovoCampoNum + '" name="campo' + nuovoCampoNum + '"><div id="errore' + nuovoCampoNum +'" style="color: red;"></div>';
-    
-    form.appendChild(nuovoCampo);
-    
-  }
-
-  function rimuoviCampo() {
-    var form = document.getElementById("myForm");
-    var campi = form.getElementsByClassName("input-group");
-    if (campi.length > 1) {
-      nuovoCampoNum=nuovoCampoNum-1;
-      form.removeChild(campi[campi.length - 1]);
-      validaInput();
-    } else {      
-      document.getElementById("campo1").value="";
-      document.getElementById("errore1").innerText = "";
-    }
-  }
-
-  function controllaCampionSubmit() {
-    if(validaInput==false) return false;
-    for(var z=1;z<nuovoCampoNum+1;z++){
-      var campoz='campo'+z;
-      if(document.getElementById(campoz).value==""){
-        //DA CAMBIARE CON QUALCOSA DI PIU CARINO
-        alert('Si prega di compilare tutti i campi.');
-        return false;
-      }
-    }
-    return true;
-  }
-
+  
   
   function validaInput() {
     //all'inizio di ogni chiamata resetto i campi errore
@@ -351,6 +289,71 @@
     }
     return true;
   }
+
+
+  function aggiungiCampo() {
+    if(!validaInput()){
+      document.getElementById("errore"+nuovoCampoNum).innerText = 'prima di creare un nuovo campo insierire un ingrediente valido nel campo precedente';
+      return false;
+    }
+    var form = document.getElementById("myForm");
+    var ultimoCampo = form.lastElementChild;
+    nuovoCampoNum = parseInt(ultimoCampo.querySelector('input').id.replace('campo', '')) + 1;
+    
+    var campoprecedente = "campo"+(nuovoCampoNum-1);
+    var campoerrprec = "errore"+(nuovoCampoNum-1);
+
+    
+    if(document.getElementById(campoprecedente).value=="" || invalid){
+      document.getElementById(campoerrprec).innerText = 'prima di creare un nuovo campo insierire un ingrediente valido nel campo precedente';
+      nuovoCampoNum--;
+      return false;
+    }
+    document.getElementById(campoerrprec).innerText ="";
+
+    var nuovoCampo = document.createElement("div");
+    nuovoCampo.className = "input-group";
+    //ho perso due ore e mezza per questa linea:
+    nuovoCampo.innerHTML = '<input list="suggerimenti" id="campo' + nuovoCampoNum + '" name="campo' + nuovoCampoNum + '"><div id="errore' + nuovoCampoNum +'" style="color: red;"></div>';
+    form.appendChild(nuovoCampo);
+  }
+
+
+
+  function rimuoviCampo() {
+    var form = document.getElementById("myForm");
+    var campi = form.getElementsByClassName("input-group");
+    if (campi.length > 1) {
+      nuovoCampoNum=nuovoCampoNum-1;
+      form.removeChild(campi[campi.length - 1]);
+      validaInput();
+    } else {      
+      document.getElementById("campo1").value="";
+      document.getElementById("errore1").innerText = "";
+    }
+  }
+
+  function submitForm() {
+    if(!controllaCampionSubmit())
+      return false;
+    else
+      document.getElementById("myForm").submit();
+  }
+
+  function controllaCampionSubmit() {
+    if(validaInput==false) return false;
+    for(var z=1;z<nuovoCampoNum+1;z++){
+      var campoz='campo'+z;
+      if(document.getElementById(campoz).value==""){
+        //DA CAMBIARE CON QUALCOSA DI PIU CARINO
+        alert('Si prega di compilare tutti i campi.');
+        return false;
+      }
+    }
+    return true;
+  }
+
+
 
   // Funzione per aprire il modal
   function openModal() {

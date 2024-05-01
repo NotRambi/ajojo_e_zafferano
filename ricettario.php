@@ -147,6 +147,7 @@
             cursor: pointer;
         }
     </style>
+    
 </head>
 <body>
     <nav>
@@ -167,36 +168,46 @@
     
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
-        //COSTRISCO LA QUERY:
-        $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
-        $campi_valori = array();
 
-        //vado a prendere gli ingredienti
-        $i = 1;
-        while (true) {
-            $ingrediente = "campo$i";
-            // Verifica se il campo è vuoto o non è impostato
-            if (!isset($_POST[$ingrediente]) || $_POST[$ingrediente] === "") {
-                break;
-            }
-            $valore_ingrediente = pg_escape_string($_POST[$ingrediente]);
-            if ($valore_ingrediente !== false) {
-                $campi_valori[$ingrediente] = $valore_ingrediente;
-            }
-        $i++;
+        //HO CLICCATO UN'IMMAGINE SULLA HOME
+        if(isset($_POST["ricetta"])){
+
+            $ricetta=pg_escape_string($_POST["ricetta"]);
+            $query="select * from ricetta where nomericetta='$ricetta'";
         }
-        
-        //li metto nella query
-        $condizioni = array();
-        foreach ($campi_valori as $ingrediente => $valore) {
-            $condizioni[] = "ingrediente != '$valore'";
-        }  
-        $condizioni_sql = implode(" AND ", $condizioni); 
-        if (!empty($condizioni_sql)) {
-            $query .= " WHERE $condizioni_sql";
+        else{
+
+
+            //COSTRISCO LA QUERY:
+            $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
+            $campi_valori = array();
+
+            //vado a prendere gli ingredienti
+            $i = 1;
+            while (true) {
+                $ingrediente = "campo$i";
+                // Verifica se il campo è vuoto o non è impostato
+                if (!isset($_POST[$ingrediente]) || $_POST[$ingrediente] === "") {
+                    break;
+                }
+                $valore_ingrediente = pg_escape_string($_POST[$ingrediente]);
+                if ($valore_ingrediente !== false) {
+                    $campi_valori[$ingrediente] = $valore_ingrediente;
+                }
+            $i++;
+            }
+            
+            //li metto nella query
+            $condizioni = array();
+            foreach ($campi_valori as $ingrediente => $valore) {
+                $condizioni[] = "ingrediente != '$valore'";
+            }  
+            $condizioni_sql = implode(" AND ", $condizioni); 
+            if (!empty($condizioni_sql)) {
+                $query .= " WHERE $condizioni_sql";
+            }
+            $query.= "))";
         }
-        $query.= "))";
     } else {
         echo "sono arrivato dal link:<br>";
         $query="SELECT * from ricetta";
@@ -235,8 +246,8 @@
             echo "</p>";
         echo "</div>";
       }
-      
-      if($vuota==true){
+
+      if($vuota){
         echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
         //stampo ricette incmplete
         /*query esempio
