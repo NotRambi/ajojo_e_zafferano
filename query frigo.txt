@@ -91,7 +91,6 @@ create table preferiti(
 );
 
 
-select * from utenti
 insert into utenti values
 ('fortigate','federico','anga','abc',false,false),
 ('rambi','alessio','lavore','123',true,true);
