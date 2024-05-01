@@ -71,3 +71,27 @@ insert into ricetta values
 	('salti in bocca alla romana',20,'secondo',2,false,false,false,false,false,'spinto'),
 	('straccetti alle olive taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
 	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di');
+
+
+
+--utenti
+create table utenti (
+	username varchar(30),
+	nome varchar(30),
+	cognome varchar(30),
+	password varchar(30),
+	intgluten bool,
+	isvegan bool
+);
+
+--preferiti
+create table preferiti(
+	username varchar(30),
+	ricetta varchar(50)
+);
+
+
+select * from utenti
+insert into utenti values
+('fortigate','federico','anga','abc',false,false),
+('rambi','alessio','lavore','123',true,true);
