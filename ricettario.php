@@ -151,7 +151,7 @@
 </head>
 <body>
     <nav>
-      <a href="index.html"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
+      <a href="index.php"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
       <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
       <a href="ricettario.php" class="ricettarioButton">ricettario</a>
       <a class="loginButton" onclick="openModal()">Login</a> 
@@ -209,14 +209,14 @@
             $query.= "))";
         }
     } else {
-        echo "sono arrivato dal link:<br>";
         $query="SELECT * from ricetta";
     }
 
 
 
 
-    //stampa query
+    //stampa ricette
+    $index=1;
     $result = pg_query($dbconn,$query);
     echo "<div class='content'>";
     $vuota=true;
@@ -225,7 +225,12 @@
         echo "<div class='recipe'>";
             echo "<h2>";
                 echo $row['nomericetta'];
-            echo "</h2>";
+
+                $idstar="idstar".$index;
+                
+                echo "<button id=$idstar>   &star; </button>";
+           
+                echo "</h2>";
             echo "<p>";
 
                 $ricetta=$row['nomericetta'];
@@ -245,6 +250,7 @@
                 echo " minuti";
             echo "</p>";
         echo "</div>";
+        $index++;
       }
 
       if($vuota){
@@ -266,7 +272,7 @@
         }
         $query.= ")";
 
-        //stampa query
+        //stampa ricette con ingredienti mancanti
         $result = pg_query($dbconn,$query);
         echo "<div class='content'>";
         $vuota=true;
@@ -362,6 +368,10 @@
                 modal.style.display = "none";
             }
         }
+
+
+        
+
     </script>
 </body>
 </html>
