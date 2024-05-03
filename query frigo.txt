@@ -57,7 +57,11 @@ insert into ingredienti values
 	('tiramisu','panna'),
 	('tiramisu','cacao'),
 	('tiramisu','zucchero'),
-	('tiramisu','uovo');
+	('tiramisu','uovo'),
+	('melanzane grigliate','melanzane'),
+	('melanzane grigliate','olio'),
+	('melanzane grigliate','pangrattato');
+	
 
 --ricetta
 insert into ricetta values 
@@ -70,6 +74,7 @@ insert into ricetta values
 	('crostini in salsa tonnata',5,'antipasto',1,false,false,false,false,false,'cazzatina bona'),
 	('salti in bocca alla romana',20,'secondo',2,false,false,false,false,false,'spinto'),
 	('straccetti alle olive taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
+	('melanzane grigliate',30,'contorno',2,false,true,true,true,false,'melanzzzane'),
 	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di');
 
 
