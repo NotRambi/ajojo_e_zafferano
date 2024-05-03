@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
-<?php session_start(); ?>
+<?php session_start();?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +46,7 @@
         }
 
         #profileBtn,
+        #changeAccount,
         #loginBtn{
             float: right;
         }
@@ -146,20 +147,9 @@
     
 </head>
 <body class="text-center">
-
-    <nav>
-        <a href="index.html"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
-        <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
-        <a href="ricettario.php">ricettario</a>
-        <a id="loginBtn" class="button" href="#">Login/SignIn</a>
-        <a id="profileBtn" class="button" style="display:none;" href="profilo.php"> Profilo </a>
-        <!-- per far apparire al posto di profilo il nome dell'utente: <?php //echo $_SESSION['user'];?> (senza le //) -->
-    </nav>
-    <br><br><br>
-
     
+<br><br><br>
 
-    
     <?php
     // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
     //DATABASE:
@@ -216,6 +206,26 @@
 
 
 
+    <nav>
+        <a href="index.html"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
+        <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
+        <a href="ricettario.php">ricettario</a>
+        <a id="loginBtn" class="button" href="#">Login/SignIn</a>
+        <a id="changeAccount" class="button" style="display:none;"> <?php echo $_SESSION['user'];?> cambia account</a>
+        <a id="profileBtn" class="button" style="display:none;" href="profilo.php"> Profilo </a>
+        
+    </nav>
+    <br><br><br>
+
+    <?php
+    if(isset($_SESSION['user'])){
+        echo "<script>document.getElementById('changeAccount').style.display = 'block';</script>";
+        echo "<script>document.getElementById('profileBtn').style.display = 'block';</script>";
+        echo "<script>document.getElementById('loginBtn').style.display = 'none';</script>";
+    } 
+    ?>
+
+    
 
 <!-- carosello immagine e script che gestisce l'invio al ricettario co quella ricetta-->
     
@@ -286,7 +296,7 @@
         </button>
     </div>
 
-
+    
     <!-- CLICK SULL'IMMAGINE CHE TI MANDA AL RICETTARIO -->
     <script>
         function inviaForm(event) {
@@ -362,6 +372,9 @@
 <script>
     // Fa apparire il modal del login
     document.getElementById('loginBtn').addEventListener('click', function(event) {
+        document.getElementById('loginModal').style.display = 'block';
+    });
+    document.getElementById('changeAccount').addEventListener('click', function(event) {
         document.getElementById('loginModal').style.display = 'block';
     });
 

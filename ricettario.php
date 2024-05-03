@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+<?php session_start(); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -225,15 +226,18 @@
         echo "<div class='recipe'>";
             echo "<h2>";
                 echo $row['nomericetta'];
+                $ricetta=$row['nomericetta'];
 
-                $idstar="idstar".$index;
-                
-                echo "<button id=$idstar>   &star; </button>";
-           
+                //BOTTONI PER I PREFERIRI UNO DEI DUE SARA INVISIBILE IN BASE ALL'UTENTE
+                //SE NON LO LOGGATO INVISIBILI ENRTAMBI?
+                $idmettiprefe="idBottonePrefeMetti".$ricetta;
+                $idtogliprefe="idBottonePrefeTogli".$ricetta;
+                echo "<button id=$idmettiprefe class='buttonprefe mettiprefe'> &star; </button>";
+                echo "<button id=$idtogliprefe class='buttonprefe togliprefe'> togli prefe </button>";
+
                 echo "</h2>";
             echo "<p>";
 
-                $ricetta=$row['nomericetta'];
                 $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
                 $result2=pg_query($dbconn,$query2);
                 while($ingrediente=pg_fetch_assoc($result2)){
@@ -370,8 +374,49 @@
         }
 
 
-        
+        //FUNZIONI BOTTONI
+        function fpreferiti(idbottone) {
+            var nomericettaprefe=idbottone.replace("Metti", "");
+            console.log(nomericettaprefe);
+            var xhr = new XMLHttpRequest();
+            // Set up our request
+            xhr.open('POST', 'preferiti.php');
+            // Set the content type that PHP is expecting
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // Send the request with the JavaScript variable as data
+            var user='rambi'; //DA TOGLIERE
+            xhr.send('mettiORtogli='+ encodeURIComponent("metti") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
+        }
 
+
+        function ftoglipreferiti(idbottone) {
+            
+            var nomericettaprefe=idbottone.replace("Togli", "");
+            console.log(nomericettaprefe);
+            var xhr = new XMLHttpRequest();
+            // Set up our request
+            xhr.open('POST', 'preferiti.php');
+            // Set the content type that PHP is expecting
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // Send the request with the JavaScript variable as data
+            xhr.send('mettiORtogli='+ encodeURIComponent("togli") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
+        }
+
+        
+        window.onload = function() {
+            var pulsanti = document.querySelectorAll('button[id^="idBottonePrefe"]');
+            pulsanti.forEach(function(pulsante) {
+                pulsante.addEventListener('click', function() {
+                    var nomericetta=this.id.replace("idBottonePrefe", "");
+                    if(nomericetta.includes("Metti"))
+                        fpreferiti(nomericetta);
+                    if(nomericetta.includes("Togli"))
+                        ftoglipreferiti(nomericetta);
+                });
+            });
+        };
+
+        
     </script>
 </body>
 </html>

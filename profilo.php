@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+<?php session_start(); ?>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +39,7 @@
 <?php
 $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
 or die('Could not connect: ' . pg_last_error());
-session_start();
+
 $utente=$_SESSION['user'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -133,10 +134,27 @@ echo "<div class='profile-container'>";
 echo "</div>";
 
 
-echo "<br><button onclick='mostraModulo()'>Modifica Profilo</button>";
+echo "<br><button onclick='mostraModulo()'>Modifica Profilo</button><br><br><br><br>";
 
 
+$query="select distinct ricetta from preferiti where username='$utente'";
 
+
+echo "ricette preferite:<br>";
+$result = pg_query($dbconn, $query);
+
+if(pg_num_rows($result)<=0){
+    echo "nessuna ricetta preferita";
+}
+while ($row = pg_fetch_assoc($result)) {
+    $ricetta=$row["ricetta"];
+    $idtogliprefe="idBottonePrefeTogli".$ricetta;
+    echo $ricetta." <button id=$idtogliprefe> togli prefe </button><br>";
+
+}
+
+pg_free_result($result);
+pg_close($dbconn);
 ?>
 <script>
     flag=true;
@@ -163,6 +181,34 @@ function mostraModulo() {
     }
     flag=!flag;
 }
+
+
+function ftoglipreferiti(idbottone) {
+            
+            var nomericettaprefe=idbottone.replace("Togli", "");
+            console.log(nomericettaprefe);
+            var xhr = new XMLHttpRequest();
+            // Set up our request
+            xhr.open('POST', 'preferiti.php');
+            // Set the content type that PHP is expecting
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // Send the request with the JavaScript variable as data
+            xhr.send('mettiORtogli='+ encodeURIComponent("togli") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
+            location.reload();
+
+        }
+
+        window.onload = function() {
+            var pulsanti = document.querySelectorAll('button[id^="idBottonePrefe"]');
+            pulsanti.forEach(function(pulsante) {
+                pulsante.addEventListener('click', function() {
+                    var nomericetta=this.id.replace("idBottonePrefe", "");
+                    
+                    if(nomericetta.includes("Togli"))
+                        ftoglipreferiti(nomericetta);
+                });
+            });
+        };
 </script>
         
     
