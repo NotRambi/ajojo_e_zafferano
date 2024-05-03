@@ -35,7 +35,7 @@
 </head>
 <body>
 
-
+<a href="index.php">home</a>
 <?php
 $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
 or die('Could not connect: ' . pg_last_error());

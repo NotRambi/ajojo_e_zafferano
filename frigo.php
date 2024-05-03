@@ -179,7 +179,7 @@
 <body>
 
   <nav>
-      <a href="index.html"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
+      <a href="index.php"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
       <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
       <a href="ricettario.php" class="ricettarioButton">ricettario</a>
       <a class="loginButton" onclick="openModal()">Login</a> 

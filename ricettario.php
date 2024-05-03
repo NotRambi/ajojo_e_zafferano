@@ -178,7 +178,7 @@
         }
         else{
 
-
+            //arrivo dal frigo
             //COSTRISCO LA QUERY:
             $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
             $campi_valori = array();
@@ -216,8 +216,38 @@
 
 
 
-    //stampa ricette
+    //stampa ricette con filtri
+    /*
+    select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
+    from utenti, ( ... ) as a where username='$utente' and
+    (a.isvegan=true or utenti.isvegan=false) and
+    (a.isglutenfree=true or utenti.intgluten=false)
+    */
+    if(isset($_SESSION['user'])){
+
+        $utente=$_SESSION['user'];
+        $notpiccante=true;
+        $star=true;
+        $lite=true;
+
+        $flagvegan=true;
+        
+
+
+        $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
+        from utenti,(";
+        
+        $postquery=") as a where username='$utente' and
+        (a.isvegan=true or utenti.isvegan=false) and
+        (a.isglutenfree=true or utenti.intgluten=false)
+        ";
+        $query=$prequery.$query.$postquery;
+    }
+
     $index=1;
+
+    
+
     $result = pg_query($dbconn,$query);
     echo "<div class='content'>";
     $vuota=true;
@@ -276,7 +306,18 @@
         }
         $query.= ")";
 
+
+
+        
         //stampa ricette con ingredienti mancanti
+        if(isset($_SESSION['user'])){
+
+            $utente=$_SESSION['user'];
+            $notpiccante=true;
+            $star=true;
+            $lite=true;
+            $query=$prequery.$query.$postquery;
+        }
         $result = pg_query($dbconn,$query);
         echo "<div class='content'>";
         $vuota=true;
