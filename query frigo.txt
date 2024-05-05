@@ -1,6 +1,6 @@
 --creazione table
 create TABLE ingredienti(ricetta varchar(100),
-						 ingrediente varchar(100))
+						 ingrediente varchar(100));
 
 create TABLE ricetta(nomericetta varchar(100) primary key,
 					 tempo integer,
@@ -11,7 +11,7 @@ create TABLE ricetta(nomericetta varchar(100) primary key,
 					 isvegan boolean,
 					 islite boolean,
 					 isstar boolean,
-					 descrizione varchar(500))
+					 descrizione varchar(500));
 
 --ingredienti
 insert into ingredienti values 
@@ -99,3 +99,17 @@ create table preferiti(
 insert into utenti values
 ('fortigate','federico','anga','abc',false,false),
 ('rambi','alessio','lavore','123',true,true);
+
+
+create table filtri(
+	bool flagpiccante,
+	bool flagglut,
+	bool flagstar,
+	bool flaglite,
+	bool flagvegan
+);
+
+
+
+
+insert into filtri values (true,true,true,true,true);
