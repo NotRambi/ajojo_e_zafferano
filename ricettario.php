@@ -159,12 +159,21 @@
     </nav>
   
     <br><br><br><br>
+
+    <?php
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+    or die('Could not connect: ' . pg_last_error());
+    $result = pg_query($dbconn,"select * from filtri");
+    $row = pg_fetch_assoc($result);
+    //setto i pulsanti
+    ?>
     
-    
-    <button name="flagPiccante" id="flagPiccante" value="true" class="butFiltro"> picante </button>
-    <button name="flagGlutine" id="flagGlutine" value="true" class="butFiltro"> glutine </button>
-    <button name="flagLeggero" id="flagLeggero" value="true" class="butFiltro"> leggero </button>
-    <button name="flagStar" id="flagStar" value="true" class="butFiltro"> stella </button>
+    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> picante </button>
+    <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
+    <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
+    <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
+    <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
+    <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
     
     
     <script>
@@ -175,8 +184,13 @@
         buttons[i].addEventListener('click', function() {
             if (this.value=="true") this.value="false";
             else this.value="true";
-            
+            console.log(this.value);
             //mando tutti i filtri con una post con campo hidden filtri=true?
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'filtri.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('buttonclicked='+ encodeURIComponent(this.id) +'&'+ this.id +'=' + encodeURIComponent(this.value));
+            location.reload();
         });
     }
     </script>
@@ -185,11 +199,8 @@
     <?php
     
     
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
-    or die('Could not connect: ' . pg_last_error());
-    $flagFromFrigo=false;//una flag che mi serve bella stampa per un controllo
     
-
+    $flagFromFrigo=false;//una flag che mi serve bella stampa per un controllo
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //HO CLICCATO UN'IMMAGINE SULLA HOME
@@ -198,10 +209,9 @@
             $ricetta=pg_escape_string($_POST["ricetta"]);
             
             $query="select * from ricetta where nomericetta='$ricetta'";
-            echo $query;
         } else {
 
-            //arrivo dal frigo
+            //ARRIVO DAL FRIGO
             $flagFromFrigo=true;
             //COSTRISCO LA QUERY:
             $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
@@ -236,7 +246,6 @@
         }
     } else {
         $query="SELECT * from ricetta";
-        //se ho refreshato cancello il frigo cosi se clicco su un filtro non mi ricarica il frigo
     }
 
 
@@ -244,47 +253,39 @@
 
     
 
-    //METTO I FILTRI
-    /*
-    select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
-    from utenti, ( ... ) as a where username='$utente' and
-    (a.isvegan=true or utenti.isvegan=false) and
-    (a.isglutenfree=true or utenti.intgluten=false)
-    */
-    
-
+    //METTO I FILTRI E INTOLLERANZE
     if(isset($_SESSION['user'])){
 
         $utente=$_SESSION['user'];
 
-        //$notpiccante="true";
-        //$star="true";
-        //$lite="true";
-        //$flagvegan="true";
-        //$notpiccante=$_SESSION['flagPiccante'];
-        //$star=$_SESSION['flagStar'];
-        //if(isset($_SESSION['flagLeggero']))
-        //    $lite=$_SESSION['flagLeggero'];
-        //echo $lite;
-        //$flagvegan=$_SESSION['user'];
+        $row=pg_fetch_assoc(pg_query($dbconn,"select * from filtri"));
+        if($row['flagpiccante']=='t') $piccante="true"; else $piccante="false";
+        if($row['flagstar']=='t') $star="true"; else $star="false";
+        if($row['flaglite']=='t') $lite="true"; else $lite="false";
+        if($row['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
+        if($row['flagglut']=='t') $gluten="true"; else $gluten="false";
         
-
 
         $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
         from utenti,(";
-        
+
+        //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
         $postquery=") as a where username='$utente' and
-        (a.isvegan=true or utenti.isvegan=false) and
-        (a.isglutenfree=true or utenti.intgluten=false)
+        (a.isvegan or ('$flagvegan' and not utenti.isvegan)) and
+        (a.isglutenfree or ('$gluten' and not utenti.intgluten)) and
+        (a.isspicy or '$piccante') and
+        (a.isstar or '$star') and
+        (a.islite or '$lite')
         ";
         $query=$prequery.$query.$postquery;
     }
+    
     //CONTROLLO LA QUERY SIA NON VUOTA IN CASO
     //LA RICREO CON RICETTE INCOMPLETE
     $result = pg_query($dbconn,$query);
     $flagVuota=false;//utile per un controllo nella stampa
     
-    if(pg_num_rows($result)==0){
+    if(pg_num_rows($result)<=0 && $flagFromFrigo){
         $query="select * from ricetta where nomericetta in (select distinct ricetta from ingredienti";
         $condizioni = array();
         foreach ($campi_valori as $ingrediente => $valore) {
@@ -295,12 +296,12 @@
             $query .= " WHERE $condizioni_sql";
         }
         $query.= ")";
-        $query=$prequery.$query.$postquery;//intolleranze, e filtri?
+        $query=$prequery.$query.$postquery;//intolleranze, e filtri
         $result = pg_query($dbconn,$query);
         $flagVuota=true;
     }
     if(pg_num_rows($result)==0){
-        echo "<br><h2>non ci sono ricette per te che sei date le tue intolleranze con questi ingredienti</h2>";
+        echo "<br><h2>non ci sono ricette per te che sei date le tue intolleranze o filtri con questi ingredienti</h2>";
     } else {
 
 
