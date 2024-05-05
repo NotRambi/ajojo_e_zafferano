@@ -160,12 +160,34 @@
   
     <br><br><br><br>
     
+    
+    <button name="flagPiccante" id="flagPiccante" value="true" class="butFiltro"> picante </button>
+    <button name="flagGlutine" id="flagGlutine" value="true" class="butFiltro"> glutine </button>
+    <button name="flagLeggero" id="flagLeggero" value="true" class="butFiltro"> leggero </button>
+    <button name="flagStar" id="flagStar" value="true" class="butFiltro"> stella </button>
+    
+    
+    <script>
+        
+    //funzione chiamata filtri
+    var buttons = document.getElementsByClassName('butFiltro');
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function() {
+            if (this.value=="true") this.value="false";
+            else this.value="true";
+            
+            //mando tutti i filtri con una post con campo hidden filtri=true?
+        });
+    }
+    </script>
+
+
     <?php
     
-    //database:
+    
     $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
     or die('Could not connect: ' . pg_last_error());
-    
+    $flagFromFrigo=false;//una flag che mi serve bella stampa per un controllo
     
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -174,11 +196,13 @@
         if(isset($_POST["ricetta"])){
 
             $ricetta=pg_escape_string($_POST["ricetta"]);
+            
             $query="select * from ricetta where nomericetta='$ricetta'";
-        }
-        else{
+            echo $query;
+        } else {
 
             //arrivo dal frigo
+            $flagFromFrigo=true;
             //COSTRISCO LA QUERY:
             $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
             $campi_valori = array();
@@ -195,6 +219,7 @@
                 if ($valore_ingrediente !== false) {
                     $campi_valori[$ingrediente] = $valore_ingrediente;
                 }
+            $_SESSION["ingredientiFrigo"]=$campi_valori;
             $i++;
             }
             
@@ -211,26 +236,37 @@
         }
     } else {
         $query="SELECT * from ricetta";
+        //se ho refreshato cancello il frigo cosi se clicco su un filtro non mi ricarica il frigo
     }
 
 
 
 
-    //stampa ricette con filtri
+    
+
+    //METTO I FILTRI
     /*
     select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
     from utenti, ( ... ) as a where username='$utente' and
     (a.isvegan=true or utenti.isvegan=false) and
     (a.isglutenfree=true or utenti.intgluten=false)
     */
+    
+
     if(isset($_SESSION['user'])){
 
         $utente=$_SESSION['user'];
-        $notpiccante=true;
-        $star=true;
-        $lite=true;
 
-        $flagvegan=true;
+        //$notpiccante="true";
+        //$star="true";
+        //$lite="true";
+        //$flagvegan="true";
+        //$notpiccante=$_SESSION['flagPiccante'];
+        //$star=$_SESSION['flagStar'];
+        //if(isset($_SESSION['flagLeggero']))
+        //    $lite=$_SESSION['flagLeggero'];
+        //echo $lite;
+        //$flagvegan=$_SESSION['user'];
         
 
 
@@ -243,58 +279,12 @@
         ";
         $query=$prequery.$query.$postquery;
     }
-
-    $index=1;
-
-    
-
+    //CONTROLLO LA QUERY SIA NON VUOTA IN CASO
+    //LA RICREO CON RICETTE INCOMPLETE
     $result = pg_query($dbconn,$query);
-    echo "<div class='content'>";
-    $vuota=true;
-    while ($row = pg_fetch_assoc($result)) {
-        $vuota=false;
-        echo "<div class='recipe'>";
-            echo "<h2>";
-                echo $row['nomericetta'];
-                $ricetta=$row['nomericetta'];
-
-                //BOTTONI PER I PREFERIRI UNO DEI DUE SARA INVISIBILE IN BASE ALL'UTENTE
-                //SE NON LO LOGGATO INVISIBILI ENRTAMBI?
-                $idmettiprefe="idBottonePrefeMetti".$ricetta;
-                $idtogliprefe="idBottonePrefeTogli".$ricetta;
-                echo "<button id=$idmettiprefe class='buttonprefe mettiprefe'> &star; </button>";
-                echo "<button id=$idtogliprefe class='buttonprefe togliprefe'> togli prefe </button>";
-
-                echo "</h2>";
-            echo "<p>";
-
-                $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
-                $result2=pg_query($dbconn,$query2);
-                while($ingrediente=pg_fetch_assoc($result2)){
-                    echo $ingrediente['ingrediente'];
-                    echo "<br>";
-                }
-                pg_free_result($result2);
-                echo "<br>";
-
-
-                echo $row['descrizione'];
-                echo "<br>";
-                echo $row['tempo'];
-                echo " minuti";
-            echo "</p>";
-        echo "</div>";
-        $index++;
-      }
-
-      if($vuota){
-        echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
-        //stampo ricette incmplete
-        /*query esempio
-        select * from ricetta where nomericetta in(
-        select distinct ricetta from ingredienti
-            where ingrediente='pasta' or ingrediente='pecorino')
-        */
+    $flagVuota=false;//utile per un controllo nella stampa
+    
+    if(pg_num_rows($result)==0){
         $query="select * from ricetta where nomericetta in (select distinct ricetta from ingredienti";
         $condizioni = array();
         foreach ($campi_valori as $ingrediente => $valore) {
@@ -305,40 +295,69 @@
             $query .= " WHERE $condizioni_sql";
         }
         $query.= ")";
-
-
-
-        
-        //stampa ricette con ingredienti mancanti
-        if(isset($_SESSION['user'])){
-
-            $utente=$_SESSION['user'];
-            $notpiccante=true;
-            $star=true;
-            $lite=true;
-            $query=$prequery.$query.$postquery;
-        }
+        $query=$prequery.$query.$postquery;//intolleranze, e filtri?
         $result = pg_query($dbconn,$query);
+        $flagVuota=true;
+    }
+    if(pg_num_rows($result)==0){
+        echo "<br><h2>non ci sono ricette per te che sei date le tue intolleranze con questi ingredienti</h2>";
+    } else {
+
+
+
+    
+
+
+
+        //STAMPO LE RICETTE con tasti preferiti
         echo "<div class='content'>";
-        $vuota=true;
+        if($flagVuota) echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
         while ($row = pg_fetch_assoc($result)) {
             $vuota=false;
             echo "<div class='recipe'>";
                 echo "<h2>";
-                    echo $row['nomericetta'];
-                echo "</h2>";
+                
+                    echo str_replace('_', ' ', $row['nomericetta']);
+                    $ricetta=$row['nomericetta'];
+
+                    //BOTTONI PER I PREFERIRI UNO DEI DUE SARA INVISIBILE IN BASE ALL'UTENTE
+                    //SE NON LO LOGGATO INVISIBILI ENRTAMBI?
+                    
+                    if(isset($_SESSION['user'])){
+                        
+                        $idmettiprefe="idBottonePrefeMetti".$ricetta;
+                        $idtogliprefe="idBottonePrefeTogli".$ricetta;
+                        $user=$_SESSION['user'];
+                        $querypreferiti="select * from preferiti where username='$user' and ricetta='$ricetta'";
+                        
+                        $resultpreferiti=pg_query($dbconn,$querypreferiti);
+                        echo "<button id=$idmettiprefe class='buttonprefe mettiprefe'> &star; </button>";
+                        echo "<button id=$idtogliprefe class='buttonprefe togliprefe'> togli prefe </button>";
+                        if(pg_num_rows($resultpreferiti)>0){
+                            echo "
+                            <script>
+                            document.getElementById('$idmettiprefe').style.display = 'none';
+                            </script>";
+                        }else{
+                            echo "
+                            <script>
+                            document.getElementById('$idtogliprefe').style.display = 'none';
+                            </script>";
+                        }
+                    
+                        
+                }
+
+
+                    echo "</h2>";
                 echo "<p>";
 
-                    $ricetta=$row['nomericetta'];
                     $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
                     $result2=pg_query($dbconn,$query2);
                     while($ingrediente=pg_fetch_assoc($result2)){
                         echo $ingrediente['ingrediente'];
-                        
-                        //ESEMPIO CONTROLLO SE HAI INGREDIENTE
-                        if(!in_array($ingrediente['ingrediente'],$campi_valori))
+                        if($flagFromFrigo && !in_array($ingrediente['ingrediente'],$campi_valori))
                             echo "<span style='color: red;'> (ti manca)</span>";
-
                         echo "<br>";
                     }
                     pg_free_result($result2);
@@ -353,71 +372,24 @@
             echo "</div>";
         }
 
+            
+    }        
 
-
-        
-
-
-      }
-      
-      echo "</div>";
-    
-    
+    echo "</div>";
     echo "<br><br><br>";
-    
-        
-    
-
-
     pg_free_result($result);
     pg_close($dbconn);
-    
-    
     ?>
 
-    <!-- Modal -->
-    <div id="loginModal" class="modal">
-
-        <!-- Contenuto del modal -->
-        <div class="modal-content">
-            <button class="close" onclick="closeModal()">&times;</button>
-            <h2 style="font-weight: normal; text-align: center;">Accedi</h2>
-            <form id="loginForm" style="text-align: center;">
-                <input type="text" id="username" placeholder="Username" required><br>
-                <input type="password" id="password" placeholder="Password" required><br>
-                <button type="submit">Login</button>
-                <div>
-                    <h4 style="font-weight: normal; text-align: center;">Non hai un account? <a href="#" id="registerLink">Registrati</a></h4>
-                </div>
-                <div>
-                    <h4 style="font-weight: normal; text-align: center;"><a href="#" id="forgotPasswordLink">Hai dimenticato la password?</a></h4>
-                </div>
-            </form>
-        </div>
-    </div>
     <script>
-        // Funzione per aprire il modal
-        function openModal() {
-            document.getElementById('loginModal').style.display = 'block';
-        }
-
-        // Funzione per chiudere il modal
-        function closeModal() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        // Chiudi il modal quando l'utente clicca al di fuori di esso
-        window.onclick = function(event) {
-            var modal = document.getElementById('loginModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        //da aggiungere funzioni modal e i modal di sopra
 
 
         //FUNZIONI BOTTONI
         function fpreferiti(idbottone) {
             var nomericettaprefe=idbottone.replace("Metti", "");
+            document.getElementById("idBottonePrefeMetti"+nomericettaprefe).style.display = 'none';
+            document.getElementById("idBottonePrefeTogli"+nomericettaprefe).style.display = 'inline-block';
             console.log(nomericettaprefe);
             var xhr = new XMLHttpRequest();
             // Set up our request
@@ -427,12 +399,14 @@
             // Send the request with the JavaScript variable as data
             var user='rambi'; //DA TOGLIERE
             xhr.send('mettiORtogli='+ encodeURIComponent("metti") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
+            
         }
 
 
         function ftoglipreferiti(idbottone) {
-            
             var nomericettaprefe=idbottone.replace("Togli", "");
+            document.getElementById("idBottonePrefeMetti"+nomericettaprefe).style.display = 'inline-block';
+            document.getElementById("idBottonePrefeTogli"+nomericettaprefe).style.display = 'none';
             console.log(nomericettaprefe);
             var xhr = new XMLHttpRequest();
             // Set up our request
@@ -458,6 +432,9 @@
         };
 
         
+        
+
     </script>
+
 </body>
 </html>
