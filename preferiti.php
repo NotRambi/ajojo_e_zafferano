@@ -11,9 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if($mettiORtogli=="togli"){
         $query="DELETE FROM preferiti where username='$user' AND ricetta='$ricetta'";
-        pg_query($dbconn,$query);
+        
     }
-
+    pg_query($dbconn,$query);
     
     pg_close($dbconn);
 
