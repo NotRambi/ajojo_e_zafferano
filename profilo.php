@@ -37,12 +37,11 @@
 
 <a href="index.php">home</a>
 <?php
-$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
 or die('Could not connect: ' . pg_last_error());
 
 $utente=$_SESSION['user'];
 
-//aggiornamento credenziali
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $nome = $_POST['nome'];
@@ -56,7 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if($username==""||$password=="")
         echo "aggiornamento credenziali fallito<br>inserisci i dati correttamente";
     else{
-        $query="UPDATE utenti SET username='$username',nome='$nome',cognome='$cognome',password='$password',isvegan='$isvegan',intgluten='$intgluten' WHERE username='$utente'";
+        $query="UPDATE utenti SET username='$username',nome='$nome',cognome='$cognome',password='$password',isvegan='$isvegan',intgluten='$intgluten' 
+        WHERE username='$utente'";
         pg_query($dbconn, $query);
         $_SESSION['user']=$username;  
     }
@@ -112,10 +112,7 @@ echo "<div class='profile-container'>";
 
     echo "<p class='info-title'>Sei vengano:</p>";
             echo "<p class='modifica'>";
-            if($row['isvegan']=='f')
             echo "<input type='checkbox' name='isvegan' value='true'>";
-            else
-            echo "<input type='checkbox' name='isvegan' value='true' checked>";
             echo "</p>";
     echo "<p class='valore'>";
         if($row['isvegan']=='f') echo "no";
@@ -124,10 +121,7 @@ echo "<div class='profile-container'>";
 
     echo "<p class='info-title'>Sei intollerante al glutine:</p>";
             echo "<p class='modifica'>";
-            if($row['intgluten']=='f')
             echo "<input type='checkbox' name='intgluten' value='true'>";
-            else
-            echo "<input type='checkbox' name='intgluten' value='true' checked>";
             echo "</p>";
     echo "<p class='valore'>";
         if($row['intgluten']=='f') echo "no";
@@ -141,7 +135,8 @@ echo "<div class='profile-container'>";
 echo "</div>";
 
 
-echo "<br><button onclick='mostraModulo()'>Modifica Profilo</button><br><br><br><br>";
+echo "<br><button onclick='mostraModulo()'>Modifica Profilo</button><br>";
+echo "<br><button onclick='logOut()'>logOut</button><br><br><br>";
 
 
 $query="select distinct ricetta from preferiti where username='$utente'";
@@ -216,6 +211,12 @@ function ftoglipreferiti(idbottone) {
                 });
             });
         };
+
+
+        function logOut() {
+            <?php unset($_SESSION['user']);?>
+            window.location.href = "index.php";
+        }
 </script>
         
     
