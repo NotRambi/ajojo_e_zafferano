@@ -254,31 +254,47 @@
     
 
     //METTO I FILTRI E INTOLLERANZE
+    $row=pg_fetch_assoc(pg_query($dbconn,"select * from filtri"));
+    if($row['flagpiccante']=='t') $piccante="true"; else $piccante="false";
+    if($row['flagstar']=='t') $star="true"; else $star="false";
+    if($row['flaglite']=='t') $lite="true"; else $lite="false";
+    if($row['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
+    if($row['flagglut']=='t') $gluten="true"; else $gluten="false";
+
+
+    $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
+    from utenti,(";
+
+
+    $postquery=") as a where ";
     if(isset($_SESSION['user'])){
-
         $utente=$_SESSION['user'];
-
-        $row=pg_fetch_assoc(pg_query($dbconn,"select * from filtri"));
-        if($row['flagpiccante']=='t') $piccante="true"; else $piccante="false";
-        if($row['flagstar']=='t') $star="true"; else $star="false";
-        if($row['flaglite']=='t') $lite="true"; else $lite="false";
-        if($row['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
-        if($row['flagglut']=='t') $gluten="true"; else $gluten="false";
-        
-
-        $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
-        from utenti,(";
-
-        //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
-        $postquery=") as a where username='$utente' and
+        $postquery=$postquery."username='$utente' and
         (a.isvegan or ('$flagvegan' and not utenti.isvegan)) and
         (a.isglutenfree or ('$gluten' and not utenti.intgluten)) and
-        (a.isspicy or '$piccante') and
-        (a.isstar or '$star') and
-        (a.islite or '$lite')
         ";
-        $query=$prequery.$query.$postquery;
     }
+    else{//non sono loggato
+
+        $postquery=$postquery."
+        (a.isvegan or '$flagvegan') and
+        (a.isglutenfree or '$gluten') and
+        ";
+
+
+    }
+    
+
+    
+
+    //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
+    $postquery=$postquery."
+    (a.isspicy or '$piccante') and
+    (a.isstar or '$star') and
+    (a.islite or '$lite')
+    ";
+    $query=$prequery.$query.$postquery;
+    
     
     //CONTROLLO LA QUERY SIA NON VUOTA IN CASO
     //LA RICREO CON RICETTE INCOMPLETE
