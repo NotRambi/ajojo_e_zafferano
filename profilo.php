@@ -42,6 +42,7 @@ or die('Could not connect: ' . pg_last_error());
 
 $utente=$_SESSION['user'];
 
+//aggiornamento credenziali
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $nome = $_POST['nome'];
@@ -111,7 +112,10 @@ echo "<div class='profile-container'>";
 
     echo "<p class='info-title'>Sei vengano:</p>";
             echo "<p class='modifica'>";
+            if($row['isvegan']=='f')
             echo "<input type='checkbox' name='isvegan' value='true'>";
+            else
+            echo "<input type='checkbox' name='isvegan' value='true' checked>";
             echo "</p>";
     echo "<p class='valore'>";
         if($row['isvegan']=='f') echo "no";
@@ -120,7 +124,10 @@ echo "<div class='profile-container'>";
 
     echo "<p class='info-title'>Sei intollerante al glutine:</p>";
             echo "<p class='modifica'>";
+            if($row['intgluten']=='f')
             echo "<input type='checkbox' name='intgluten' value='true'>";
+            else
+            echo "<input type='checkbox' name='intgluten' value='true' checked>";
             echo "</p>";
     echo "<p class='valore'>";
         if($row['intgluten']=='f') echo "no";
