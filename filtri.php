@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
     or die('Could not connect: ' . pg_last_error());
     switch ($_POST["buttonclicked"]){
         case "flagPiccante":

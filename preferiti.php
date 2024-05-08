@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mettiORtogli=$_POST["mettiORtogli"];
     $ricetta = $_POST["ricetta"];
     $user=$_SESSION['user'];
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar");
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402");
 
     if($mettiORtogli=="metti"){
         $query="insert into preferiti values ('$user','$ricetta')";

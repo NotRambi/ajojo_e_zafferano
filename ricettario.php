@@ -152,7 +152,7 @@
 </head>
 <body>
     <nav>
-      <a href="index.php"> <img src="logohome.jpg" width="50" height="50"> </a> </a>
+      <a href="index.php"> <img src="logo.png" width="50" height="50"> </a> </a>
       <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
       <a href="ricettario.php" class="ricettarioButton">ricettario</a>
       <a class="loginButton" onclick="openModal()">Login</a> 
@@ -161,7 +161,7 @@
     <br><br><br><br>
 
     <?php
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
     or die('Could not connect: ' . pg_last_error());
     $result = pg_query($dbconn,"select * from filtri");
     $row = pg_fetch_assoc($result);

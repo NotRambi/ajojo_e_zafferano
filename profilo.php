@@ -4,21 +4,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Il mio Profilo</title>
 <style>
-    /* Stile per il contenitore del profilo */
+    *{
+        font-family: "Poppins", sans-serif;
+    }
+    body{
+        background-color: #f8fadd;
+    }
     .profile-container {
         max-width: 600px;
         margin: 50px auto;
         padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
+        border: 5px solid #333;
+        border-radius: 20px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+    .title{
+        color:#ed6700;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
     }
 
     /* Stile per le informazioni del profilo */
     .profile-info {
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+    .profile-info p{
+        margin: 0.5rem;
+    }
+    .div-campoprofilo{
+        display: flex;
+        justify-content: row;
     }
 
     /* Stile per il titolo delle informazioni */
@@ -75,148 +99,187 @@ $row = pg_fetch_assoc($result);
 
 echo "<div class='profile-container'>";
     echo "<form action='profilo.php' method='post'>";
-    echo "<h2>Il mio Profilo</h2>";
+        echo "<h2 class='title'>Il mio Profilo</h2>";
 
-    echo "<div class='profile-info'>";
-    echo "<p class='info-title'>Username:</p>";
-            echo "<p class='modifica'>";
-            echo "<input type='text' name='username' value='" . $row['username'] . "'>";
-            echo "</p>";
-    echo "<p class='valore'>";
-        echo $row['username'];
-    echo "</p>";
+        echo "<div class='profile-info'>";
 
-    echo "<p class='info-title'>Nome:</p>";
-            echo "<p class='modifica'>";
-            echo "<input type='text' name='nome' value='" . $row['nome'] . "'>";
-            echo "</p>";
-    echo "<p class='valore'>";
-        echo $row['nome'];
-    echo "</p>";
+            echo "<div class='div-campoprofilo'>";
+                echo "<p class='info-title'>Nome:</p>";
+                echo "<p class='modifica'>";
+                    echo "<input type='text' name='nome' value='" . $row['nome'] . "'>";
+                echo "</p>";
+                echo "<p class='valore'>";
+                    echo $row['nome'];
+                echo "</p>";
+            echo "</div>";
 
-    echo "<p class='info-title'>Cognome:</p>";
-            echo "<p class='modifica'>";
-            echo "<input type='text' name='cognome' value='" . $row['cognome'] . "'>";
-            echo "</p>";
-    echo "<p class='valore'>";
-        echo $row['cognome'];
-    echo "</p>";
+            echo "<div class='div-campoprofilo'>";
+                echo "<p class='info-title'>Cognome:</p>";
+                echo "<p class='modifica'>";
+                    echo "<input type='text' name='cognome' value='" . $row['cognome'] . "'>";
+                echo "</p>";
+                echo "<p class='valore'>";
+                    echo $row['cognome'];
+                echo "</p>";
+            echo "</div>";
 
-    echo "<p class='info-title'>Password:</p>";
-            echo "<p class='modifica'>";
-            echo "<input type='text' name='password' value='" . $row['password'] . "'>";
-            echo "</p>";
-    echo "<p class='valore'>";
-        echo $row['password'];
-    echo "</p>";
+            echo "<div class='div-campoprofilo'>";
+                echo "<p class='info-title'>Username:</p>";
+                echo "<p class='modifica'>";
+                    echo "<input type='text' name='username' value='" . $row['username'] . "'>";
+                echo "</p>";
+                echo "<p class='valore'>";
+                    echo $row['username'];
+                echo "</p>";
+            echo "</div>";
 
-    echo "<p class='info-title'>Sei vengano:</p>";
-            echo "<p class='modifica'>";
-            echo "<input type='checkbox' name='isvegan' value='true'>";
-            echo "</p>";
-    echo "<p class='valore'>";
-        if($row['isvegan']=='f') echo "no";
-        else echo "si";
-    echo "</p>";
+            echo "<div class='div-campoprofilo'>";
+                echo "<p class='info-title'>Password:</p>";
+                echo "<p class='modifica'>";
+                    echo "<input type='text' name='password' value='" . $row['password'] . "'>";
+                echo "</p>";
+                echo "<p class='valore'>";
+                    echo $row['password'];
+                echo "</p>";
+            echo "</div>";
 
-    echo "<p class='info-title'>Sei intollerante al glutine:</p>";
-            echo "<p class='modifica'>";
-            echo "<input type='checkbox' name='intgluten' value='true'>";
-            echo "</p>";
-    echo "<p class='valore'>";
-        if($row['intgluten']=='f') echo "no";
-        else echo "si";
-    echo "</p>";
+            echo "<div class='div-campoprofilo'>";
+                echo "<p class='info-title'>Sei vengano:</p>";
+                        echo "<p class='modifica'>";
+                        if($row['isvegan']=='f')
+                            echo "<input type='checkbox' name='isvegan' value='true'>";
+                        else
+                            echo "<input type='checkbox' name='isvegan' value='true' checked>";
+                        echo "</p>";
+                echo "<p class='valore'>";
+                    if($row['isvegan']=='f') echo "no";
+                    else echo "si";
+                echo "</p>";
+            echo "</div>";
 
-            echo "<p class='modifica'>";
+            echo "<div class='div-campoprofilo'>";
+                echo "<p class='info-title'>Sei intollerante al glutine:</p>";
+                        echo "<p class='modifica'>";
+                        if($row['intgluten']=='f')
+                            echo "<input type='checkbox' name='intgluten' value='true'>";
+                        else
+                            echo "<input type='checkbox' name='intgluten' value='true' checked>";
+                        echo "</p>";
+                echo "<p class='valore'>";
+                    if($row['intgluten']=='f') echo "no";
+                    else echo "si";
+                echo "</p>";
+            echo "</div>";
+
+        echo "</div>";
+        echo "<div class='form-btn modifica'>";
             echo "<input type='submit' value='invia modifiche'>";
-            echo "</p>";
+            echo "<button onclick='mostraModulo()'>cancella modifiche</button>";
+        echo "</div>";
     echo "</form>";
+
+    echo "<div class='btn-vari'>";
+        echo "<button class='modifica' onclick='cancellaProfilo()'>cancella profilo</button>";
+        echo "<button onclick='mostraModulo()' class='valore'>Modifica Profilo</button> ";
+        echo "<button onclick='logOut()' class='valore'>Logout</button>";
+    echo "</div>";
+
+    echo "<div class='preferiti valore'>";
+        echo "ricette preferite: <br>";
+        $query="select distinct ricetta from preferiti where username='$utente'";
+        $result = pg_query($dbconn, $query);
+
+        if(pg_num_rows($result)<=0){
+            echo "nessuna ricetta preferita";
+        }
+        while ($row = pg_fetch_assoc($result)) {
+            $ricetta=$row["ricetta"];
+            $idtogliprefe="idBottonePrefeTogli".$ricetta;
+            echo $ricetta." <button id=$idtogliprefe> togli prefe </button> ";
+
+        }
+    echo "</div>";
+
 echo "</div>";
-
-
-echo "<br><button onclick='mostraModulo()'>Modifica Profilo</button><br>";
-echo "<br><button onclick='logOut()'>logOut</button><br><br><br>";
-
-
-$query="select distinct ricetta from preferiti where username='$utente'";
-
-
-echo "ricette preferite:<br>";
-$result = pg_query($dbconn, $query);
-
-if(pg_num_rows($result)<=0){
-    echo "nessuna ricetta preferita";
-}
-while ($row = pg_fetch_assoc($result)) {
-    $ricetta=$row["ricetta"];
-    $idtogliprefe="idBottonePrefeTogli".$ricetta;
-    echo $ricetta." <button id=$idtogliprefe> togli prefe </button><br>";
-
-}
 
 pg_free_result($result);
 pg_close($dbconn);
 ?>
 <script>
     flag=true;
-function mostraModulo() {
-    if(flag){
-        var paragrafi = document.querySelectorAll(".modifica");
-        for (var i = 0; i < paragrafi.length; i++) {
-            paragrafi[i].style.display = "block";
+    flagLogOut=false;
+    function mostraModulo() {
+        event.preventDefault();
+        if(flag){
+            var paragrafi = document.querySelectorAll(".modifica");
+            for (var i = 0; i < paragrafi.length; i++) {
+                paragrafi[i].style.display = "block";
+            }
+            var paragrafi = document.querySelectorAll(".valore");
+            for (var i = 0; i < paragrafi.length; i++) {
+                paragrafi[i].style.display = "none";
+            }
         }
-        var paragrafi = document.querySelectorAll(".valore");
-        for (var i = 0; i < paragrafi.length; i++) {
-            paragrafi[i].style.display = "none";
-        }
-    }
-    else{
-        var paragrafi = document.querySelectorAll(".modifica");
-        for (var i = 0; i < paragrafi.length; i++) {
-            paragrafi[i].style.display = "none";
-        }
-        var paragrafi = document.querySelectorAll(".valore");
-        for (var i = 0; i < paragrafi.length; i++) {
-            paragrafi[i].style.display = "block";
-        }
-    }
-    flag=!flag;
-}
-
-
-function ftoglipreferiti(idbottone) {
-            
-            var nomericettaprefe=idbottone.replace("Togli", "");
-            console.log(nomericettaprefe);
-            var xhr = new XMLHttpRequest();
-            // Set up our request
-            xhr.open('POST', 'preferiti.php');
-            // Set the content type that PHP is expecting
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            // Send the request with the JavaScript variable as data
-            xhr.send('mettiORtogli='+ encodeURIComponent("togli") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
+        else{
+            var paragrafi = document.querySelectorAll(".modifica");
+            for (var i = 0; i < paragrafi.length; i++) {
+                paragrafi[i].style.display = "none";
+            }
+            var paragrafi = document.querySelectorAll(".valore");
+            for (var i = 0; i < paragrafi.length; i++) {
+                paragrafi[i].style.display = "block";
+            }
             location.reload();
-
         }
+        flag=!flag;
+    }
 
-        window.onload = function() {
-            var pulsanti = document.querySelectorAll('button[id^="idBottonePrefe"]');
-            pulsanti.forEach(function(pulsante) {
-                pulsante.addEventListener('click', function() {
-                    var nomericetta=this.id.replace("idBottonePrefe", "");
-                    
-                    if(nomericetta.includes("Togli"))
-                        ftoglipreferiti(nomericetta);
-                });
+    function ftoglipreferiti(idbottone) {
+        
+        var nomericettaprefe=idbottone.replace("Togli", "");
+        console.log(nomericettaprefe);
+        var xhr = new XMLHttpRequest();
+        // Set up our request
+        xhr.open('POST', 'preferiti.php');
+        // Set the content type that PHP is expecting
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // Send the request with the JavaScript variable as data
+        xhr.send('mettiORtogli='+ encodeURIComponent("togli") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
+        location.reload();
+    }
+
+    window.onload = function() {
+        var pulsanti = document.querySelectorAll('button[id^="idBottonePrefe"]');
+        pulsanti.forEach(function(pulsante) {
+            pulsante.addEventListener('click', function() {
+                var nomericetta=this.id.replace("idBottonePrefe", "");
+                
+                if(nomericetta.includes("Togli"))
+                    ftoglipreferiti(nomericetta);
             });
-        };
+        });
+    };
 
+    function logOut() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'logout.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send();
+        window.location.href="index.php";
+    }
 
-        function logOut() {
-            <?php unset($_SESSION['user']);?>
-            window.location.href = "index.php";
-        }
+    function cancellaProfilo(){
+        event.preventDefault();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'delUser.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send();
+
+        logOut();
+
+    }
+
 </script>
         
     
