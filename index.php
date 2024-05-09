@@ -158,7 +158,8 @@
             .slide-container{
                 max-width: 1400px;
                 width: 100%;
-                padding: 40px 0;
+                padding: 30px 0;
+                padding-top:0;
             }
             .slide-content{
                 padding: 20px 14px;
@@ -751,7 +752,8 @@
             var nav = document.querySelector('.nav');
             var nav_a = document.querySelectorAll('.nav a');
             var logo_title_p = document.querySelectorAll('.logo_title p');
-            window.addEventListener('resize', function(){
+
+            function adapt_size(){
                 if(window.outerWidth < 890 && window.outerWidth > 590){
                     var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
                     var newfontnav = 20 + (window.outerWidth-590)/60*2;
@@ -783,7 +785,11 @@
                         element.style.fontSize = '20px';
                     });
                 }
+            }
+            window.addEventListener('resize', function() {
+                adapt_size();
             });
+            adapt_size();
 
             // Funzioni modal Login/Signin
             // Fa apparire il modal del login
