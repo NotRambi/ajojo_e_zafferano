@@ -401,7 +401,7 @@
         <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
@@ -434,13 +434,19 @@
                 if(!isset($_POST['isvegan'])) $isvegan="false"; else
                     $isvegan = $_POST['isvegan'];
                 if(!isset($_POST['intgluten'])) $intgluten = "false"; else
-                    $intgluten = $_POST['intgluten'];   
-                if($username==""||$password=="")
-                    echo "Registrazione fallita<br>inserisci i dati correttamente";
-                else{
-                    $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
-                    pg_query($dbconn, $query);
-                    echo "query returned succesfully";  
+                    $intgluten = $_POST['intgluten'];  
+                $query="select * from utenti where username='$username'";
+                $result=pg_query($dbconn, $query);
+                if(pg_num_rows($result)>0){
+                    echo "account già esistente";
+                } else { 
+                    if($username==""||$password=="")
+                        echo "Registrazione fallita<br>inserisci i dati correttamente";
+                    else{
+                        $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
+                        pg_query($dbconn, $query);
+                        echo "registrazione avvenuta con successo";
+                    }
                 }
             }
         }
