@@ -1,67 +1,138 @@
 <!DOCTYPE html>
 <html lang="it">
-<?php session_start(); ?>
+<?php session_start();?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricettario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>Ajojo & Zafferano</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            padding: 30px;
-            font-size: 20px;
-            margin: 0;
-            justify-content: center;
-            align-items: center;
+        *{
+        font-family: "Poppins", sans-serif;
+        }
+        body{
+            background-color: #f8fadd;
+            min-height: 100vh;
+            min-width: 582px;
         }
 
-        nav {
-            background-color: #333;
-            overflow: hidden;
+        /* stili nav */
+        .navbgr{
+            background-color: #f8fadd;
+            height: 5rem;
+            width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
             z-index: 10;
-            font-size: 55px;
         }
-        nav a {
-            float: left;
-            display: block;
+        .nav{
+            background-color: #333;
+            height: 4.5rem;
+            width: 98%;
+            position: relative;
+            top: 1rem;
+            left: 1%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            gap: 1.5rem;
+        }
+        .nav a{
+            font-weight: 500;
+            font-style: normal;
+            font-size: 30px;
+            position: relative;
+            border-radius: 10px;
             color: white;
-            text-align: center;
-            padding: 15px 25px 10px;
             text-decoration: none;
-            border-right: 1px solid white; /* Separatore tra i link */
+            transition: all 0.2s;
         }
-        nav a img{
-            padding-top: 6px;
-            height: 50px;
-            width: 50px;
+        .nav a:not(.MainLogo){
+            padding:0.8rem 0;
         }
-        .ricettarioButton{
-            padding-top: 10px;
-            padding-bottom: 20px;
+        .nav a:not(.MainLogo):hover{
+            text-decoration: underline; 
+            scale: 1.1;
+            transition: all 0.5s;
         }
-        .loginButton{
-            float: right;
-            padding-top: 10px;
-            padding-bottom: 20px;
+        .nav a:is(.MainLogo):hover{
+            margin-right: 1.5rem;
+            transition: all 0.5s;
+            .logo_img{
+                scale: 0.8;
+                transition: all 0.5s;
+            }
+            .logo_title {
+                left:0rem;
+                color: white;
+                transition: all 0.5s;
+            }
+            .logo_title p{
+                color: white;
+                transition: all 0.2s;
+            }
+        }
+        .nav a:is(.RicettarioLink){
+          text-decoration: underline; 
+        }
+        .ProfiloLink{
+            margin-left: auto;
+            margin-right: 1.5rem;
+        }
+        .MainLogo{
+            margin-left: 1rem;
+            margin-right: -6.5rem;
+            display: flex;
+            gap:0.2rem;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s;
+        }
+        .logo_img{
+            z-index: 2;
+            width: 70px;
+            height: 70px;
+            transition: all 0.5s;
+        }
+        .logo_title{
+            position: relative;
+            left:-5rem;
+            transition: all 0.5s;
+        }
+        .logo_title p{
+            display: flex;
+            flex-direction: column;
+            gap: 0rem;
+            margin:0;
+            margin-right: 1rem;   
+            padding:0;
+            top:0;
+            bottom:0;
+            font-size: 20px;
+            position: relative;
+            color:#333;
+            transition: all 0.2s;
+        }
+        .logo_title .ajojo_{
+            top:0.3rem
+        }
+        .logo_title .zafferano_{
+            top: -0.3rem;
+            left: 1.5rem;
         }
 
-        nav a:last-child {
-            border-right: none;
+        /* stili ricette */
+        .firstBtn{
+            margin-left: 1rem;
         }
-
-        nav a:hover {
-            background-color: #6c6a6a;
-        }
-
         .content {
             padding: 20px;
         }
-
         .recipe {
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -73,9 +144,9 @@
             margin-top: 0;
         }
 
-        /* Stili per il modal */
+        /* stili modal */
         .modal {
-            display: none; /* Il modal è nascosto per impostazione predefinita */
+            display: none;
             position: fixed;
             z-index: 11;
             left: 0;
@@ -83,98 +154,283 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
         }
-        body.modal-open, html.modal-open {overflow: hidden;}
-
-        .modal-content {
-            background-color: #fdfdfdce;
+        .form {
             margin: 15% auto;
             margin-top: 0%;
             top: 15%;
-            padding: 0px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            height: 550px;
-            position:relative;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            background-color: #e8e8e8;
+            color: #fff;
+            border: 5px solid #111;
         }
-        /* Stili per il form di login */
-        #loginForm input[type=text], 
-        #loginForm input[type=password] {
-            width: 80%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            font-size: 20px;
-            font-style: normal;
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            color: #ed6700;
+        }
+        .title::before {
+            width: 18px;
+            height: 18px;
+        }
+        .title::after {
+            width: 18px;
+            height: 18px;
+            animation: pulse 1s linear infinite;
+        }
+        .title::before,
+        .title::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: #ed6700;
+        }
+        .message, 
+        .signin {
+            font-size: 14.5px;
+            color: #333;
+        }
+        .signin {
             text-align: center;
         }
-        #loginForm button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 80%;
-            font-size: 20px;
-            font-style: normal;
-        }
-        
-        #loginForm button:hover {
-            opacity: 0.8;
-        }
-        /* Stili per il link di chiusura del modal */
-        .close {
-            background-color: white;
-            color: #aaa;
-            border: 1px solid black;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            width: 40px;
-            height: 50px;
-            position:absolute;
-            right:5%;
-        }
-        .close:hover,
-        .close:focus {
-            background-color: white;
-            color: black;
+        .signin a {
+            color: #ed6700;
             text-decoration: none;
-            cursor: pointer;
+        }
+        .signin a:hover {
+            text-decoration: underline;
+        }
+        .flex {
+            display: flex;
+            width: 97.5%;
+            gap: 20px;
+        }
+        .form label {
+            position: relative;
+        }
+        .form label .input {
+            background-color: #fff;
+            color: #333;
+            width: 95%;
+            padding: 20px 05px 05px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+        .form label .input + span {
+            color: #333;
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            font-size: 0.9em;
+            cursor: text;
+            transition: 0.3s ease;
+        }
+        .form label .input:placeholder-shown + span {
+            top: 12.5px;
+            font-size: 0.9em;
+        }
+        .form label .input:focus + span,
+        .form label .input:valid + span {
+            color: #ed6700;
+            top: 0px;
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+        .input {
+            font-size: medium;
+        }
+        .submit {
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transform: .3s ease;
+            background-color: #ed6700;
+            transition: all 0.3s ease;
+        }
+        .submit:hover {
+            background-color: #ed4f00;
+            transition: all 0.3s ease;
+        }
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+            to {
+                transform: scale(1.8);
+                opacity: 0;
+            }
         }
     </style>
     
 </head>
 <body>
-    <nav>
-      <a href="index.php"> <img src="logo.png" width="50" height="50"> </a> </a>
-      <a href="frigo.php"><img src="frigo.jpg" width="50" height="50"> </a>
-      <a href="ricettario.php" class="ricettarioButton">ricettario</a>
-      <a class="loginButton" onclick="openModal()">Login</a> 
-    </nav>
-  
+
+    <?php
+    // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
+    //DATABASE:
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+    or die('Could not connect: ' . pg_last_error());    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $tipo = $_POST['tipo'];
+        //CASO LOGIN
+        if($tipo == "login"){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
+            $result = pg_query($dbconn, $query);
+            if ($result) {
+                if (pg_num_rows($result) > 0) {
+                    echo "Accesso consentito!";                        
+                    $_SESSION['user'] = $username;
+                } 
+                else {
+                    echo "Nome utente o password non validi.";
+                }
+            }
+            else {
+                echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
+            }
+            pg_free_result($result);
+        }
+        //CASO REGISTRAZIONE
+        if($tipo == "registrazione"){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $nome = $_POST['nome'];
+            $cognome = $_POST['cognome'];
+            if(!isset($_POST['isvegan'])) $isvegan="false"; else
+                $isvegan = $_POST['isvegan'];
+            if(!isset($_POST['intgluten'])) $intgluten = "false"; else
+                $intgluten = $_POST['intgluten'];   
+            if($username==""||$password=="")
+                echo "Registrazione fallita<br>inserisci i dati correttamente";
+            else{
+                $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
+                pg_query($dbconn, $query);
+                echo "query returned succesfully";  
+            }
+        }
+    }
+    pg_close($dbconn);    
+    ?>
+
+    <div class="navbgr">
+        <div class="nav">
+            <a class="MainLogo" href="index.php">
+                <img src="logo.png" class="logo_img">
+                <div class="logo_title">
+                    <p class="ajojo_">Ajojo &</p>
+                    <p class="zafferano_">Zafferano</p>
+                </div>
+            </a>
+            <a class="FrigoLink" href="frigo.php">Frigorifero</a>
+            <a class="RicettarioLink" href="ricettario.php">Ricettario</a>
+            <a class="ProfiloLink" id="profileBtn" href="profilo.php">Profilo</a>
+            <a class="ProfiloLink" id="loginBtn" href="#">Accedi</a>
+        </div>
+    </div>
+
+    <?php
+        if(isset($_SESSION['user'])){
+            echo "<script>document.getElementById('profileBtn').style.display = 'block';</script>";
+            echo "<script>document.getElementById('loginBtn').style.display = 'none';</script>";
+        } 
+        else{
+            echo "<script>document.getElementById('profileBtn').style.display = 'none';</script>";
+            echo "<script>document.getElementById('loginBtn').style.display = 'block';</script>";
+        }
+    ?>
+    
     <br><br><br><br>
 
     <?php
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
-    or die('Could not connect: ' . pg_last_error());
-    $result = pg_query($dbconn,"select * from filtri");
-    $row = pg_fetch_assoc($result);
-    //setto i pulsanti
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        or die('Could not connect: ' . pg_last_error());
+        $result = pg_query($dbconn,"select * from filtri");
+        $row = pg_fetch_assoc($result);
+        //setto i pulsanti
     ?>
     
-    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> picante </button>
-    <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
-    <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
-    <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
-    <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
+    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro firstBtn"> picante </button>
+    <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> glutine </button>
+    <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> leggero </button>
+    <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> stella </button>
+    <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> vegano </button>
     <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
     
+    <!--Modal ad apparizione dei tasti login e signin-->
+    <!-- Modal di login -->
+    <div id="loginModal" class="modal">
+        <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden" name="tipo" value="login">
+            <p class="title">Login </p>
+            <label>
+                <input class="input" type="text" id="username" name="username" placeholder="" required="">
+                <span>Username</span>
+            </label> 
+                
+            <label>
+                <input class="input" type="password" id="password" name="password" placeholder="" required="">
+                <span>Password</span>
+            </label>
+            <button class="submit" value="Accedi">Accedi</button>
+            <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block'; document.getElementById('loginModal').style.display='none'">Registrati</a> </p>
+        </form>
+    </div>
+
+
+    <!-- Modal di registrazione -->
+    <div id="registerModal" class="modal">
+        <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden" name="tipo" value="registrazione">
+            <p class="title">Registrazione </p>
+            <p class="message">Registrati ora per avere accesso al servizio completo </p>
+                <div class="flex">
+                <label>
+                    <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
+                    <span>Nome</span>
+                </label>
+        
+                <label>
+                    <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
+                    <span>Cognome</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input class="input" type="text" id="username"  name="username" placeholder="" required="">
+                <span>Username</span>
+            </label> 
+                
+            <label>
+                <input class="input" type="password" id="password"  name="password" placeholder="" required="">
+                <span>Password</span>
+            </label>
+            <button class="submit" value="Registrati">Registrati</button>
+            <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none'">Login</a> </p>
+        </form>
+    </div>
     
     <script>
         
@@ -399,9 +655,7 @@
     ?>
 
     <script>
-        //da aggiungere funzioni modal e i modal di sopra
-
-
+ 
         //FUNZIONI BOTTONI
         function fpreferiti(idbottone) {
             var nomericettaprefe=idbottone.replace("Metti", "");
@@ -447,9 +701,64 @@
                 });
             });
         };
+    
+    // funzione per ridurre il fontsize della nav a in base ai breakpoint
+    var nav = document.querySelector('.nav');
+    var nav_a = document.querySelectorAll('.nav a');
+    var logo_title_p = document.querySelectorAll('.logo_title p');
 
-        
-        
+    function adapt_size(){
+        if(window.outerWidth < 890 && window.outerWidth > 590){
+            var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
+            var newfontnav = 20 + (window.outerWidth-590)/60*2;
+            var newfontlogo = 15 + (window.outerWidth-590)/60;
+            nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
+            nav_a.forEach(element => {
+                element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
+            });
+            logo_title_p.forEach(element => {
+                element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
+            });
+        }
+        else if(window.outerWidth <= 590 && window.outerWidth >= 0){
+            nav.style.gap = '0.5rem';
+            nav_a.forEach(element => {
+                element.style.fontSize = '20px';
+            });
+            logo_title_p.forEach(element => {
+                element.style.fontSize = '15px';
+            });
+        }
+        else{
+            nav.style.gap = '1.5rem';
+            nav_a.forEach(element => {
+                element.style.fontSize = '30px';
+            });
+            logo_title_p.forEach(element => {
+                element.style.fontSize = '20px';
+            });
+        }
+    }
+    window.addEventListener('resize', function() {
+        adapt_size();
+    });
+    adapt_size();
+
+    // Funzioni modal Login/Signin
+    // Fa apparire il modal del login
+    document.getElementById('loginBtn').addEventListener('click', function(event) {
+        document.getElementById('loginModal').style.display = 'block';
+    });
+
+    // Chiudi il modal cliccando fuori
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('loginModal')) {
+            document.getElementById('loginModal').style.display = "none";
+        }
+        if (event.target == document.getElementById('registerModal')) {
+            document.getElementById('registerModal').style.display = "none";
+        }
+    } 
 
     </script>
 
