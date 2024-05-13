@@ -16,10 +16,10 @@
         <title>Ajojo & Zafferano</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
         <style>
+
             *{
                 font-family: "Poppins", sans-serif;
             }
-
             body{
                 background-color: #f8fadd;
                 min-height: 100vh;
@@ -54,7 +54,6 @@
                 border-radius: 10px;
                 gap: 1.5rem;
             }
-
             .nav a{
                 font-weight: 500;
                 font-style: normal;
@@ -65,17 +64,14 @@
                 text-decoration: none;
                 transition: all 0.2s;
             }
-
             .nav a:not(.MainLogo){
                 padding:0.8rem 0;
             }
-
             .nav a:not(.MainLogo):hover{
                 text-decoration: underline; 
                 scale: 1.1;
                 transition: all 0.5s;
             }
-
             .nav a:is(.MainLogo):hover{
                 margin-right: 1.5rem;
                 transition: all 0.5s;
@@ -93,12 +89,10 @@
                     transition: all 0.2s;
                 }
             }
-
             .ProfiloLink{
                 margin-left: auto;
                 margin-right: 1.5rem;
             }
-
             .MainLogo{
                 margin-left: 1rem;
                 margin-right: -6.5rem;
@@ -108,7 +102,6 @@
                 justify-content: center;
                 transition: all 0.5s;
             }
-
             .logo_img{
                 z-index: 2;
                 width: 70px;
@@ -120,7 +113,6 @@
                 left:-5rem;
                 transition: all 0.5s;
             }
-
             .logo_title p{
                 display: flex;
                 flex-direction: column;
@@ -135,7 +127,6 @@
                 color:#333;
                 transition: all 0.2s;
             }
-
             .logo_title .ajojo_{
                 top:0.3rem
             }
@@ -143,8 +134,17 @@
                 top: -0.3rem;
                 left: 1.5rem;
             }
-
             .consigliati-div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .antipasti-div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .primi-div{
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -160,15 +160,32 @@
                 width: 100%;
                 padding: 30px 0;
                 padding-top:0;
+                margin-bottom:0;
             }
-            .slide-content{
+            .slide-content-style{
                 padding: 20px 14px;
                 margin: 0 40px;  
+                overflow: hidden;   
+                margin-bottom:0;
+            }
+            .slide-content-style_mini{
+                padding: 20px 14px;
+                margin: 0 10px;  
                 overflow: hidden;   
             }
             .card{
                 width: 420px;
                 height: 365px;
+                border-radius: 5%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            .card_mini{
+                width: 250px;
+                height: 215px;
                 border-radius: 5%;
                 display: flex;
                 flex-direction: column;
@@ -186,7 +203,18 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .card:hover{
+            .card-border_mini{
+                width: 250px;
+                height: 215px;
+                border-radius: 5%;
+                background-color: white;
+                border: 3px solid #333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .card:hover,
+            .card_mini:hover{
                 scale: 1.03;
                 transition: all 0.2s;
             }
@@ -200,12 +228,25 @@
                 height: auto;
                 border-radius: 5%;
             }
+            .card-image_mini{
+                position: relative;
+                width: 95%;
+                height: auto;
+                border-radius: 5%;
+            }
             .card-image .card-img{
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
                 border-radius: 5%;
                 border: 4px solid #333;
+            }
+            .card-image_mini .card-img_mini{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 5%;
+                border: 3px solid #333;
             }
             .card-content{
                 width: 94%;
@@ -217,8 +258,23 @@
                 align-items: center;
                 gap: 1.5rem;
             }
+            .card-content_mini{
+                width: 94%;
+                height: 2rem;
+                position: relative;
+                bottom:6px;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+            }
             .name{
                 font-size: 22px;
+                font-weight: 600;
+                color: black;
+            }
+            .name_mini{
+                font-size: 15px;
                 font-weight: 600;
                 color: black;
             }
@@ -227,6 +283,13 @@
                 flex-direction: row;
                 align-items: center;
                 gap: 0.2rem;
+            }
+            .timer_mini{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.2rem;
+                scale:0.8;
             }
             .flag{
                 position: relative;
@@ -241,10 +304,14 @@
                 scale: 1.1;
             }
             .swiper-button-next{
-                right: 0;
+                right:1%;
             }
             .swiper-button-prev{
-                left: 0;
+                left:1%;
+            }
+            .swiper-pagination{
+                position: relative;
+                margin-top:2rem;
             }
             .swiper-pagination-bullet{
                 background-color:#333;
@@ -401,7 +468,7 @@
         <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
@@ -483,8 +550,8 @@
         <br><br><br>
         <h1 class="title-section">Piatti Consigliati</h1>
         <div class="consigliati-div">
-            <div class="slide-container swiper">
-                <div class="slide-content">
+            <div class="slide-container">
+                <div class="slide-content slide-content-style">
                     <div class="card-wrapper swiper-wrapper">
 
                         <div class="card swiper-slide">
@@ -638,10 +705,260 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
+
         <br><br>
+
         <h1 class="title-section">Antipasti</h1>
+        <div class="antipasti-div">
+            <div class="slide-container">
+                <div class="slide-content2 slide-content-style_mini">
+                    <div class="card-wrapper swiper-wrapper">
+                        
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg2.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Carbonara</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg1.jpg" alt="" class="card-img_mini" id="ajojo">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg3.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Amatriciana</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Puntarelle</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Puntarelle2</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Puntarelle3</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <br><br>
+        
         <h1 class="title-section">Primi Piatti</h1>
+        <div class="primi-div">
+            <div class="slide-container">
+                <div class="slide-content3 slide-content-style_mini">
+                    <div class="card-wrapper swiper-wrapper">
+                        
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg2.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Carbonara</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg1.jpg" alt="" class="card-img_mini" id="ajojo">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg3.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Amatriciana</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Puntarelle</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Puntarelle2</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_mini swiper-slide">
+                            <div class="card-border_mini">
+                                <div class="image-content">
+                                    <div class="card-image_mini">
+                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                    </div>
+                                </div>
+                                <div class="card-content_mini">
+                                    <h2 class="name_mini">Puntarelle3</h2>
+                                    <div class="timer_mini">
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                        <p class="time">30'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--Modal ad apparizione dei tasti login e signin-->
 
@@ -726,7 +1043,7 @@
             }
 
             // Funzione slider ricette
-            var swiper = new Swiper('.slide-content', {
+            var swiper_consigliati = new Swiper('.slide-content', {
                 slidesPerView: 3,
                 spaceBetween: 20,
                 loop: true,
@@ -750,6 +1067,50 @@
                     },
                     1416: {
                         slidesPerView: 3,
+                    },
+                },
+            });
+
+            var swiper_antipasti = new Swiper('.slide-content2', {
+                slidesPerView: 5,
+                spaceBetween: 20,
+                loop: true,
+                centerSlides: 'true',
+                fade: 'true',
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                    },
+                    835: {
+                        slidesPerView: 3,
+                    },
+                    1100: {
+                        slidesPerView: 4,
+                    },
+                    1416: {
+                        slidesPerView: 5,
+                    },
+                },
+            });
+
+            var swiper_primi = new Swiper('.slide-content3', {
+                slidesPerView: 5,
+                spaceBetween: 20,
+                loop: true,
+                centerSlides: 'true',
+                fade: 'true',
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                    },
+                    835: {
+                        slidesPerView: 3,
+                    },
+                    1100: {
+                        slidesPerView: 4,
+                    },
+                    1416: {
+                        slidesPerView: 5,
                     },
                 },
             });
