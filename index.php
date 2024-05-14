@@ -508,7 +508,7 @@
                             <div class="card-border">
                                 <div class="image-content">
                                     <div class="card-image">
-                                        <img src="immaginihome/homeimg2.jpg" alt="" class="card-img"  id="carbonara">
+                                        <img src="immaginiricette/carbonara.jpg" alt="" class="card-img"  id="carbonara">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -544,7 +544,7 @@
                             <div class="card-border">
                                 <div class="image-content">
                                     <div class="card-image">
-                                        <img src="immaginihome/homeimg1.jpg" alt="" class="card-img" id="ajojo">
+                                        <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img" id="ajojo">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -580,7 +580,7 @@
                             <div class="card-border">
                                 <div class="image-content">
                                     <div class="card-image">
-                                        <img src="immaginihome/homeimg3.jpg" alt="" class="card-img" id="amatriciana">
+                                        <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img" id="amatriciana">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -616,7 +616,7 @@
                             <div class="card-border">
                                 <div class="image-content">
                                     <div class="card-image">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -668,7 +668,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg2.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                        <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -687,7 +687,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg1.jpg" alt="" class="card-img_mini" id="ajojo">
+                                        <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -706,7 +706,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg3.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                        <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -725,7 +725,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -744,7 +744,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -763,7 +763,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -795,7 +795,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg2.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                        <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -814,7 +814,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg1.jpg" alt="" class="card-img_mini" id="ajojo">
+                                        <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -833,7 +833,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg3.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                        <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -852,7 +852,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -871,7 +871,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -890,7 +890,7 @@
                             <div class="card-border_mini">
                                 <div class="image-content">
                                     <div class="card-image_mini">
-                                        <img src="immaginihome/homeimg4.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                     </div>
                                 </div>
                                 <div class="card-content_mini">
@@ -1137,7 +1137,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
