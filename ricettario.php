@@ -239,9 +239,6 @@
             align-items:center;
             justify-content:center;
         }
-        .recipe-image{
-
-        }
         .recipe-img{
             height: 10.5rem;
             width: 14rem;
@@ -392,53 +389,7 @@
 </head>
 <body>
 
-    <?php
-    // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
-    //DATABASE:
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
-    or die('Could not connect: ' . pg_last_error());    
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-        //CASO LOGIN
-        if($tipo == "login"){
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
-            $result = pg_query($dbconn, $query);
-            if ($result) {
-                if (pg_num_rows($result) > 0) {
-                    echo "Accesso consentito!";                        
-                    $_SESSION['user'] = $username;
-                } 
-                else {
-                    echo "Nome utente o password non validi.";
-                }
-            }
-            else {
-                echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
-            }
-            pg_free_result($result);
-        }
-        //CASO REGISTRAZIONE
-        if($tipo == "registrazione"){
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $nome = $_POST['nome'];
-            $cognome = $_POST['cognome'];
-            if(!isset($_POST['isvegan'])) $isvegan="false"; else
-                $isvegan = $_POST['isvegan'];
-            if(!isset($_POST['intgluten'])) $intgluten = "false"; else
-                $intgluten = $_POST['intgluten'];   
-            if($username==""||$password=="")
-                echo "Registrazione fallita<br>inserisci i dati correttamente";
-            else{
-                $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
-                pg_query($dbconn, $query);
-                echo "query returned succesfully";  
-            }
-        }
-    }
-    pg_close($dbconn);    
-    ?>
+    
 
     <div class="navbgr">
         <div class="nav">
@@ -470,46 +421,52 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
         $result = pg_query($dbconn,"select * from filtri");
         $row = pg_fetch_assoc($result);
         //setto i pulsanti
     ?>
     
-    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> picante </button>
+    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
     <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
     <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
     <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
     <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
     <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
+
+
     
     <!--Modal ad apparizione dei tasti login e signin-->
     <!-- Modal di login -->
     <div id="loginModal" class="modal">
-        <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <input type="hidden" name="tipo" value="login">
-            <p class="title">Login </p>
-            <label>
-                <input class="input" type="text" id="username" name="username" placeholder="" required="">
-                <span>Username</span>
-            </label> 
-                
-            <label>
-                <input class="input" type="password" id="password" name="password" placeholder="" required="">
-                <span>Password</span>
-            </label>
-            <button class="submit" value="Accedi">Accedi</button>
-            <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block'; document.getElementById('loginModal').style.display='none'">Registrati</a> </p>
-        </form>
-    </div>
+            <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <input type="hidden" name="tipo" value="login">
+                <p class="title">Login </p>
+                <p style="display:none;" id="erroreLogin"> credenziali errate </p>
+                <label>
+                    <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
+                    <span>Username</span>
+                </label> 
+                    
+                <label>
+                    <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
+                    <span>Password</span>
+                </label>
+                <button class="submit" value="Accedi">Accedi</button>
+                <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
+                                                                            document.getElementById('loginModal').style.display='none';
+                                                                            document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
+            </form>
+        </div>
 
-
+    
     <!-- Modal di registrazione -->
     <div id="registerModal" class="modal">
         <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="hidden" name="tipo" value="registrazione">
             <p class="title">Registrazione </p>
+            <p style="display:none;" id="erroreSignin"> errore registrazione </p>
             <p class="message">Registrati ora per avere accesso al servizio completo </p>
                 <div class="flex">
                 <label>
@@ -533,7 +490,7 @@
                 <span>Password</span>
             </label>
             <button class="submit" value="Registrati">Registrati</button>
-            <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none'">Login</a> </p>
+            <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
         </form>
     </div>
     
@@ -559,60 +516,62 @@
 
     <?php
     
-    
-    
+    $query="SELECT * from ricetta";
     $flagFromFrigo=false;//una flag che mi serve bella stampa per un controllo
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+        
         //HO CLICCATO UN'IMMAGINE SULLA HOME
         if(isset($_POST["ricetta"])){
-
+            
             $ricetta=pg_escape_string($_POST["ricetta"]);
-            
             $query="select * from ricetta where nomericetta='$ricetta'";
-        } else {
 
-            //ARRIVO DAL FRIGO
-            $flagFromFrigo=true;
-            //COSTRISCO LA QUERY:
-            $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
-            $campi_valori = array();
+        } else //ARRIVO DAL FRIGO
+            if(isset($_POST["frigo"])){
+                
+                
 
-            //vado a prendere gli ingredienti
-            $i = 1;
-            while (true) {
-                $ingrediente = "campo$i";
-                // Verifica se il campo è vuoto o non è impostato
-                if (!isset($_POST[$ingrediente]) || $_POST[$ingrediente] === "") {
-                    break;
+                $flagFromFrigo=true;
+                //COSTRISCO LA QUERY:
+                $query = "select * from ricetta where nomericetta in ((SELECT distinct ricetta from ingredienti)except select distinct ricetta from(select * from ingredienti";
+                $campi_valori = array();
+
+                //vado a prendere gli ingredienti
+                $i = 1;
+                while (true) {
+                    $ingrediente = "campo$i";
+                    // Verifica se il campo è vuoto o non è impostato
+                    if (!isset($_POST[$ingrediente]) || $_POST[$ingrediente] === "") {
+                        break;
+                    }
+                    $valore_ingrediente = pg_escape_string($_POST[$ingrediente]);
+                    if ($valore_ingrediente !== false) {
+                        $campi_valori[$ingrediente] = $valore_ingrediente;
+                    }
+                $_SESSION["ingredientiFrigo"]=$campi_valori;
+                $i++;
                 }
-                $valore_ingrediente = pg_escape_string($_POST[$ingrediente]);
-                if ($valore_ingrediente !== false) {
-                    $campi_valori[$ingrediente] = $valore_ingrediente;
+                
+                //li metto nella query
+                $condizioni = array();
+                foreach ($campi_valori as $ingrediente => $valore) {
+                    $condizioni[] = "ingrediente != '$valore'";
+                }  
+                $condizioni_sql = implode(" AND ", $condizioni); 
+                if (!empty($condizioni_sql)) {
+                    $query .= " WHERE $condizioni_sql";
                 }
-            $_SESSION["ingredientiFrigo"]=$campi_valori;
-            $i++;
+                $query.= "))";
             }
             
-            //li metto nella query
-            $condizioni = array();
-            foreach ($campi_valori as $ingrediente => $valore) {
-                $condizioni[] = "ingrediente != '$valore'";
-            }  
-            $condizioni_sql = implode(" AND ", $condizioni); 
-            if (!empty($condizioni_sql)) {
-                $query .= " WHERE $condizioni_sql";
-            }
-            $query.= "))";
-        }
-    } else {
-        $query="SELECT * from ricetta";
+        } else {
+            $query="SELECT * from ricetta";
     }
 
 
 
 
-    
 
     //METTO I FILTRI E INTOLLERANZE
     $row=pg_fetch_assoc(pg_query($dbconn,"select * from filtri"));
@@ -622,6 +581,14 @@
     if($row['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
     if($row['flagglut']=='t') $gluten="true"; else $gluten="false";
 
+    if($piccante=="true")
+        echo "<script>
+        document.getElementById('flagPiccante').style.color = 'green';
+        </script>";
+    else
+        echo "<script>
+        document.getElementById('flagPiccante').style.color = 'red';
+        </script>";
 
     $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
     from utenti,(";
@@ -893,13 +860,82 @@
     window.onclick = function(event) {
         if (event.target == document.getElementById('loginModal')) {
             document.getElementById('loginModal').style.display = "none";
+            document.getElementById('erroreLogin').style.display = "none";
+            document.getElementById('erroreSignin').style.display = "none";
         }
         if (event.target == document.getElementById('registerModal')) {
             document.getElementById('registerModal').style.display = "none";
+            document.getElementById('erroreLogin').style.display = "none";
+            document.getElementById('erroreSignin').style.display = "none";
         }
     } 
 
     </script>
+
+<?php
+        // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
+        //DATABASE:
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        or die('Could not connect: ' . pg_last_error());    
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $tipo = $_POST['tipo'];
+            //CASO LOGIN
+            if($tipo == "login"){
+                $username = $_POST['usernameLogin'];
+                $password = $_POST['passwordLogin'];
+                $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
+                $result = pg_query($dbconn, $query);
+                if ($result) {
+                    if (pg_num_rows($result) > 0) {  
+                        if(!isset($_SESSION['user'])){               
+                            $_SESSION['user'] = $username;
+                            echo "<script>location.reload();</script>";
+                        }
+                    } 
+                    else {
+                        //echo "Nome utente o password non validi.";
+                        echo "<script>
+                        document.getElementById('loginModal').style.display = 'block';
+                        document.getElementById('erroreLogin').style.display = 'block';
+                        </script>";
+                    }
+                }
+                else {
+                    echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
+                }
+                pg_free_result($result);
+            }
+            //CASO REGISTRAZIONE
+            if($tipo == "registrazione"){
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $nome = $_POST['nome'];
+                $cognome = $_POST['cognome'];
+                if(!isset($_POST['isvegan'])) $isvegan="false"; else
+                    $isvegan = $_POST['isvegan'];
+                if(!isset($_POST['intgluten'])) $intgluten = "false"; else
+                    $intgluten = $_POST['intgluten'];  
+                $query="select * from utenti where username='$username'";
+                $result=pg_query($dbconn, $query);
+                if(pg_num_rows($result)>0){
+                    echo "
+                    <script>
+                    document.getElementById('registerModal').style.display = 'block';
+                    document.getElementById('erroreSignin').style.display = 'block';
+                    </script>";
+                } else { 
+                    if($username==""||$password=="")
+                        echo "Registrazione fallita<br>inserisci i dati correttamente";
+                    else{
+                        $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
+                        pg_query($dbconn, $query);
+                        echo "registrazione avvenuta con successo";
+                    }
+                }
+            }
+        }
+        pg_close($dbconn);    
+        ?>
 
 </body>
 </html>

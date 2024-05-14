@@ -320,54 +320,7 @@
 </head>
 <body>
 
-<?php
-  // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
-  //DATABASE:
-  $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
-  or die('Could not connect: ' . pg_last_error());    
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $tipo = $_POST['tipo'];
-      //CASO LOGIN
-      if($tipo == "login"){
-          $username = $_POST['username'];
-          $password = $_POST['password'];
-          $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
-          $result = pg_query($dbconn, $query);
-          if ($result) {
-              if (pg_num_rows($result) > 0) {
-                  echo "Accesso consentito!";                        
-                  $_SESSION['user'] = $username;
-              } 
-              else {
-                  echo "Nome utente o password non validi.";
-              }
-          }
-          else {
-              echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
-          }
-          pg_free_result($result);
-      }
-      //CASO REGISTRAZIONE
-      if($tipo == "registrazione"){
-          $username = $_POST['username'];
-          $password = $_POST['password'];
-          $nome = $_POST['nome'];
-          $cognome = $_POST['cognome'];
-          if(!isset($_POST['isvegan'])) $isvegan="false"; else
-              $isvegan = $_POST['isvegan'];
-          if(!isset($_POST['intgluten'])) $intgluten = "false"; else
-              $intgluten = $_POST['intgluten'];   
-          if($username==""||$password=="")
-              echo "Registrazione fallita<br>inserisci i dati correttamente";
-          else{
-              $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
-              pg_query($dbconn, $query);
-              echo "query returned succesfully";  
-          }
-      }
-  }
-  pg_close($dbconn);    
-?>
+
 
 <div class="navbgr">
     <div class="nav">
@@ -402,7 +355,7 @@
   <!-- vado a prendere gli ingredienti possibili dal db -->
   <?php
     //connessione al db
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
     or die('Could not connect: ' . pg_last_error());
     $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
     //creao la datalist
@@ -419,11 +372,12 @@
   ?>
  
   <form id="myForm" onsubmit="return controllaCampionSubmit()" onchange="return validaInput()"  action="ricettario.php" method="post">
-    <div class="input-group">
-      <label class="formLabel">Ingredienti</label><br><br>
-      <input class="formInput" list="suggerimenti" id="campo1" name="campo1">
-      <div id="errore1" class="formError"></div>
-    </div>
+        <div class="input-group">
+            <input type="hidden" name="frigo" value="true">
+            <label class="formLabel">Ingredienti</label><br><br>
+            <input class="formInput" list="suggerimenti" id="campo1" name="campo1">
+            <div id="errore1" class="formError"></div>
+        </div>
   </form>
 
   <button class="formBtn" onclick="aggiungiCampo(); ">Aggiungi Campo</button>
@@ -437,17 +391,20 @@
     <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="hidden" name="tipo" value="login">
         <p class="title">Login </p>
+        <p style="display:none;" id="erroreLogin"> credenziali errate </p>
         <label>
-            <input class="input" type="text" id="username" name="username" placeholder="" required="">
+            <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
             <span>Username</span>
         </label> 
             
         <label>
-            <input class="input" type="password" id="password" name="password" placeholder="" required="">
+            <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
             <span>Password</span>
         </label>
         <button class="submit" value="Accedi">Accedi</button>
-        <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block'; document.getElementById('loginModal').style.display='none'">Registrati</a> </p>
+        <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
+                                                                    document.getElementById('loginModal').style.display='none';
+                                                                    document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
     </form>
 </div>
 
@@ -457,6 +414,7 @@
     <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="hidden" name="tipo" value="registrazione">
         <p class="title">Registrazione </p>
+        <p style="display:none;" id="erroreSignin"> errore registrazione </p>
         <p class="message">Registrati ora per avere accesso al servizio completo </p>
             <div class="flex">
             <label>
@@ -480,7 +438,7 @@
             <span>Password</span>
         </label>
         <button class="submit" value="Registrati">Registrati</button>
-        <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none'">Login</a> </p>
+        <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
     </form>
 </div>
       
@@ -645,13 +603,81 @@
     window.onclick = function(event) {
         if (event.target == document.getElementById('loginModal')) {
             document.getElementById('loginModal').style.display = "none";
+            document.getElementById('erroreLogin').style.display = "none";
+            document.getElementById('erroreSignin').style.display = "none";
         }
         if (event.target == document.getElementById('registerModal')) {
             document.getElementById('registerModal').style.display = "none";
+            document.getElementById('erroreLogin').style.display = "none";
+            document.getElementById('erroreSignin').style.display = "none";
         }
-    }
+    } 
  
 </script>
+<?php
+        // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
+        //DATABASE:
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        or die('Could not connect: ' . pg_last_error());    
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $tipo = $_POST['tipo'];
+            //CASO LOGIN
+            if($tipo == "login"){
+                $username = $_POST['usernameLogin'];
+                $password = $_POST['passwordLogin'];
+                $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
+                $result = pg_query($dbconn, $query);
+                if ($result) {
+                    if (pg_num_rows($result) > 0) {
+                        if(!isset($_SESSION['user'])){               
+                            $_SESSION['user'] = $username;
+                            echo "<script>location.reload();</script>";
+                        }
+                    } 
+                    else {
+                        //echo "Nome utente o password non validi.";
+                        echo "<script>
+                        document.getElementById('loginModal').style.display = 'block';
+                        document.getElementById('erroreLogin').style.display = 'block';
+                        </script>";
+                    }
+                }
+                else {
+                    echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
+                }
+                pg_free_result($result);
+            }
+            //CASO REGISTRAZIONE
+            if($tipo == "registrazione"){
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $nome = $_POST['nome'];
+                $cognome = $_POST['cognome'];
+                if(!isset($_POST['isvegan'])) $isvegan="false"; else
+                    $isvegan = $_POST['isvegan'];
+                if(!isset($_POST['intgluten'])) $intgluten = "false"; else
+                    $intgluten = $_POST['intgluten'];  
+                $query="select * from utenti where username='$username'";
+                $result=pg_query($dbconn, $query);
+                if(pg_num_rows($result)>0){
+                    echo "
+                    <script>
+                    document.getElementById('registerModal').style.display = 'block';
+                    document.getElementById('erroreSignin').style.display = 'block';
+                    </script>";
+                } else { 
+                    if($username==""||$password=="")
+                        echo "Registrazione fallita<br>inserisci i dati correttamente";
+                    else{
+                        $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
+                        pg_query($dbconn, $query);
+                        echo "registrazione avvenuta con successo";
+                    }
+                }
+            }
+        }
+        pg_close($dbconn);    
+        ?>
 
 </body>
 </html>
