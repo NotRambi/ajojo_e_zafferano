@@ -377,7 +377,7 @@
     <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> leggero </button>
     <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> stella </button>
     <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> vegano </button>
-    <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
+    <button name="reset" id="reset" value="0" class="BtnFiltro"> resetta filtri </button>
     
     <!--Modal ad apparizione dei tasti login e signin-->
     <!-- Modal di login -->
