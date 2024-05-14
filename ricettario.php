@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <title>Ajojo & Zafferano</title>
@@ -131,18 +133,122 @@
             margin-left: 1rem;
         }
         .content {
-            padding: 20px;
+            padding-top: 20px;
+        }
+        .recipe-container{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:1rem;
         }
         .recipe {
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            width:500px;
+            border: 4px solid #333;
+            background-color:#fff;
+            border-radius: 10px;
             padding: 15px;
-            margin-bottom: 20px;
+        }
+        .recipe-name{
+            border: 4px solid #333;
+            border-radius: 10px;
+            display:flex;
+            flex-direction:row;
+            align-items:center;
+            justify-content:center;
+            gap:1rem;
+            height:4rem;
+        }
+        .recipe-title {
+            font-size:23px;
+        }
+        .recipe-name button{
+            cursor:pointer;
+            background:none;
+            border:none;
+            z-index: 2;
+        }
+        .togliprefBtn{
+            display:flex;
+            flex-direction:row;
+            align-items:center;
+            margin:0;
+        }
+        .togliprefBtn:hover{
+            scale:1.1;
+            .barrapref{
+                display:block;
+            }
+        }
+        .material-symbols-outlined:is(.buttonprefe) {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 700,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .togliprefe{
+            color:#ed4f00;
+        }
+        .mettiprefe{
+            color:#222;
+        }
+        .mettiprefe:hover{
+            color:#ed4f00;
+            scale:1.1;
+        }
+        .barrapref{
+            display:none;
+            scale:2;
+            margin:0;
+            padding:0;
+            left:-19px;
+            top: -1.5px;
+            color:#ed4f00;
+            position: relative;
+            font-size:15px;
+            font-weight:bold;
+            transform: rotate(45deg);
+        }
+        .recipe-content{
+            margin-top:0.5rem;
+            display:flex;
+        }
+        .recipe-desc{
+            width:50%;
+            font-size:18px;
+        }
+        .recipe-info{
+            display:flex;
+            align-items:center;
+            gap:2rem;
+        }
+        .timer{
+            display:flex;
+            align-items:center;
+            gap:0.5rem;
+        }
+        .recipe-flag{
+            display:flex;
+            flex-direction:row;
+            align-items:center;
+        }
+        .recipe-img-div{
+            width:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .recipe-image{
+
+        }
+        .recipe-img{
+            height: 10.5rem;
+            width: 14rem;
+            border:4px solid #333;
+            border-radius: 10px;
         }
 
-        .recipe h2 {
-            margin-top: 0;
-        }
 
         /* stili modal */
         .modal {
@@ -291,8 +397,7 @@
     //DATABASE:
     $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
     or die('Could not connect: ' . pg_last_error());    
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $tipo = $_POST['tipo'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {  
         //CASO LOGIN
         if($tipo == "login"){
             $username = $_POST['username'];
@@ -372,12 +477,12 @@
         //setto i pulsanti
     ?>
     
-    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro firstBtn"> picante </button>
-    <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> glutine </button>
-    <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> leggero </button>
-    <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> stella </button>
-    <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="BtnFiltro"> vegano </button>
-    <button name="reset" id="reset" value="0" class="BtnFiltro"> resetta filtri </button>
+    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> picante </button>
+    <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
+    <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
+    <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
+    <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
+    <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
     
     <!--Modal ad apparizione dei tasti login e signin-->
     <!-- Modal di login -->
@@ -574,38 +679,31 @@
     }
     if(pg_num_rows($result)==0){
         echo "<br><h2>non ci sono ricette per te che sei date le tue intolleranze o filtri con questi ingredienti</h2>";
-    } else {
+    } else 
 
 
-
-    
-
-
-
-        //STAMPO LE RICETTE con tasti preferiti
-        echo "<div class='content'>";
+    //STAMPO LE RICETTE con tasti preferiti
+    echo "<div class='content'>";
         if($flagVuota) echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
+            echo "<div class='recipe-container'>";
         while ($row = pg_fetch_assoc($result)) {
             $vuota=false;
             echo "<div class='recipe'>";
-                echo "<h2>";
-                
-                    echo str_replace('_', ' ', $row['nomericetta']);
-                    $ricetta=$row['nomericetta'];
-
+                echo "<div class='recipe-name'>";
+                    echo "<h2 class='recipe-title'>";
+                        echo str_replace('_', ' ', $row['nomericetta']);
+                        $ricetta=$row['nomericetta'];
+                    echo "</h2>";
                     //BOTTONI PER I PREFERIRI UNO DEI DUE SARA INVISIBILE IN BASE ALL'UTENTE
                     //SE NON LO LOGGATO INVISIBILI ENRTAMBI?
-                    
-                    if(isset($_SESSION['user'])){
-                        
+                    if(isset($_SESSION['user'])){    
                         $idmettiprefe="idBottonePrefeMetti".$ricetta;
                         $idtogliprefe="idBottonePrefeTogli".$ricetta;
                         $user=$_SESSION['user'];
                         $querypreferiti="select * from preferiti where username='$user' and ricetta='$ricetta'";
-                        
                         $resultpreferiti=pg_query($dbconn,$querypreferiti);
-                        echo "<button id=$idmettiprefe class='buttonprefe mettiprefe'> &star; </button>";
-                        echo "<button id=$idtogliprefe class='buttonprefe togliprefe'> togli prefe </button>";
+                        echo "<button id=$idmettiprefe class='buttonprefe mettiprefe material-symbols-outlined'>favorite</button>";
+                        echo "<div class='togliprefBtn'><button id=$idtogliprefe class='buttonprefe togliprefe material-symbols-outlined'>favorite</button><p class='barrapref'>|</p></div>";
                         if(pg_num_rows($resultpreferiti)>0){
                             echo "
                             <script>
@@ -617,39 +715,80 @@
                             document.getElementById('$idtogliprefe').style.display = 'none';
                             </script>";
                         }
-                    
-                        
-                }
-
-
-                    echo "</h2>";
-                echo "<p>";
-
-                    $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
-                    $result2=pg_query($dbconn,$query2);
-                    while($ingrediente=pg_fetch_assoc($result2)){
-                        echo $ingrediente['ingrediente'];
-                        if($flagFromFrigo && !in_array($ingrediente['ingrediente'],$campi_valori))
-                            echo "<span style='color: red;'> (ti manca)</span>";
-                        echo "<br>";
                     }
-                    pg_free_result($result2);
-                    echo "<br>";
+                echo "</div>";
 
-
-                    echo $row['descrizione'];
-                    echo "<br>";
-                    echo $row['tempo'];
-                    echo " minuti";
-                echo "</p>";
+                echo "<div class='recipe-content'>";
+                    echo "<div class='recipe-desc'>";
+                        echo "<p>";
+                            $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
+                            $result2=pg_query($dbconn,$query2);
+                            while($ingrediente=pg_fetch_assoc($result2)){
+                                echo $ingrediente['ingrediente'];
+                                if($flagFromFrigo && !in_array($ingrediente['ingrediente'],$campi_valori))
+                                    echo "<span style='color: red;'> (ti manca)</span>";
+                                echo "<br>";
+                            }
+                            pg_free_result($result2);
+                            
+                            echo "<div class='recipe-info'>";
+                                echo "<div class='timer'>";
+                                    echo "<span class='material-symbols-outlined'>timer</span>";
+                                    echo $row['tempo']."'";
+                                echo "</div>";
+                                echo "<div class='recipe-flag'>";
+                                    echo"   
+                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."piccante'>
+                                            local_fire_department
+                                        </span>
+                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."glutenfree'>
+                                            <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 48 48'><path fill='currentColor' fill-rule='evenodd' d='M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257' clip-rule='evenodd'/></svg>
+                                        </span>
+                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."fit'>
+                                            exercise
+                                        </span>
+                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."stellato'>
+                                            hotel_class
+                                        </span>
+                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."vegan'>
+                                            eco
+                                        </span>
+                                        ";
+                                    if($row['isspicy']=='t')
+                                        echo "<script>document.getElementById('".$row['nomericetta']."piccante').style.display='block'</script>";
+                                    else
+                                        echo "<script>document.getElementById('".$row['nomericetta']."piccante').style.display='none'</script>";
+                                    if($row['isstar']=='t') 
+                                        echo "<script>document.getElementById('".$row['nomericetta']."stellato').style.display='block'</script>";
+                                    else
+                                        echo "<script>document.getElementById('".$row['nomericetta']."stellato').style.display='none'</script>";
+                                    if($row['islite']=='t') 
+                                        echo "<script>document.getElementById('".$row['nomericetta']."fit').style.display='block'</script>";
+                                    else
+                                        echo "<script>document.getElementById('".$row['nomericetta']."fit').style.display='none'</script>";
+                                    if($row['isvegan']=='t')
+                                        echo "<script>document.getElementById('".$row['nomericetta']."vegan').style.display='block'</script>";
+                                    else
+                                        echo "<script>document.getElementById('".$row['nomericetta']."vegan').style.display='none'</script>";
+                                    if($row['isglutenfree']=='t')
+                                        echo "<script>document.getElementById('".$row['nomericetta']."glutenfree').style.display='block'</script>";
+                                    else
+                                        echo "<script>document.getElementById('".$row['nomericetta']."glutenfree').style.display='none'</script>";
+                                echo "</div>";
+                            echo"</div>";
+                        echo "</p>";
+                    echo "</div>";
+                    echo "<div class='recipe-img-div'>";
+                        echo "<div class='recipe-image'>";
+                            echo "<img src='immaginiricette/".$row['nomericetta'].".jpg' alt='' class='recipe-img'>";
+                        echo "</div>";
+                    echo "</div>";
+                echo "</div>";
             echo "</div>";
         }
-
-            
-    }        
+        echo "</div>";
 
     echo "</div>";
-    echo "<br><br><br>";
     pg_free_result($result);
     pg_close($dbconn);
     ?>
