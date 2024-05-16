@@ -102,11 +102,11 @@ insert into utenti values
 
 
 create table filtri(
-	bool flagpiccante,
-	bool flagglut,
-	bool flagstar,
-	bool flaglite,
-	bool flagvegan
+	flagpiccante bool,
+	flagglut bool,
+	flagstar bool,
+	flaglite bool,
+	flagvegan bool
 );
 
 
