@@ -146,6 +146,8 @@
             display:flex;
         }
         .recipe{
+            position: relative;
+            z-index: 1;
             width:500px;
             border: 4px solid #333;
             background-color:#fff;
@@ -156,6 +158,7 @@
             cursor:pointer;
         }
         .recipe-descSlide{
+            position: relative;
             display:none;
             border: 4px solid #333;
             background-color:#fff;
@@ -886,10 +889,52 @@
     // funzione apertura e chiusura descrizione ricette
     function OpenCloseDesc(name){
         var slider = document.getElementById('slider_'+name);
-        if(slider.style.display == 'block')
-            slider.style.display = 'none';
-        else
+        slider.style.transition= 'all 1s';
+        setTimeout(() => {
+            slider.style.transition= 'all 0s';
+        }, 1000);  
+        // animazione chiusura
+        if(slider.style.display == 'block'){
+            // animazione verticale
+            if (window.outerWidth < 960){
+                slider.style.left = '0px';
+                slider.style.top = '0px';
+                setTimeout(function(){
+                    slider.style.top = '-100px';
+                }, 1);
+            }
+            // animazione orizzontale
+            else{
+                slider.style.top = '0px';
+                slider.style.left = '0px';
+                setTimeout(function(){
+                    slider.style.left = '-300px';
+                }, 1);
+            }
+            setTimeout(function(){
+                slider.style.display = 'none';
+            }, 1000);
+        }
+        // animazione apertura
+        else{
             slider.style.display = 'block';
+            // animazione verticale
+            if (window.outerWidth < 960) { 
+                slider.style.top = '-100px';
+                slider.style.left = '0px';
+                setTimeout(function(){
+                    slider.style.top = '0px';
+                }, 1);
+            }
+            // animazione orizzontale
+            else{
+                slider.style.top = '0px';
+                slider.style.left = '-300px';
+                setTimeout(function(){
+                    slider.style.left = '0px';
+                }, 1);
+            }
+        }
     }
     var buttonsRecipe = document.querySelectorAll('div[id^="recipe_"]');
     buttonsRecipe.forEach(buttonRecipe => {
