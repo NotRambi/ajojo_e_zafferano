@@ -7,7 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <title>Il mio Profilo</title>
+<link rel="icon" href="logo.png" type="image/x-icon">
 <style>
     *{
         font-family: "Poppins", sans-serif;
@@ -199,11 +202,11 @@
         scale:1.1;
         margin:0;
         padding:0;
-        left:-20px;
-        top: -2.5px;
+        left:-21px;
+        top: -1.5px;
         color:#ed4f00;
         position: relative;
-        font-size:30px;
+        font-size:25px;
         font-weight:bold;
         transform: rotate(45deg);
     }
@@ -336,7 +339,7 @@ echo "<div class='profile-container'>";
             echo "</div>";
 
             echo "<div class='div-campoprofilo'>";
-                echo "<p class='info-title'>Sei vengano:</p>";
+                echo "<p class='info-title'>Sei vegano:</p>";
                         echo "<p class='modifica'>";
                         if($row['isvegan']=='f')
                             echo "<input class='check' type='checkbox' name='isvegan' value='true'>";
@@ -365,14 +368,14 @@ echo "<div class='profile-container'>";
 
         echo "</div>";
         echo "<div class='form-btn'>";
-            echo "<input type='submit' value='invia modifiche' class='modifica subBtn'>";
-            echo "<button onclick='mostraModulo()' class='modifica'>cancella modifiche</button>";
+            echo "<input type='submit' value='Invia modifiche' class='modifica subBtn'>";
+            echo "<button onclick='mostraModulo()' class='modifica'>Annulla modifiche</button>";
         echo "</div>";
     echo "</form>";
 
     echo "<div class='btn-vari'>";
         echo "<div class='divDelBtn'>";
-            echo "<button class='modifica delBtn' onclick='cancellaProfilo()'>elimina profilo</button>";
+            echo "<button class='modifica delBtn' onclick='cancellaProfilo()'>Elimina profilo</button>";
         echo"</div>";
         echo "<div class='profileBtn'>";
             echo "<button onclick='mostraModulo()' class='valore'>Modifica Profilo</button> ";
@@ -382,7 +385,7 @@ echo "<div class='profile-container'>";
 
     echo "<div class='preferiti valore'>";
         echo "<h3 class='ricette-div-title'>ricette preferite:</h3>";
-        $query="select distinct ricetta from preferiti where username='$utente'";
+        $query="select distinct ricetta from preferiti where username='$utente' order by ricetta";
         $result = pg_query($dbconn, $query);
 
         if(pg_num_rows($result)<=0){
@@ -392,7 +395,7 @@ echo "<div class='profile-container'>";
             $ricetta=$row["ricetta"];
             $idtogliprefe="idBottonePrefeTogli".$ricetta;
             echo "<div class='divpref'>";
-                echo $ricetta."<div class='prefBtn'><button class='material-symbols-outlined pref-logo' id=$idtogliprefe>favorite</button><p class='barrapref'>|</p></div>";
+                echo str_replace('_', ' ', $ricetta)."<div class='prefBtn'><button class='material-symbols-outlined pref-logo' id=$idtogliprefe>favorite</button><p class='barrapref'>|</p></div>";
             echo"</div>";
         }
     echo "</div>";

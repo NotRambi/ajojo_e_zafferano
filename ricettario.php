@@ -635,6 +635,7 @@
     (a.isspicy or '$piccante') and
     (a.isstar or '$star') and
     (a.islite or '$lite')
+    order by a.nomericetta;
     ";
     $query=$prequery.$query.$postquery;
     
@@ -784,6 +785,7 @@
  
         //FUNZIONI BOTTONI
         function fpreferiti(idbottone) {
+            event.stopPropagation();
             var nomericettaprefe=idbottone.replace("Metti", "");
             document.getElementById("idBottonePrefeMetti"+nomericettaprefe).style.display = 'none';
             document.getElementById("idBottonePrefeTogli"+nomericettaprefe).style.display = 'inline-block';
@@ -801,6 +803,7 @@
 
 
         function ftoglipreferiti(idbottone) {
+            event.stopPropagation();
             var nomericettaprefe=idbottone.replace("Togli", "");
             document.getElementById("idBottonePrefeMetti"+nomericettaprefe).style.display = 'inline-block';
             document.getElementById("idBottonePrefeTogli"+nomericettaprefe).style.display = 'none';
