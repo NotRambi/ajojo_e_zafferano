@@ -63,9 +63,36 @@ insert into ingredienti values
 	('melanzane_grigliate','pangrattato'),
 	('crystal_bread','kuzu'),
 	('crystal_bread','fecola di patate'),
-	('crystal_bread','scaglie di tartufo');
+	('crystal_bread','scaglie di tartufo'),
+	('pasta_alla_norma','pasta'),
+	('pasta_alla_norma','passata di pomodoro'),
+	('pasta_alla_norma','melanzane'),
+	('pasta_alla_norma','ricotta salata'),
+	('pasta_alla_norma','pomodoro'),
+	('pizzette_di_zucchine','zucchine'),
+	('pizzette_di_zucchine','fiordilatte'),
+	('pizzette_di_zucchine','passata di pomodoro'),
+	('pizzette_di_zucchine','origano'),
+	('rotolo_panna_e_fragole','uova'),
+	('rotolo_panna_e_fragole','farina'),
+	('rotolo_panna_e_fragole','zucchero'),
+	('rotolo_panna_e_fragole','fragole'),
+	('rotolo_panna_e_fragole','panna'),
+	('pollo_al_curry','pollo'),
+	('pollo_al_curry','curry'),
+	('pollo_al_curry','latte'),
+	('pollo_al_curry','farina'),
+	('gnocchi_salsiccia_e_tartufo','pasta'),
+	('gnocchi_salsiccia_e_tartufo','panna'),
+	('gnocchi_salsiccia_e_tartufo','salsiccia'),
+	('gnocchi_salsiccia_e_tartufo','tartufo'),
+	('gnocchi_salsiccia_e_tartufo','parmiggiano'),
+	('piadina_romagnola_casareccia','farina'),
+	('piadina_romagnola_casareccia','burro'),
+	('piadina_romagnola_casareccia','bicarbonato'),
 	
-
+	
+	
 --ricetta
 insert into ricetta values 
 	('carbonara',30,'primo',2,false,false,false,false,false,'a mejo pasta de roma'),
@@ -81,11 +108,11 @@ insert into ricetta values
 	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di'),
 	('crystal bread',60,'antipasto',3,false,true,true,true,true,'Miscelare tutti gli ingredienti in una casseruola, fino a stemperarli. Mettere sul fuoco, lasciare che spicchi il bollore e il composto si addensi, mescolando ininterrottamente. Con l’aiuto di una spatola per pasticceria versare il composto in stampi quadrati da forno. Pesare 36 g per stampo. Introdurre nel forno preriscaldato a 160 C e cuocere per un’ora. In caso di forno ventilato, dimezzare la potenza. Dopo un’ora abbassare la temperatura a 120°C e lasciare cuocere per altri 60 minuti. Quando i “pani” saranno pronti, sformare delicatamente e spennellare di olio di girasole. Infine, per il topping grattiamo un po’ di tartufo nero sopra ogni pane di cristallo.'),
 	('pasta_alla_norma',45,'primo',3,false,false,false,false,false,'descrizione'),
-	('pizzette_di,zucchine',20,'antipasto',1,false,true,true,false,false,'descrizione'),
+	('pizzette_di_zucchine',20,'antipasto',1,false,true,true,false,false,'descrizione'),
 	('rotolo_panna_e_fragole',40,'dolce',2,false,false,false,false,false,'descrizione'),
 	('pollo_al_curry',50,'secondo',2,true,false,false,false,false,'descrizione'),
-	('',,'',,,,,,,''),
-	('',,'',,,,,,,''),
+	('gnocchi_salsiccia_e_tartufo',30,'primo',1,false,false,false,false,false,'descrizione'),
+	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'descrizione');
 
 --utenti
 create table utenti (
