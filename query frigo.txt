@@ -89,7 +89,7 @@ insert into ingredienti values
 	('gnocchi_salsiccia_e_tartufo','parmiggiano'),
 	('piadina_romagnola_casareccia','farina'),
 	('piadina_romagnola_casareccia','burro'),
-	('piadina_romagnola_casareccia','bicarbonato'),
+	('piadina_romagnola_casareccia','bicarbonato');
 	
 	
 	
