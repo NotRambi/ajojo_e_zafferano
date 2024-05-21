@@ -1,0 +1,7 @@
+antipasti: 6
+primi: 6
+secondi: 4
+contorni: 1
+dolci: 2
+
+tot: 19
