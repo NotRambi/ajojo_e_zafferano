@@ -79,7 +79,8 @@ insert into ricetta values
 	('straccetti_alle_olive_taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
 	('melanzane_grigliate',30,'contorno',2,false,true,true,true,false,'melanzzzane'),
 	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di'),
-	('crystal bread',60,'antipasto',3,false,true,true,true,true,'assurdo');
+	('crystal bread',60,'antipasto',3,false,true,true,true,true,'Miscelare tutti gli ingredienti in una casseruola, fino a 		 
+         	stemperarli. Mettere sul fuoco, lasciare che spicchi il bollore e il composto si addensi, mescolando ininterrottamente. 		Con l’aiuto di una spatola per pasticceria versare il composto in stampi quadrati da forno. Pesare 36 g per stampo. 			Introdurre nel forno preriscaldato a 160 C e cuocere per un’ora. In caso di forno ventilato, dimezzare la potenza. Dopo 		un’ora abbassare la temperatura a 120°C e lasciare cuocere per altri 60 minuti. Quando i “pani” saranno pronti, sformare 		delicatamente e spennellare di olio di girasole. Infine, per il topping grattiamo un po’ di tartufo nero sopra ogni pane 		di cristallo.');
 
 
 
