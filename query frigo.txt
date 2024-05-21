@@ -87,6 +87,13 @@ insert into ingredienti values
 	('gnocchi_salsiccia_e_tartufo','salsiccia'),
 	('gnocchi_salsiccia_e_tartufo','tartufo'),
 	('gnocchi_salsiccia_e_tartufo','parmiggiano'),
+	('baccala_alla_vicentina','sedano'),
+	('baccala_alla_vicentina','carota'),
+	('baccala_alla_vicentina','cipolla'),
+	('baccala_alla_vicentina','prezzemolo'),
+	('baccala_alla_vicentina','baccala'),
+	('baccala_alla_vicentina','caviale'),
+	('baccala_alla_vicentina','olio'),
 	('piadina_romagnola_casareccia','farina'),
 	('piadina_romagnola_casareccia','burro'),
 	('piadina_romagnola_casareccia','bicarbonato');
@@ -112,6 +119,7 @@ insert into ricetta values
 	('rotolo_panna_e_fragole',40,'dolce',2,false,false,false,false,false,'descrizione'),
 	('pollo_al_curry',50,'secondo',2,true,false,false,false,false,'descrizione'),
 	('gnocchi_salsiccia_e_tartufo',30,'primo',1,false,false,false,false,false,'descrizione'),
+	('baccala_alla_vicentina',30,'secondo',3,false,true,false,true,true,'descrizione'),
 	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'descrizione');
 
 --utenti
