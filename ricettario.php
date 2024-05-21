@@ -436,18 +436,25 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
-        $result = pg_query($dbconn,"select * from filtri");
-        $row = pg_fetch_assoc($result);
-        //setto i pulsanti
+        if(!isset($_SESSION['flagpiccante']))
+            $_SESSION['flagpiccante']='t';
+        if(!isset($_SESSION['flagglut']))
+            $_SESSION['flagglut']='t';
+        if(!isset($_SESSION['flaglite']))
+            $_SESSION['flaglite']='t';
+        if(!isset($_SESSION['flagstar']))
+            $_SESSION['flagstar']='t';
+        if(!isset($_SESSION['flagvegan']))
+            $_SESSION['flagvegan']='t';
     ?>
     
-    <button name="flagPiccante" id="flagPiccante" value="<?php if($row['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
-    <button name="flagGlutine" id="flagGlutine" value="<?php if($row['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
-    <button name="flagLeggero" id="flagLeggero" value="<?php if($row['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
-    <button name="flagStar" id="flagStar" value="<?php if($row['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
-    <button name="flagVegan" id="flagVegan" value="<?php if($row['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
+    <button name="flagPiccante" id="flagPiccante" value="<?php if($_SESSION['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
+    <button name="flagGlutine" id="flagGlutine" value="<?php if($_SESSION['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
+    <button name="flagLeggero" id="flagLeggero" value="<?php if($_SESSION['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
+    <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
+    <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
     <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
 
 
@@ -516,7 +523,7 @@
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function() {
             if (this.value=="true") this.value="false";
-            else this.value="true";
+            else this.value="t";
             console.log(this.value);
             //mando tutti i filtri con una post con campo hidden filtri=true?
             var xhr = new XMLHttpRequest();
@@ -590,11 +597,11 @@
 
     //METTO I FILTRI E INTOLLERANZE
     $row=pg_fetch_assoc(pg_query($dbconn,"select * from filtri"));
-    if($row['flagpiccante']=='t') $piccante="true"; else $piccante="false";
-    if($row['flagstar']=='t') $star="true"; else $star="false";
-    if($row['flaglite']=='t') $lite="true"; else $lite="false";
-    if($row['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
-    if($row['flagglut']=='t') $gluten="true"; else $gluten="false";
+    if($_SESSION['flagpiccante']=='t') $piccante="true"; else $piccante="false";
+    if($_SESSION['flagstar']=='t') $star="true"; else $star="false";
+    if($_SESSION['flaglite']=='t') $lite="true"; else $lite="false";
+    if($_SESSION['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
+    if($_SESSION['flagglut']=='t') $gluten="true"; else $gluten="false";
 
     if($piccante=="true")
         echo "<script>
@@ -612,6 +619,7 @@
     $postquery=") as a where ";
     if(isset($_SESSION['user'])){
         $utente=$_SESSION['user'];
+
         $postquery=$postquery."username='$utente' and
         (a.isvegan or ('$flagvegan' and not utenti.isvegan)) and
         (a.isglutenfree or ('$gluten' and not utenti.intgluten)) and
@@ -629,7 +637,6 @@
     
 
     
-
     //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
     $postquery=$postquery."
     (a.isspicy or '$piccante') and
@@ -778,7 +785,6 @@
 
     echo "</div>";
     pg_free_result($result);
-    pg_close($dbconn);
     ?>
 
     <script>
@@ -980,8 +986,7 @@
 <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
-        or die('Could not connect: ' . pg_last_error());    
+        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
             //CASO LOGIN
