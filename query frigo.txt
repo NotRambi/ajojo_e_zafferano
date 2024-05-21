@@ -11,7 +11,7 @@ create TABLE ricetta(nomericetta varchar(100) primary key,
 					 isvegan boolean,
 					 islite boolean,
 					 isstar boolean,
-					 descrizione varchar(500));
+					 descrizione varchar(5000));
 
 --ingredienti
 insert into ingredienti values 
@@ -60,7 +60,10 @@ insert into ingredienti values
 	('tiramisu','uovo'),
 	('melanzane_grigliate','melanzane'),
 	('melanzane_grigliate','olio'),
-	('melanzane_grigliate','pangrattato');
+	('melanzane_grigliate','pangrattato'),
+	('crystal_bread','kuzu'),
+	('crystal_bread','fecola di patate'),
+	('crystal_bread','scaglie di tartufo');
 	
 
 --ricetta
@@ -75,7 +78,8 @@ insert into ricetta values
 	('salti_in_bocca_alla_romana',20,'secondo',2,false,false,false,false,false,'spinto'),
 	('straccetti_alle_olive_taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
 	('melanzane_grigliate',30,'contorno',2,false,true,true,true,false,'melanzzzane'),
-	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di');
+	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di'),
+	('crystal bread',60,'antipasto',3,false,true,true,true,true,'assurdo');
 
 
 
