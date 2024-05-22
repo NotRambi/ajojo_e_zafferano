@@ -19,12 +19,24 @@
         min-height: 100vh;
         min-width: 582px;
     }
+    .descrizione-div{
+        text-align: center;
+        margin: 0px 20px;
+        font-size: 20px;
+    }
+    .descrizione-div h2{
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+    .descrizione-div p{
+        margin: 0;
+    }
     .body2 {
-      padding: 30px;
-      font-size: 20px;
-      margin: 0;
-      justify-content: center;
-      align-items: center;
+        padding: 30px;
+        font-size: 20px;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
     }
 
     /* stili nav */
@@ -356,11 +368,16 @@
   
     <br><br><br>
 
+    <div class="descrizione-div">
+        <h2>Cosa c'è nel tuo frigorifero?</h2>
+        <p> Inserisci gli ingredienti che hai a disposizione e ti diremo cosa puoi cucinare! </p>
+    </div>
+
     <div class="body2">
     <!-- vado a prendere gli ingredienti possibili dal db -->
     <?php
         //connessione al db
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());
         $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
         //creao la datalist
@@ -636,7 +653,7 @@
                     if (pg_num_rows($result) > 0) {
                         if(!isset($_SESSION['user'])){               
                             $_SESSION['user'] = $username;
-                            echo "<script>location.reload();</scrit>";
+                            echo "<script>location.reload();</script>";
                         }
                     } 
                     else {

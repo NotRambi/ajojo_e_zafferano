@@ -502,23 +502,28 @@
                     opacity: 0;
                 }
             }
+
             /* style carte */
             @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
-                    *,
-                    *::before,
-                    *::after {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                    }
-                 img {
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            img {
                 width: 100%;
                 height: 100%;
                 display: flex;
-                }
-
-                .container {
+            }
+            .carte-div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container-carte {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -527,31 +532,27 @@
                 height: 450px;
                 gap: 10px;
                 margin-inline: 50px;
-                }
-
-                .carta {
+            }
+            .carta {
                 min-width: 70px;
                 height: 100%;
                 border-radius: 30px;
                 overflow: hidden;
-
                 display: flex;
                 align-items: flex-end;
                 flex-grow: 1;
                 cursor: pointer;
                 position: relative;
                 transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
                 --transition-timing: 0.35s;
-                }
-                 .carta.active {
+            }
+            .carta.active {
                 flex-grow: 100;
-                } 
-                .carta:hover {
+            } 
+            .carta:hover {
                 flex-grow: 7;
-                }
-
-                .carta > .background {
+            }
+            .carta > .background {
                 position: absolute;
                 inset: 0;
                 object-fit: cover;
@@ -559,12 +560,11 @@
                 filter: brightness(0.4);
                 z-index: -1;
                 transition: var(--transition-timing) ease;
-                }
-                .carta:hover > .background {
+            }
+            .carta:hover > .background {
                 filter: brightness(1);
-                }
-
-                .carta > .carta-content {
+            }
+            .carta > .carta-content {
                 display: flex;
                 align-items: center;
                 position: absolute;
@@ -573,18 +573,16 @@
                 bottom: 20px;
                 overflow: hidden;
                 transition: var(--transition-timing);
-                z-index: 10;
-                }
-                .carta:hover > .carta-content {
+                z-index: 5;
+            }
+            .carta:hover > .carta-content {
                 inset: 20px;
                 top: auto;
-                }
-
-                .carta-content > * {
+            }
+            .carta-content > * {
                 transition: var(--transition-timing);
-                }
-
-                .carta-content > .profile-image {
+            }
+            .carta-content > .profile-image {
                 min-width: 50px;
                 max-width: 50px;
                 height: 50px;
@@ -594,29 +592,27 @@
                 align-items: center;
                 border-radius: 50%;
                 overflow: hidden;
-                }
-                .carta:hover .profile-image {
+            }
+            .carta:hover .profile-image {
                 border: 1px solid rgb(110, 252, 205);
-                }
-                .profile-image > svg {
+            }
+            .profile-image > svg {
                 stroke: #fefefe;
-                }
-                .carta:hover .profile-image > svg {
+            }
+            .carta:hover .profile-image > svg {
                 stroke: rgb(110, 252, 205);
-                }
-
-                .carta-content > .title {
+            }
+            .carta-content > .title {
                 white-space: pre;
                 margin-left: 10px;
                 translate: 0 100%;
                 opacity: 0;
-                }
-                .carta:hover .title {
+            }
+            .carta:hover .title {
                 opacity: 1;
                 translate: 0 0;
-                }
-
-                .carta > .backdrop {
+            }
+            .carta > .backdrop {
                 position: absolute;
                 left: 0;
                 right: 0;
@@ -624,7 +620,7 @@
                 height: 100px;
                 z-index: 0;
                 background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
-                }
+            }
         </style>
     </head>
     <body>
@@ -672,114 +668,110 @@
 
         <br><br><br>
 
-        <div class="container">
-        <div class="carta">
-        <img class="background" src="./assets/01.jpg" alt="">
+        <div class="carte-div">
+            <div class="container-carte">
+                <div class="carta">
+                    <img class="background" src="./immaginiricette/ajojo_e_peperoncino.jpg" alt="">
 
-        <div class="carta-content">
-          <div class="profile-image">
-            
-          </div>
+                    <div class="carta-content">
+                        <div class="profile-image">
+                            
+                        </div>
+                        <h3 class="title">GTA 6</h3>
+                    </div>
+                    <div class="backdrop"></div>
+                </div>
 
-          <h3 class="title">GTA 6</h3>
-        </div>
-        <div class="backdrop"></div>
-      </div>
+                <div class="carta">
+                    <img class="background" src="./immaginiricette/amatriciana.jpg" alt="">
 
-      <div class="carta">
-        <img class="background" src="./assets/02.jpg" alt="">
+                    <div class="carta-content">
+                        <div class="profile-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+                                <line x1="6" x2="10" y1="11" y2="11" />
+                                <line x1="8" x2="8" y1="9" y2="13" />
+                                <line x1="15" x2="15.01" y1="12" y2="12" />
+                                <line x1="18" x2="18.01" y1="10" y2="10" />
+                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+                            </svg>
+                        </div>
+                        <h3 class="title">Spider-Man PS5</h3>
+                    </div>
+                    <div class="backdrop"></div>
+                </div>
 
-        <div class="carta-content">
-          <div class="profile-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-              <line x1="6" x2="10" y1="11" y2="11" />
-              <line x1="8" x2="8" y1="9" y2="13" />
-              <line x1="15" x2="15.01" y1="12" y2="12" />
-              <line x1="18" x2="18.01" y1="10" y2="10" />
-              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-            </svg>
-          </div>
+                <div class="carta">
+                    <img class="background" src="./immaginiricette/cacio_e_pepe.jpg" alt="">
 
-          <h3 class="title">Spider-Man PS5</h3>
-        </div>
-        <div class="backdrop"></div>
-      </div>
+                    <div class="carta-content">
+                        <div class="profile-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+                                <line x1="6" x2="10" y1="11" y2="11" />
+                                <line x1="8" x2="8" y1="9" y2="13" />
+                                <line x1="15" x2="15.01" y1="12" y2="12" />
+                                <line x1="18" x2="18.01" y1="10" y2="10" />
+                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+                            </svg>
+                        </div>
+                        <h3 class="title">God Of War</h3>
+                    </div>
+                    <div class="backdrop"></div>
+                </div>
 
-      <div class="carta">
-        <img class="background" src="./assets/03.jpg" alt="">
+                <div class="carta">
+                    <img class="background" src="./immaginiricette/risotto_alla_milanese.jpg" alt="">
 
-        <div class="carta-content">
-          <div class="profile-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-              <line x1="6" x2="10" y1="11" y2="11" />
-              <line x1="8" x2="8" y1="9" y2="13" />
-              <line x1="15" x2="15.01" y1="12" y2="12" />
-              <line x1="18" x2="18.01" y1="10" y2="10" />
-              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-            </svg>
-          </div>
+                    <div class="carta-content">
+                        <div class="profile-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+                                <line x1="6" x2="10" y1="11" y2="11" />
+                                <line x1="8" x2="8" y1="9" y2="13" />
+                                <line x1="15" x2="15.01" y1="12" y2="12" />
+                                <line x1="18" x2="18.01" y1="10" y2="10" />
+                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+                            </svg>
+                        </div>
+                        <h3 class="title">federico</h3>
+                    </div>
+                    <div class="backdrop"></div>
+                </div>
 
-          <h3 class="title">God Of War</h3>
-        </div>
-        <div class="backdrop"></div>
-      </div>
+                <div class="carta">
+                    <img class="background" src="./immaginiricette/carbonara.jpg" alt="">
 
-      <div class="carta">
-        <img class="background" src="./assets/06.jpg" alt="">
+                    <div class="carta-content">
+                        <div class="profile-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+                                <line x1="6" x2="10" y1="11" y2="11" />
+                                <line x1="8" x2="8" y1="9" y2="13" />
+                                <line x1="15" x2="15.01" y1="12" y2="12" />
+                                <line x1="18" x2="18.01" y1="10" y2="10" />
+                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+                            </svg>
+                        </div>
+                        <h3 class="title">The Last of Us</h3>
+                    </div>
+                    <div class="backdrop"></div>
+                </div>
 
-        <div class="carta-content">
-          <div class="profile-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-              <line x1="6" x2="10" y1="11" y2="11" />
-              <line x1="8" x2="8" y1="9" y2="13" />
-              <line x1="15" x2="15.01" y1="12" y2="12" />
-              <line x1="18" x2="18.01" y1="10" y2="10" />
-              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-            </svg>
-          </div>
+                <div class="carta">
+                    <img class="background" src="./immaginiricette/gnocchi_salsiccia_e_tartufo.jpg" alt="">
 
-          <h3 class="title">federico</h3>
-        </div>
-        <div class="backdrop"></div>
-      </div>
-
-      <div class="carta">
-        <img class="background" src="./assets/04.jpg" alt="">
-
-        <div class="carta-content">
-          <div class="profile-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-              <line x1="6" x2="10" y1="11" y2="11" />
-              <line x1="8" x2="8" y1="9" y2="13" />
-              <line x1="15" x2="15.01" y1="12" y2="12" />
-              <line x1="18" x2="18.01" y1="10" y2="10" />
-              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-            </svg>
-          </div>
-
-          <h3 class="title">The Last of Us</h3>
-        </div>
-        <div class="backdrop"></div>
-      </div>
-
-      <div class="carta">
-        <img class="background" src="./assets/05.jpg" alt="">
-
-        <div class="carta-content">
-          <div class="profile-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-              <line x1="6" x2="10" y1="11" y2="11" />
-              <line x1="8" x2="8" y1="9" y2="13" />
-              <line x1="15" x2="15.01" y1="12" y2="12" />
-              <line x1="18" x2="18.01" y1="10" y2="10" />
-              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-            </svg>
-          </div>
-
-          <h3 class="title">Elden Ring</h3>
-        </div>
-        <div class="backdrop"></div>
-      </div>
+                    <div class="carta-content">
+                        <div class="profile-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+                                <line x1="6" x2="10" y1="11" y2="11" />
+                                <line x1="8" x2="8" y1="9" y2="13" />
+                                <line x1="15" x2="15.01" y1="12" y2="12" />
+                                <line x1="18" x2="18.01" y1="10" y2="10" />
+                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+                            </svg>
+                        </div>
+                        <h3 class="title">Elden Ring</h3>
+                    </div>
+                    <div class="backdrop"></div>
+                </div>
+            </div>
         </div>
         
         <h1 class="title-section">Piatti Consigliati</h1>
@@ -1429,7 +1421,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];

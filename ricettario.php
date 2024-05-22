@@ -581,7 +581,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -698,7 +698,9 @@
             xhr.open('POST', 'filtri.php');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('buttonclicked='+ encodeURIComponent(this.id) +'&'+ this.id +'=' + encodeURIComponent(this.value));
-            location.reload();
+            setTimeout(function() {
+                location.reload();
+            }, 10);
         });
     }
     </script>
@@ -1016,8 +1018,10 @@
             xhr.open('POST', 'filtri.php');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('buttonclicked=flagPortata&portata=' + encodeURIComponent(portata));
-            location.reload();
-
+            setTimeout(function() {
+                location.reload();
+            }, 10);
+            
         }
         //FUNZIONE SEARCHBAR
         document.getElementById('searchBar').addEventListener('input', function() {
