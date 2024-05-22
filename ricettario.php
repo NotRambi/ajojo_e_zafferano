@@ -136,35 +136,58 @@
             padding-top: 20px;
         }
         .recipe-container{
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            gap:1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            place-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
         }
         .recipe-div{
-            display:flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 550px;
+            height: 400px;
         }
         .recipe{
             position: relative;
-            z-index: 1;
             width:500px;
-            border: 4px solid #333;
-            background-color:#fff;
-            border-radius: 10px;
-            padding: 15px;
+            height:350px;
+            perspective: 1000px;
         }
         .recipe:hover{
             cursor:pointer;
         }
-        .recipe-descSlide{
+        .recipe-inner{
+            width: 100%;
+            height: 100%;
             position: relative;
-            display:none;
+            transform-style: preserve-3d;
+            transition: transform 0.999s;
+        }
+        .recipe-front,
+        .recipe-back {
             border: 4px solid #333;
             background-color:#fff;
             border-radius: 10px;
             padding: 15px;
+            top: -19px;
+            left: -19px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
         }
+
+        .recipe-front {
+            transform: rotateY(0deg);
+        }
+
+        .recipe-back {
+            transform: rotateY(180deg);
+        }
+
         .recipe-name{
             border: 4px solid #333;
             border-radius: 10px;
@@ -226,8 +249,14 @@
             font-weight:bold;
             transform: rotate(45deg);
         }
+        .recipe-content-div{
+            margin-top:1rem;
+            height: 250px;
+            display:flex;
+            align-items:center;
+        }
         .recipe-content{
-            margin-top:0.5rem;
+            width: 100%;
             display:flex;
         }
         .recipe-desc{
@@ -259,6 +288,7 @@
             height: 10.5rem;
             width: 14rem;
             border:4px solid #333;
+            background-color:#333;
             border-radius: 10px;
         }
 
@@ -318,6 +348,16 @@
             border-radius: 50%;
             left: 0px;
             background-color: #ed6700;
+        }
+        .errorLabelLogin{
+            display: none;
+            color: #ed4f00;
+            margin:0;
+        } 
+        .errorLabelSignin{
+            display: none;
+            color: #ed4f00;
+            margin:0;
         }
         .message, 
         .signin {
@@ -436,7 +476,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -458,14 +498,13 @@
     <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
 
 
-    
     <!--Modal ad apparizione dei tasti login e signin-->
     <!-- Modal di login -->
     <div id="loginModal" class="modal">
             <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="hidden" name="tipo" value="login">
                 <p class="title">Login </p>
-                <p style="display:none;" id="erroreLogin"> credenziali errate </p>
+                <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
                 <label>
                     <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
                     <span>Username</span>
@@ -488,7 +527,7 @@
         <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="hidden" name="tipo" value="registrazione">
             <p class="title">Registrazione </p>
-            <p style="display:none;" id="erroreSignin"> errore registrazione </p>
+            <p class="errorLabelSignin" id="erroreSignin"> errore registrazione </p>
             <p class="message">Registrati ora per avere accesso al servizio completo </p>
                 <div class="flex">
                 <label>
@@ -619,7 +658,6 @@
     $postquery=") as a where ";
     if(isset($_SESSION['user'])){
         $utente=$_SESSION['user'];
-
         $postquery=$postquery."username='$utente' and
         (a.isvegan or ('$flagvegan' and not utenti.isvegan)) and
         (a.isglutenfree or ('$gluten' and not utenti.intgluten)) and
@@ -637,6 +675,7 @@
     
 
     
+
     //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
     $postquery=$postquery."
     (a.isspicy or '$piccante') and
@@ -680,104 +719,109 @@
             $vuota=false;
             echo "<div class='recipe-div'>";
                 echo "<div class='recipe' id='recipe_".$row['nomericetta']."'>";
-                    echo "<div class='recipe-name'>";
-                        echo "<h2 class='recipe-title'>";
-                            echo str_replace('_', ' ', $row['nomericetta']);
-                            $ricetta=$row['nomericetta'];
-                        echo "</h2>";
-                        //BOTTONI PER I PREFERIRI UNO DEI DUE SARA INVISIBILE IN BASE ALL'UTENTE
-                        //SE NON LO LOGGATO INVISIBILI ENRTAMBI?
-                        if(isset($_SESSION['user'])){    
-                            $idmettiprefe="idBottonePrefeMetti".$ricetta;
-                            $idtogliprefe="idBottonePrefeTogli".$ricetta;
-                            $user=$_SESSION['user'];
-                            $querypreferiti="select * from preferiti where username='$user' and ricetta='$ricetta'";
-                            $resultpreferiti=pg_query($dbconn,$querypreferiti);
-                            echo "<button id=$idmettiprefe class='buttonprefe mettiprefe material-symbols-outlined'>favorite</button>";
-                            echo "<div class='togliprefBtn'><button id=$idtogliprefe class='buttonprefe togliprefe material-symbols-outlined'>favorite</button><p class='barrapref'>|</p></div>";
-                            if(pg_num_rows($resultpreferiti)>0){
-                                echo "
-                                <script>
-                                document.getElementById('$idmettiprefe').style.display = 'none';
-                                </script>";
-                            }else{
-                                echo "
-                                <script>
-                                document.getElementById('$idtogliprefe').style.display = 'none';
-                                </script>";
-                            }
-                        }
-                    echo "</div>";
-
-                    echo "<div class='recipe-content'>";
-                        echo "<div class='recipe-desc'>";
-                            echo "<p>";
-                                $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
-                                $result2=pg_query($dbconn,$query2);
-                                while($ingrediente=pg_fetch_assoc($result2)){
-                                    echo $ingrediente['ingrediente'];
-                                    if($flagFromFrigo && !in_array($ingrediente['ingrediente'],$campi_valori))
-                                        echo "<span style='color: red;'> (ti manca)</span>";
-                                    echo "<br>";
+                    echo "<div class='recipe-inner' id='inner_".$row['nomericetta']."'>";
+                        echo "<div class='recipe-front'>";
+                            echo "<div class='recipe-name'>";
+                                echo "<h2 class='recipe-title'>";
+                                    echo str_replace('_', ' ', $row['nomericetta']);
+                                    $ricetta=$row['nomericetta'];
+                                echo "</h2>";
+                                //BOTTONI PER I PREFERIRI UNO DEI DUE SARA INVISIBILE IN BASE ALL'UTENTE
+                                //SE NON LO LOGGATO INVISIBILI ENRTAMBI?
+                                if(isset($_SESSION['user'])){    
+                                    $idmettiprefe="idBottonePrefeMetti".$ricetta;
+                                    $idtogliprefe="idBottonePrefeTogli".$ricetta;
+                                    $user=$_SESSION['user'];
+                                    $querypreferiti="select * from preferiti where username='$user' and ricetta='$ricetta'";
+                                    $resultpreferiti=pg_query($dbconn,$querypreferiti);
+                                    echo "<button id=$idmettiprefe class='buttonprefe mettiprefe material-symbols-outlined'>favorite</button>";
+                                    echo "<div class='togliprefBtn'><button id=$idtogliprefe class='buttonprefe togliprefe material-symbols-outlined'>favorite</button><p class='barrapref'>|</p></div>";
+                                    if(pg_num_rows($resultpreferiti)>0){
+                                        echo "
+                                        <script>
+                                        document.getElementById('$idmettiprefe').style.display = 'none';
+                                        </script>";
+                                    }else{
+                                        echo "
+                                        <script>
+                                        document.getElementById('$idtogliprefe').style.display = 'none';
+                                        </script>";
+                                    }
                                 }
-                                pg_free_result($result2);
-                                
-                                echo "<div class='recipe-info'>";
-                                    echo "<div class='timer'>";
-                                        echo "<span class='material-symbols-outlined'>timer</span>";
-                                        echo $row['tempo']."'";
+                            echo "</div>";
+                            echo "<div class='recipe-content-div'>";
+                                echo "<div class='recipe-content'>";
+                                    echo "<div class='recipe-desc'>";
+                                        echo "<p>";
+                                            $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
+                                            $result2=pg_query($dbconn,$query2);
+                                            while($ingrediente=pg_fetch_assoc($result2)){
+                                                echo $ingrediente['ingrediente'];
+                                                if($flagFromFrigo && !in_array($ingrediente['ingrediente'],$campi_valori))
+                                                    echo "<span style='color: red;'> (ti manca)</span>";
+                                                echo "<br>";
+                                            }
+                                            pg_free_result($result2);
+                                            
+                                            echo "<div class='recipe-info'>";
+                                                echo "<div class='timer'>";
+                                                    echo "<span class='material-symbols-outlined'>timer</span>";
+                                                    echo $row['tempo']."'";
+                                                echo "</div>";
+                                                echo "<div class='recipe-flag'>";
+                                                    echo"   
+                                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."piccante'>
+                                                            local_fire_department
+                                                        </span>
+                                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."glutenfree'>
+                                                            <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 48 48'><path fill='currentColor' fill-rule='evenodd' d='M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257' clip-rule='evenodd'/></svg>
+                                                        </span>
+                                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."fit'>
+                                                            exercise
+                                                        </span>
+                                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."stellato'>
+                                                        <a title='Nikolaos Dimos, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:MichelinStar.svg'><img width='20px' alt='MichelinStar' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/MichelinStar.svg/512px-MichelinStar.svg.png?20200806093601'></a>
+                                                        </span>
+                                                        <span class='material-symbols-outlined' id='".$row['nomericetta']."vegan'>
+                                                            eco
+                                                        </span>
+                                                        ";
+                                                    if($row['isspicy']=='t')
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."piccante').style.display='block'</script>";
+                                                    else
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."piccante').style.display='none'</script>";
+                                                    if($row['isstar']=='t') 
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."stellato').style.display='block'</script>";
+                                                    else
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."stellato').style.display='none'</script>";
+                                                    if($row['islite']=='t') 
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."fit').style.display='block'</script>";
+                                                    else
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."fit').style.display='none'</script>";
+                                                    if($row['isvegan']=='t')
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."vegan').style.display='block'</script>";
+                                                    else
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."vegan').style.display='none'</script>";
+                                                    if($row['isglutenfree']=='t')
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."glutenfree').style.display='block'</script>";
+                                                    else
+                                                        echo "<script>document.getElementById('".$row['nomericetta']."glutenfree').style.display='none'</script>";
+                                                echo "</div>";
+                                            echo"</div>";
+                                        echo "</p>";
                                     echo "</div>";
-                                    echo "<div class='recipe-flag'>";
-                                        echo"   
-                                            <span class='material-symbols-outlined' id='".$row['nomericetta']."piccante'>
-                                                local_fire_department
-                                            </span>
-                                            <span class='material-symbols-outlined' id='".$row['nomericetta']."glutenfree'>
-                                                <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 48 48'><path fill='currentColor' fill-rule='evenodd' d='M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257' clip-rule='evenodd'/></svg>
-                                            </span>
-                                            <span class='material-symbols-outlined' id='".$row['nomericetta']."fit'>
-                                                exercise
-                                            </span>
-                                            <span class='material-symbols-outlined' id='".$row['nomericetta']."stellato'>
-                                                hotel_class
-                                            </span>
-                                            <span class='material-symbols-outlined' id='".$row['nomericetta']."vegan'>
-                                                eco
-                                            </span>
-                                            ";
-                                        if($row['isspicy']=='t')
-                                            echo "<script>document.getElementById('".$row['nomericetta']."piccante').style.display='block'</script>";
-                                        else
-                                            echo "<script>document.getElementById('".$row['nomericetta']."piccante').style.display='none'</script>";
-                                        if($row['isstar']=='t') 
-                                            echo "<script>document.getElementById('".$row['nomericetta']."stellato').style.display='block'</script>";
-                                        else
-                                            echo "<script>document.getElementById('".$row['nomericetta']."stellato').style.display='none'</script>";
-                                        if($row['islite']=='t') 
-                                            echo "<script>document.getElementById('".$row['nomericetta']."fit').style.display='block'</script>";
-                                        else
-                                            echo "<script>document.getElementById('".$row['nomericetta']."fit').style.display='none'</script>";
-                                        if($row['isvegan']=='t')
-                                            echo "<script>document.getElementById('".$row['nomericetta']."vegan').style.display='block'</script>";
-                                        else
-                                            echo "<script>document.getElementById('".$row['nomericetta']."vegan').style.display='none'</script>";
-                                        if($row['isglutenfree']=='t')
-                                            echo "<script>document.getElementById('".$row['nomericetta']."glutenfree').style.display='block'</script>";
-                                        else
-                                            echo "<script>document.getElementById('".$row['nomericetta']."glutenfree').style.display='none'</script>";
+                                    echo "<div class='recipe-img-div'>";
+                                        echo "<div class='recipe-image'>";
+                                            echo "<img src='immaginiricette/".$row['nomericetta'].".jpg' alt='' class='recipe-img'>";
+                                        echo "</div>";
                                     echo "</div>";
-                                echo"</div>";
-                            echo "</p>";
-                        echo "</div>";
-                        echo "<div class='recipe-img-div'>";
-                            echo "<div class='recipe-image'>";
-                                echo "<img src='immaginiricette/".$row['nomericetta'].".jpg' alt='' class='recipe-img'>";
+                                echo "</div>";
                             echo "</div>";
                         echo "</div>";
+                        echo "<div class='recipe-back'>";
+                            echo "<p class='recipeDesc'>".$row['descrizione']."</p>";
+                        echo "</div>";
                     echo "</div>";
-                echo "</div>";
-                echo "<div class='recipe-descSlide' id='slider_".$row['nomericetta']."'>";
-                    echo "<p class='recipeDesc'>".$row['descrizione']."</p>";
                 echo "</div>";
             echo "</div>";
         }
@@ -897,53 +941,11 @@
 
     // funzione apertura e chiusura descrizione ricette
     function OpenCloseDesc(name){
-        var slider = document.getElementById('slider_'+name);
-        slider.style.transition= 'all 1s';
-        setTimeout(() => {
-            slider.style.transition= 'all 0s';
-        }, 1000);  
-        // animazione chiusura
-        if(slider.style.display == 'block'){
-            // animazione verticale
-            if (window.outerWidth < 960){
-                slider.style.left = '0px';
-                slider.style.top = '0px';
-                setTimeout(function(){
-                    slider.style.top = '-100px';
-                }, 1);
-            }
-            // animazione orizzontale
-            else{
-                slider.style.top = '0px';
-                slider.style.left = '0px';
-                setTimeout(function(){
-                    slider.style.left = '-300px';
-                }, 1);
-            }
-            setTimeout(function(){
-                slider.style.display = 'none';
-            }, 1000);
-        }
-        // animazione apertura
-        else{
-            slider.style.display = 'block';
-            // animazione verticale
-            if (window.outerWidth < 960) { 
-                slider.style.top = '-100px';
-                slider.style.left = '0px';
-                setTimeout(function(){
-                    slider.style.top = '0px';
-                }, 1);
-            }
-            // animazione orizzontale
-            else{
-                slider.style.top = '0px';
-                slider.style.left = '-300px';
-                setTimeout(function(){
-                    slider.style.left = '0px';
-                }, 1);
-            }
-        }
+        var inner = document.getElementById('inner_'+name);
+        if(inner.style.transform == 'rotateY(180deg)')
+            inner.style.transform = 'rotateY(0deg)';
+        else
+            inner.style.transform = 'rotateY(180deg)';        
     }
     var buttonsRecipe = document.querySelectorAll('div[id^="recipe_"]');
     buttonsRecipe.forEach(buttonRecipe => {
@@ -952,42 +954,32 @@
                 OpenCloseDesc(recipename);
         });
     });
-    function adapt_size_desc(){
+    function adapt_size_recipe(){
         var windowsize = window.outerWidth;
-        var RecipeSlide = document.querySelectorAll('.recipe-descSlide');
-        var RecipeDiv = document.querySelectorAll('.recipe-div');
-        if(windowsize >= 960){
-            RecipeSlide.forEach(element => {
-                element.style.width = "300px";
-            });
-            RecipeDiv.forEach(element => {
-                element.style.flexDirection = "row";
-            });
+        var RecipeContainer = document.querySelector('.recipe-container');
+        if(windowsize >= 1150){
+            RecipeContainer.style.gridTemplateColumns= "1fr 1fr";
         }
-        else if(windowsize < 960 && windowsize >= 0){
-            RecipeSlide.forEach(element => {
-                element.style.width = "500px";
-            });
-            RecipeDiv.forEach(element => {
-                element.style.flexDirection = "column";
-            });
+        else if(windowsize < 1150 && windowsize >= 0){
+            RecipeContainer.style.gridTemplateColumns= "1fr";
+
         }
     }
 
     window.addEventListener('resize', function() {
         adapt_size();
-        adapt_size_desc();
+        adapt_size_recipe();
     });
     adapt_size();
-    adapt_size_desc();
+    adapt_size_recipe();
 
     </script>
 
 <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tipo'])) {
             $tipo = $_POST['tipo'];
             //CASO LOGIN
             if($tipo == "login"){

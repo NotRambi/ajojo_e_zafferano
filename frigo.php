@@ -9,9 +9,6 @@
 
   <title>Ajojo & Zafferano</title>
   <link rel="icon" href="logo.png" type="image/x-icon">
-  <!--DA RISOLVERE:
-  valida input dopo il primo campo, i campi errorex non funzionano più  
-  se sposti submit dove dovrebbe stare non funziona piu il tasto aggiungi campo -->
 
   <style>
     *{
@@ -235,6 +232,16 @@
         left: 0px;
         background-color: #ed6700;
     }
+    .errorLabelLogin{
+        display: none;
+        color: #ed4f00;
+        margin:0;
+    } 
+    .errorLabelSignin{
+        display: none;
+        color: #ed4f00;
+        margin:0;
+    }
     .message, 
     .signin {
         font-size: 14.5px;
@@ -320,304 +327,302 @@
 </head>
 <body>
 
-
-
-<div class="navbgr">
-    <div class="nav">
-        <a class="MainLogo" href="index.php">
-            <img src="logo.png" class="logo_img">
-            <div class="logo_title">
-                <p class="ajojo_">Ajojo &</p>
-                <p class="zafferano_">Zafferano</p>
-            </div>
-        </a>
-        <a class="FrigoLink" href="frigo.php">Frigorifero</a>
-        <a class="RicettarioLink" href="ricettario.php">Ricettario</a>
-        <a class="ProfiloLink" id="profileBtn" href="profilo.php">Profilo</a>
-        <a class="ProfiloLink" id="loginBtn" href="#">Accedi</a>
-    </div>
-</div>
-
-<?php
-    if(isset($_SESSION['user'])){
-        echo "<script>document.getElementById('profileBtn').style.display = 'block';</script>";
-        echo "<script>document.getElementById('loginBtn').style.display = 'none';</script>";
-    } 
-    else{
-        echo "<script>document.getElementById('profileBtn').style.display = 'none';</script>";
-        echo "<script>document.getElementById('loginBtn').style.display = 'block';</script>";
-    }
-?>
-  
-<br><br><br>
-
-<div class="body2">
-  <!-- vado a prendere gli ingredienti possibili dal db -->
-  <?php
-    //connessione al db
-    $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
-    or die('Could not connect: ' . pg_last_error());
-    $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
-    //creao la datalist
-    echo "<datalist id='suggerimenti'>";
-      while ($row = pg_fetch_assoc($result)) {
-        $ingrediente=$row['ingrediente'];
-        
-        echo "<option value=$ingrediente>";
-      }
-    echo "</datalist>";
-    //chiusura connessione
-    pg_free_result($result);
-    pg_close($dbconn);
-  ?>
- 
-  <form id="myForm" onsubmit="return controllaCampionSubmit()" onchange="return validaInput()"  action="ricettario.php" method="post">
-        <div class="input-group">
-            <input type="hidden" name="frigo" value="true">
-            <label class="formLabel">Ingredienti</label><br><br>
-            <input class="formInput" list="suggerimenti" id="campo1" name="campo1">
-            <div id="errore1" class="formError"></div>
+    <div class="navbgr">
+        <div class="nav">
+            <a class="MainLogo" href="index.php">
+                <img src="logo.png" class="logo_img">
+                <div class="logo_title">
+                    <p class="ajojo_">Ajojo &</p>
+                    <p class="zafferano_">Zafferano</p>
+                </div>
+            </a>
+            <a class="FrigoLink" href="frigo.php">Frigorifero</a>
+            <a class="RicettarioLink" href="ricettario.php">Ricettario</a>
+            <a class="ProfiloLink" id="profileBtn" href="profilo.php">Profilo</a>
+            <a class="ProfiloLink" id="loginBtn" href="#">Accedi</a>
         </div>
-  </form>
+    </div>
 
-  <button class="formBtn" onclick="aggiungiCampo(); ">Aggiungi Campo</button>
-  <button class="formBtn" onclick="rimuoviCampo(); ">Rimuovi Ultimo Campo</button>
-  <button class="formBtn" type="button" onclick="return submitForm()">prepara</button>
-</div>
-
-<!--Modal ad apparizione dei tasti login e signin-->
-<!-- Modal di login -->
-<div id="loginModal" class="modal">
-    <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <input type="hidden" name="tipo" value="login">
-        <p class="title">Login </p>
-        <p style="display:none;" id="erroreLogin"> credenziali errate </p>
-        <label>
-            <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
-            <span>Username</span>
-        </label> 
-            
-        <label>
-            <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
-            <span>Password</span>
-        </label>
-        <button class="submit" value="Accedi">Accedi</button>
-        <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
-                                                                    document.getElementById('loginModal').style.display='none';
-                                                                    document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
-    </form>
-</div>
-
-
-<!-- Modal di registrazione -->
-<div id="registerModal" class="modal">
-    <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <input type="hidden" name="tipo" value="registrazione">
-        <p class="title">Registrazione </p>
-        <p style="display:none;" id="erroreSignin"> errore registrazione </p>
-        <p class="message">Registrati ora per avere accesso al servizio completo </p>
-            <div class="flex">
-            <label>
-                <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
-                <span>Nome</span>
-            </label>
-    
-            <label>
-                <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
-                <span>Cognome</span>
-            </label>
-        </div>  
-                
-        <label>
-            <input class="input" type="text" id="username"  name="username" placeholder="" required="">
-            <span>Username</span>
-        </label> 
-            
-        <label>
-            <input class="input" type="password" id="password"  name="password" placeholder="" required="">
-            <span>Password</span>
-        </label>
-        <button class="submit" value="Registrati">Registrati</button>
-        <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
-    </form>
-</div>
-      
-<script>
-
-  var nuovoCampoNum=1;
-  var invalid=0;
-  
-  function validaInput() {
-    //all'inizio di ogni chiamata resetto i campi errore
-    invalid=0;
-    for(var z=1;z<nuovoCampoNum+1;z++){
-      var pulizia='errore'+z;
-      document.getElementById(pulizia).innerText = "";
-    }
-
-    //controllo per ogni campo della form se l'ingrediente inserito è valido
-    //se cosi non è scrivo nel suo campo errore e returno false
-    for(var j=nuovoCampoNum;j>0;j--)
-    {
-      var actualcamp='campo'+j;
-      var actualerr='errore'+j;
-      var input = document.getElementById(actualcamp).value;
-      var suggerimenti = Array.from(document.getElementById('suggerimenti').options);
-      var trovato = false;
-      for (var i = 0; i < suggerimenti.length; i++)
-      {
-        if (input === suggerimenti[i].value) {
-        trovato = true;
-        break;
-        }
-      }
-      if (!trovato) {
-        document.getElementById(actualerr).innerText = 'Si prega di selezionare un valore valido dall\'elenco.';
-        invalid=1;
-        return false;
-      }
-      
-      for(var z=1;z<nuovoCampoNum+1;z++)
-      {
-        var campoz='campo'+z;
-        if(z!=j && document.getElementById(campoz).value == document.getElementById(actualcamp).value){
-          document.getElementById(actualerr).innerText = 'elemento inserito due volte';
-          invalid=1;
-          return false;
-        }
-      }  
-        
-    }
-    return true;
-  }
-
-  function aggiungiCampo() {
-    if(!validaInput()){
-      document.getElementById("errore"+nuovoCampoNum).innerText = 'prima di creare un nuovo campo inserire un ingrediente valido nel campo precedente';
-      return false;
-    }
-    var form = document.getElementById("myForm");
-    var ultimoCampo = form.lastElementChild;
-    nuovoCampoNum = parseInt(ultimoCampo.querySelector('input').id.replace('campo', '')) + 1;
-    
-    var campoprecedente = "campo"+(nuovoCampoNum-1);
-    var campoerrprec = "errore"+(nuovoCampoNum-1);
-
-    
-    if(document.getElementById(campoprecedente).value=="" || invalid){
-      document.getElementById(campoerrprec).innerText = 'prima di creare un nuovo campo inserire un ingrediente valido nel campo precedente';
-      nuovoCampoNum--;
-      return false;
-    }
-    document.getElementById(campoerrprec).innerText ="";
-
-    var nuovoCampo = document.createElement("div");
-    nuovoCampo.className = "input-group";
-    //ho perso due ore e mezza per questa linea:
-    nuovoCampo.innerHTML = '<input class="formInput" list="suggerimenti" id="campo' + nuovoCampoNum + '" name="campo' + nuovoCampoNum + '"><div id="errore' + nuovoCampoNum +'" class="formError"></div>';
-    form.appendChild(nuovoCampo);
-  }
-
-  function rimuoviCampo() {
-    var form = document.getElementById("myForm");
-    var campi = form.getElementsByClassName("input-group");
-    if (campi.length > 1) {
-      nuovoCampoNum=nuovoCampoNum-1;
-      form.removeChild(campi[campi.length - 1]);
-      validaInput();
-    } else {      
-      document.getElementById("campo1").value="";
-      document.getElementById("errore1").innerText = "";
-    }
-  }
-
-  function submitForm() {
-    if(!controllaCampionSubmit())
-      return false;
-    else
-      document.getElementById("myForm").submit();
-  }
-
-  function controllaCampionSubmit() {
-    if(validaInput==false) return false;
-    for(var z=1;z<nuovoCampoNum+1;z++){
-      var campoz='campo'+z;
-      if(document.getElementById(campoz).value==""){
-        //DA CAMBIARE CON QUALCOSA DI PIU CARINO
-        alert('Si prega di compilare tutti i campi.');
-        return false;
-      }
-    }
-    return true;
-  }
-
-    // funzione per ridurre il fontsize della nav a in base ai breakpoint
-    var nav = document.querySelector('.nav');
-    var nav_a = document.querySelectorAll('.nav a');
-    var logo_title_p = document.querySelectorAll('.logo_title p');
-
-    function adapt_size(){
-        if(window.outerWidth < 890 && window.outerWidth > 590){
-            var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
-            var newfontnav = 20 + (window.outerWidth-590)/60*2;
-            var newfontlogo = 15 + (window.outerWidth-590)/60;
-            nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
-            nav_a.forEach(element => {
-                element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
-            });
-            logo_title_p.forEach(element => {
-                element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
-            });
-        }
-        else if(window.outerWidth <= 590 && window.outerWidth >= 0){
-            nav.style.gap = '0.5rem';
-            nav_a.forEach(element => {
-                element.style.fontSize = '20px';
-            });
-            logo_title_p.forEach(element => {
-                element.style.fontSize = '15px';
-            });
-        }
+    <?php
+        if(isset($_SESSION['user'])){
+            echo "<script>document.getElementById('profileBtn').style.display = 'block';</script>";
+            echo "<script>document.getElementById('loginBtn').style.display = 'none';</script>";
+        } 
         else{
-            nav.style.gap = '1.5rem';
-            nav_a.forEach(element => {
-                element.style.fontSize = '30px';
-            });
-            logo_title_p.forEach(element => {
-                element.style.fontSize = '20px';
-            });
+            echo "<script>document.getElementById('profileBtn').style.display = 'none';</script>";
+            echo "<script>document.getElementById('loginBtn').style.display = 'block';</script>";
         }
-    }
-    window.addEventListener('resize', function() {
+    ?>
+  
+    <br><br><br>
+
+    <div class="body2">
+    <!-- vado a prendere gli ingredienti possibili dal db -->
+    <?php
+        //connessione al db
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        or die('Could not connect: ' . pg_last_error());
+        $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
+        //creao la datalist
+        echo "<datalist id='suggerimenti'>";
+        while ($row = pg_fetch_assoc($result)) {
+            $ingrediente=$row['ingrediente'];
+            
+            echo "<option value=$ingrediente>";
+        }
+        echo "</datalist>";
+        //chiusura connessione
+        pg_free_result($result);
+        pg_close($dbconn);
+    ?>
+    
+    <form id="myForm" onsubmit="return controllaCampionSubmit()" onchange="return validaInput()"  action="ricettario.php" method="post">
+        <input type="hidden" name="frigo" value="true">
+            <div class="input-group">
+                <label class="formLabel">Ingredienti</label><br><br>
+                <input class="formInput" list="suggerimenti" id="campo1" name="campo1">
+                <div id="errore1" class="formError"></div>
+            </div>
+    </form>
+
+    <button class="formBtn" onclick="aggiungiCampo(); ">Aggiungi Campo</button>
+    <button class="formBtn" onclick="rimuoviCampo(); ">Rimuovi Ultimo Campo</button>
+    <button class="formBtn" type="button" onclick="return submitForm()">prepara</button>
+    </div>
+
+    <!--Modal ad apparizione dei tasti login e signin-->
+    <!-- Modal di login -->
+    <div id="loginModal" class="modal">
+        <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden" name="tipo" value="login">
+            <p class="title">Login </p>
+            <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
+            <label>
+                <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
+                <span>Username</span>
+            </label> 
+                
+            <label>
+                <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
+                <span>Password</span>
+            </label>
+            <button class="submit" value="Accedi">Accedi</button>
+            <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
+                                                                        document.getElementById('loginModal').style.display='none';
+                                                                        document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
+        </form>
+    </div>
+
+    <!-- Modal di registrazione -->
+    <div id="registerModal" class="modal">
+        <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden" name="tipo" value="registrazione">
+            <p class="title">Registrazione </p>
+            <p class="errorLabelSignin" id="erroreSignin"> errore registrazione </p>
+            <p class="message">Registrati ora per avere accesso al servizio completo </p>
+                <div class="flex">
+                <label>
+                    <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
+                    <span>Nome</span>
+                </label>
+        
+                <label>
+                    <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
+                    <span>Cognome</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input class="input" type="text" id="username"  name="username" placeholder="" required="">
+                <span>Username</span>
+            </label> 
+                
+            <label>
+                <input class="input" type="password" id="password"  name="password" placeholder="" required="">
+                <span>Password</span>
+            </label>
+            <button class="submit" value="Registrati">Registrati</button>
+            <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
+        </form>
+    </div>
+      
+    <script>
+
+        var nuovoCampoNum=1;
+        var invalid=0;
+    
+        function validaInput() {
+            //all'inizio di ogni chiamata resetto i campi errore
+            invalid=0;
+            for(var z=1;z<nuovoCampoNum+1;z++){
+            var pulizia='errore'+z;
+            document.getElementById(pulizia).innerText = "";
+            }
+
+            //controllo per ogni campo della form se l'ingrediente inserito è valido
+            //se cosi non è scrivo nel suo campo errore e returno false
+            for(var j=nuovoCampoNum;j>0;j--)
+            {
+            var actualcamp='campo'+j;
+            var actualerr='errore'+j;
+            var input = document.getElementById(actualcamp).value;
+            var suggerimenti = Array.from(document.getElementById('suggerimenti').options);
+            var trovato = false;
+            for (var i = 0; i < suggerimenti.length; i++)
+            {
+                if (input === suggerimenti[i].value) {
+                trovato = true;
+                break;
+                }
+            }
+            if (!trovato) {
+                document.getElementById(actualerr).innerText = 'Si prega di selezionare un valore valido dall\'elenco.';
+                invalid=1;
+                return false;
+            }
+            
+            for(var z=1;z<nuovoCampoNum+1;z++)
+            {
+                var campoz='campo'+z;
+                if(z!=j && document.getElementById(campoz).value == document.getElementById(actualcamp).value){
+                document.getElementById(actualerr).innerText = 'elemento inserito due volte';
+                invalid=1;
+                return false;
+                }
+            }  
+                
+            }
+            return true;
+        }
+
+        function aggiungiCampo() {
+            if(!validaInput()){
+            document.getElementById("errore"+nuovoCampoNum).innerText = 'prima di creare un nuovo campo inserire un ingrediente valido nel campo precedente';
+            return false;
+            }
+            var form = document.getElementById("myForm");
+            var ultimoCampo = form.lastElementChild;
+            nuovoCampoNum = parseInt(ultimoCampo.querySelector('.formInput').id.replace('campo', '')) + 1;
+            
+            var campoprecedente = "campo"+(nuovoCampoNum-1);
+            var campoerrprec = "errore"+(nuovoCampoNum-1);
+
+            
+            if(document.getElementById(campoprecedente).value=="" || invalid){
+            document.getElementById(campoerrprec).innerText = 'prima di creare un nuovo campo inserire un ingrediente valido nel campo precedente';
+            nuovoCampoNum--;
+            return false;
+            }
+            document.getElementById(campoerrprec).innerText ="";
+
+            var nuovoCampo = document.createElement("div");
+            nuovoCampo.className = "input-group";
+            //ho perso due ore e mezza per questa linea:
+            nuovoCampo.innerHTML = '<input class="formInput" list="suggerimenti" id="campo' + nuovoCampoNum + '" name="campo' + nuovoCampoNum + '"><div id="errore' + nuovoCampoNum +'" class="formError"></div>';
+            form.appendChild(nuovoCampo);
+        }
+
+        function rimuoviCampo() {
+            var form = document.getElementById("myForm");
+            var campi = form.getElementsByClassName("input-group");
+            if (campi.length > 1) {
+            nuovoCampoNum=nuovoCampoNum-1;
+            form.removeChild(campi[campi.length - 1]);
+            validaInput();
+            } else {      
+            document.getElementById("campo1").value="";
+            document.getElementById("errore1").innerText = "";
+            }
+        }
+
+        function submitForm() {
+            if(!controllaCampionSubmit())
+            return false;
+            else
+            document.getElementById("myForm").submit();
+        }
+
+        function controllaCampionSubmit() {
+            if(validaInput==false) return false;
+            for(var z=1;z<nuovoCampoNum+1;z++){
+            var campoz='campo'+z;
+            if(document.getElementById(campoz).value==""){
+                //DA CAMBIARE CON QUALCOSA DI PIU CARINO
+                alert('Si prega di compilare tutti i campi.');
+                return false;
+            }
+            }
+            return true;
+        }
+
+        // funzione per ridurre il fontsize della nav a in base ai breakpoint
+        var nav = document.querySelector('.nav');
+        var nav_a = document.querySelectorAll('.nav a');
+        var logo_title_p = document.querySelectorAll('.logo_title p');
+
+        function adapt_size(){
+            if(window.outerWidth < 890 && window.outerWidth > 590){
+                var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
+                var newfontnav = 20 + (window.outerWidth-590)/60*2;
+                var newfontlogo = 15 + (window.outerWidth-590)/60;
+                nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
+                nav_a.forEach(element => {
+                    element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
+                });
+                logo_title_p.forEach(element => {
+                    element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
+                });
+            }
+            else if(window.outerWidth <= 590 && window.outerWidth >= 0){
+                nav.style.gap = '0.5rem';
+                nav_a.forEach(element => {
+                    element.style.fontSize = '20px';
+                });
+                logo_title_p.forEach(element => {
+                    element.style.fontSize = '15px';
+                });
+            }
+            else{
+                nav.style.gap = '1.5rem';
+                nav_a.forEach(element => {
+                    element.style.fontSize = '30px';
+                });
+                logo_title_p.forEach(element => {
+                    element.style.fontSize = '20px';
+                });
+            }
+        }
+        window.addEventListener('resize', function() {
+            adapt_size();
+        });
         adapt_size();
-    });
-    adapt_size();
 
-    // Funzioni modal Login/Signin
-    // Fa apparire il modal del login
-    document.getElementById('loginBtn').addEventListener('click', function(event) {
-        document.getElementById('loginModal').style.display = 'block';
-    });
+        // Funzioni modal Login/Signin
+        // Fa apparire il modal del login
+        document.getElementById('loginBtn').addEventListener('click', function(event) {
+            document.getElementById('loginModal').style.display = 'block';
+        });
 
-    // Chiudi il modal cliccando fuori
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('loginModal')) {
-            document.getElementById('loginModal').style.display = "none";
-            document.getElementById('erroreLogin').style.display = "none";
-            document.getElementById('erroreSignin').style.display = "none";
-        }
-        if (event.target == document.getElementById('registerModal')) {
-            document.getElementById('registerModal').style.display = "none";
-            document.getElementById('erroreLogin').style.display = "none";
-            document.getElementById('erroreSignin').style.display = "none";
-        }
-    } 
- 
-</script>
-<?php
+        // Chiudi il modal cliccando fuori
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) {
+                document.getElementById('loginModal').style.display = "none";
+                document.getElementById('erroreLogin').style.display = "none";
+                document.getElementById('erroreSignin').style.display = "none";
+            }
+            if (event.target == document.getElementById('registerModal')) {
+                document.getElementById('registerModal').style.display = "none";
+                document.getElementById('erroreLogin').style.display = "none";
+                document.getElementById('erroreSignin').style.display = "none";
+            }
+        } 
+    
+    </script>
+    
+    <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
@@ -677,7 +682,6 @@
             }
         }
         pg_close($dbconn);    
-        ?>
-
+    ?>
 </body>
 </html>

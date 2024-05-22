@@ -9,9 +9,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <!-- Swiper CSS -->
-        <link rel="stylesheet" href="test_code/style/swiper-bundle.min.css">
+        <link rel="stylesheet" href="librerie/style/swiper-bundle.min.css">
         <!-- Swiper JS -->
-        <script src="test_code/script/swiper-bundle.min.js"></script>
+        <script src="librerie/script/swiper-bundle.min.js"></script>
 
         <title>Ajojo & Zafferano</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
@@ -387,6 +387,16 @@
                 border-radius: 50%;
                 left: 0px;
                 background-color: #ed6700;
+            }
+            .errorLabelLogin{
+                display: none;
+                color: #ed4f00;
+                margin:0;
+            } 
+            .errorLabelSignin{
+                display: none;
+                color: #ed4f00;
+                margin:0;
             }
             .message, 
             .signin {
@@ -930,7 +940,7 @@
             <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="hidden" name="tipo" value="login">
                 <p class="title">Login </p>
-                <p style="display:none;" id="erroreLogin"> credenziali errate </p>
+                <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
                 <label>
                     <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
                     <span>Username</span>
@@ -955,7 +965,7 @@
             <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="hidden" name="tipo" value="registrazione">
                 <p class="title">Registrazione </p>
-                <p style="display:none;" id="erroreSignin"> errore registrazione </p>
+                <p class="errorLabelSignin"  id="erroreSignin"> errore registrazione </p>
                 <p class="message">Registrati ora per avere accesso al servizio completo </p>
                     <div class="flex">
                     <label>
