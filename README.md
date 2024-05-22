@@ -3,3 +3,11 @@ stringhe ingredienti disponibili in frigo (eventuale tempo a disposizione) -> li
 profilazione(ricette preferiti,gusti non graditi/intolleranze da vedere)
 feature aggiungere ricette?
 tema chiaro/scuro?
+
+piatti natalizi
+link al ricettario con filtro primo,secondo...
+curiosita
+ricette consigliate
+chef famosi
+notizie
+seguici
