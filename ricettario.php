@@ -439,8 +439,79 @@
                 opacity: 0;
             }
         }
+        /* FILTRI E BARRA DI RICERCA */
+        .div-filtri-search{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:1rem;
+        }
+        .search-container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-container input{
+            width: 250px;
+            height: 40px;
+            border-radius: 20px;
+            border: 2px solid #333;
+            padding: 0 20px;
+            font-size: 18px;
+            outline: none;
+        }
+        .search-div{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .search-div span{
+            font-size: 30px;
+            color: #333;
+            margin-left: -40px;
+        }
+        .filtri-container{
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .butFiltro{
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 5px 20px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .butFiltro:is(.resetBtn){
+            z-index:1;
+        }
+        .butTendina{
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 15px;
+            min-width: 100px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+        .butTendina span{
+            color: #fff;
+        }
+
         /* tendina filtro portata */
         .tendina {
+            margin-left: auto;
             position: relative;
             display: inline-block;
         }
@@ -448,15 +519,19 @@
             display: none;
             position: absolute;
             background-color: #f9f9f9;
-            min-width: 160px;
+            min-width: 100px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
+            border: 2px solid #333;
+            border-radius: 10px;
+            cursor: pointer;
         }
         .tendina-content a {
             color: black;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
+            border-radius: 10px;
         }
         .tendina-content a:hover {
             background-color: #f1f1f1;
@@ -506,7 +581,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -522,26 +597,32 @@
             $_SESSION['portata']='seleziona';
     ?>
     
-    <button name="flagPiccante" id="flagPiccante" value="<?php if($_SESSION['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
-    <button name="flagGlutine" id="flagGlutine" value="<?php if($_SESSION['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
-    <button name="flagLeggero" id="flagLeggero" value="<?php if($_SESSION['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
-    <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
-    <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
-    <div class="tendina">
-        <button id="tendinaButton"><?php echo $_SESSION['portata']; ?></button>
-        <div class="tendina-content">
-            <a onclick="selezionaPortata('antipasto')">Antipasto</a>
-            <a onclick="selezionaPortata('primo')">Primo</a>
-            <a onclick="selezionaPortata('secondo')">Secondo</a>
-            <a onclick="selezionaPortata('contorno')">Contorno</a>
-            <a onclick="selezionaPortata('dolce')">Dolce</a>
+    <div class="div-filtri-search">
+        <div class="search-container">
+            <button name="reset" id="reset" value="0" class="butFiltro resetBtn"> resetta filtri </button>
+            <div class="search-div">
+                <input type="text" id="searchBar" placeholder="Cerca ricette">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+            <div class="tendina">
+                <button id="tendinaButton" class="butTendina"><?php echo $_SESSION['portata'];?> <span class="material-symbols-outlined">arrow_drop_down</span> </button>
+                <div class="tendina-content">
+                    <a onclick="selezionaPortata('antipasto')">Antipasto</a>
+                    <a onclick="selezionaPortata('primo')">Primo</a>
+                    <a onclick="selezionaPortata('secondo')">Secondo</a>
+                    <a onclick="selezionaPortata('contorno')">Contorno</a>
+                    <a onclick="selezionaPortata('dolce')">Dolce</a>
+                </div>
+            </div>
+        </div>
+        <div class="filtri-container">
+            <button name="flagPiccante" id="flagPiccante" value="<?php if($_SESSION['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
+            <button name="flagGlutine" id="flagGlutine" value="<?php if($_SESSION['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
+            <button name="flagLeggero" id="flagLeggero" value="<?php if($_SESSION['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
+            <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
+            <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
         </div>
     </div>
-    <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
-    <div class="search-container">
-        <input type="text" id="searchBar" placeholder="Cerca ricette...">
-    </div>
-
 
     <!--Modal ad apparizione dei tasti login e signin-->
     <!-- Modal di login -->
@@ -690,12 +771,59 @@
 
     if($piccante=="true")
         echo "<script>
-        document.getElementById('flagPiccante').style.color = 'green';
+            document.getElementById('flagPiccante').style.backgroundColor= '#333';
+            document.getElementById('flagPiccante').style.scale= 1;
         </script>";
     else
         echo "<script>
-        document.getElementById('flagPiccante').style.color = 'red';
+            document.getElementById('flagPiccante').style.backgroundColor= '#222';
+            document.getElementById('flagPiccante').style.scale= 0.9;
         </script>";
+    
+    if($star=="true")
+        echo "<script>
+            document.getElementById('flagStar').style.backgroundColor= '#333';
+            document.getElementById('flagStar').style.scale= 1;
+        </script>";
+    else
+        echo "<script>
+            document.getElementById('flagStar').style.backgroundColor= '#222';
+            document.getElementById('flagStar').style.scale= 0.9;
+        </script>";
+
+    if($lite=="true")
+        echo "<script>
+            document.getElementById('flagLeggero').style.backgroundColor= '#333';
+            document.getElementById('flagLeggero').style.scale= 1;
+        </script>";
+    else
+        echo "<script>
+            document.getElementById('flagLeggero').style.backgroundColor= '#222';
+            document.getElementById('flagLeggero').style.scale= 0.9;
+        </script>";
+    
+    if($flagvegan=="true")
+        echo "<script>
+            document.getElementById('flagVegan').style.backgroundColor= '#333';
+            document.getElementById('flagVegan').style.scale= 1;
+        </script>";
+    else
+        echo "<script>
+            document.getElementById('flagVegan').style.backgroundColor= '#222';
+            document.getElementById('flagVegan').style.scale= 0.9;
+        </script>";
+
+    if($gluten=="true")
+        echo "<script>
+            document.getElementById('flagGlutine').style.backgroundColor= '#333';
+            document.getElementById('flagGlutine').style.scale= 1;
+        </script>";
+    else
+        echo "<script>
+            document.getElementById('flagGlutine').style.backgroundColor= '#222';
+            document.getElementById('flagGlutine').style.scale= 0.9;
+        </script>";
+
 
     $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
     from utenti,(";
@@ -824,7 +952,7 @@
                                                             exercise
                                                         </span>
                                                         <span class='material-symbols-outlined' id='".$row['nomericetta']."stellato'>
-                                                        <a title='Nikolaos Dimos, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:MichelinStar.svg'><img width='20px' alt='MichelinStar' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/MichelinStar.svg/512px-MichelinStar.svg.png?20200806093601'></a>
+                                                        <a><img width='20px' alt='MichelinStar' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/MichelinStar.svg/512px-MichelinStar.svg.png?20200806093601'></a>
                                                         </span>
                                                         <span class='material-symbols-outlined' id='".$row['nomericetta']."vegan'>
                                                             eco
@@ -887,7 +1015,7 @@
             location.reload();
 
         }
-        //FUNZIONE SEARCHBAR DA VEDERE
+        //FUNZIONE SEARCHBAR
         document.getElementById('searchBar').addEventListener('input', function() {
             
             let filter = this.value.toLowerCase();
@@ -895,7 +1023,7 @@
 
             for (let i = 0; i < recipes.length; i++) {
                 let recipe = recipes[i];
-                let text = recipe.textContent || recipe.innerText;
+                let text = recipe.getElementsByClassName('recipe')[0].id.replace("recipe_", "");
 
                 if (text.toLowerCase().indexOf(filter) > -1) {
                     recipe.style.display = "";
