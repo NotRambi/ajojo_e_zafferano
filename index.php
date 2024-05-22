@@ -12,9 +12,7 @@
         <link rel="stylesheet" href="librerie/style/swiper-bundle.min.css">
         <!-- Swiper JS -->
         <script src="librerie/script/swiper-bundle.min.js"></script>
-        <!-- head per fogli -->
-        <link rel="stylesheet" href="./styles.css">
-        <script src="./script.js" defer></script>
+        
 
         <title>Ajojo & Zafferano</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
@@ -504,7 +502,129 @@
                     opacity: 0;
                 }
             }
+            /* style carte */
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
+                    *,
+                    *::before,
+                    *::after {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    }
+                 img {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                }
+
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                width: 1320px;
+                height: 450px;
+                gap: 10px;
+                margin-inline: 50px;
+                }
+
+                .carta {
+                min-width: 70px;
+                height: 100%;
+                border-radius: 30px;
+                overflow: hidden;
+
+                display: flex;
+                align-items: flex-end;
+                flex-grow: 1;
+                cursor: pointer;
+                position: relative;
+                transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+                --transition-timing: 0.35s;
+                }
+                 .carta.active {
+                flex-grow: 100;
+                } 
+                .carta:hover {
+                flex-grow: 7;
+                }
+
+                .carta > .background {
+                position: absolute;
+                inset: 0;
+                object-fit: cover;
+                object-position: center;
+                filter: brightness(0.4);
+                z-index: -1;
+                transition: var(--transition-timing) ease;
+                }
+                .carta:hover > .background {
+                filter: brightness(1);
+                }
+
+                .carta > .carta-content {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                left: 10px;
+                right: 10px;
+                bottom: 20px;
+                overflow: hidden;
+                transition: var(--transition-timing);
+                z-index: 10;
+                }
+                .carta:hover > .carta-content {
+                inset: 20px;
+                top: auto;
+                }
+
+                .carta-content > * {
+                transition: var(--transition-timing);
+                }
+
+                .carta-content > .profile-image {
+                min-width: 50px;
+                max-width: 50px;
+                height: 50px;
+                border: 1px solid white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                overflow: hidden;
+                }
+                .carta:hover .profile-image {
+                border: 1px solid rgb(110, 252, 205);
+                }
+                .profile-image > svg {
+                stroke: #fefefe;
+                }
+                .carta:hover .profile-image > svg {
+                stroke: rgb(110, 252, 205);
+                }
+
+                .carta-content > .title {
+                white-space: pre;
+                margin-left: 10px;
+                translate: 0 100%;
+                opacity: 0;
+                }
+                .carta:hover .title {
+                opacity: 1;
+                translate: 0 0;
+                }
+
+                .carta > .backdrop {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 100px;
+                z-index: 0;
+                background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+                }
         </style>
     </head>
     <body>
@@ -540,7 +660,7 @@
         
 
         
-        <br><br>
+        <br><br><br><br><br><br>
         <p class="ajojotitolo">𝓐𝓙𝓞𝓙𝓞 & 𝓩𝓐𝓕𝓕𝓔𝓡𝓐𝓝𝓞</p>
         <p class="ajojodesc">𝑳𝒂 𝑺𝒆𝒎𝒑𝒍𝒊𝒄𝒊𝒕𝒂' 𝒅𝒆𝒍 𝑪𝒐𝒎𝒑𝒍𝒆𝒔𝒔𝒐</p>
         <br>
@@ -551,6 +671,117 @@
         
 
         <br><br><br>
+
+        <div class="container">
+        <div class="carta">
+        <img class="background" src="./assets/01.jpg" alt="">
+
+        <div class="carta-content">
+          <div class="profile-image">
+            
+          </div>
+
+          <h3 class="title">GTA 6</h3>
+        </div>
+        <div class="backdrop"></div>
+      </div>
+
+      <div class="carta">
+        <img class="background" src="./assets/02.jpg" alt="">
+
+        <div class="carta-content">
+          <div class="profile-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+              <line x1="6" x2="10" y1="11" y2="11" />
+              <line x1="8" x2="8" y1="9" y2="13" />
+              <line x1="15" x2="15.01" y1="12" y2="12" />
+              <line x1="18" x2="18.01" y1="10" y2="10" />
+              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+            </svg>
+          </div>
+
+          <h3 class="title">Spider-Man PS5</h3>
+        </div>
+        <div class="backdrop"></div>
+      </div>
+
+      <div class="carta">
+        <img class="background" src="./assets/03.jpg" alt="">
+
+        <div class="carta-content">
+          <div class="profile-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+              <line x1="6" x2="10" y1="11" y2="11" />
+              <line x1="8" x2="8" y1="9" y2="13" />
+              <line x1="15" x2="15.01" y1="12" y2="12" />
+              <line x1="18" x2="18.01" y1="10" y2="10" />
+              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+            </svg>
+          </div>
+
+          <h3 class="title">God Of War</h3>
+        </div>
+        <div class="backdrop"></div>
+      </div>
+
+      <div class="carta">
+        <img class="background" src="./assets/06.jpg" alt="">
+
+        <div class="carta-content">
+          <div class="profile-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+              <line x1="6" x2="10" y1="11" y2="11" />
+              <line x1="8" x2="8" y1="9" y2="13" />
+              <line x1="15" x2="15.01" y1="12" y2="12" />
+              <line x1="18" x2="18.01" y1="10" y2="10" />
+              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+            </svg>
+          </div>
+
+          <h3 class="title">federico</h3>
+        </div>
+        <div class="backdrop"></div>
+      </div>
+
+      <div class="carta">
+        <img class="background" src="./assets/04.jpg" alt="">
+
+        <div class="carta-content">
+          <div class="profile-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+              <line x1="6" x2="10" y1="11" y2="11" />
+              <line x1="8" x2="8" y1="9" y2="13" />
+              <line x1="15" x2="15.01" y1="12" y2="12" />
+              <line x1="18" x2="18.01" y1="10" y2="10" />
+              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+            </svg>
+          </div>
+
+          <h3 class="title">The Last of Us</h3>
+        </div>
+        <div class="backdrop"></div>
+      </div>
+
+      <div class="carta">
+        <img class="background" src="./assets/05.jpg" alt="">
+
+        <div class="carta-content">
+          <div class="profile-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
+              <line x1="6" x2="10" y1="11" y2="11" />
+              <line x1="8" x2="8" y1="9" y2="13" />
+              <line x1="15" x2="15.01" y1="12" y2="12" />
+              <line x1="18" x2="18.01" y1="10" y2="10" />
+              <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+            </svg>
+          </div>
+
+          <h3 class="title">Elden Ring</h3>
+        </div>
+        <div class="backdrop"></div>
+      </div>
+        </div>
+        
         <h1 class="title-section">Piatti Consigliati</h1>
         <div class="consigliati-div">
             <div class="slide-container">
@@ -1190,6 +1421,8 @@
                     document.getElementById('erroreSignin').style.display = "none";
                 }
             } 
+
+            
         </script>
     </body>
 
