@@ -360,20 +360,21 @@
     <!-- vado a prendere gli ingredienti possibili dal db -->
     <?php
         //connessione al db
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
         $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
         //creao la datalist
         echo "<datalist id='suggerimenti'>";
         while ($row = pg_fetch_assoc($result)) {
             $ingrediente=$row['ingrediente'];
-            
-            echo "<option value=$ingrediente>";
+            $ingrediente=str_replace('_',' ',$ingrediente);
+            echo "<option value='$ingrediente'></option>";
         }
         echo "</datalist>";
         //chiusura connessione
         pg_free_result($result);
-        pg_close($dbconn);
+
+        
     ?>
     
     <form id="myForm" onsubmit="return controllaCampionSubmit()" onchange="return validaInput()"  action="ricettario.php" method="post">
@@ -622,8 +623,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
-        or die('Could not connect: ' . pg_last_error());    
+        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
             //CASO LOGIN
@@ -636,7 +636,7 @@
                     if (pg_num_rows($result) > 0) {
                         if(!isset($_SESSION['user'])){               
                             $_SESSION['user'] = $username;
-                            echo "<script>location.reload();</script>";
+                            echo "<script>location.reload();</scrit>";
                         }
                     } 
                     else {

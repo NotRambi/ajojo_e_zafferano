@@ -581,7 +581,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -613,6 +613,7 @@
                     <a onclick="selezionaPortata('contorno')">Contorno</a>
                     <a onclick="selezionaPortata('dolce')">Dolce</a>
                 </div>
+                
             </div>
         </div>
         <div class="filtri-container">
@@ -622,6 +623,8 @@
             <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
             <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
         </div>
+        
+        
     </div>
 
     <!--Modal ad apparizione dei tasti login e signin-->
@@ -733,6 +736,7 @@
                         break;
                     }
                     $valore_ingrediente = pg_escape_string($_POST[$ingrediente]);
+                    $valore_ingrediente=str_replace(' ','_',$valore_ingrediente);
                     if ($valore_ingrediente !== false) {
                         $campi_valori[$ingrediente] = $valore_ingrediente;
                     }
@@ -928,7 +932,7 @@
                                             $query2="SELECT * FROM ingredienti where ricetta= '$ricetta'";
                                             $result2=pg_query($dbconn,$query2);
                                             while($ingrediente=pg_fetch_assoc($result2)){
-                                                echo $ingrediente['ingrediente'];
+                                                echo str_replace('_', ' ',$ingrediente['ingrediente']);
                                                 if($flagFromFrigo && !in_array($ingrediente['ingrediente'],$campi_valori))
                                                     echo "<span style='color: red;'> (ti manca)</span>";
                                                 echo "<br>";
