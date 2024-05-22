@@ -1,8 +1,15 @@
+-- pulizia table
+drop TABLE if exists ingredienti;
+drop TABLE if exists ricetta;
+drop TABLE if exists filtri;
+drop TABLE if exists utenti;
+drop TABLE if exists preferiti;
+
 --creazione table
-create TABLE ingredienti(ricetta varchar(100),
+create TABLE if not exists ingredienti(ricetta varchar(100),
 						 ingrediente varchar(100));
 
-create TABLE ricetta(nomericetta varchar(100) primary key,
+create TABLE if not exists ricetta(nomericetta varchar(100) primary key,
 					 tempo integer,
 					 tipologia varchar(20),
 					 difficolta integer,
@@ -11,7 +18,7 @@ create TABLE ricetta(nomericetta varchar(100) primary key,
 					 isvegan boolean,
 					 islite boolean,
 					 isstar boolean,
-					 descrizione varchar(5000));
+					 descrizione varchar(900));
 
 --ingredienti
 insert into ingredienti values 
@@ -29,8 +36,8 @@ insert into ingredienti values
 	('gricia','pepe'),
 	('risotto_alla_milanese','riso'),
 	('risotto_alla_milanese','zafferano'),
-	('risotto_alla_milanese','olio extravergine'),
-	('involtini_zucchine_e_speck','pane in cassetta'),
+	('risotto_alla_milanese','olio_extravergine'),
+	('involtini_zucchine_e_speck','pane_in_cassetta'),
 	('involtini_zucchine_e_speck','speck'),
 	('involtini_zucchine_e_speck','zucchine'),
 	('involtini_zucchine_e_speck','philadelphia'),
@@ -38,19 +45,19 @@ insert into ingredienti values
 	('saccottini_di_bresaola','ricotta'),
 	('saccottini_di_bresaola','noci'),
 	('saccottini_di_bresaola','miele'),
-	('crostini_in_salsa_tonnata','crostini di pane'),
-	('crostini_in_salsa_tonnata','tonno in scatola'),
+	('crostini_in_salsa_tonnata','crostini_di_pane'),
+	('crostini_in_salsa_tonnata','tonno_in_scatola'),
 	('crostini_in_salsa_tonnata','maionese'),
 	('crostini_in_salsa_tonnata','mascarpone'),
-	('salti_in_bocca_alla_romana','fettine di vitello'),
-	('salti_in_bocca_alla_romana','prosciutto crudo'),
+	('salti_in_bocca_alla_romana','fettine_di_vitello'),
+	('salti_in_bocca_alla_romana','prosciutto_crudo'),
 	('salti_in_bocca_alla_romana','salvia'),
-	('salti_in_bocca_alla_romana','farina tipo 0'),
-	('salti_in_bocca_alla_romana','vino bianco'),
-	('straccetti_alle_olive_taggiasche','straccetti di manzo'),
-	('straccetti_alle_olive_taggiasche','olive taggiasche'),
+	('salti_in_bocca_alla_romana','farina_tipo_00'),
+	('salti_in_bocca_alla_romana','vino_bianco'),
+	('straccetti_alle_olive_taggiasche','straccetti_di_manzo'),
+	('straccetti_alle_olive_taggiasche','olive_taggiasche'),
 	('straccetti_alle_olive_taggiasche','basilico'),
-	('straccetti_alle_olive_taggiasche','vino bianco'),
+	('straccetti_alle_olive_taggiasche','vino_bianco'),
 	('tiramisu','savoiardi'),
 	('tiramisu','caffe'),
 	('tiramisu','mascarpone'),
@@ -59,19 +66,19 @@ insert into ingredienti values
 	('tiramisu','zucchero'),
 	('tiramisu','uovo'),
 	('melanzane_grigliate','melanzane'),
-	('melanzane_grigliate','olio'),
+	('melanzane_grigliate','olio_extravergine'),
 	('melanzane_grigliate','pangrattato'),
 	('crystal_bread','kuzu'),
-	('crystal_bread','fecola di patate'),
-	('crystal_bread','scaglie di tartufo'),
+	('crystal_bread','fecola_di_patate'),
+	('crystal_bread','scaglie_di_tartufo'),
 	('pasta_alla_norma','pasta'),
-	('pasta_alla_norma','passata di pomodoro'),
+	('pasta_alla_norma','passata_di_pomodoro'),
 	('pasta_alla_norma','melanzane'),
-	('pasta_alla_norma','ricotta salata'),
+	('pasta_alla_norma','ricotta_salata'),
 	('pasta_alla_norma','pomodoro'),
 	('pizzette_di_zucchine','zucchine'),
 	('pizzette_di_zucchine','fiordilatte'),
-	('pizzette_di_zucchine','passata di pomodoro'),
+	('pizzette_di_zucchine','passata_di_pomodoro'),
 	('pizzette_di_zucchine','origano'),
 	('rotolo_panna_e_fragole','uova'),
 	('rotolo_panna_e_fragole','farina'),
@@ -93,7 +100,7 @@ insert into ingredienti values
 	('baccala_alla_vicentina','prezzemolo'),
 	('baccala_alla_vicentina','baccala'),
 	('baccala_alla_vicentina','caviale'),
-	('baccala_alla_vicentina','olio'),
+	('baccala_alla_vicentina','olio_extravergine'),
 	('piadina_romagnola_casareccia','farina'),
 	('piadina_romagnola_casareccia','burro'),
 	('piadina_romagnola_casareccia','bicarbonato');
@@ -113,7 +120,7 @@ insert into ricetta values
 	('straccetti_alle_olive_taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
 	('melanzane_grigliate',30,'contorno',2,false,true,true,true,false,'melanzzzane'),
 	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di'),
-	('crystal bread',60,'antipasto',3,false,true,true,true,true,'Miscelare tutti gli ingredienti in una casseruola, fino a stemperarli. Mettere sul fuoco, lasciare che spicchi il bollore e il composto si addensi, mescolando ininterrottamente. Con l’aiuto di una spatola per pasticceria versare il composto in stampi quadrati da forno. Pesare 36 g per stampo. Introdurre nel forno preriscaldato a 160 C e cuocere per un’ora. In caso di forno ventilato, dimezzare la potenza. Dopo un’ora abbassare la temperatura a 120°C e lasciare cuocere per altri 60 minuti. Quando i “pani” saranno pronti, sformare delicatamente e spennellare di olio di girasole. Infine, per il topping grattiamo un po’ di tartufo nero sopra ogni pane di cristallo.'),
+	('crystal_bread',60,'antipasto',3,false,true,true,true,true,'Miscelare tutti gli ingredienti in una casseruola, fino a stemperarli. Mettere sul fuoco, lasciare che spicchi il bollore e il composto si addensi, mescolando ininterrottamente. Con l’aiuto di una spatola per pasticceria versare il composto in stampi quadrati da forno. Pesare 36 g per stampo. Introdurre nel forno preriscaldato a 160 C e cuocere per un’ora. In caso di forno ventilato, dimezzare la potenza. Dopo un’ora abbassare la temperatura a 120°C e lasciare cuocere per altri 60 minuti. Quando i “pani” saranno pronti, sformare delicatamente e spennellare di olio di girasole. Infine, per il topping grattiamo un po’ di tartufo nero sopra ogni pane di cristallo.'),
 	('pasta_alla_norma',45,'primo',3,false,false,false,false,false,'descrizione'),
 	('pizzette_di_zucchine',20,'antipasto',1,false,true,true,false,false,'descrizione'),
 	('rotolo_panna_e_fragole',40,'dolce',2,false,false,false,false,false,'descrizione'),
@@ -123,7 +130,7 @@ insert into ricetta values
 	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'descrizione');
 
 --utenti
-create table utenti (
+create table if not exists utenti (
 	username varchar(30),
 	nome varchar(30),
 	cognome varchar(30),
@@ -133,7 +140,7 @@ create table utenti (
 );
 
 --preferiti
-create table preferiti(
+create table if not exists preferiti(
 	username varchar(30),
 	ricetta varchar(50)
 );
@@ -144,7 +151,7 @@ insert into utenti values
 ('rambi','alessio','lavore','123',true,true);
 
 
-create table filtri(
+create table if not exists filtri(
 	flagpiccante bool,
 	flagglut bool,
 	flagstar bool,
