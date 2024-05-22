@@ -4,10 +4,16 @@ profilazione(ricette preferiti,gusti non graditi/intolleranze da vedere)
 feature aggiungere ricette?
 tema chiaro/scuro?
 
-piatti natalizi
+piatti natalizi/festivi
+
 link al ricettario con filtro primo,secondo...
+
 curiosita
+
 ricette consigliate
+
 chef famosi
+
 notizie
+
 seguici
