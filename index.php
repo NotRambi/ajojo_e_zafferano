@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="librerie/style/swiper-bundle.min.css">
         <!-- Swiper JS -->
         <script src="librerie/script/swiper-bundle.min.js"></script>
+        <!-- head per fogli -->
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./script.js" defer></script>
 
         <title>Ajojo & Zafferano</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
@@ -152,6 +155,28 @@
             .title-section{
                 text-align: left;
                 margin-left: 1rem;
+            }
+            .ajojotitolo{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 600%;
+            }
+            .ajojodesc{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 300%;
+            }
+            .linea1{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                height: 10px;
+                max-width: 30%; /* da decidere la larghezza giusta*/
+                background: #222;
+                margin: 20px auto;
             }
 
             /* SLIDER */
@@ -512,9 +537,18 @@
             echo "<script>document.getElementById('loginBtn').style.display = 'block';</script>";
         }
         ?>
+        
 
+        
+        <br><br>
+        <p class="ajojotitolo">𝓐𝓙𝓞𝓙𝓞 & 𝓩𝓐𝓕𝓕𝓔𝓡𝓐𝓝𝓞</p>
+        <p class="ajojodesc">𝑳𝒂 𝑺𝒆𝒎𝒑𝒍𝒊𝒄𝒊𝒕𝒂' 𝒅𝒆𝒍 𝑪𝒐𝒎𝒑𝒍𝒆𝒔𝒔𝒐</p>
+        <br>
+        <hr class="linea1">
+        <br>
+        <p class="ajojodesc">𝑺𝒄𝒐𝒑𝒓𝒊 𝒕𝒖𝒕𝒕𝒐 𝒄𝒊𝒐' 𝒄𝒉𝒆 𝑨𝒃𝒃𝒊𝒂𝒎𝒐 𝒅𝒂 𝑶𝒇𝒇𝒓𝒊𝒓𝒕𝒊</p>
 
-
+        
 
         <br><br><br>
         <h1 class="title-section">Piatti Consigliati</h1>
@@ -1162,7 +1196,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
