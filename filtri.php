@@ -17,12 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case "flagVegan":
             $_SESSION['flagvegan']=$_POST["flagVegan"];
             break;
+        case "flagPortata":
+            $_SESSION['portata']=$_POST["portata"];
+            break;
         case "reset":
             $_SESSION['flagpiccante']='t';
             $_SESSION['flagglut']='t';
             $_SESSION['flagstar']='t';
             $_SESSION['flaglite']='t';
-            $_SESSION['flagvegan']='t';            
+            $_SESSION['flagvegan']='t';     
+            $_SESSION['portata']='seleziona';   
             break;
     }
 

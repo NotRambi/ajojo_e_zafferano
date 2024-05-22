@@ -439,6 +439,36 @@
                 opacity: 0;
             }
         }
+        /* tendina filtro portata */
+        .tendina {
+            position: relative;
+            display: inline-block;
+        }
+        .tendina-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .tendina-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .tendina-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .tendina:hover .tendina-content {
+            display: block;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
     
 </head>
@@ -476,7 +506,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -488,6 +518,8 @@
             $_SESSION['flagstar']='t';
         if(!isset($_SESSION['flagvegan']))
             $_SESSION['flagvegan']='t';
+        if(!isset($_SESSION['portata']))
+            $_SESSION['portata']='seleziona';
     ?>
     
     <button name="flagPiccante" id="flagPiccante" value="<?php if($_SESSION['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
@@ -495,7 +527,20 @@
     <button name="flagLeggero" id="flagLeggero" value="<?php if($_SESSION['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
     <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
     <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
+    <div class="tendina">
+        <button id="tendinaButton"><?php echo $_SESSION['portata']; ?></button>
+        <div class="tendina-content">
+            <a onclick="selezionaPortata('antipasto')">Antipasto</a>
+            <a onclick="selezionaPortata('primo')">Primo</a>
+            <a onclick="selezionaPortata('secondo')">Secondo</a>
+            <a onclick="selezionaPortata('contorno')">Contorno</a>
+            <a onclick="selezionaPortata('dolce')">Dolce</a>
+        </div>
+    </div>
     <button name="reset" id="reset" value="0" class="butFiltro"> resetta filtri </button>
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Cerca ricette...">
+    </div>
 
 
     <!--Modal ad apparizione dei tasti login e signin-->
@@ -641,6 +686,7 @@
     if($_SESSION['flaglite']=='t') $lite="true"; else $lite="false";
     if($_SESSION['flagvegan']=='t') $flagvegan="true"; else $flagvegan="false";
     if($_SESSION['flagglut']=='t') $gluten="true"; else $gluten="false";
+    $portata=$_SESSION['portata'];
 
     if($piccante=="true")
         echo "<script>
@@ -664,7 +710,6 @@
         ";
     }
     else{//non sono loggato
-
         $postquery=$postquery."
         (a.isvegan or '$flagvegan') and
         (a.isglutenfree or '$gluten') and
@@ -672,9 +717,8 @@
 
 
     }
-    
-
-    
+    if($portata!='seleziona')
+        $postquery=$postquery."(a.tipologia = '$portata') and";
 
     //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
     $postquery=$postquery."
@@ -712,7 +756,7 @@
 
 
     //STAMPO LE RICETTE con tasti preferiti
-    echo "<div class='content'>";
+    echo "<div class='content' id='recipeList'>";
         if($flagVuota) echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
             echo "<div class='recipe-container'>";
         while ($row = pg_fetch_assoc($result)) {
@@ -832,6 +876,34 @@
     ?>
 
     <script>
+        //FUNZIONE TASTO TIPOLOGIA PIATTO
+        function selezionaPortata(portata) {
+            
+            document.getElementById('tendinaButton').textContent = portata;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'filtri.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('buttonclicked=flagPortata&portata=' + encodeURIComponent(portata));
+            location.reload();
+
+        }
+        //FUNZIONE SEARCHBAR DA VEDERE
+        document.getElementById('searchBar').addEventListener('input', function() {
+            
+            let filter = this.value.toLowerCase();
+            let recipes = document.getElementById('recipeList').getElementsByClassName('recipe-div');
+
+            for (let i = 0; i < recipes.length; i++) {
+                let recipe = recipes[i];
+                let text = recipe.textContent || recipe.innerText;
+
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    recipe.style.display = "";
+                } else {
+                    recipe.style.display = "none";
+                }
+            }
+        });
  
         //FUNZIONI BOTTONI
         function fpreferiti(idbottone) {
