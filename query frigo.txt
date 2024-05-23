@@ -5,6 +5,7 @@ drop TABLE if exists filtri;
 drop TABLE if exists utenti;
 drop TABLE if exists preferiti;
 
+
 --creazione table
 create TABLE if not exists ingredienti(ricetta varchar(100),
 						 ingrediente varchar(100));
@@ -20,10 +21,30 @@ create TABLE if not exists ricetta(nomericetta varchar(100) primary key,
 					 isstar boolean,
 					 descrizione varchar(900));
 
---ingredienti
+create TABLE if not exists filtri(
+	flagpiccante bool,
+	flagglut bool,
+	flagstar bool,
+	flaglite bool,
+	flagvegan bool);
+
+create TABLE if not exists utenti (
+	username varchar(30),
+	nome varchar(30),
+	cognome varchar(30),
+	password varchar(30),
+	intgluten bool,
+	isvegan bool);
+
+create TABLE if not exists preferiti(
+	username varchar(30),
+	ricetta varchar(50));
+
+
+--inserimento valori
 insert into ingredienti values 
 	('carbonara','pasta'),
-	('carbonara','uovo'),
+	('carbonara','uova'),
 	('carbonara','guanciale'),
 	('carbonara','pecorino'),
 	('carbonara','pepe'),
@@ -37,6 +58,7 @@ insert into ingredienti values
 	('risotto_alla_milanese','riso'),
 	('risotto_alla_milanese','zafferano'),
 	('risotto_alla_milanese','olio_extravergine'),
+	('risotto_alla_milanese','vino_bianco'),
 	('involtini_zucchine_e_speck','pane_in_cassetta'),
 	('involtini_zucchine_e_speck','speck'),
 	('involtini_zucchine_e_speck','zucchine'),
@@ -64,10 +86,10 @@ insert into ingredienti values
 	('tiramisu','panna'),
 	('tiramisu','cacao'),
 	('tiramisu','zucchero'),
-	('tiramisu','uovo'),
-	('melanzane_grigliate','melanzane'),
-	('melanzane_grigliate','olio_extravergine'),
-	('melanzane_grigliate','pangrattato'),
+	('tiramisu','uova'),
+	('melanzane_gratinate','melanzane'),
+	('melanzane_gratinate','olio_extravergine'),
+	('melanzane_gratinate','pangrattato'),
 	('crystal_bread','kuzu'),
 	('crystal_bread','fecola_di_patate'),
 	('crystal_bread','scaglie_di_tartufo'),
@@ -104,60 +126,30 @@ insert into ingredienti values
 	('piadina_romagnola_casareccia','farina'),
 	('piadina_romagnola_casareccia','burro'),
 	('piadina_romagnola_casareccia','bicarbonato');
-	
-	
-	
---ricetta
+
 insert into ricetta values 
-	('carbonara',30,'primo',2,false,false,false,false,false,'a mejo pasta de roma'),
-	('cacio_e_pepe',30,'primo',2,false,false,false,false,false,'spacca'),
-	('gricia',30,'primo',2,false,false,false,false,false,'spacca ma col guanciale'),
-	('risotto_alla_milanese',40,'primo',2,false,false,true,true,false,'bono'),
-	('involtini_zucchine_e_speck',15,'antipasto',1,false,false,false,true,false,'bella robetta'),
-	('saccottini_di_bresaola',15,'antipasto',2,false,true,false,true,false,'te senti no chef'),
-	('crostini_in_salsa_tonnata',5,'antipasto',1,false,false,false,false,false,'cazzatina bona'),
-	('salti_in_bocca_alla_romana',20,'secondo',2,false,false,false,false,false,'spinto'),
-	('straccetti_alle_olive_taggiasche',20,'secondo',2,false,true,false,true,false,'eeeembe'),
-	('melanzane_grigliate',30,'contorno',2,false,true,true,true,false,'melanzzzane'),
-	('tiramisu',60,'dolce',2,false,false,false,false,false,'che je voi di'),
+	('carbonara',30,'primo',2,false,false,false,false,false,'Sbatti le uova in una ciotola con una buona dose di pecorino grattugiato e una generosa macinata di pepe nero, fino a ottenere una crema omogenea. Taglia il guanciale a strisce e fallo rosolare in una padella senza aggiungere olio, fino a che diventa croccante e rilascia il suo grasso. Nel frattempo, cuoci la pasta in abbondante acqua salata, scolandola al dente, conservando un pò dell acqua di cottura. Trasferisci la pasta nella padella con il guanciale, mescolando bene per far assorbire i sapori, e spegni il fuoco. Versa immediatamente il composto di uova e pecorino sulla pasta, mescolando velocemente per evitare che l uovo si rapprenda e formando una crema avvolgente. Se necessario, aggiungi un pò di acqua di cottura per ottenere la consistenza desiderata.'),
+	('cacio_e_pepe',30,'primo',2,false,false,false,false,false,'Cuocere la pasta in acqua salata, conservando una parte dell acqua di cottura. Nel frattempo, grattugiare il pecorino romano e preparare una generosa quantità di pepe nero macinato fresco. In una padella, tostare leggermente il pepe nero, aggiungendo poi un mestolo di acqua di cottura. Quando la pasta è al dente, trasferirla nella padella con il pepe, mantenendo il fuoco basso. Mescolare velocemente aggiungendo il pecorino e un pò di acqua di cottura per creare una crema. Continuare a mescolare fino a quando il formaggio non si è sciolto completamente, formando una salsa densa e cremosa che avvolge la pasta. Se la salsa risulta troppo densa, aggiungere ancora un pò di acqua di cottura; se troppo liquida, aggiungere altro pecorino.'),
+	('gricia',30,'primo',2,false,false,false,false,false,'Cuocere la pasta in abbondante acqua salata. Nel frattempo, tagliare il guanciale a strisce sottili e farlo rosolare in una padella capiente senza aggiungere olio, fino a renderlo croccante e dorato. Rimuovere il guanciale dalla padella e lasciarlo scolare su carta assorbente, mantenendo il grasso rilasciato nella padella. Scolare la pasta al dente, conservando un pò di acqua di cottura. Trasferire la pasta nella padella con il grasso del guanciale, mescolando bene per farla insaporire. Aggiungere il guanciale croccante e una generosa quantità di pecorino grattugiato, mescolando rapidamente. Se necessario, aggiungere un pò di acqua di cottura per ottenere una consistenza cremosa.'),
+	('risotto_alla_milanese',40,'primo',2,false,false,true,true,false,'Inizia facendo soffriggere una cipolla tritata finemente in olio d oliva fino a quando diventa trasparente. Aggiungi il riso e fallo tostare per qualche minuto, mescolando continuamente per evitare che si attacchi. Versa un bicchiere di vino bianco e lascia evaporare. Aggiungi gradualmente del brodo caldo, un mestolo alla volta, mescolando continuamente e assicurandoti che il riso assorba il liquido prima di aggiungerne dell altro. Sciogli lo zafferano in un pò di brodo e incorporalo al riso a metà cottura. Continua a mescolare e aggiungere brodo fino a quando il riso è al dente. Togli dal fuoco, aggiungi del parmigiano grattugiato, mescolando energicamente per mantecare. Lascia riposare coperto per un paio di minuti prima di servire.'),
+	('involtini_zucchine_e_speck',15,'antipasto',1,false,false,false,true,false,'Lavare le zucchine e tagliarle a fette sottili per il lungo. Scaldare una griglia e grigliare le fette di zucchina su entrambi i lati fino a che non risultano morbide e con le classiche strisce. Lasciare raffreddare le zucchine grigliate. Disporre su ogni fetta di zucchina una fettina di speck e un pò di formaggio a pasta molle o una fettina di mozzarella. Aggiungere una foglia di basilico fresco su ciascuna fetta, se si desidera un tocco di freschezza. Arrotolare le fette di zucchina partendo da un estremità e fermare l involtino con uno stuzzicadenti. Disporre gli involtini su un piatto da portata e condirli con un filo di olio d oliva, un pizzico di sale e pepe nero macinato al momento.'),
+	('saccottini_di_bresaola',15,'antipasto',2,false,true,false,true,false,'Taglia la bresaola in piccoli rettangoli. Mescola la ricotta con le noci tritate finemente. Aggiungi un pò di miele alla miscela e amalgama bene il tutto. Prendi un rettangolo di bresaola e metti un cucchiaino di ripieno al centro. Chiudi il rettangolo su se stesso, formando un saccottino. Ripeti con gli altri rettangoli. Disponi i saccottini su un piatto da portata. Completa con una leggera spruzzata di miele sopra. Servi e goditi questa deliziosa prelibatezza.'),
+	('crostini_in_salsa_tonnata',5,'antipasto',1,false,false,false,false,false,'Sgocciola il tonno e sbriciolalo con una forchetta. In una ciotola, mescola il tonno con la maionese e il mascarpone fino a ottenere una consistenza cremosa. Distribuisci uniformemente il composto di tonno sui crostini. Servi i crostini guarnendo con foglioline di prezzemolo o una spruzzata di pepe nero macinato fresco, se preferisci.'),
+	('salti_in_bocca_alla_romana',20,'secondo',2,false,false,false,false,false,'Taglia le fettine di vitello sottili. Disponi una fetta di prosciutto crudo su ciascuna. Aggiungi una foglia di salvia su ogni fetta. Copri con un altra fetta di vitello. Infarina leggermente le fettine. Scalda un pò di olio in una padella. Adagia le fettine nella padella calda. Cuoci finché sono dorate da entrambi i lati. Sfuma con un pò di vino bianco. Lascia evaporare l alcol. Servi caldo.'),
+	('straccetti_alle_olive_taggiasche',20,'secondo',2,false,true,false,true,false,'Taglia gli straccetti di manzo in pezzi sottili. Scalda dell olio in una padella e rosola gli straccetti finché dorati. Aggiungi le olive taggiasche e fai saltare per un paio di minuti. Versa un pò di vino bianco e lascia sfumare. Aggiungi foglie di basilico fresco e mescola bene. Lascia cuocere a fuoco medio fino a quando la salsa si addensa leggermente. Servi gli straccetti caldi, guarnendo con basilico fresco se lo desideri. Buon appetito!'),
+	('melanzane_gratinate',30,'contorno',2,false,true,true,true,false,'Taglia le melanzane a fette spesse, spargi olio su entrambi i lati. Disponile su una teglia e cuoci fino a doratura. In una ciotola, mescola pangrattato con olio fino a ottenere una consistenza sabbiosa. Quando le melanzane sono pronte, cospargile con il pangrattato. Passa sotto il grill finché il pangrattato non diventa dorato e croccante. Servi calde e gustale!'),
+	('tiramisu',60,'dolce',2,false,false,false,false,false,'Sbatti le uova con lo zucchero fino a ottenere un composto spumoso. Aggiungi il mascarpone e mescola fino a ottenere una crema liscia. Monta la panna e incorporala delicatamente al composto di uova e mascarpone. Prepara il caffè e lascialo raffreddare. Immergi rapidamente i savoiardi nel caffè e disponili in uno strato nella teglia. Copri con metà della crema al mascarpone. Ripeti con un altro strato di savoiardi inzuppati e completa con il resto della crema. Livella la superficie e lascia riposare in frigo per almeno 4 ore. Prima di servire, spolvera con cacao amaro.'),
 	('crystal_bread',60,'antipasto',3,false,true,true,true,true,'Miscelare tutti gli ingredienti in una casseruola, fino a stemperarli. Mettere sul fuoco, lasciare che spicchi il bollore e il composto si addensi, mescolando ininterrottamente. Con l’aiuto di una spatola per pasticceria versare il composto in stampi quadrati da forno. Pesare 36 g per stampo. Introdurre nel forno preriscaldato a 160 C e cuocere per un’ora. In caso di forno ventilato, dimezzare la potenza. Dopo un’ora abbassare la temperatura a 120°C e lasciare cuocere per altri 60 minuti. Quando i “pani” saranno pronti, sformare delicatamente e spennellare di olio di girasole. Infine, per il topping grattiamo un po’ di tartufo nero sopra ogni pane di cristallo.'),
-	('pasta_alla_norma',45,'primo',3,false,false,false,false,false,'descrizione'),
-	('pizzette_di_zucchine',20,'antipasto',1,false,true,true,false,false,'descrizione'),
-	('rotolo_panna_e_fragole',40,'dolce',2,false,false,false,false,false,'descrizione'),
-	('pollo_al_curry',50,'secondo',2,true,false,false,false,false,'descrizione'),
-	('gnocchi_salsiccia_e_tartufo',30,'primo',1,false,false,false,false,false,'descrizione'),
-	('baccala_alla_vicentina',30,'secondo',3,false,true,false,true,true,'descrizione'),
-	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'descrizione');
-
---utenti
-create table if not exists utenti (
-	username varchar(30),
-	nome varchar(30),
-	cognome varchar(30),
-	password varchar(30),
-	intgluten bool,
-	isvegan bool
-);
-
---preferiti
-create table if not exists preferiti(
-	username varchar(30),
-	ricetta varchar(50)
-);
-
+	('pasta_alla_norma',45,'primo',3,false,false,false,false,false,'Taglia le melanzane a cubetti e lasciale scolare con sale. In una padella, rosola aglio in olio, aggiungi le melanzane. Aggiungi passata di pomodoro e cuoci. Cuoci la pasta al dente. Scolala e mantieni un pò di acqua. Unisci la pasta al sugo di melanzane. Mescola bene. Aggiungi ricotta salata grattugiata e mescola. Aggiusta di sale se necessario. Servi con pomodoro fresco a dadini. Buon appetito!'),
+	('pizzette_di_zucchine',20,'antipasto',1,false,true,true,false,false,'Taglia le zucchine a rondelle sottili. Rosolale in padella con olio fino a doratura. Stendi la pasta per pizza. Spalma la passata di pomodoro uniformemente sulla base. Distribuisci le rondelle di zucchine sulla passata. Aggiungi il fiordilatte a pezzetti. Spolvera con origano a piacere. Cuoci nel forno preriscaldato fino a doratura. Taglia le pizzette e servile calde.'),
+	('rotolo_panna_e_fragole',40,'dolce',2,false,false,false,false,false,'Sbatti le uova con lo zucchero fino a ottenere un composto spumoso. Aggiungi la farina setacciata, mescolando delicatamente. Versa il composto su una teglia ricoperta di carta da forno e cuoci in forno preriscaldato. Una volta cotto, sforma il pan di spagna e lascialo raffreddare. Monta la panna con lo zucchero fino a ottenere una consistenza ferma. Distribuisci uniformemente la panna sulla superficie del pan di spagna. Taglia le fragole a fette e distribuiscile sulla panna. Arrotola il tutto con delicatezza. Lascia riposare in frigorifero per almeno un ora prima di servire.'),
+	('pollo_al_curry',50,'secondo',2,true,false,false,false,false,'Taglia il pollo a pezzi. Passalo nella farina. Scuotilo per togliere l eccesso. In una padella, scalda dell olio. Aggiungi il pollo e falli dorare da entrambi i lati. Togli il pollo dalla padella e mettilo da parte. Nella stessa padella, aggiungi il curry in polvere. Mescola finché non si sviluppa un profumo. Aggiungi il latte. Mescola bene. Metti di nuovo il pollo nella padella. Lascialo cuocere fino a quando il pollo è cotto e la salsa è densa. Servi caldo.'),
+	('gnocchi_salsiccia_e_tartufo',30,'primo',1,false,false,false,false,false,'Taglia la salsiccia a pezzetti e falla rosolare in una padella. Aggiungi panna e tartufo tritato, lascia insaporire. Cuoci gli gnocchi in acqua salata fino a che non vengono a galla. Scola gli gnocchi e aggiungili alla salsa. Mescola bene. Aggiungi parmigiano grattugiato e manteca il tutto fino a ottenere una consistenza cremosa. Servi caldo, guarnendo con tartufo fresco e una spolverata di parmigiano. Buon appetito!'),
+	('baccala_alla_vicentina',30,'secondo',3,false,true,false,true,true,'Taglia sedano, carote e cipolla a dadini fini. Trita il prezzemolo. Rosola le verdure in olio fino a doratura. Aggiungi il baccalà tagliato a pezzi, copri con acqua e cuoci a fuoco lento. Scola il baccalà e sminuzzalo. Tosta il caviale in olio, unisci al baccalà. Versa il composto in una teglia, cospargi con il sugo di cottura e cuoci in forno.'),
+	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'Mescola farina e bicarbonato in una ciotola ampia. Aggiungi burro a temperatura ambiente. Lavora gli ingredienti con le mani fino a ottenere un composto sbriciolato. Versa acqua tiepida gradualmente. Continua a impastare fino a formare un impasto morbido e omogeneo. Dividi l impasto in palline delle dimensioni desiderate. Stendi ogni pallina con un mattarello fino a ottenere una sfoglia sottile. Scalda una padella antiaderente. Cuoci le piadine finché non si formano bolle. Girale e cuoci dall altro lato finché non saranno dorati. Servi calde, farcite a piacere. Buon appetito!');
 
 insert into utenti values
 ('fortigate','federico','anga','abc',false,false),
 ('rambi','alessio','lavore','123',true,true);
-
-
-create table if not exists filtri(
-	flagpiccante bool,
-	flagglut bool,
-	flagstar bool,
-	flaglite bool,
-	flagvegan bool
-);
-
 
 insert into filtri values (true,true,true,true,true);
