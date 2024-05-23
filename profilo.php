@@ -17,6 +17,7 @@
     }
     body{
         background-color: #f8fadd;
+        min-height: 600px;
     }
     .logoDiv{
         align-items: center;

@@ -73,7 +73,7 @@
         transition: all 0.2s;
     }
     .nav a:not(.MainLogo){
-        padding:0.8rem 0;
+        padding:1.2rem 0;
     }
     .nav a:not(.MainLogo):hover{
         text-decoration: underline; 
@@ -123,6 +123,7 @@
         position: relative;
         left:-5rem;
         transition: all 0.5s;
+        pointer-events: none;
     }
     .logo_title p{
         display: flex;

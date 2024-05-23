@@ -55,7 +55,7 @@
             transition: all 0.2s;
         }
         .nav a:not(.MainLogo){
-            padding:0.8rem 0;
+            padding:1.2rem 0;
         }
         .nav a:not(.MainLogo):hover{
             text-decoration: underline; 
@@ -70,7 +70,7 @@
                 transition: all 0.5s;
             }
             .logo_title {
-                left:0rem;
+                left:0;
                 color: white;
                 transition: all 0.5s;
             }
@@ -105,6 +105,7 @@
             position: relative;
             left:-5rem;
             transition: all 0.5s;
+            pointer-events: none;
         }
         .logo_title p{
             display: flex;
@@ -137,10 +138,11 @@
         }
         .recipe-container{
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: max-content max-content max-content;
             gap: 1rem;
+            justify-content: center;
             place-items: center;
-            max-width: 1300px;
+            max-width: 1700px;
             margin: 0 auto;
         }
         .recipe-div{
@@ -1165,12 +1167,14 @@
     function adapt_size_recipe(){
         var windowsize = window.outerWidth;
         var RecipeContainer = document.querySelector('.recipe-container');
-        if(windowsize >= 1150){
-            RecipeContainer.style.gridTemplateColumns= "1fr 1fr";
+        if(windowsize >= 1750){
+            RecipeContainer.style.gridTemplateColumns= "max-content max-content max-content";
         }
-        else if(windowsize < 1150 && windowsize >= 0){
-            RecipeContainer.style.gridTemplateColumns= "1fr";
-
+        else if(windowsize >= 1200 && windowsize < 1750){
+            RecipeContainer.style.gridTemplateColumns= "max-content max-content";
+        }
+        else if(windowsize < 1200 && windowsize >= 0){
+            RecipeContainer.style.gridTemplateColumns= "max-content";
         }
     }
 
