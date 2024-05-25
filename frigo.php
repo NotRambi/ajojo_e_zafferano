@@ -2,341 +2,347 @@
 <html lang="it">
 <?php session_start();?>    
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <title>Ajojo & Zafferano</title>
-  <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>Ajojo & Zafferano</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
 
-  <style>
-    *{
-        font-family: "Poppins", sans-serif;
-    }
-    body{
-        background-color: #f8fadd;
-        min-height: 100vh;
-        min-width: 582px;
-    }
-    .descrizione-div{
-        text-align: center;
-        margin: 0px 20px;
-        font-size: 20px;
-    }
-    .descrizione-div h2{
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-    }
-    .descrizione-div p{
-        margin: 0;
-    }
-    .body2 {
-        padding: 30px;
-        font-size: 20px;
-        margin: 0;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* stili nav */
-    .navbgr{
-        background-color: #f8fadd;
-        height: 5rem;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10;
-    }
-    .nav{
-        background-color: #333;
-        height: 4.5rem;
-        width: 98%;
-        position: relative;
-        top: 1rem;
-        left: 1%;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        border-radius: 10px;
-        gap: 1.5rem;
-    }
-    .nav a{
-        font-weight: 500;
-        font-style: normal;
-        font-size: 30px;
-        position: relative;
-        border-radius: 10px;
-        color: white;
-        text-decoration: none;
-        transition: all 0.2s;
-    }
-    .nav a:not(.MainLogo){
-        padding:1.2rem 0;
-    }
-    .nav a:not(.MainLogo):hover{
-        text-decoration: underline; 
-        scale: 1.1;
-        transition: all 0.5s;
-    }
-    .nav a:is(.MainLogo):hover{
-        margin-right: 1.5rem;
-        transition: all 0.5s;
-        .logo_img{
-            scale: 0.8;
-            transition: all 0.5s;
+    <style>
+        *{
+            font-family: "Poppins", sans-serif;
         }
-        .logo_title {
-            left:0rem;
-            color: white;
-            transition: all 0.5s;
+        body{
+            background-color: #f8fadd;
+            min-height: 100vh;
+            min-width: 582px;
         }
-        .logo_title p{
+        .descrizione-div{
+            text-align: center;
+            margin: 0px 20px;
+            font-size: 20px;
+        }
+        .descrizione-div h2{
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        .descrizione-div p{
+            margin: 0;
+        }
+        .body2 {
+            padding: 30px;
+            font-size: 20px;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* stili nav */
+        .navbgr{
+            background-color: #f8fadd;
+            height: 5rem;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .nav{
+            background-color: #333;
+            height: 4.5rem;
+            width: 98%;
+            position: relative;
+            top: 1rem;
+            left: 1%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            gap: 1.5rem;
+        }
+        .nav a{
+            font-weight: 500;
+            font-style: normal;
+            font-size: 30px;
+            position: relative;
+            border-radius: 10px;
             color: white;
+            text-decoration: none;
             transition: all 0.2s;
         }
-    }
-    .nav a:is(.FrigoLink){
-      text-decoration: underline; 
-    }
-    .ProfiloLink{
-        margin-left: auto;
-        margin-right: 1.5rem;
-    }
-    .MainLogo{
-        margin-left: 1rem;
-        margin-right: -6.5rem;
-        display: flex;
-        gap:0.2rem;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.5s;
-    }
-    .logo_img{
-        z-index: 2;
-        width: 70px;
-        height: 70px;
-        transition: all 0.5s;
-    }
-    .logo_title{
-        position: relative;
-        left:-5rem;
-        transition: all 0.5s;
-        pointer-events: none;
-    }
-    .logo_title p{
-        display: flex;
-        flex-direction: column;
-        gap: 0rem;
-        margin:0;
-        margin-right: 1rem;   
-        padding:0;
-        top:0;
-        bottom:0;
-        font-size: 20px;
-        position: relative;
-        color:#333;
-        transition: all 0.2s;
-    }
-    .logo_title .ajojo_{
-        top:0.3rem
-    }
-    .logo_title .zafferano_{
-        top: -0.3rem;
-        left: 1.5rem;
-    }
-
-    /* stili form */
-    #myForm {
-      background-color: #fff;
-      border: 2px solid #333;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .input-group {
-      margin-bottom: 10px;
-    }
-    .formLabel {
-      font-weight: bold;
-      font-size:25px;
-    }
-    .formInput{
-      width: 300px;
-      padding: 5px;
-      border: 2px solid #bbb;
-      border-radius: 10px;
-      font-size:15px;
-    }
-    .formError{
-      color: red; 
-      font-size: 15px;
-    }
-    .formBtn {
-      background-color: #ed6700;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-right: 10px;
-      transition: all 0.3s ease;
-    }
-    .formBtn:hover {
-      background-color: #ed4f00;
-      transition: all 0.3s ease;
-    }
-
-    /* stili modal */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 11;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-    .form {
-        margin: 15% auto;
-        margin-top: 0%;
-        top: 15%;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        max-width: 400px;
-        padding: 20px;
-        border-radius: 20px;
-        position: relative;
-        background-color: #e8e8e8;
-        color: #fff;
-        border: 5px solid #111;
-    }
-    .title {
-        font-size: 28px;
-        font-weight: 600;
-        letter-spacing: -1px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding-left: 30px;
-        color: #ed6700;
-    }
-    .title::before {
-        width: 18px;
-        height: 18px;
-    }
-    .title::after {
-        width: 18px;
-        height: 18px;
-        animation: pulse 1s linear infinite;
-    }
-    .title::before,
-    .title::after {
-        position: absolute;
-        content: "";
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        left: 0px;
-        background-color: #ed6700;
-    }
-    .errorLabelLogin{
-        display: none;
-        color: #ed4f00;
-        margin:0;
-    } 
-    .errorLabelSignin{
-        display: none;
-        color: #ed4f00;
-        margin:0;
-    }
-    .message, 
-    .signin {
-        font-size: 14.5px;
-        color: #333;
-    }
-    .signin {
-        text-align: center;
-    }
-    .signin a {
-        color: #ed6700;
-        text-decoration: none;
-    }
-    .signin a:hover {
-        text-decoration: underline;
-    }
-    .flex {
-        display: flex;
-        width: 97.5%;
-        gap: 20px;
-    }
-    .form label {
-        position: relative;
-    }
-    .form label .input {
-        background-color: #fff;
-        color: #333;
-        width: 95%;
-        padding: 20px 05px 05px 10px;
-        outline: 0;
-        border: 1px solid rgba(105, 105, 105, 0.397);
-        border-radius: 10px;
-    }
-    .form label .input + span {
-        color: #333;
-        position: absolute;
-        left: 10px;
-        top: 0px;
-        font-size: 0.9em;
-        cursor: text;
-        transition: 0.3s ease;
-    }
-    .form label .input:placeholder-shown + span {
-        top: 12.5px;
-        font-size: 0.9em;
-    }
-    .form label .input:focus + span,
-    .form label .input:valid + span {
-        color: #ed6700;
-        top: 0px;
-        font-size: 0.7em;
-        font-weight: 600;
-    }
-    .input {
-        font-size: medium;
-    }
-    .submit {
-        border: none;
-        outline: none;
-        padding: 10px;
-        border-radius: 10px;
-        color: #fff;
-        font-size: 16px;
-        transform: .3s ease;
-        background-color: #ed6700;
-        transition: all 0.3s ease;
-    }
-    .submit:hover {
-        background-color: #ed4f00;
-        transition: all 0.3s ease;
-    }
-    @keyframes pulse {
-        from {
-            transform: scale(0.9);
-            opacity: 1;
+        .nav a:not(.MainLogo){
+            padding:1.2rem 0;
         }
-        to {
-            transform: scale(1.8);
-            opacity: 0;
+        .nav a:not(.MainLogo):hover{
+            text-decoration: underline; 
+            scale: 1.1;
+            transition: all 0.5s;
         }
-    }
+        .nav a:is(.MainLogo):hover{
+            margin-right: 1.5rem;
+            transition: all 0.5s;
+            .logo_img{
+                scale: 0.8;
+                transition: all 0.5s;
+            }
+            .logo_title {
+                left:0rem;
+                color: white;
+                transition: all 0.5s;
+            }
+            .logo_title p{
+                color: white;
+                transition: all 0.2s;
+            }
+        }
+        .nav a:is(.FrigoLink){
+        text-decoration: underline; 
+        }
+        .ProfiloLink{
+            margin-left: auto;
+            margin-right: 1.5rem;
+        }
+        .MainLogo{
+            margin-left: 1rem;
+            margin-right: -6.5rem;
+            display: flex;
+            gap:0.2rem;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s;
+        }
+        .logo_img{
+            z-index: 2;
+            width: 70px;
+            height: 70px;
+            transition: all 0.5s;
+        }
+        .logo_title{
+            position: relative;
+            left:-5rem;
+            transition: all 0.5s;
+            pointer-events: none;
+        }
+        .logo_title p{
+            display: flex;
+            flex-direction: column;
+            gap: 0rem;
+            margin:0;
+            margin-right: 1rem;   
+            padding:0;
+            top:0;
+            bottom:0;
+            font-size: 20px;
+            position: relative;
+            color:#333;
+            transition: all 0.2s;
+        }
+        .logo_title .ajojo_{
+            top:0.3rem
+        }
+        .logo_title .zafferano_{
+            top: -0.3rem;
+            left: 1.5rem;
+        }
 
-  </style>
+        /* stili form */
+        #myForm {
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .formLabel {
+            font-weight: bold;
+            font-size:25px;
+            display: flex;
+            align-items: center;
+            gap:0.5rem;
+            margin-bottom:0;
+        }
+        .formInput{
+            width: 300px;
+            padding: 5px;
+            border: 2px solid #bbb;
+            border-radius: 10px;
+            font-size:15px;
+        }
+        .formError{
+            color: red; 
+            font-size: 15px;
+        }
+        .formBtn {
+            background-color: #ed6700;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        .formBtn:hover {
+            background-color: #ed4f00;
+            transition: all 0.3s ease;
+        }
+
+        /* stili modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 11;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .form {
+            margin: 15% auto;
+            margin-top: 0%;
+            top: 15%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            background-color: #e8e8e8;
+            color: #fff;
+            border: 5px solid #111;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            color: #ed6700;
+        }
+        .title::before {
+            width: 18px;
+            height: 18px;
+        }
+        .title::after {
+            width: 18px;
+            height: 18px;
+            animation: pulse 1s linear infinite;
+        }
+        .title::before,
+        .title::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: #ed6700;
+        }
+        .errorLabelLogin{
+            display: none;
+            color: #ed4f00;
+            margin:0;
+        } 
+        .errorLabelSignin{
+            display: none;
+            color: #ed4f00;
+            margin:0;
+        }
+        .message, 
+        .signin {
+            font-size: 14.5px;
+            color: #333;
+        }
+        .signin {
+            text-align: center;
+        }
+        .signin a {
+            color: #ed6700;
+            text-decoration: none;
+        }
+        .signin a:hover {
+            text-decoration: underline;
+        }
+        .flex {
+            display: flex;
+            width: 97.5%;
+            gap: 20px;
+        }
+        .form label {
+            position: relative;
+        }
+        .form label .input {
+            background-color: #fff;
+            color: #333;
+            width: 95%;
+            padding: 20px 05px 05px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+        .form label .input + span {
+            color: #333;
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            font-size: 0.9em;
+            cursor: text;
+            transition: 0.3s ease;
+        }
+        .form label .input:placeholder-shown + span {
+            top: 12.5px;
+            font-size: 0.9em;
+        }
+        .form label .input:focus + span,
+        .form label .input:valid + span {
+            color: #ed6700;
+            top: 0px;
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+        .input {
+            font-size: medium;
+        }
+        .submit {
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transform: .3s ease;
+            background-color: #ed6700;
+            transition: all 0.3s ease;
+        }
+        .submit:hover {
+            background-color: #ed4f00;
+            transition: all 0.3s ease;
+        }
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+            to {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+    </style>
 </head>
 <body>
 
@@ -398,7 +404,8 @@
     <form id="myForm" onsubmit="return controllaCampionSubmit()" onchange="return validaInput()"  action="ricettario.php" method="post">
         <input type="hidden" name="frigo" value="true">
             <div class="input-group">
-                <label class="formLabel">Ingredienti</label><br><br>
+                <label class="formLabel">Ingredienti <span class="material-symbols-outlined">kitchen</span></label>
+                <br>
                 <input class="formInput" list="suggerimenti" id="campo1" name="campo1">
                 <div id="errore1" class="formError"></div>
             </div>

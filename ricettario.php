@@ -619,11 +619,11 @@
             </div>
         </div>
         <div class="filtri-container">
-            <button name="flagPiccante" id="flagPiccante" value="<?php if($_SESSION['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn"> piccante </button>
-            <button name="flagGlutine" id="flagGlutine" value="<?php if($_SESSION['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> glutine </button>
-            <button name="flagLeggero" id="flagLeggero" value="<?php if($_SESSION['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> leggero </button>
-            <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> stella </button>
-            <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro"> vegano </button>
+            <button name="flagPiccante" id="flagPiccante" value="<?php if($_SESSION['flagpiccante']=='t') echo 'true'; else echo 'false';?>" class="butFiltro firstBtn">piccante</button>
+            <button name="flagGlutine" id="flagGlutine" value="<?php if($_SESSION['flagglut']=='t') echo 'true'; else echo 'false';?>" class="butFiltro">no glutine</button>
+            <button name="flagLeggero" id="flagLeggero" value="<?php if($_SESSION['flaglite']=='t') echo 'true'; else echo 'false';?>" class="butFiltro">leggero</button>
+            <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro">stellato</button>
+            <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro">vegano</button>
         </div>
         
         
@@ -960,7 +960,7 @@
                                                             exercise
                                                         </span>
                                                         <span class='material-symbols-outlined' id='".$row['nomericetta']."stellato'>
-                                                        <a><img width='20px' alt='MichelinStar' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/MichelinStar.svg/512px-MichelinStar.svg.png?20200806093601'></a>
+                                                            filter_vintage
                                                         </span>
                                                         <span class='material-symbols-outlined' id='".$row['nomericetta']."vegan'>
                                                             eco
