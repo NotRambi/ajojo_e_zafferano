@@ -25,6 +25,92 @@
                 background-color: #f8fadd;
                 min-height: 100vh;
                 min-width: 582px;
+                margin: 0;
+                padding: 0;
+            }
+            .ajojotitolo{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 600%;
+                margin: 0;
+                padding: 0;
+            }
+            @media (max-width: 1250px){
+                .ajojotitolo{
+                    font-size: 400%;
+                }
+            }
+            @media (max-width: 840px){
+                .ajojotitolo{
+                    font-size: 300%;
+                }
+            }
+            @media (max-width: 640px){
+                .ajojotitolo{
+                    font-size: 250%;
+                }
+            }
+            .ajojodesc{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 300%;
+                margin: 0;
+                padding: 0;
+            }
+            @media (max-width: 1250px){
+                .ajojodesc{
+                    font-size: 200%;
+                }
+            }
+            @media (max-width: 840px){
+                .ajojodesc{
+                    font-size: 150%;
+                }
+                
+            }
+            .ajojodescmin{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 200%;
+                margin: 0;
+                padding: 0;
+            }
+            @media (max-width: 1000px){
+                .ajojodescmin{
+                    font-size: 150%;
+                }
+            }
+            @media (max-width: 640px){
+                .ajojodescmin{
+                    font-size: 120%;
+                }
+            }
+            .ajojoconsigliati{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 300%;
+                margin: 0;
+                padding: 0;
+            }
+            @media (max-width: 1000px){
+                .ajojoconsigliati{
+                    font-size: 200%;
+                }
+            }
+            .background-div{
+                background-color: rgb(254, 244, 200);
+                width: 100%;
+                margin-left: 0;
+                left: 0;
+            }
+            .background-chiaro{
+                width: 100%;
+                margin-left: 0;
+                left: 0;
             }
             .material-symbols-outlined {
                 font-variation-settings:
@@ -154,26 +240,24 @@
                 text-align: left;
                 margin-left: 1rem;
             }
-            .ajojotitolo{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 600%;
-            }
-            .ajojodesc{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 300%;
-            }
             .linea1{
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border: none;
-                height: 10px;
-                max-width: 30%; /* da decidere la larghezza giusta*/
-                background: #222;
+                height: 8px;
+                max-width: 55%; /* da decidere la larghezza giusta*/
+                background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+                margin: 20px auto;
+            }
+            .linea2{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                height: 5px;
+                max-width: 40%; /* da decidere la larghezza giusta*/
+                background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
                 margin: 20px auto;
             }
 
@@ -221,7 +305,7 @@
                 height: 365px;
                 border-radius: 5%;
                 background-color: white;
-                border: 4px solid #333;
+                border: 2px solid #333;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -231,7 +315,7 @@
                 height: 215px;
                 border-radius: 5%;
                 background-color: white;
-                border: 3px solid #333;
+                border: 2px solid #333;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -262,14 +346,14 @@
                 width: 100%;
                 object-fit: cover;
                 border-radius: 5%;
-                border: 4px solid #333;
+                border: 2px solid gray;
             }
             .card-image_mini .card-img_mini{
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
                 border-radius: 5%;
-                border: 3px solid #333;
+                border: 2px solid gray;
             }
             .card-content{
                 width: 94%;
@@ -506,17 +590,25 @@
             /* style carte */
             @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
-            *,
-            *::before,
-            *::after {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+            
             img {
                 width: 100%;
                 height: 100%;
                 display: flex;
+            }
+            .titolocarte {
+                font-size: 28px;
+                font-weight: 600;
+                letter-spacing: -1px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                color: orange;
+            }
+            @media (max-width: 800px){
+                .titolocarte{
+                    font-size: 18px;
+                }
             }
             .carte-div{
                 display: flex;
@@ -529,9 +621,16 @@
                 align-items: center;
                 width: 100%;
                 width: 1320px;
-                height: 450px;
-                gap: 10px;
-                margin-inline: 50px;
+                height: 550px;
+                gap: 5px;
+                margin: 1rem;
+                
+                
+            }
+            @media (max-width: 800px){
+                .container-carte{
+                    height: 450px;
+                }
             }
             .carta {
                 min-width: 70px;
@@ -598,17 +697,22 @@
             }
             .profile-image > svg {
                 stroke: #fefefe;
+                color: white;
+            }
+            .profile-image > span{
+                stroke: #fefefe;
+                color: white;
             }
             .carta:hover .profile-image > svg {
                 stroke: rgb(110, 252, 205);
             }
-            .carta-content > .title {
+            .carta-content > .titolocarte {
                 white-space: pre;
-                margin-left: 10px;
+                margin-left: 5px;
                 translate: 0 100%;
                 opacity: 0;
             }
-            .carta:hover .title {
+            .carta:hover .titolocarte {
                 opacity: 1;
                 translate: 0 0;
             }
@@ -617,7 +721,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                height: 100px;
+                height: 200px;
                 z-index: 0;
                 background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
             }
@@ -668,760 +772,594 @@
 
         <br><br><br>
 
+       <!-- codice carte index -->
+
         <div class="carte-div">
             <div class="container-carte">
-                <div class="carta">
+                <div id="scroll1" class="carta">
                     <img class="background" src="./immaginiricette/ajojo_e_peperoncino.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
-                            
+                            <span class="material-symbols-outlined"> menu_book </span>
                         </div>
-                        <h3 class="title">GTA 6</h3>
+                        <h3 class="titolocarte">Ricettario</h3>
                     </div>
                     <div class="backdrop"></div>
                 </div>
 
-                <div class="carta">
+                <div id="scroll2" class="carta">
                     <img class="background" src="./immaginiricette/amatriciana.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-                                <line x1="6" x2="10" y1="11" y2="11" />
-                                <line x1="8" x2="8" y1="9" y2="13" />
-                                <line x1="15" x2="15.01" y1="12" y2="12" />
-                                <line x1="18" x2="18.01" y1="10" y2="10" />
-                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-                            </svg>
+                            <span class="material-symbols-outlined"> restaurant </span>
                         </div>
-                        <h3 class="title">Spider-Man PS5</h3>
+                        <h3 class="titolocarte">Piatti Del Momento</h3>
                     </div>
                     <div class="backdrop"></div>
                 </div>
 
-                <div class="carta">
-                    <img class="background" src="./immaginiricette/cacio_e_pepe.jpg" alt="">
+                <div id="scroll3" class="carta">
+                    <img class="background" src="./immaginiricette/michelin.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-                                <line x1="6" x2="10" y1="11" y2="11" />
-                                <line x1="8" x2="8" y1="9" y2="13" />
-                                <line x1="15" x2="15.01" y1="12" y2="12" />
-                                <line x1="18" x2="18.01" y1="10" y2="10" />
-                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-                            </svg>
+                        <span class="material-symbols-outlined"> filter_vintage </span>
                         </div>
-                        <h3 class="title">God Of War</h3>
+                        <h3 class="titolocarte">Michelin</h3>
                     </div>
                     <div class="backdrop"></div>
                 </div>
 
-                <div class="carta">
-                    <img class="background" src="./immaginiricette/risotto_alla_milanese.jpg" alt="">
-
-                    <div class="carta-content">
-                        <div class="profile-image">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-                                <line x1="6" x2="10" y1="11" y2="11" />
-                                <line x1="8" x2="8" y1="9" y2="13" />
-                                <line x1="15" x2="15.01" y1="12" y2="12" />
-                                <line x1="18" x2="18.01" y1="10" y2="10" />
-                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-                            </svg>
-                        </div>
-                        <h3 class="title">federico</h3>
-                    </div>
-                    <div class="backdrop"></div>
-                </div>
-
-                <div class="carta">
+                <div id="scroll4"class="carta">
                     <img class="background" src="./immaginiricette/carbonara.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-                                <line x1="6" x2="10" y1="11" y2="11" />
-                                <line x1="8" x2="8" y1="9" y2="13" />
-                                <line x1="15" x2="15.01" y1="12" y2="12" />
-                                <line x1="18" x2="18.01" y1="10" y2="10" />
-                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-                            </svg>
+                            <span class="material-symbols-outlined"> grocery </span>
                         </div>
-                        <h3 class="title">The Last of Us</h3>
+                        <h3 class="titolocarte">Scelta degli Ingredienti</h3>
                     </div>
                     <div class="backdrop"></div>
                 </div>
 
-                <div class="carta">
+                <div id="scroll5" class="carta">
                     <img class="background" src="./immaginiricette/gnocchi_salsiccia_e_tartufo.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2">
-                                <line x1="6" x2="10" y1="11" y2="11" />
-                                <line x1="8" x2="8" y1="9" y2="13" />
-                                <line x1="15" x2="15.01" y1="12" y2="12" />
-                                <line x1="18" x2="18.01" y1="10" y2="10" />
-                                <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-                            </svg>
+                            <span class="material-symbols-outlined"> more_horiz </span>
                         </div>
-                        <h3 class="title">Elden Ring</h3>
+                        <h3 class="titolocarte">More</h3>
                     </div>
                     <div class="backdrop"></div>
                 </div>
             </div>
         </div>
+        <div id="destinazione1"></div>
         
-        <h1 class="title-section">Piatti Consigliati</h1>
-        <div class="consigliati-div">
-            <div class="slide-container">
-                <div class="slide-content slide-content-style">
-                    <div class="card-wrapper swiper-wrapper">
+        <br><br><br>
 
-                        <div class="card swiper-slide">
-                            <div class="card-border">
-                                <div class="image-content">
-                                    <div class="card-image">
-                                        <img src="immaginiricette/carbonara.jpg" alt="" class="card-img"  id="carbonara">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Carbonara</h2>
-                                    <div class="timer">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                    <div class="flag">
-                                        <span class="material-symbols-outlined" style="display:none;" id="piccante">
-                                            local_fire_department
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="glutenfree">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257" clip-rule="evenodd"/></svg>
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="fit">
-                                            exercise
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="stellato">
-                                            hotel_class
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="vegan">
-                                            eco
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="card-border">
-                                <div class="image-content">
-                                    <div class="card-image">
-                                        <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img" id="ajojo">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Ajojo e Peperoncino</h2>
-                                    <div class="timer">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                    <div class="flag">
-                                        <span class="material-symbols-outlined" id="piccante">
-                                            local_fire_department
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="glutenfree">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257" clip-rule="evenodd"/></svg>
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="fit">
-                                            exercise
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="stellato">
-                                            hotel_class
-                                        </span>
-                                        <span class="material-symbols-outlined" id="vegan">
-                                            eco
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="card-border">
-                                <div class="image-content">
-                                    <div class="card-image">
-                                        <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img" id="amatriciana">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Amatriciana</h2>
-                                    <div class="timer">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                    <div class="flag">
-                                        <span class="material-symbols-outlined" style="display:none;" id="piccante">
-                                            local_fire_department
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="glutenfree">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257" clip-rule="evenodd"/></svg>
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="fit">
-                                            exercise
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="stellato">
-                                            hotel_class
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="vegan">
-                                            eco
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="card-border">
-                                <div class="image-content">
-                                    <div class="card-image">
-                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img" id="puntarelle">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Puntarelle</h2>
-                                    <div class="timer">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                    <div class="flag">
-                                        <span class="material-symbols-outlined" style="display:none;" id="piccante">
-                                            local_fire_department
-                                        </span>
-                                        <span class="material-symbols-outlined" id="glutenfree">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M44 24c0 11.046-8.954 20-20 20S4 35.046 4 24S12.954 4 24 4s20 8.954 20 20m-7.999 13.416A17.93 17.93 0 0 1 24 42c-9.941 0-18-8.059-18-18c0-4.738 1.83-9.048 4.823-12.263l3.97 3.97a1 1 0 0 0 1.414-1.414l-3.942-3.942A17.93 17.93 0 0 1 24 6c9.941 0 18 8.059 18 18c0 4.61-1.734 8.817-4.584 12.001l-8.545-8.544A5.73 5.73 0 0 0 31 23l-2.162.34A5.72 5.72 0 0 0 25 25.766v-2.923l1.162-.183A5.73 5.73 0 0 0 31 17l-2.162.34A5.72 5.72 0 0 0 25 19.766V18l.465-.465a5 5 0 0 0 0-7.07L24 9l-1.464 1.464a5 5 0 0 0 0 7.071L23 18v1.766a5.72 5.72 0 0 0-3.838-2.426L17 17a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 23a5.73 5.73 0 0 0 4.838 5.66l1.162.183v2.923a5.72 5.72 0 0 0-3.838-2.426L17 29a5.73 5.73 0 0 0 4.838 5.66l1.162.183V38h2v-3.547a1.78 1.78 0 0 0 1.162.207a5.73 5.73 0 0 0 4.15-2.935zm-7.907-7.907l-1.057-1.058a6 6 0 0 1-.875.209L25 28.843v2.923a5.73 5.73 0 0 1 3.094-2.257" clip-rule="evenodd"/></svg>
-                                        </span>
-                                        <span class="material-symbols-outlined" id="fit">
-                                            exercise
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="stellato">
-                                            hotel_class
-                                        </span>
-                                        <span class="material-symbols-outlined" style="display:none;" id="vegan">
-                                            eco
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="swiper-BtnDiv">
-                    <div class="swiper-button-prev swiper-navBtn"></div>
-                    <div class="swiper-button-next swiper-navBtn"></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+        <!-- div hai voglia di... -->
+        <div class="background-div"> 
+            <br><br>
+            <p class="ajojoconsigliati">𝑯𝒂𝒊 𝒗𝒐𝒈𝒍𝒊𝒂 𝒅𝒊...</p>
+            <hr class="linea2">
+            <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒍𝒂 𝒄𝒂𝒕𝒆𝒈𝒐𝒓𝒊𝒂 𝒄𝒉𝒆 𝒑𝒓𝒆𝒇𝒆𝒓𝒊𝒔𝒄𝒊, 𝒂𝒍</p>
+            <p class="ajojodescmin">𝒓𝒆𝒔𝒕𝒐 𝒄𝒊 𝒑𝒆𝒏𝒔𝒊𝒂𝒎𝒐 𝒏𝒐𝒊</p>
+            <br><br><br>
         </div>
-
+        <div id="destinazione2"></div>
+        
         <br><br>
 
-        <h1 class="title-section">Antipasti</h1>
-        <div class="antipasti-div">
-            <div class="slide-container">
-                <div class="slide-content2 slide-content-style_mini">
-                    <div class="card-wrapper swiper-wrapper">
-                        
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Carbonara</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Ajojo e Peperoncino</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Amatriciana</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Puntarelle</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/tiramisu.jpg" alt="" class="card-img_mini" id="tiramisu">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">tiramisu</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Puntarelle3</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <br><br>
-        
-        <h1 class="title-section">Primi Piatti</h1>
-        <div class="primi-div">
-            <div class="slide-container">
-                <div class="slide-content3 slide-content-style_mini">
-                    <div class="card-wrapper swiper-wrapper">
-                        
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Carbonara</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Ajojo e Peperoncino</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Amatriciana</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Puntarelle</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Puntarelle2</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_mini swiper-slide">
-                            <div class="card-border_mini">
-                                <div class="image-content">
-                                    <div class="card-image_mini">
-                                        <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                    </div>
-                                </div>
-                                <div class="card-content_mini">
-                                    <h2 class="name_mini">Puntarelle3</h2>
-                                    <div class="timer_mini">
-                                        <span class="material-symbols-outlined">
-                                            timer
-                                        </span>
-                                        <p class="time">30'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-
-        <!--Modal ad apparizione dei tasti login e signin-->
-
-        <!-- Modal di login -->
-        <div id="loginModal" class="modal">
-            <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <input type="hidden" name="tipo" value="login">
-                <p class="title">Login </p>
-                <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
-                <label>
-                    <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
-                    <span>Username</span>
-                </label> 
-                    
-                <label>
-                    <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
-                    <span>Password</span>
-                </label>
-                <button class="submit" value="Accedi">Accedi</button>
-                <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
-                                                                            document.getElementById('loginModal').style.display='none';
-                                                                            document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
-            </form>
-        </div>
-        
-                    
-                    
-
-        <!-- Modal di registrazione -->
-        <div id="registerModal" class="modal">
-            <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <input type="hidden" name="tipo" value="registrazione">
-                <p class="title">Registrazione </p>
-                <p class="errorLabelSignin"  id="erroreSignin"> errore registrazione </p>
-                <p class="message">Registrati ora per avere accesso al servizio completo </p>
-                    <div class="flex">
-                    <label>
-                        <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
-                        <span>Nome</span>
-                    </label>
+        <!-- div piatti consigliati -->
+        <div class= "background_chiaro">
+            <br><br>
+            <p class="ajojoconsigliati">𝑷𝒊𝒂𝒕𝒕𝒊 𝒅𝒆𝒍 𝑴𝒐𝒎𝒆𝒏𝒕𝒐</p>
+            <hr class="linea2">
+            <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒕𝒓𝒂 𝒖𝒏𝒂 𝒗𝒂𝒔𝒕𝒂 𝒈𝒂𝒎𝒎𝒂 𝒅𝒊 𝒑𝒊𝒂𝒕𝒕𝒊 𝒔𝒆𝒍𝒆𝒛𝒊𝒐𝒏𝒂𝒕𝒊</p>
+            <p class="ajojodescmin">𝒆 𝒑𝒆𝒓𝒇𝒆𝒕𝒕𝒊 𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒊𝒏 𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒊𝒔𝒑𝒊𝒓𝒂𝒛𝒊𝒐𝒏𝒆</p>
             
-                    <label>
-                        <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
-                        <span>Cognome</span>
-                    </label>
-                </div>  
-                        
-                <label>
-                    <input class="input" type="text" id="username"  name="username" placeholder="" required="">
-                    <span>Username</span>
-                </label> 
-                    
-                <label>
-                    <input class="input" type="password" id="password"  name="password" placeholder="" required="">
-                    <span>Password</span>
-                </label>
-                <button class="submit" value="Registrati">Registrati</button>
-                <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
-            </form>
+            <h1 class="title-section">Piatti Consigliati</h1>
+            
+            <br><br>
+
+            <h1 class="title-section">Antipasti</h1>
+            <div class="antipasti-div">
+                <div class="slide-container">
+                    <div class="slide-content2 slide-content-style_mini">
+                        <div class="card-wrapper swiper-wrapper">
+                            
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Carbonara</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Amatriciana</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/tiramisu.jpg" alt="" class="card-img_mini" id="tiramisu">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">tiramisu</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle3</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            
+            <h1 class="title-section">Primi Piatti</h1>
+            <div class="primi-div">
+                <div class="slide-container">
+                    <div class="slide-content3 slide-content-style_mini">
+                        <div class="card-wrapper swiper-wrapper">
+                            
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Carbonara</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Amatriciana</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle2</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle3</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <script>
-            // Funzioni php
+            <!--Modal ad apparizione dei tasti login e signin-->
 
-            function inviaForm(event) {
-                // form nascosta 
-                var form = document.createElement("form");
-                form.setAttribute("method", "post");
-                form.setAttribute("action", "ricettario.php");
+            <!-- Modal di login -->
+            <div id="loginModal" class="modal">
+                <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="hidden" name="tipo" value="login">
+                    <p class="title">Login </p>
+                    <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
+                    <label>
+                        <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
+                        <span>Username</span>
+                    </label> 
+                        
+                    <label>
+                        <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
+                        <span>Password</span>
+                    </label>
+                    <button class="submit" value="Accedi">Accedi</button>
+                    <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
+                                                                                document.getElementById('loginModal').style.display='none';
+                                                                                document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
+                </form>
+            </div>
+            
+                        
+                        
 
-                // input nascosto con il nome della ricetta
-                var input = document.createElement("input");
-                input.setAttribute("type", "hidden");
-                input.setAttribute("name", "ricetta");
-                input.setAttribute("value", event.target.id);
+            <!-- Modal di registrazione -->
+            <div id="registerModal" class="modal">
+                <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="hidden" name="tipo" value="registrazione">
+                    <p class="title">Registrazione </p>
+                    <p class="errorLabelSignin"  id="erroreSignin"> errore registrazione </p>
+                    <p class="message">Registrati ora per avere accesso al servizio completo </p>
+                        <div class="flex">
+                        <label>
+                            <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
+                            <span>Nome</span>
+                        </label>
+                
+                        <label>
+                            <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
+                            <span>Cognome</span>
+                        </label>
+                    </div>  
+                            
+                    <label>
+                        <input class="input" type="text" id="username"  name="username" placeholder="" required="">
+                        <span>Username</span>
+                    </label> 
+                        
+                    <label>
+                        <input class="input" type="password" id="password"  name="password" placeholder="" required="">
+                        <span>Password</span>
+                    </label>
+                    <button class="submit" value="Registrati">Registrati</button>
+                    <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
+                </form>
+            </div>
 
-                // Aggiunta input alla form e submit
-                form.appendChild(input);
-                document.body.appendChild(form);
-                form.submit();
-            }
+            <script>
+                // Funzioni php
 
-            // Aggiungi un evento di click a tutte le immagini
-            var CardsRicette = document.getElementsByClassName("card");
-            for (var i = 0; i < CardsRicette.length; i++) {
-                // salva in una variabile l'id della card cliccata
-                CardsRicette[i].addEventListener("click", inviaForm);
-            }
+                function inviaForm(event) {
+                    // form nascosta 
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "ricettario.php");
 
-            // Funzione slider ricette
-            var swiper_consigliati = new Swiper('.slide-content', {
-                slidesPerView: 3,
-                spaceBetween: 20,
-                loop: true,
-                centerSlides: 'true',
-                fade: 'true',
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                    DynamicBullets: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    0: {
-                        slidesPerView: 1,
-                    },
-                    985: {
-                        slidesPerView: 2,
-                    },
-                    1416: {
-                        slidesPerView: 3,
-                    },
-                },
-            });
+                    // input nascosto con il nome della ricetta
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "hidden");
+                    input.setAttribute("name", "ricetta");
+                    input.setAttribute("value", event.target.id);
 
-            var swiper_antipasti = new Swiper('.slide-content2', {
-                slidesPerView: 5,
-                spaceBetween: 20,
-                loop: true,
-                centerSlides: 'true',
-                fade: 'true',
-                breakpoints: {
-                    0: {
-                        slidesPerView: 2,
-                    },
-                    835: {
-                        slidesPerView: 3,
-                    },
-                    1100: {
-                        slidesPerView: 4,
-                    },
-                    1416: {
-                        slidesPerView: 5,
-                    },
-                },
-            });
-
-            var swiper_primi = new Swiper('.slide-content3', {
-                slidesPerView: 5,
-                spaceBetween: 20,
-                loop: true,
-                centerSlides: 'true',
-                fade: 'true',
-                breakpoints: {
-                    0: {
-                        slidesPerView: 2,
-                    },
-                    835: {
-                        slidesPerView: 3,
-                    },
-                    1100: {
-                        slidesPerView: 4,
-                    },
-                    1416: {
-                        slidesPerView: 5,
-                    },
-                },
-            });
-
-            // funzione per ridurre il fontsize della nav a in base ai breakpoint
-            var nav = document.querySelector('.nav');
-            var nav_a = document.querySelectorAll('.nav a');
-            var logo_title_p = document.querySelectorAll('.logo_title p');
-
-            function adapt_size(){
-                if(window.outerWidth < 890 && window.outerWidth > 590){
-                    var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
-                    var newfontnav = 20 + (window.outerWidth-590)/60*2;
-                    var newfontlogo = 15 + (window.outerWidth-590)/60;
-
-                    nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
-                    nav_a.forEach(element => {
-                        element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
-                    });
-                    logo_title_p.forEach(element => {
-                        element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
-                    });
+                    // Aggiunta input alla form e submit
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
                 }
-                else if(window.outerWidth <= 590 && window.outerWidth >= 0){
-                    nav.style.gap = '0.5rem';
-                    nav_a.forEach(element => {
-                        element.style.fontSize = '20px';
-                    });
-                    logo_title_p.forEach(element => {
-                        element.style.fontSize = '15px';
-                    });
+
+                // Aggiungi un evento di click a tutte le immagini
+                var CardsRicette = document.getElementsByClassName("card");
+                for (var i = 0; i < CardsRicette.length; i++) {
+                    // salva in una variabile l'id della card cliccata
+                    CardsRicette[i].addEventListener("click", inviaForm);
                 }
-                else{
-                    nav.style.gap = '1.5rem';
-                    nav_a.forEach(element => {
-                        element.style.fontSize = '30px';
-                    });
-                    logo_title_p.forEach(element => {
-                        element.style.fontSize = '20px';
-                    });
+
+                // Funzione slider ricette
+                var swiper_consigliati = new Swiper('.slide-content', {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                    loop: true,
+                    centerSlides: 'true',
+                    fade: 'true',
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        DynamicBullets: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        985: {
+                            slidesPerView: 2,
+                        },
+                        1416: {
+                            slidesPerView: 3,
+                        },
+                    },
+                });
+
+                var swiper_antipasti = new Swiper('.slide-content2', {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                    loop: true,
+                    centerSlides: 'true',
+                    fade: 'true',
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 2,
+                        },
+                        835: {
+                            slidesPerView: 3,
+                        },
+                        1100: {
+                            slidesPerView: 4,
+                        },
+                        1416: {
+                            slidesPerView: 5,
+                        },
+                    },
+                });
+
+                var swiper_primi = new Swiper('.slide-content3', {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                    loop: true,
+                    centerSlides: 'true',
+                    fade: 'true',
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 2,
+                        },
+                        835: {
+                            slidesPerView: 3,
+                        },
+                        1100: {
+                            slidesPerView: 4,
+                        },
+                        1416: {
+                            slidesPerView: 5,
+                        },
+                    },
+                });
+
+                // funzione per ridurre il fontsize della nav a in base ai breakpoint
+                var nav = document.querySelector('.nav');
+                var nav_a = document.querySelectorAll('.nav a');
+                var logo_title_p = document.querySelectorAll('.logo_title p');
+
+                function adapt_size(){
+                    if(window.outerWidth < 890 && window.outerWidth > 590){
+                        var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
+                        var newfontnav = 20 + (window.outerWidth-590)/60*2;
+                        var newfontlogo = 15 + (window.outerWidth-590)/60;
+
+                        nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
+                        nav_a.forEach(element => {
+                            element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
+                        });
+                        logo_title_p.forEach(element => {
+                            element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
+                        });
+                    }
+                    else if(window.outerWidth <= 590 && window.outerWidth >= 0){
+                        nav.style.gap = '0.5rem';
+                        nav_a.forEach(element => {
+                            element.style.fontSize = '20px';
+                        });
+                        logo_title_p.forEach(element => {
+                            element.style.fontSize = '15px';
+                        });
+                    }
+                    else{
+                        nav.style.gap = '1.5rem';
+                        nav_a.forEach(element => {
+                            element.style.fontSize = '30px';
+                        });
+                        logo_title_p.forEach(element => {
+                            element.style.fontSize = '20px';
+                        });
+                    }
                 }
-            }
-            window.addEventListener('resize', function() {
+                window.addEventListener('resize', function() {
+                    adapt_size();
+                });
                 adapt_size();
-            });
-            adapt_size();
 
-            // Funzioni modal Login/Signin
-            // Fa apparire il modal del login
-            document.getElementById('loginBtn').addEventListener('click', function(event) {
-                document.getElementById('loginModal').style.display = 'block';
-            });
+                // Funzioni modal Login/Signin
+                // Fa apparire il modal del login
+                document.getElementById('loginBtn').addEventListener('click', function(event) {
+                    document.getElementById('loginModal').style.display = 'block';
+                });
 
-            // Chiudi il modal cliccando fuori
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('loginModal')) {
-                    document.getElementById('loginModal').style.display = "none";
-                    document.getElementById('erroreLogin').style.display = "none";
-                    document.getElementById('erroreSignin').style.display = "none";
-                }
-                if (event.target == document.getElementById('registerModal')) {
-                    document.getElementById('registerModal').style.display = "none";
-                    document.getElementById('erroreLogin').style.display = "none";
-                    document.getElementById('erroreSignin').style.display = "none";
-                }
-            } 
+                // Chiudi il modal cliccando fuori
+                window.onclick = function(event) {
+                    if (event.target == document.getElementById('loginModal')) {
+                        document.getElementById('loginModal').style.display = "none";
+                        document.getElementById('erroreLogin').style.display = "none";
+                        document.getElementById('erroreSignin').style.display = "none";
+                    }
+                    if (event.target == document.getElementById('registerModal')) {
+                        document.getElementById('registerModal').style.display = "none";
+                        document.getElementById('erroreLogin').style.display = "none";
+                        document.getElementById('erroreSignin').style.display = "none";
+                    }
+                } 
 
-            
-        </script>
+                // Script href carte
+                document.getElementById('scroll1').addEventListener('click', function() {
+                    document.getElementById('destinazione1').scrollIntoView({ behavior: 'smooth' });
+                });
+
+                document.getElementById('scroll2').addEventListener('click', function() {
+                    document.getElementById('destinazione2').scrollIntoView({ behavior: 'smooth' });
+                });
+
+                
+            </script>
     </body>
 
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
