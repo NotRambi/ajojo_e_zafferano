@@ -299,6 +299,7 @@
                 align-items: center;
                 cursor: pointer;
                 transition: all 0.2s;
+                box-shadow: 2px 10px 10px gray;
             }
             .card-border{
                 width: 420px;
@@ -644,6 +645,7 @@
                 position: relative;
                 transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                 --transition-timing: 0.35s;
+                box-shadow: 2px 10px 10px gray;
             }
             .carta.active {
                 flex-grow: 100;
@@ -801,7 +803,7 @@
                 </div>
 
                 <div id="scroll3" class="carta">
-                    <img class="background" src="./immaginiindex/michelin.jpg" alt="">
+                    <img class="background" src="./immaginiricette/michelin.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
@@ -1359,7 +1361,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
