@@ -801,7 +801,7 @@
                 </div>
 
                 <div id="scroll3" class="carta">
-                    <img class="background" src="./immaginiricette/michelin.jpg" alt="">
+                    <img class="background" src="./immaginiindex/michelin.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
@@ -1359,7 +1359,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
