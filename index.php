@@ -279,10 +279,12 @@
                 font-size: 160%;
                 font-weight: 500;
                 color: #000;
+                text-decoration: underline;
                 transition: all 0.3s;
             }
             .categorie-div a:hover{
                 scale: 1.1;
+                cursor:pointer;
                 transition: all 0.3s;
             }
             @media (max-width: 1000px){
@@ -838,16 +840,16 @@
             <p class="ajojodescmin">𝒓𝒆𝒔𝒕𝒐 𝒄𝒊 𝒑𝒆𝒏𝒔𝒊𝒂𝒎𝒐 𝒏𝒐𝒊</p>
             <br><br>
             <div class="categorie-div">
-                <a href="" class="link-antipasti">Antipasti</a>
-                <a href="" class="link-primi">Primi</a>
-                <a href="" class="link-secondi">Secondi</a>
-                <a href="" class="link-contorni">Contorni</a>
-                <a href="" class="link-dolci">Dolci</a>
-                <a href="" class="link-piccante">Piccante</a>
-                <a href="" class="link-leggero">Leggero</a>
-                <a href="" class="link-senzaGlutine">GlutenFree</a>
-                <a href="" class="link-stellato">Stellato</a>
-                <a href="" class="link-vegano">Vegano</a>
+                <a onclick="selezionaPortata('antipasto')" class="link-antipasti">Antipasti</a>
+                <a onclick="selezionaPortata('primo')" class="link-primi">Primi</a>
+                <a onclick="selezionaPortata('secondo')" class="link-secondi">Secondi</a>
+                <a onclick="selezionaPortata('contorno')" class="link-contorni">Contorni</a>
+                <a onclick="selezionaPortata('dolce')" class="link-dolci">Dolci</a>
+                <a onclick="selezionaFiltro('flagPiccante')" class="link-piccante">Piccante</a>
+                <a onclick="selezionaFiltro('flagLeggero')" class="link-leggero">Leggero</a>
+                <a onclick="selezionaFiltro('flagGlutine')" class="link-senzaGlutine">GlutenFree</a>
+                <a onclick="selezionaFiltro('flagStar')" class="link-stellato">Stellato</a>
+                <a onclick="selezionaFiltro('flagVegan')" class="link-vegano">Vegano</a>
             </div>
             <br><br><br><br>
         </div>
@@ -1482,6 +1484,44 @@
                 document.getElementById('scroll3').addEventListener('click', function() {
                     document.getElementById('destinazione3').scrollIntoView({ behavior: 'smooth' });
                 });
+
+                // Script href categorie
+
+                // reset filtri
+                function resetFiltri() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'filtri.php');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send('buttonclicked=reset');
+                }
+
+                // categorie portata
+                function selezionaPortata(portata) {
+                    resetFiltri();
+                    setTimeout(function() {
+                    var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'filtri.php');
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send('buttonclicked=flagPortata&portata=' + encodeURIComponent(portata));
+                        setTimeout(function() {
+                            window.location.href = 'ricettario.php';
+                        }, 10); 
+                    }, 10);
+                }
+                // categorie filtri
+                function selezionaFiltro(filtro) {
+                    resetFiltri();
+                    setTimeout(function() {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'filtri.php');
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send('buttonclicked='+ encodeURIComponent(filtro) +'&'+ filtro +'=' + encodeURIComponent('false'));
+                        setTimeout(function() {
+                            window.location.href = 'ricettario.php';
+                        }, 10);
+                    }, 10);
+                }
+
 
             </script>
     </body>
