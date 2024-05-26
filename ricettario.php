@@ -100,6 +100,7 @@
             width: 70px;
             height: 70px;
             transition: all 0.5s;
+            pointer-events: none;
         }
         .logo_title{
             position: relative;

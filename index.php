@@ -119,6 +119,8 @@
                 'GRAD' 0,
                 'opsz' 24
             }
+
+            /* stili nav */
             .navbgr{
                 background-color: #f8fadd;
                 height: 5rem;
@@ -152,7 +154,7 @@
                 transition: all 0.2s;
             }
             .nav a:not(.MainLogo){
-                padding:0.8rem 0;
+                padding:1.2rem 0;
             }
             .nav a:not(.MainLogo):hover{
                 text-decoration: underline; 
@@ -167,7 +169,7 @@
                     transition: all 0.5s;
                 }
                 .logo_title {
-                    left:0rem;
+                    left:0;
                     color: white;
                     transition: all 0.5s;
                 }
@@ -194,11 +196,13 @@
                 width: 70px;
                 height: 70px;
                 transition: all 0.5s;
+                pointer-events: none;
             }
             .logo_title{
                 position: relative;
                 left:-5rem;
                 transition: all 0.5s;
+                pointer-events: none;
             }
             .logo_title p{
                 display: flex;
@@ -221,24 +225,25 @@
                 top: -0.3rem;
                 left: 1.5rem;
             }
+
+            /* stili corpo sito */
             .consigliati-div{
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            .antipasti-div{
+            .cucinaRomana-div{
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            .primi-div{
+            .piattiPesce-div{
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
             .title-section{
-                text-align: left;
-                margin-left: 1rem;
+                text-align: center;
             }
             .linea1{
                 display: flex;
@@ -261,6 +266,42 @@
                 margin: 20px auto;
             }
 
+            /* stile della sezione Hai voglia di */
+            .categorie-div{
+                display: grid;
+                grid-template-columns: max-content max-content max-content max-content max-content;
+                gap: 3rem 2rem; /* gap tra righe, tra colonne */
+                justify-content: center;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            .categorie-div a{
+                font-size: 160%;
+                font-weight: 500;
+                color: #000;
+                transition: all 0.3s;
+            }
+            .categorie-div a:hover{
+                scale: 1.1;
+                transition: all 0.3s;
+            }
+            @media (max-width: 1000px){
+                .categorie-div{
+                    gap: 2rem 1rem;
+                }
+                .categorie-div a{
+                    font-size: 140%;
+                }
+            }
+            @media (max-width: 640px){
+                .categorie-div{
+                    gap: 2rem 1rem;
+                }
+                .categorie-div a{
+                    font-size: 120%;
+                }
+            }
+
             /* SLIDER */
             .slide-container{
                 max-width: 1400px;
@@ -269,26 +310,10 @@
                 padding-top:0;
                 margin-bottom:0;
             }
-            .slide-content-style{
-                padding: 20px 14px;
-                margin: 0 40px;  
-                overflow: hidden;   
-                margin-bottom:0;
-            }
             .slide-content-style_mini{
-                padding: 20px 14px;
+                padding: 30px 14px;
                 margin: 0 10px;  
-                overflow: hidden;   
-            }
-            .card{
-                width: 420px;
-                height: 365px;
-                border-radius: 5%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                cursor: pointer;
-                transition: all 0.2s;
+                overflow: hidden; 
             }
             .card_mini{
                 width: 250px;
@@ -300,16 +325,6 @@
                 cursor: pointer;
                 transition: all 0.2s;
             }
-            .card-border{
-                width: 420px;
-                height: 365px;
-                border-radius: 5%;
-                background-color: white;
-                border: 2px solid #333;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
             .card-border_mini{
                 width: 250px;
                 height: 215px;
@@ -319,8 +334,8 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                box-shadow: 2px 10px 10px gray;
             }
-            .card:hover,
             .card_mini:hover{
                 scale: 1.03;
                 transition: all 0.2s;
@@ -329,24 +344,11 @@
                 margin-top: 2.5%;
                 margin-left: 2.5%;
             }
-            .card-image{
-                position: relative;
-                width: 95%;
-                height: auto;
-                border-radius: 5%;
-            }
             .card-image_mini{
                 position: relative;
                 width: 95%;
                 height: auto;
                 border-radius: 5%;
-            }
-            .card-image .card-img{
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-                border-radius: 5%;
-                border: 2px solid gray;
             }
             .card-image_mini .card-img_mini{
                 height: 100%;
@@ -354,16 +356,6 @@
                 object-fit: cover;
                 border-radius: 5%;
                 border: 2px solid gray;
-            }
-            .card-content{
-                width: 94%;
-                height: 4rem;
-                position: relative;
-                bottom:10px;
-                text-align: left;
-                display: flex;
-                align-items: center;
-                gap: 1.5rem;
             }
             .card-content_mini{
                 width: 94%;
@@ -374,6 +366,7 @@
                 display: flex;
                 align-items: center;
                 gap: 0.7rem;
+                margin-top: 0.2rem;
             }
             .name{
                 font-size: 22px;
@@ -384,12 +377,6 @@
                 font-size: 15px;
                 font-weight: 600;
                 color: black;
-            }
-            .timer{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 0.2rem;
             }
             .timer_mini{
                 display: flex;
@@ -644,6 +631,7 @@
                 position: relative;
                 transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                 --transition-timing: 0.35s;
+                box-shadow: 2px 10px 10px gray;
             }
             .carta.active {
                 flex-grow: 100;
@@ -837,23 +825,35 @@
                 </div>
             </div>
         </div>
+
         <div id="destinazione1"></div>
-        
-        <br><br><br>
+        <br>
 
         <!-- div hai voglia di... -->
         <div class="background-div"> 
-            <br><br>
+            <br><br><br>
             <p class="ajojoconsigliati">𝑯𝒂𝒊 𝒗𝒐𝒈𝒍𝒊𝒂 𝒅𝒊...</p>
             <hr class="linea2">
             <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒍𝒂 𝒄𝒂𝒕𝒆𝒈𝒐𝒓𝒊𝒂 𝒄𝒉𝒆 𝒑𝒓𝒆𝒇𝒆𝒓𝒊𝒔𝒄𝒊, 𝒂𝒍</p>
             <p class="ajojodescmin">𝒓𝒆𝒔𝒕𝒐 𝒄𝒊 𝒑𝒆𝒏𝒔𝒊𝒂𝒎𝒐 𝒏𝒐𝒊</p>
-            <br><br><br>
+            <br><br>
+            <div class="categorie-div">
+                <a href="" class="link-antipasti">Antipasti</a>
+                <a href="" class="link-primi">Primi</a>
+                <a href="" class="link-secondi">Secondi</a>
+                <a href="" class="link-contorni">Contorni</a>
+                <a href="" class="link-dolci">Dolci</a>
+                <a href="" class="link-piccante">Piccante</a>
+                <a href="" class="link-leggero">Leggero</a>
+                <a href="" class="link-senzaGlutine">GlutenFree</a>
+                <a href="" class="link-stellato">Stellato</a>
+                <a href="" class="link-vegano">Vegano</a>
+            </div>
+            <br><br><br><br>
         </div>
-        <div id="destinazione2"></div>
-        
-        <br><br>
 
+        <div id="destinazione2"></div>
+        <br><br>
         <!-- div piatti consigliati -->
         <div class= "background_chiaro">
             <br><br>
@@ -862,12 +862,135 @@
             <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒕𝒓𝒂 𝒖𝒏𝒂 𝒗𝒂𝒔𝒕𝒂 𝒈𝒂𝒎𝒎𝒂 𝒅𝒊 𝒑𝒊𝒂𝒕𝒕𝒊 𝒔𝒆𝒍𝒆𝒛𝒊𝒐𝒏𝒂𝒕𝒊</p>
             <p class="ajojodescmin">𝒆 𝒑𝒆𝒓𝒇𝒆𝒕𝒕𝒊 𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒊𝒏 𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒊𝒔𝒑𝒊𝒓𝒂𝒛𝒊𝒐𝒏𝒆</p>
             
-            <h1 class="title-section">Piatti Consigliati</h1>
-            
             <br><br>
 
-            <h1 class="title-section">Antipasti</h1>
-            <div class="antipasti-div">
+            <h1 class="title-section">Piatti Consigliati</h1>
+            <div class="consigliati-div">
+                <div class="slide-container">
+                    <div class="slide-content1 slide-content-style_mini">
+                        <div class="card-wrapper swiper-wrapper">
+                            
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Carbonara</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Amatriciana</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/tiramisu.jpg" alt="" class="card-img_mini" id="tiramisu">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">tiramisu</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Puntarelle3</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="title-section">Cucina Romana</h1>
+            <div class="cucinaRomana-div">
                 <div class="slide-container">
                     <div class="slide-content2 slide-content-style_mini">
                         <div class="card-wrapper swiper-wrapper">
@@ -990,11 +1113,9 @@
                     </div>
                 </div>
             </div>
-
-            <br><br>
             
-            <h1 class="title-section">Primi Piatti</h1>
-            <div class="primi-div">
+            <h1 class="title-section">Piatti di pesce</h1>
+            <div class="piattiPesce-div">
                 <div class="slide-container">
                     <div class="slide-content3 slide-content-style_mini">
                         <div class="card-wrapper swiper-wrapper">
@@ -1119,6 +1240,19 @@
             </div>
         </div>
 
+        <br><br>
+
+        <div id="destinazione3"></div>
+        <!-- div hai voglia di... -->
+        <div class="background-div"> 
+            <br><br>
+            <p class="ajojoconsigliati">𝑯𝒂𝒊 𝒗𝒐𝒈𝒍𝒊𝒂 𝒅𝒊...</p>
+            <hr class="linea2">
+            <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒍𝒂 𝒄𝒂𝒕𝒆𝒈𝒐𝒓𝒊𝒂 𝒄𝒉𝒆 𝒑𝒓𝒆𝒇𝒆𝒓𝒊𝒔𝒄𝒊, 𝒂𝒍</p>
+            <p class="ajojodescmin">𝒓𝒆𝒔𝒕𝒐 𝒄𝒊 𝒑𝒆𝒏𝒔𝒊𝒂𝒎𝒐 𝒏𝒐𝒊</p>
+            <br><br><br>
+        </div>
+
             <!--Modal ad apparizione dei tasti login e signin-->
 
             <!-- Modal di login -->
@@ -1208,35 +1342,7 @@
                 }
 
                 // Funzione slider ricette
-                var swiper_consigliati = new Swiper('.slide-content', {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                    loop: true,
-                    centerSlides: 'true',
-                    fade: 'true',
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                        DynamicBullets: true,
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    breakpoints: {
-                        0: {
-                            slidesPerView: 1,
-                        },
-                        985: {
-                            slidesPerView: 2,
-                        },
-                        1416: {
-                            slidesPerView: 3,
-                        },
-                    },
-                });
-
-                var swiper_antipasti = new Swiper('.slide-content2', {
+                var swiper_consigliati = new Swiper('.slide-content1', {
                     slidesPerView: 5,
                     spaceBetween: 20,
                     loop: true,
@@ -1258,7 +1364,29 @@
                     },
                 });
 
-                var swiper_primi = new Swiper('.slide-content3', {
+                var swiper_romana = new Swiper('.slide-content2', {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                    loop: true,
+                    centerSlides: 'true',
+                    fade: 'true',
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 2,
+                        },
+                        835: {
+                            slidesPerView: 3,
+                        },
+                        1100: {
+                            slidesPerView: 4,
+                        },
+                        1416: {
+                            slidesPerView: 5,
+                        },
+                    },
+                });
+
+                var swiper_pesce = new Swiper('.slide-content3', {
                     slidesPerView: 5,
                     spaceBetween: 20,
                     loop: true,
@@ -1351,8 +1479,10 @@
                 document.getElementById('scroll2').addEventListener('click', function() {
                     document.getElementById('destinazione2').scrollIntoView({ behavior: 'smooth' });
                 });
+                document.getElementById('scroll3').addEventListener('click', function() {
+                    document.getElementById('destinazione3').scrollIntoView({ behavior: 'smooth' });
+                });
 
-                
             </script>
     </body>
 
