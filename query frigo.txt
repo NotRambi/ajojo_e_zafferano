@@ -228,7 +228,8 @@ insert into ricetta values
 
 
 insert into utenti values
-('fortigate','federico','anga','abc',false,false),
-('rambi','alessio','lavore','123',true,true);
+('fortigate','federico','angarella','abc',false,false),
+('rambi','alessio','lavore','123',false,false),
+('nestore','gianluca,'mariani','nestore',true,true);
 
 insert into filtri values (true,true,true,true,true);
