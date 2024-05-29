@@ -162,6 +162,7 @@
                 transition: all 0.5s;
             }
             .nav a:is(.MainLogo):hover{
+                cursor: pointer;    
                 margin-right: 1.5rem;
                 transition: all 0.5s;
                 .logo_img{
@@ -745,6 +746,7 @@
                 text-wrap: balance;
                 max-width: 50%;
                 order: 1;
+                
             }
         
             @media (max-width: 1000px) {
@@ -760,6 +762,7 @@
                 .michelincontainer1 p{
                     max-width: 80%;
                     order: 1;
+                    
                 }
             }
 
@@ -790,6 +793,7 @@
                 text-wrap: balance;
                 max-width: 50%;
                 order: 0;
+                text-align: right;
             }
         
             @media (max-width: 1000px) {
@@ -805,6 +809,7 @@
                 .michelincontainer2 p{
                     max-width: 80%;
                     order: 1;
+                    text-align: center;
                 }
             }
 
@@ -835,6 +840,7 @@
                 text-wrap: balance;
                 max-width: 50%;
                 order: 1;
+                text-align: left;
             }
         
             @media (max-width: 1000px) {
@@ -850,6 +856,7 @@
                 .michelincontainer3 p{
                     max-width: 80%;
                     order: 1;
+                    text-align: center;
                 }
             }
 
@@ -858,11 +865,13 @@
     </head>
     <body>
 
-        
+        <div id="destinazione0"></div>
+
+        <!-- div barra di navigazione -->
 
         <div class="navbgr">
             <div class="nav">
-                <a class="MainLogo" href="">
+                <a class="MainLogo" id="scroll0">
                     <img src="logo.png" class="logo_img">
                     <div class="logo_title">
                         <p class="ajojo_">Ajojo &</p>
@@ -890,6 +899,9 @@
 
         
         <br><br><br><br><br><br>
+
+        <!-- titolo e descrizione index -->
+
         <p class="ajojotitolo">𝓐𝓙𝓞𝓙𝓞 & 𝓩𝓐𝓕𝓕𝓔𝓡𝓐𝓝𝓞</p>
         <p class="ajojodesc">𝑳𝒂 𝑺𝒆𝒎𝒑𝒍𝒊𝒄𝒊𝒕𝒂' 𝒅𝒆𝒍 𝑪𝒐𝒎𝒑𝒍𝒆𝒔𝒔𝒐</p>
         <br>
@@ -901,7 +913,7 @@
 
         <br><br><br>
 
-       <!-- codice carte index -->
+        <!-- codice carte index -->
 
         <div class="carte-div">
             <div class="container-carte">
@@ -971,6 +983,7 @@
         <br>
 
         <!-- div hai voglia di... -->
+
         <div class="background-div"> 
             <br><br><br>
             <p class="ajojoconsigliati">𝑯𝒂𝒊 𝒗𝒐𝒈𝒍𝒊𝒂 𝒅𝒊...</p>
@@ -995,7 +1008,9 @@
 
         <div id="destinazione2"></div>
         <br><br>
+
         <!-- div piatti consigliati -->
+
         <div class= "background_chiaro">
             <br><br>
             <p class="ajojoconsigliati">𝑷𝒊𝒂𝒕𝒕𝒊 𝒅𝒆𝒍 𝑴𝒐𝒎𝒆𝒏𝒕𝒐</p>
@@ -1004,6 +1019,8 @@
             <p class="ajojodescmin">𝒆 𝒑𝒆𝒓𝒇𝒆𝒕𝒕𝒊 𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒊𝒏 𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒊𝒔𝒑𝒊𝒓𝒂𝒛𝒊𝒐𝒏𝒆</p>
             
             <br><br><br><br><br><br>
+
+            <!-- slider carte consigliati -->
 
             <h1 class="title-section">Piatti Consigliati</h1>
             <div class="consigliati-div">
@@ -1384,6 +1401,8 @@
         <br><br>
 
         <div id="destinazione3"></div>
+
+        <br><br>
         
         <!-- div stella michelin... -->
 
@@ -1636,6 +1655,11 @@
                 } 
 
                 // Script href carte
+
+                document.getElementById('scroll0').addEventListener('click', function() {
+                    document.getElementById('destinazione0').scrollIntoView({ behavior: 'smooth' });
+                });
+
                 document.getElementById('scroll1').addEventListener('click', function() {
                     document.getElementById('destinazione1').scrollIntoView({ behavior: 'smooth' });
                 });
@@ -1643,6 +1667,7 @@
                 document.getElementById('scroll2').addEventListener('click', function() {
                     document.getElementById('destinazione2').scrollIntoView({ behavior: 'smooth' });
                 });
+
                 document.getElementById('scroll3').addEventListener('click', function() {
                     document.getElementById('destinazione3').scrollIntoView({ behavior: 'smooth' });
                 });
