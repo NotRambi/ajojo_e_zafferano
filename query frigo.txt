@@ -125,7 +125,29 @@ insert into ingredienti values
 	('baccala_alla_vicentina','olio_extravergine'),
 	('piadina_romagnola_casareccia','farina'),
 	('piadina_romagnola_casareccia','burro'),
-	('piadina_romagnola_casareccia','bicarbonato');
+	('piadina_romagnola_casareccia','bicarbonato'),
+	('patate_al_forno','patate'),
+	('patate_al_forno','olio_extravergine'),
+	('patate_al_forno','aglio'),
+	('patate_al_forno','rosmarino'),
+	('patate_al_forno','timo'),
+	('frittelle_di_verdure','zucchine'),
+	('frittelle_di_verdure','patate'),
+	('frittelle_di_verdure','carote'),
+	('frittelle_di_verdure','farina_tipo_00'),
+	('frittelle_di_verdure','bicarbonato'),
+	('frittelle_di_verdure','timo'),
+	('panzerotti_fritti','farina_tipo_00'),
+	('panzerotti_fritti','olio_extravergine'),
+	('panzerotti_fritti','lievito'),
+	('panzerotti_fritti','fiordilatte'),
+	('panzerotti_fritti','passata_di_pomodoro'),
+	('amatriciana','pasta'),
+	('amatriciana','guanciale'),
+	('amatriciana','pomodori'),
+	('amatriciana','pecorino'),
+	('amatriciana','vino_bianco');
+
 
 insert into ricetta values 
 	('carbonara',30,'primo',2,false,false,false,false,false,'Sbatti le uova in una ciotola con una buona dose di pecorino grattugiato e una generosa macinata di pepe nero, fino a ottenere una crema omogenea. Taglia il guanciale a strisce e fallo rosolare in una padella senza aggiungere olio, fino a che diventa croccante e rilascia il suo grasso. Nel frattempo, cuoci la pasta in abbondante acqua salata, scolandola al dente, conservando un pò dell acqua di cottura. Trasferisci la pasta nella padella con il guanciale, mescolando bene per far assorbire i sapori, e spegni il fuoco. Versa immediatamente il composto di uova e pecorino sulla pasta, mescolando velocemente per evitare che l uovo si rapprenda e formando una crema avvolgente. Se necessario, aggiungi un pò di acqua di cottura per ottenere la consistenza desiderata.'),
@@ -146,7 +168,11 @@ insert into ricetta values
 	('pollo_al_curry',50,'secondo',2,true,false,false,false,false,'Taglia il pollo a pezzi. Passalo nella farina. Scuotilo per togliere l eccesso. In una padella, scalda dell olio. Aggiungi il pollo e falli dorare da entrambi i lati. Togli il pollo dalla padella e mettilo da parte. Nella stessa padella, aggiungi il curry in polvere. Mescola finché non si sviluppa un profumo. Aggiungi il latte. Mescola bene. Metti di nuovo il pollo nella padella. Lascialo cuocere fino a quando il pollo è cotto e la salsa è densa. Servi caldo.'),
 	('gnocchi_salsiccia_e_tartufo',30,'primo',1,false,false,false,false,false,'Taglia la salsiccia a pezzetti e falla rosolare in una padella. Aggiungi panna e tartufo tritato, lascia insaporire. Cuoci gli gnocchi in acqua salata fino a che non vengono a galla. Scola gli gnocchi e aggiungili alla salsa. Mescola bene. Aggiungi parmigiano grattugiato e manteca il tutto fino a ottenere una consistenza cremosa. Servi caldo, guarnendo con tartufo fresco e una spolverata di parmigiano. Buon appetito!'),
 	('baccala_alla_vicentina',30,'secondo',3,false,true,false,true,true,'Taglia sedano, carote e cipolla a dadini fini. Trita il prezzemolo. Rosola le verdure in olio fino a doratura. Aggiungi il baccalà tagliato a pezzi, copri con acqua e cuoci a fuoco lento. Scola il baccalà e sminuzzalo. Tosta il caviale in olio, unisci al baccalà. Versa il composto in una teglia, cospargi con il sugo di cottura e cuoci in forno.'),
-	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'Mescola farina e bicarbonato in una ciotola ampia. Aggiungi burro a temperatura ambiente. Lavora gli ingredienti con le mani fino a ottenere un composto sbriciolato. Versa acqua tiepida gradualmente. Continua a impastare fino a formare un impasto morbido e omogeneo. Dividi l impasto in palline delle dimensioni desiderate. Stendi ogni pallina con un mattarello fino a ottenere una sfoglia sottile. Scalda una padella antiaderente. Cuoci le piadine finché non si formano bolle. Girale e cuoci dall altro lato finché non saranno dorati. Servi calde, farcite a piacere. Buon appetito!');
+	('piadina_romagnola_casareccia',30,'antipasto',1,false,false,true,true,false,'Mescola farina e bicarbonato in una ciotola ampia. Aggiungi burro a temperatura ambiente. Lavora gli ingredienti con le mani fino a ottenere un composto sbriciolato. Versa acqua tiepida gradualmente. Continua a impastare fino a formare un impasto morbido e omogeneo. Dividi l impasto in palline delle dimensioni desiderate. Stendi ogni pallina con un mattarello fino a ottenere una sfoglia sottile. Scalda una padella antiaderente. Cuoci le piadine finché non si formano bolle. Girale e cuoci dall altro lato finché non saranno dorati. Servi calde, farcite a piacere. Buon appetito!'),
+	('patate_al_forno',60,'contorno',1,false,true,true,false,false,'Per preparare le patate al forno come prima cosa lavatele bene, sbucciatele e didetele in quarti. In una pentola portate ad ebollizione abbondante acqua e immergete le patate. Sbollentatele per 7 minuti quindi scolatele e trasferitele nuovamente in una ciotola. Aromatizzate con le foglioline di timo. Aggiungete sale, pepe, olio e mescolate bene con un cucchiaio. Trasferite le patate in una teglia di alluminio dai bordi bassi precedentemente unta. Agigungete dei rametti di rosmarino e due spicchi di aglio. Cuocete le patate in forno ventilato preriscaldato a 220°, nel ripiano centrale, per 40 minuti o fino a quando le patate non risulteranno ben dorate'),
+	('frittelle_di_verdure',25,'secondo',1,false,false,true,false,false,'Grattugia patate, carote e zucchine in una ciotola capiente. Strizza bene le verdure per eliminare l acqua in eccesso. Aggiungi farina 00 in quantità sufficiente a legare il composto. Unisci una punta di bicarbonato per favorire la lievitazione e insaporisci con foglie di timo tritate. Mescola fino a ottenere un impasto omogeneo. Scalda olio in una padella ampia. Preleva piccole porzioni dell impasto con un cucchiaio e adagiale nell olio caldo, schiacciandole leggermente per dare forma alle frittelle. Friggi le frittelle fino a che non sono dorate e croccanti su entrambi i lati. Scolale su carta assorbente per eliminare l olio in eccesso e servile calde.'),
+	('panzerotti_fritti',60,'antipasto',1,false,false,true,false,false,'In una ciotola capiente, mescola farina 00, un pizzico di sale e un pò di zucchero. Sciogli il lievito in acqua tiepida e aggiungilo al mix di farina. Impasta fino a ottenere un composto liscio e omogeneo, quindi lascia lievitare coperto fino al raddoppio del volume. Nel frattempo, taglia il fiordilatte a cubetti e mescolalo con la passata di pomodoro, aggiungendo un pizzico di sale. Dopo la lievitazione, prendi l impasto e dividilo in palline. Stendi ogni pallina in un disco sottile, metti al centro un pò di ripieno di fiordilatte e pomodoro, chiudi a mezzaluna sigillando bene i bordi. Friggi i panzerotti in abbondante olio caldo fino a doratura, scolali su carta assorbente e servili caldi.'),
+	('amatriciana',30,'primo',2,false,false,false,false,false,'Taglia il guanciale a striscioline e mettilo in una padella senza olio, facendolo rosolare a fuoco medio finché non diventa croccante. Sfumalo con un pò di vino bianco e lascialo evaporare. Rimuovi il guanciale dalla padella, mantenendo il grasso rilasciato. Aggiungi i pomodori pelati schiacciati al grasso e cuoci a fuoco medio-basso per circa 15-20 minuti, mescolando di tanto in tanto. Nel frattempo, cuoci la pasta in abbondante acqua salata. Quando la pasta è al dente, scolala e trasferiscila nella padella con il sugo di pomodoro, aggiungendo anche il guanciale. Mescola bene per amalgamare i sapori. Togli dal fuoco e aggiungi abbondante pecorino grattugiato, mescolando ancora.');
 
 insert into utenti values
 ('fortigate','federico','anga','abc',false,false),
