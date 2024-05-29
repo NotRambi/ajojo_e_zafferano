@@ -511,7 +511,13 @@
         .butTendina span{
             color: #fff;
         }
-
+        .searchCatchNessunaRicetta{
+            display: none;
+        }
+        .scritteZeroRisultati{
+            text-align: center;
+        }
+        
         /* tendina filtro portata */
         .tendina {
             margin-left: auto;
@@ -547,6 +553,7 @@
             font-size: 18px;
             font-weight: bold;
         }
+        
     </style>
     
 </head>
@@ -584,7 +591,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -630,7 +637,7 @@
         
     </div>
 
-    <!--Modal ad apparizione dei tasti login e signin-->
+    <!--Modal ad apparizione dei tasti  e signin-->
     <!-- Modal di login -->
     <div id="loginModal" class="modal">
             <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -888,13 +895,15 @@
         $flagVuota=true;
     }
     if(pg_num_rows($result)==0){
-        echo "<br><h2>non ci sono ricette per te che sei date le tue intolleranze o filtri con questi ingredienti</h2>";
-    } else 
-
+        echo "<br><h2 class='scritteZeroRisultati'>non ci sono ricette con le tue intolleranze o questi filtri</h2>";
+    } else {
 
     //STAMPO LE RICETTE con tasti preferiti
+    
+
     echo "<div class='content' id='recipeList'>";
-        if($flagVuota) echo "<h2>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
+        echo "<h2 class='searchCatchNessunaRicetta scritteZeroRisultati'>non ci sono ricette con questo nome</h2>";
+        if($flagVuota) echo "<h2 class='scritteZeroRisultati'>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
             echo "<div class='recipe-container'>";
         while ($row = pg_fetch_assoc($result)) {
             $vuota=false;
@@ -1009,6 +1018,8 @@
         echo "</div>";
 
     echo "</div>";
+
+    }
     pg_free_result($result);
     ?>
 
@@ -1028,19 +1039,29 @@
         }
         //FUNZIONE SEARCHBAR
         document.getElementById('searchBar').addEventListener('input', function() {
-            
+            let nessunaricetta = document.getElementsByClassName('searchCatchNessunaRicetta');
+            nessunaricetta=nessunaricetta[0];
             let filter = this.value.toLowerCase();
             let recipes = document.getElementById('recipeList').getElementsByClassName('recipe-div');
+            var cont=0;
 
             for (let i = 0; i < recipes.length; i++) {
                 let recipe = recipes[i];
                 let text = recipe.getElementsByClassName('recipe')[0].id.replace("recipe_", "");
 
                 if (text.toLowerCase().indexOf(filter) > -1) {
-                    recipe.style.display = "";
+                    recipe.style.display = "";//block
+                    cont++;
                 } else {
                     recipe.style.display = "none";
                 }
+            }
+
+            if(cont==0){
+                nessunaricetta.style.display="block";
+            }
+            else{
+                nessunaricetta.style.display="none";
             }
         });
  
@@ -1057,9 +1078,7 @@
             // Set the content type that PHP is expecting
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             // Send the request with the JavaScript variable as data
-            var user='rambi'; //DA TOGLIERE
             xhr.send('mettiORtogli='+ encodeURIComponent("metti") +'&ricetta=' + encodeURIComponent(nomericettaprefe));
-            
         }
 
 

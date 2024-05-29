@@ -242,6 +242,11 @@
         transition: all 0.3s ease;
     }
 
+    .ricettapreferita{
+
+        cursor:pointer;
+    }
+
   
 </style>
 </head>
@@ -257,7 +262,7 @@
     </div>
 
 <?php
-$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
 or die('Could not connect: ' . pg_last_error());
 
 $utente=$_SESSION['user'];
@@ -396,7 +401,7 @@ echo "<div class='profile-container'>";
             $ricetta=$row["ricetta"];
             $idtogliprefe="idBottonePrefeTogli".$ricetta;
             echo "<div class='divpref'>";
-                echo str_replace('_', ' ', $ricetta)."<div class='prefBtn'><button class='material-symbols-outlined pref-logo' id=$idtogliprefe>favorite</button><p class='barrapref'>|</p></div>";
+                echo "<div class='ricettapreferita' id='$ricetta'>".str_replace('_', ' ', $ricetta)."</div><div class='prefBtn'><button class='material-symbols-outlined pref-logo' id=$idtogliprefe>favorite</button><p class='barrapref'>|</p></div>";
             echo"</div>";
         }
     echo "</div>";
@@ -479,6 +484,33 @@ pg_close($dbconn);
 
         logOut();
 
+    }
+
+    //preferiti -> ricettario
+    function inviaForm(event) {
+                // form nascosta 
+                console.log(event.target.id);
+                var form = document.createElement("form");
+                form.setAttribute("method", "post");
+                form.setAttribute("action", "ricettario.php");
+
+                // input nascosto con il nome della ricetta
+                var input = document.createElement("input");
+                input.setAttribute("type", "hidden");
+                input.setAttribute("name", "ricetta");
+                input.setAttribute("value", event.target.id);
+
+                // Aggiunta input alla form e submit
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+    
+    var ricettapreferita = document.getElementsByClassName("ricettapreferita");
+    for (var i = 0; i < ricettapreferita.length; i++) {
+        // salva in una variabile l'id della card cliccata
+        ricettapreferita[i].addEventListener("click", inviaForm);
+        
     }
 
 </script>
