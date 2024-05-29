@@ -715,6 +715,145 @@
                 z-index: 0;
                 background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
             }
+
+
+            /* classi div michelin */
+
+            /* container 1 */
+            .michelincontainer1{
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+            }
+            .michelincontainer1 img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                justify-content: center;
+                max-width: 50;
+                order: 0;
+                border-radius: 5%;
+            }
+        
+            .michelincontainer1 p {
+                font-size: 20px;
+                text-wrap: balance;
+                text-align: center;
+                text-wrap: balance;
+                max-width: 50%;
+                order: 1;
+            }
+        
+            @media (max-width: 1000px) {
+                .michelincontainer1 {
+                    flex-direction: column;
+                    align-items: center;   
+                    justify-content: center;
+                }
+                .michelincontainer1 img{
+                    max-width: 60%;
+                    order: 0;
+                }
+                .michelincontainer1 p{
+                    max-width: 80%;
+                    order: 1;
+                }
+            }
+
+            /* container 2 */
+
+            .michelincontainer2{
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+            }
+            .michelincontainer2 img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                justify-content: center;
+                max-width: 50;
+                order: 1;
+                border-radius: 5%;
+            }
+        
+            .michelincontainer2 p {
+                font-size: 20px;
+                text-wrap: balance;
+                text-align: center;
+                text-wrap: balance;
+                max-width: 50%;
+                order: 0;
+            }
+        
+            @media (max-width: 1000px) {
+                .michelincontainer2 {
+                    flex-direction: column;
+                    align-items: center;   
+                    justify-content: center;
+                }
+                .michelincontainer2 img{
+                    max-width: 60%;
+                    order: 0;
+                }
+                .michelincontainer2 p{
+                    max-width: 80%;
+                    order: 1;
+                }
+            }
+
+            /* container 3 */
+
+            .michelincontainer3{
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+            }
+            .michelincontainer3 img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                justify-content: center;
+                max-width: 50;
+                order: 0;
+                border-radius: 5%;
+            }
+        
+            .michelincontainer3 p {
+                font-size: 20px;
+                text-wrap: balance;
+                text-align: center;
+                text-wrap: balance;
+                max-width: 50%;
+                order: 1;
+            }
+        
+            @media (max-width: 1000px) {
+                .michelincontainer3 {
+                    flex-direction: column;
+                    align-items: center;   
+                    justify-content: center;
+                }
+                .michelincontainer3 img{
+                    max-width: 60%;
+                    order: 0;
+                }
+                .michelincontainer3 p{
+                    max-width: 80%;
+                    order: 1;
+                }
+            }
+
+            
         </style>
     </head>
     <body>
@@ -864,7 +1003,7 @@
             <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒕𝒓𝒂 𝒖𝒏𝒂 𝒗𝒂𝒔𝒕𝒂 𝒈𝒂𝒎𝒎𝒂 𝒅𝒊 𝒑𝒊𝒂𝒕𝒕𝒊 𝒔𝒆𝒍𝒆𝒛𝒊𝒐𝒏𝒂𝒕𝒊</p>
             <p class="ajojodescmin">𝒆 𝒑𝒆𝒓𝒇𝒆𝒕𝒕𝒊 𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒊𝒏 𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒊𝒔𝒑𝒊𝒓𝒂𝒛𝒊𝒐𝒏𝒆</p>
             
-            <br><br>
+            <br><br><br><br><br><br>
 
             <h1 class="title-section">Piatti Consigliati</h1>
             <div class="consigliati-div">
@@ -1245,14 +1384,37 @@
         <br><br>
 
         <div id="destinazione3"></div>
-        <!-- div hai voglia di... -->
+        
+        <!-- div stella michelin... -->
+
         <div class="background-div"> 
             <br><br>
-            <p class="ajojoconsigliati">𝑯𝒂𝒊 𝒗𝒐𝒈𝒍𝒊𝒂 𝒅𝒊...</p>
+            <p class="ajojoconsigliati">𝑺𝒕𝒆𝒍𝒍𝒂 𝑴𝒊𝒄𝒉𝒆𝒍𝒊𝒏</p>
             <hr class="linea2">
-            <p class="ajojodescmin">𝒔𝒄𝒆𝒈𝒍𝒊 𝒍𝒂 𝒄𝒂𝒕𝒆𝒈𝒐𝒓𝒊𝒂 𝒄𝒉𝒆 𝒑𝒓𝒆𝒇𝒆𝒓𝒊𝒔𝒄𝒊, 𝒂𝒍</p>
-            <p class="ajojodescmin">𝒓𝒆𝒔𝒕𝒐 𝒄𝒊 𝒑𝒆𝒏𝒔𝒊𝒂𝒎𝒐 𝒏𝒐𝒊</p>
+            <p class="ajojodescmin">𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒂𝒍𝒍𝒂 𝒓𝒊𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒖𝒏𝒂 𝒔𝒇𝒊𝒅𝒂</p>
+            <p class="ajojodescmin">𝒐 𝒗𝒖𝒐𝒍𝒆 𝒔𝒕𝒖𝒑𝒊𝒓𝒆 𝒊 𝒑𝒓𝒐𝒑𝒓𝒊 𝒐𝒔𝒑𝒊𝒕𝒊</p>
+
             <br><br><br>
+            
+            <div class="michelincontainer1">
+                <img src="immaginiindex/michelinimg1.jpg" >
+                <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+            </div> 
+
+            <br><br>
+
+            <div class="michelincontainer2">
+                <img src="immaginiindex/michelinimg1.jpg" >
+                <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+            </div>
+
+            <br><br>
+
+            <div class="michelincontainer3">
+                <img src="immaginiindex/michelinimg1.jpg" >
+                <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+            </div>
+
         </div>
 
             <!--Modal ad apparizione dei tasti login e signin-->
@@ -1529,7 +1691,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
