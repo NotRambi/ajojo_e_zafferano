@@ -1314,11 +1314,49 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                            <img src="immaginiricette/straccetti_alle_olive_taggiasche.jpg" alt="" class="card-img_mini"  id="straccetti_alle_olive_taggiasche">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Carbonara</h2>
+                                        <h2 class="name_mini">Straccetti alle Olive</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">20'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/pizzette_di_zucchine.jpg" alt="" class="card-img_mini" id="pizzette_di_zucchine">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Pizzette di Zucchine</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">20'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/gnocchi_salsiccia_e_tartufo.jpg" alt="" class="card-img_mini" id="gnocchi_salsiccia_e_tartufo">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Gnocchi al Tartufo</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
@@ -1333,54 +1371,16 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
+                                            <img src="immaginiricette/pasta_alla_norma.jpg" alt="" class="card-img_mini" id="pasta_alla_norma">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                        <h2 class="name_mini">Pasta alla Norma</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card_mini swiper-slide">
-                                <div class="card-border_mini">
-                                    <div class="image-content">
-                                        <div class="card-image_mini">
-                                            <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
-                                        </div>
-                                    </div>
-                                    <div class="card-content_mini">
-                                        <h2 class="name_mini">Amatriciana</h2>
-                                        <div class="timer_mini">
-                                            <span class="material-symbols-outlined">
-                                                timer
-                                            </span>
-                                            <p class="time">30'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card_mini swiper-slide">
-                                <div class="card-border_mini">
-                                    <div class="image-content">
-                                        <div class="card-image_mini">
-                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                        </div>
-                                    </div>
-                                    <div class="card-content_mini">
-                                        <h2 class="name_mini">Puntarelle</h2>
-                                        <div class="timer_mini">
-                                            <span class="material-symbols-outlined">
-                                                timer
-                                            </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">45'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1394,12 +1394,12 @@
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">tiramisu</h2>
+                                        <h2 class="name_mini">Tiramisu</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">60'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1409,16 +1409,16 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                            <img src="immaginiricette/panzerotti_fritti.jpg" alt="" class="card-img_mini" id="panzerotti_fritti">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Puntarelle3</h2>
+                                        <h2 class="name_mini">Panzerotti Napoletani</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">60'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1458,7 +1458,7 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
+                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo_e_peperoncino">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
@@ -1467,7 +1467,7 @@
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">15'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1496,6 +1496,82 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
+                                            <img src="immaginiricette/cacio_e_pepe.jpg" alt="" class="card-img_mini" id="cacio_e_pepe">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Cacio e Pepe</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/gricia.jpg" alt="" class="card-img_mini" id="gricia">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Gricia</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">30'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/polpette_alla_romana.jpg" alt="" class="card-img_mini" id="polpette_alla_romana">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Polpette alla Romana</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">120'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/trippa.jpg" alt="" class="card-img_mini" id="trippa">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Trippa Romana</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">80'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
                                             <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
                                         </div>
                                     </div>
@@ -1505,7 +1581,7 @@
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">40'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1515,35 +1591,16 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/tiramisu.jpg" alt="" class="card-img_mini" id="tiramisu">
+                                            <img src="immaginiricette/saltimbocca_alla_romana.jpg" alt="" class="card-img_mini" id="saltimbocca_alla_romana">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">tiramisu</h2>
+                                        <h2 class="name_mini">Saltimbocca</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card_mini swiper-slide">
-                                <div class="card-border_mini">
-                                    <div class="image-content">
-                                        <div class="card-image_mini">
-                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
-                                        </div>
-                                    </div>
-                                    <div class="card-content_mini">
-                                        <h2 class="name_mini">Puntarelle3</h2>
-                                        <div class="timer_mini">
-                                            <span class="material-symbols-outlined">
-                                                timer
-                                            </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">20'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1554,7 +1611,7 @@
                 </div>
             </div>
             
-            <h1 class="title-section">Piatti di pesce</h1>
+            <h1 class="title-section">Piatti di Pesce</h1>
             <div class="piattiPesce-div">
                 <div class="slide-container">
                     <div class="slide-content3 slide-content-style_mini">
@@ -1564,11 +1621,30 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/carbonara.jpg" alt="" class="card-img_mini"  id="carbonara">
+                                            <img src="immaginiricette/crostini_in_salsa_tonnata.jpg" alt="" class="card-img_mini"  id="crostini_in_salsa_tonnata">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Carbonara</h2>
+                                        <h2 class="name_mini">Crostini salsa di Tonno</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">5'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/baccala_alla_vicentina.jpg" alt="" class="card-img_mini" id="baccala_alla_vicentina">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Baccalà alla Vicentina</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
@@ -1583,11 +1659,11 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/ajojo_e_peperoncino.jpg" alt="" class="card-img_mini" id="ajojo">
+                                            <img src="immaginiricette/polpette_di_pesce.jpg" alt="" class="card-img_mini" id="polpette_di_pesce">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Ajojo e Peperoncino</h2>
+                                        <h2 class="name_mini">Polpette di Pesce</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
@@ -1602,11 +1678,68 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/amatriciana.jpg" alt="" class="card-img_mini" id="amatriciana">
+                                            <img src="immaginiricette/linguine_agli_scampi.jpg" alt="" class="card-img_mini" id="linguine_agli_scampi">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Amatriciana</h2>
+                                        <h2 class="name_mini">Linguine agli Scampi</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">120'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/zuppa_di_pesce.jpg" alt="" class="card-img_mini" id="zuppa_di_pesce">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Zuppa_di_pesce</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">60'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/paella_de_marisco.jpg" alt="" class="card-img_mini" id="paella_de_marisco">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Paella de Marisco</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">90'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/calamarata_con_ragù_di_pesce.jpg" alt="" class="card-img_mini" id="calamarata_con_ragù_di_pesce">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Calamarata</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
@@ -1621,16 +1754,46 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                            <img src="immaginiricette/fritto_misto_di_pesce.jpg" alt="" class="card-img_mini" id="fritto_misto_di_pesce">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Puntarelle</h2>
+                                        <h2 class="name_mini">Fritto Misto</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">40'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="title-section">Cucina del Mondo</h1>
+            <div class="consigliati-div">
+                <div class="slide-container">
+                    <div class="slide-content1 slide-content-style_mini">
+                        <div class="card-wrapper swiper-wrapper">
+                            
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/ravioli_di_carne.jpg" alt="" class="card-img_mini"  id="ravioli_di_carne">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Gyoza</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">35'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1640,16 +1803,16 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                            <img src="immaginiricette/ratatouille.jpg" alt="" class="card-img_mini" id="ratatouille">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Puntarelle2</h2>
+                                        <h2 class="name_mini">Ratatouille</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">50'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1659,16 +1822,73 @@
                                 <div class="card-border_mini">
                                     <div class="image-content">
                                         <div class="card-image_mini">
-                                            <img src="immaginiricette/puntarelle.jpg" alt="" class="card-img_mini" id="puntarelle">
+                                            <img src="immaginiricette/roast_beef.jpg" alt="" class="card-img_mini" id="roast_beef">
                                         </div>
                                     </div>
                                     <div class="card-content_mini">
-                                        <h2 class="name_mini">Puntarelle3</h2>
+                                        <h2 class="name_mini">Roast Beef</h2>
                                         <div class="timer_mini">
                                             <span class="material-symbols-outlined">
                                                 timer
                                             </span>
-                                            <p class="time">30'</p>
+                                            <p class="time">80'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/paella_alla_valenciana.jpg" alt="" class="card-img_mini" id="paella_alla_valenciana">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Paella Valenciana</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">80'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/panini_cinesi_al_vapore.jpg" alt="" class="card-img_mini" id="panini_cinesi_al_vapore">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Bun Cinesi</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">35'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_mini swiper-slide">
+                                <div class="card-border_mini">
+                                    <div class="image-content">
+                                        <div class="card-image_mini">
+                                            <img src="immaginiricette/escargot.jpg" alt="" class="card-img_mini" id="escargot">
+                                        </div>
+                                    </div>
+                                    <div class="card-content_mini">
+                                        <h2 class="name_mini">Escargot</h2>
+                                        <div class="timer_mini">
+                                            <span class="material-symbols-outlined">
+                                                timer
+                                            </span>
+                                            <p class="time">180'</p>
                                         </div>
                                     </div>
                                 </div>
