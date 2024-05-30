@@ -852,6 +852,11 @@
                 max-width: 50%;
                 text-align: left;
             }
+            .michelintesto3 a{
+                text-decoration: underline;
+                cursor: pointer;
+                font-weight: bold;
+            }
             .michelincontainer3 img {
                 max-width: 300px;
                 height: auto;
@@ -889,6 +894,184 @@
                     order: 0;
                 }
                 .michelintesto3{
+                    max-width: 80%;
+                    order: 1;
+                    text-align: center;
+                }
+            }
+
+            /* container sezioni scelta ingredienti */
+
+            /*container 1*/ 
+
+            .ingredienticontainer1{
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+            }
+            .ingredientitesto1{
+                order: 0;
+                max-width: 50%;
+                text-align: right;
+            }
+            .ingredienticontainer1 img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                justify-content: center;
+                max-width: 50;
+                order: 1;
+                border-radius: 5%;
+            }
+        
+            .ingredienticontainer1 p {
+                font-size: 20px;
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+            }
+
+            .ingredienticontainer1 h3 {
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0.7rem;
+
+            }
+
+        
+            @media (max-width: 1000px) {
+                .ingredienticontainer1 {
+                    flex-direction: column;
+                    align-items: center;   
+                    justify-content: center;
+                }
+                .ingredienticontainer1 img{
+                    max-width: 60%;
+                    order: 0;
+                }
+                .ingredientitesto1{
+                    max-width: 80%;
+                    order: 1;
+                    text-align: center;
+                }
+            }
+
+            /* container 2 */
+
+            .ingredienticontainer2{
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+            }
+            .ingredientitesto2{
+                order: 1;
+                max-width: 50%;
+                text-align: left;
+            }
+            .ingredienticontainer2 img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                justify-content: center;
+                max-width: 50;
+                order: 0;
+                border-radius: 5%;
+            }
+        
+            .ingredienticontainer2 p {
+                font-size: 20px;
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+            }
+
+            .ingredienticontainer2 h3 {
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0.7rem;
+
+            }
+
+        
+            @media (max-width: 1000px) {
+                .ingredienticontainer2 {
+                    flex-direction: column;
+                    align-items: center;   
+                    justify-content: center;
+                }
+                .ingredienticontainer2 img{
+                    max-width: 60%;
+                    order: 0;
+                }
+                .ingredientitesto2{
+                    max-width: 80%;
+                    order: 1;
+                    text-align: center;
+                }
+            }
+
+            
+
+            /* container 3 */
+
+            .ingredienticontainer3{
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+            }
+            .ingredientitesto3{
+                order: 0;
+                max-width: 50%;
+                text-align: right;
+            }
+            .ingredienticontainer3 img {
+                max-width: 300px;
+                height: auto;
+                align-items: center;
+                justify-content: center;
+                max-width: 50;
+                order: 1;
+                border-radius: 5%;
+            }
+        
+            .ingredienticontainer3 p {
+                font-size: 20px;
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+            }
+
+            .ingredienticontainer3 h3 {
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0.7rem;
+
+            }
+
+        
+            @media (max-width: 1000px) {
+                .ingredienticontainer3 {
+                    flex-direction: column;
+                    align-items: center;   
+                    justify-content: center;
+                }
+                .ingredienticontainer3 img{
+                    max-width: 60%;
+                    order: 0;
+                }
+                .ingredientitesto3{
                     max-width: 80%;
                     order: 1;
                     text-align: center;
@@ -1517,8 +1700,8 @@
             <div class="michelincontainer1">
                 <img src="immaginiindex/michelinimg1.jpg" >
                 <div class="michelintesto1">
-                    <h3>La Storia</h3>
-                    <p>La guida Michelin venne pubblicata per la prima volta nel 1900. Essa conteneva mappe, procedure per cambiare una ruota, una lista di stazioni di servizio e una lista di ristoranti e alberghi per il pernottamento. Per due decenni queste informazioni vennero fornite gratuitamente, fino al 1920, anno in cui iniziò ad essere venduta al prezzo di 7 franchi poiché André Michelin arrivò in un negozio di gomme e trovò la sua guida utilizzata come supporto per un banco di lavoro. Di conseguenza, la guida abbandonò le inserzioni a pagamento all'interno delle proprie pagine. Poco dopo, i fratelli Michelin decisero di impiegare ispettori in incognito per visitare e recensire i ristoranti e gli alberghi.
+                    <h2>La Storia</h2>
+                    <p>La guida Michelin viene pubblicata per la prima volta nel 1900. Essa conteneva mappe, procedure per cambiare una ruota, una lista di stazioni di servizio e una lista di ristoranti e alberghi per il pernottamento. Per due decenni queste informazioni vennero fornite gratuitamente, fino al 1920, anno in cui iniziò ad essere venduta al prezzo di 7 franchi poiché André Michelin arrivò in un negozio di gomme e trovò la sua guida utilizzata come supporto per un banco di lavoro. Di conseguenza, la guida abbandonò le inserzioni a pagamento all'interno delle proprie pagine. Poco dopo, i fratelli Michelin decisero di impiegare ispettori in incognito per visitare e recensire i ristoranti e gli alberghi.
                         Nel 1926 la guida iniziò ad assegnare le stelle agli indirizzi di alta cucina, evidenziandoli inizialmente con una sola stella e dopo cinque anni, venne introdotta la scala attuale da una a tre stelle
                     </p>
                 </div>
@@ -1529,8 +1712,9 @@
             <div class="michelincontainer2">
                 <img src="immaginiindex/michelinverde.jpg" >
                 <div class="michelintesto2">
-                    <h3>Stella Verde Michelin</h3>
-                    <p>Oltre alla tradizionale stella Michelin, nel 2020 nasce un nuovo criterio di giudizio per il quale molti ristoratori dedicano la revisione delle politiche dei loro locali. La Stella Verde Michelin infatti nasce come iniziativa, da parte della Guida stessa, per incentivare la battaglia all'eco-sostenibilità del globo. Come però è subito facile giungere a conclusione, la Stella Verde porta i ristoratori a selezionare materie prime di qualità e spesso ad impatto zero, e ciò porta all'aumento generale della qualità dei prodotti serviti dai vari ristoratori. Si potrebbe dire essere una "doppia vittoria"
+                    <h2>Stella Verde Michelin</h2>
+                    <p>
+                        Oltre alla tradizionale stella Michelin, nel 2020 nasce un nuovo criterio di giudizio per il quale molti ristoratori si dedicano alla revisione delle politiche dei loro locali. La Stella Verde Michelin infatti nasce come iniziativa, da parte della Guida stessa, per incentivare la battaglia all'eco-sostenibilità del globo. Come però è subito facile giungere a conclusione, la Stella Verde porta i ristoratori a selezionare materie prime di qualità e spesso ad impatto zero, e ciò porta all'aumento generale della qualità dei prodotti serviti dai vari ristoratori. Si potrebbe dire essere una "doppia vittoria"
                     </p>
                 </div>
             </div>
@@ -1538,14 +1722,67 @@
             <br><br>
 
             <div class="michelincontainer3">
-                <img src="immaginiindex/michelinimg1.jpg" >
+                <img src="immaginiindex/ajojo-michelin.jpg" >
                 <div class="michelintesto3">
-                    <h3>La Storia</h3>
+                    <h2>Le Nostre Proposte</h2>
+                    <p>
+                        L'obiettivo principale delle proposte presenti nel nostro ricettario è quello di unire semplicità e gusto in un unico piatto. Nonostante ciò non rinneghiamo la passione per la cucina e le sfide che ci si pongono davanti durante la preparazione di un buon piatto, ed è per questo che abbiamo volutamente deciso di aggiungere alla nostra lista di portate quel tocco di complessità che ci voleva. Ma chi ha detto che per preparare un piatto degno di uno chef stellato ci sia bisogno di utilizzare decine e decine di ingredienti? Bhe, noi no di certo! Nella nostra selezione di <a onclick="selezionaFiltro('flagStar')">piatti stellati</a> troverai le invenzioni delle figure più rilevanti del mondo della cucina, ma che allo stesso tempo rispetteranno la promessa che vogliamo continuare a mantenere: la "semplicità"
+                    </p>
+                </div>
+            </div>
+
+            <br><br><br><br>
+
+        </div>
+
+        <div id="destinazione4"></div>
+
+        <br><br>
+
+        <div>
+            <br><br>
+                <p class="ajojoconsigliati">𝑺𝒄𝒆𝒍𝒕𝒂 𝒅𝒆𝒈𝒍𝒊 𝑰𝒏𝒈𝒓𝒆𝒅𝒊𝒆𝒏𝒕𝒊</p>
+                <hr class="linea2">
+                <p class="ajojodescmin">𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒂𝒍𝒍𝒂 𝒓𝒊𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒖𝒏𝒂 𝒔𝒇𝒊𝒅𝒂</p>
+                <p class="ajojodescmin">𝒐 𝒗𝒖𝒐𝒍𝒆 𝒔𝒕𝒖𝒑𝒊𝒓𝒆 𝒊 𝒑𝒓𝒐𝒑𝒓𝒊 𝒐𝒔𝒑𝒊𝒕𝒊</p>
+            <br><br><br><br>
+
+            <div class="ingredienticontainer1">
+                <img src="immaginiindex/michelinimg1.jpg" >
+                <div class="ingredientitesto1">
+                    <h2>La Storia</h2>
+                    <p>La guida Michelin venne pubblicata per la prima volta nel 1900. Essa conteneva mappe, procedure per cambiare una ruota, una lista di stazioni di servizio e una lista di ristoranti e alberghi per il pernottamento. Per due decenni queste informazioni vennero fornite gratuitamente, fino al 1920, anno in cui iniziò ad essere venduta al prezzo di 7 franchi poiché André Michelin arrivò in un negozio di gomme e trovò la sua guida utilizzata come supporto per un banco di lavoro. Di conseguenza, la guida abbandonò le inserzioni a pagamento all'interno delle proprie pagine. Poco dopo, i fratelli Michelin decisero di impiegare ispettori in incognito per visitare e recensire i ristoranti e gli alberghi.
+                        Nel 1926 la guida iniziò ad assegnare le stelle agli indirizzi di alta cucina, evidenziandoli inizialmente con una sola stella e dopo cinque anni, venne introdotta la scala attuale da una a tre stelle
+                    </p>
+                </div>
+            </div> 
+
+            <br><br>
+
+            <div class="ingredienticontainer2">
+                <img src="immaginiindex/michelinverde.jpg" >
+                <div class="ingredientitesto2">
+                    <h2>Stella Verde Michelin</h2>
+                    <p>Oltre alla tradizionale stella Michelin, nel 2020 nasce un nuovo criterio di giudizio per il quale molti ristoratori si dedicano alla revisione delle politiche dei loro locali. La Stella Verde Michelin infatti nasce come iniziativa, da parte della Guida stessa, per incentivare la battaglia all'eco-sostenibilità del globo. Come però è subito facile giungere a conclusione, la Stella Verde porta i ristoratori a selezionare materie prime di qualità e spesso ad impatto zero, e ciò porta all'aumento generale della qualità dei prodotti serviti dai vari ristoratori. Si potrebbe dire essere una "doppia vittoria"
+                    </p>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="ingredienticontainer3">
+                <img src="immaginiindex/michelinimg1.jpg" >
+                <div class="ingredientitesto3">
+                    <h2>La Storia</h2>
                     <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
                 </div>
             </div>
 
+            <br><br><br><br>
+
         </div>
+
+        <!-- div contatti -->
 
         <div id='destinazione5'></div>
         
