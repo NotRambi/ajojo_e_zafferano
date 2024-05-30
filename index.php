@@ -717,7 +717,6 @@
                 background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
             }
 
-
             /* classi div michelin */
 
             /* container 1 */
@@ -741,7 +740,6 @@
         
             .michelincontainer1 p {
                 font-size: 20px;
-                text-wrap: balance;
                 text-align: center;
                 text-wrap: balance;
                 max-width: 50%;
@@ -788,7 +786,6 @@
         
             .michelincontainer2 p {
                 font-size: 20px;
-                text-wrap: balance;
                 text-align: center;
                 text-wrap: balance;
                 max-width: 50%;
@@ -835,7 +832,6 @@
         
             .michelincontainer3 p {
                 font-size: 20px;
-                text-wrap: balance;
                 text-align: center;
                 text-wrap: balance;
                 max-width: 50%;
@@ -860,6 +856,70 @@
                 }
             }
 
+            /* ultima sezione */
+
+            .lastSection{
+                padding: 2rem;
+                background-color: #333;
+                color: #fff;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                text-wrap: balance;
+                text-align: left;
+            }
+            .colonnaIlSito{
+                border-right: 2px solid #000;
+                border-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,0.7), rgb(0,0,0,0)) 10;
+                padding: 0 1rem;
+            }
+            .colonnaChiSiamo{
+                border-right: 2px solid #000;
+                border-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,0.7), rgb(0,0,0,0)) 10;
+                padding: 0 1rem;
+            }
+            .colonnaInformazioni{
+                padding: 0 1rem;
+            }
+            .LS_title{
+                font-size: 30px;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            .LS_text{
+                font-size: 15px;
+                text-align: center;
+            }
+            .LS_text a{
+                color: #fff;
+            }
+            .LS_text2{
+                font-size: 15px;
+                text-align: center;
+            }
+            .LS_text2 p{
+                margin:0;
+                padding:0;
+            }
+            .listaNomi{
+                display: inline-block;
+                text-align: left;
+            }
+            @media(max-width: 1200px){
+                .lastSection{
+                    grid-template-columns: 1fr;
+                }
+                .colonnaIlSito{
+                    border-right: none;
+                    border-bottom: 2px solid #000;
+                    border-image: linear-gradient(to right, rgb(0,0,0,0), rgb(0,0,0,0.7), rgb(0,0,0,0)) 10;
+                }
+                .colonnaChiSiamo{
+                    border-right: none;
+                    border-bottom: 2px solid #000;
+                    border-image: linear-gradient(to right, rgb(0,0,0,0), rgb(0,0,0,0.7), rgb(0,0,0,0)) 10;
+                }
+            }
             
         </style>
     </head>
@@ -1436,6 +1496,39 @@
 
         </div>
 
+        <div id='destinazione5'></div>
+        <div class="lastSection">
+            <div class="colonnaIlSito">
+                <p class="LS_title">Il Sito</p>
+                <p class="LS_text">
+                    Ajojo & Zafferano è un sito web che permette di consultare un ampio ricettario online, 
+                    con la possibilità di cercare ricette in base agli ingredienti presenti in frigo.
+                    Il sito offre inoltre la possibilità di registrarsi e salvare le proprie ricette preferite.
+                    Inserendo le proprie preferenze alimentari, il sito suggerirà ricette adatte al proprio stile di vita.
+                    Se invece si è alla ricerca di nuove ispirazioni, è possibile consultare le nostre selezioni consigliate,
+                    o utulizzare i vari filtri per trovare la ricetta perfetta.
+                </p>
+            </div>
+            <div class="colonnaChiSiamo">
+                <p class="LS_title">Chi Siamo</p>
+                <div class="LS_text2">
+                    <p>Il team di sviluppo del sito è composto da:</p>
+                    <ul class="listaNomi">
+                        <li>Angarella Federico</li>
+                        <li>Lavore Alessio</li>
+                        <li>Mariani Gianluca</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="colonnaInformazioni">
+                <p class="LS_title">Informazioni</p>
+                <p class="LS_text">
+                    Ajojo & Zafferano è un sito web creato come progetto per il corso Linguaggi e Tecnologie per il Web 2023/2024.
+                    Tutto il codice sorgente è disponibile su <a href="">GitHub</a>
+                </p>
+            </div>
+        </div>
+
             <!--Modal ad apparizione dei tasti login e signin-->
 
             <!-- Modal di login -->
@@ -1716,7 +1809,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
