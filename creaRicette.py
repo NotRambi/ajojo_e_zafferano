@@ -4,11 +4,13 @@ def inserisciNuovaRicetta():
     # inserimento dati ricetta
     print("Inserisci i dati della ricetta")
     nome = input("Nome della ricetta: ")
+    nome = nome.replace(" ","_")
     ingredienti = []
     while True:
         ingrediente = input("Inserisci un ingrediente (scrivi 't' per terminare): ")
         if ingrediente == "t":
             break
+        ingrediente = ingrediente.replace(" ","_")
         ingredienti.append(ingrediente)
     tempo = int(input("Tempo di preparazione: "))
     portata = input("Tipo di portata: ")
