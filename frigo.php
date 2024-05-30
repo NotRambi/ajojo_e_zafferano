@@ -708,7 +708,10 @@
                     else{
                         $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
                         pg_query($dbconn, $query);
-                        echo "registrazione avvenuta con successo";
+                        // apri login
+                        echo "<script>
+                            document.getElementById('loginModal').style.display = 'block';
+                        </script>";
                     }
                 }
             }
