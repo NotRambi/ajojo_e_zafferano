@@ -720,6 +720,7 @@
             /* classi div michelin */
 
             /* container 1 */
+
             .michelincontainer1{
                 max-width: 100%;
                 display: flex;
@@ -727,6 +728,11 @@
                 align-items: center;
                 justify-content: center;
                 gap: 50px; 
+            }
+            .michelintesto1{
+                order: 1;
+                max-width: 50%;
+                text-align: left;
             }
             .michelincontainer1 img {
                 max-width: 300px;
@@ -740,12 +746,19 @@
         
             .michelincontainer1 p {
                 font-size: 20px;
-                text-align: center;
                 text-wrap: balance;
-                max-width: 50%;
-                order: 1;
-                
+                margin: 0;
+                padding: 0;
             }
+
+            .michelincontainer1 h3 {
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0.7rem;
+
+            }
+
         
             @media (max-width: 1000px) {
                 .michelincontainer1 {
@@ -757,10 +770,10 @@
                     max-width: 60%;
                     order: 0;
                 }
-                .michelincontainer1 p{
+                .michelintesto1{
                     max-width: 80%;
                     order: 1;
-                    
+                    text-align: center;
                 }
             }
 
@@ -774,6 +787,11 @@
                 justify-content: center;
                 gap: 50px; 
             }
+            .michelintesto2{
+                order: 0;
+                max-width: 50%;
+                text-align: right;
+            }
             .michelincontainer2 img {
                 max-width: 300px;
                 height: auto;
@@ -786,12 +804,19 @@
         
             .michelincontainer2 p {
                 font-size: 20px;
-                text-align: center;
                 text-wrap: balance;
-                max-width: 50%;
-                order: 0;
-                text-align: right;
+                margin: 0;
+                padding: 0;
             }
+
+            .michelincontainer2 h3 {
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0.7rem;
+
+            }
+
         
             @media (max-width: 1000px) {
                 .michelincontainer2 {
@@ -803,12 +828,14 @@
                     max-width: 60%;
                     order: 0;
                 }
-                .michelincontainer2 p{
+                .michelintesto2{
                     max-width: 80%;
                     order: 1;
                     text-align: center;
                 }
             }
+
+            
 
             /* container 3 */
 
@@ -819,6 +846,11 @@
                 align-items: center;
                 justify-content: center;
                 gap: 50px; 
+            }
+            .michelintesto3{
+                order: 1;
+                max-width: 50%;
+                text-align: left;
             }
             .michelincontainer3 img {
                 max-width: 300px;
@@ -832,12 +864,19 @@
         
             .michelincontainer3 p {
                 font-size: 20px;
-                text-align: center;
                 text-wrap: balance;
-                max-width: 50%;
-                order: 1;
-                text-align: left;
+                margin: 0;
+                padding: 0;
             }
+
+            .michelincontainer3 h3 {
+                text-wrap: balance;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0.7rem;
+
+            }
+
         
             @media (max-width: 1000px) {
                 .michelincontainer3 {
@@ -849,7 +888,7 @@
                     max-width: 60%;
                     order: 0;
                 }
-                .michelincontainer3 p{
+                .michelintesto3{
                     max-width: 80%;
                     order: 1;
                     text-align: center;
@@ -978,7 +1017,7 @@
         <div class="carte-div">
             <div class="container-carte">
                 <div id="scroll1" class="carta">
-                    <img class="background" src="./immaginiricette/ajojo_e_peperoncino.jpg" alt="">
+                    <img class="background" src="./immaginiindex/antico-ricettario.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
@@ -990,7 +1029,7 @@
                 </div>
 
                 <div id="scroll2" class="carta">
-                    <img class="background" src="./immaginiricette/amatriciana.jpg" alt="">
+                    <img class="background" src="./immaginiindex/piatti-del-momento.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
@@ -1014,7 +1053,7 @@
                 </div>
 
                 <div id="scroll4"class="carta">
-                    <img class="background" src="./immaginiricette/carbonara.jpg" alt="">
+                    <img class="background" src="./immaginiindex/ingredienti-qualita.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
@@ -1026,7 +1065,7 @@
                 </div>
 
                 <div id="scroll5" class="carta">
-                    <img class="background" src="./immaginiricette/gnocchi_salsiccia_e_tartufo.jpg" alt="">
+                    <img class="background" src="./immaginiindex/piatto-logo-index.jpg" alt="">
 
                     <div class="carta-content">
                         <div class="profile-image">
@@ -1477,26 +1516,39 @@
             
             <div class="michelincontainer1">
                 <img src="immaginiindex/michelinimg1.jpg" >
-                <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+                <div class="michelintesto1">
+                    <h3>La Storia</h3>
+                    <p>La guida Michelin venne pubblicata per la prima volta nel 1900. Essa conteneva mappe, procedure per cambiare una ruota, una lista di stazioni di servizio e una lista di ristoranti e alberghi per il pernottamento. Per due decenni queste informazioni vennero fornite gratuitamente, fino al 1920, anno in cui iniziò ad essere venduta al prezzo di 7 franchi poiché André Michelin arrivò in un negozio di gomme e trovò la sua guida utilizzata come supporto per un banco di lavoro. Di conseguenza, la guida abbandonò le inserzioni a pagamento all'interno delle proprie pagine. Poco dopo, i fratelli Michelin decisero di impiegare ispettori in incognito per visitare e recensire i ristoranti e gli alberghi.
+                        Nel 1926 la guida iniziò ad assegnare le stelle agli indirizzi di alta cucina, evidenziandoli inizialmente con una sola stella e dopo cinque anni, venne introdotta la scala attuale da una a tre stelle
+                    </p>
+                </div>
             </div> 
 
             <br><br>
 
             <div class="michelincontainer2">
-                <img src="immaginiindex/michelinimg1.jpg" >
-                <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+                <img src="immaginiindex/michelinverde.jpg" >
+                <div class="michelintesto2">
+                    <h3>Stella Verde Michelin</h3>
+                    <p>Oltre alla tradizionale stella Michelin, nel 2020 nasce un nuovo criterio di giudizio per il quale molti ristoratori dedicano la revisione delle politiche dei loro locali. La Stella Verde Michelin infatti nasce come iniziativa, da parte della Guida stessa, per incentivare la battaglia all'eco-sostenibilità del globo. Come però è subito facile giungere a conclusione, la Stella Verde porta i ristoratori a selezionare materie prime di qualità e spesso ad impatto zero, e ciò porta all'aumento generale della qualità dei prodotti serviti dai vari ristoratori. Si potrebbe dire essere una "doppia vittoria"
+                    </p>
+                </div>
             </div>
 
             <br><br>
 
             <div class="michelincontainer3">
                 <img src="immaginiindex/michelinimg1.jpg" >
-                <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+                <div class="michelintesto3">
+                    <h3>La Storia</h3>
+                    <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+                </div>
             </div>
 
         </div>
 
         <div id='destinazione5'></div>
+        
         <div class="lastSection">
             <div class="colonnaIlSito">
                 <p class="LS_title">Il Sito</p>
@@ -1509,6 +1561,7 @@
                     o utulizzare i vari filtri per trovare la ricetta perfetta.
                 </p>
             </div>
+
             <div class="colonnaChiSiamo">
                 <p class="LS_title">Chi Siamo</p>
                 <div class="LS_text2">
@@ -1520,11 +1573,12 @@
                     </ul>
                 </div>
             </div>
+
             <div class="colonnaInformazioni">
                 <p class="LS_title">Informazioni</p>
                 <p class="LS_text">
                     Ajojo & Zafferano è un sito web creato come progetto per il corso Linguaggi e Tecnologie per il Web 2023/2024.
-                    Tutto il codice sorgente è disponibile su <a href="">GitHub</a>
+                    Tutto il codice sorgente è disponibile su <a href="https://github.com/NotRambi/ajojo_e_zafferano">GitHub</a>
                 </p>
             </div>
         </div>
@@ -1765,6 +1819,14 @@
                     document.getElementById('destinazione3').scrollIntoView({ behavior: 'smooth' });
                 });
 
+                document.getElementById('scroll4').addEventListener('click', function() {
+                    document.getElementById('destinazione4').scrollIntoView({ behavior: 'smooth' });
+                });
+
+                document.getElementById('scroll5').addEventListener('click', function() {
+                    document.getElementById('destinazione5').scrollIntoView({ behavior: 'smooth' });
+                });
+
                 // Script href categorie
 
                 // reset filtri
@@ -1809,7 +1871,7 @@
     <?php
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];
