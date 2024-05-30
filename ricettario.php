@@ -591,7 +591,7 @@
     <br><br><br><br>
 
     <?php
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
         or die('Could not connect: ' . pg_last_error());
         if(!isset($_SESSION['flagpiccante']))
             $_SESSION['flagpiccante']='t';
@@ -903,7 +903,7 @@
 
     echo "<div class='content' id='recipeList'>";
         echo "<h2 class='searchCatchNessunaRicetta scritteZeroRisultati'>non ci sono ricette con questo nome</h2>";
-        if($flagVuota) echo "<h2 class='scritteZeroRisultati'>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
+        if($flagVuota) echo "<h2 class='scritteZeroRisultati' id='quasi'>non hai tutti gli ingredienti per una ricetta completa ma hai quasi:</h2>";
             echo "<div class='recipe-container'>";
         while ($row = pg_fetch_assoc($result)) {
             $vuota=false;
@@ -1059,9 +1059,12 @@
 
             if(cont==0){
                 nessunaricetta.style.display="block";
+                document.getElementById('quasi').style.display="none";
             }
             else{
                 nessunaricetta.style.display="none";
+                document.getElementById('quasi').style.display="";
+
             }
         });
  
@@ -1217,6 +1220,8 @@
             if($tipo == "login"){
                 $username = $_POST['usernameLogin'];
                 $password = $_POST['passwordLogin'];
+                $username = pg_escape_string($username);
+                $password = pg_escape_string($password);
                 $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
                 $result = pg_query($dbconn, $query);
                 if ($result) {
@@ -1249,6 +1254,10 @@
                     $isvegan = $_POST['isvegan'];
                 if(!isset($_POST['intgluten'])) $intgluten = "false"; else
                     $intgluten = $_POST['intgluten'];  
+                $username = pg_escape_string($username);
+                $password = pg_escape_string($password);
+                $nome = pg_escape_string($nome);
+                $cognome = pg_escape_string($cognome);
                 $query="select * from utenti where username='$username'";
                 $result=pg_query($dbconn, $query);
                 if(pg_num_rows($result)>0){

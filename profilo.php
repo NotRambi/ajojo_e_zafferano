@@ -18,6 +18,7 @@
     body{
         background-color: #f8fadd;
         min-height: 600px;
+        min-width: 582px;
     }
     .logoDiv{
         align-items: center;
@@ -262,7 +263,7 @@
     </div>
 
 <?php
-$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
+$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
 or die('Could not connect: ' . pg_last_error());
 
 $utente=$_SESSION['user'];
@@ -280,8 +281,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if($username==""||$password=="")
         echo "aggiornamento credenziali fallito<br>inserisci i dati correttamente";
     else{
-        $query="UPDATE utenti SET username='$username',nome='$nome',cognome='$cognome',password='$password',isvegan='$isvegan',intgluten='$intgluten' 
-        WHERE username='$utente'";
+        $username = pg_escape_string($username);
+        $nome = pg_escape_string($nome);
+        $cognome = pg_escape_string($cognome);
+        $password = pg_escape_string($password);
+        $query="UPDATE utenti SET username='$username',nome='$nome',cognome='$cognome',password='$password',isvegan='$isvegan',intgluten='$intgluten' WHERE username='$utente'";
         pg_query($dbconn, $query);
         $_SESSION['user']=$username;  
     }

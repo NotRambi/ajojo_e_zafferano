@@ -656,6 +656,8 @@
             if($tipo == "login"){
                 $username = $_POST['usernameLogin'];
                 $password = $_POST['passwordLogin'];
+                $username = pg_escape_string($username);
+                $password = pg_escape_string($password);
                 $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
                 $result = pg_query($dbconn, $query);
                 if ($result) {
@@ -688,6 +690,10 @@
                     $isvegan = $_POST['isvegan'];
                 if(!isset($_POST['intgluten'])) $intgluten = "false"; else
                     $intgluten = $_POST['intgluten'];  
+                $username = pg_escape_string($username);
+                $password = pg_escape_string($password);
+                $nome = pg_escape_string($nome);
+                $cognome = pg_escape_string($cognome);
                 $query="select * from utenti where username='$username'";
                 $result=pg_query($dbconn, $query);
                 if(pg_num_rows($result)>0){
