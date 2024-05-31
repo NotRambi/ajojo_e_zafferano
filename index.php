@@ -1082,6 +1082,7 @@
 
             .lastSection{
                 padding: 2rem;
+                padding-top: 4rem;
                 background-color: #333;
                 color: #fff;
                 display: grid;
@@ -1963,16 +1964,16 @@
             <br><br>
                 <p class="ajojoconsigliati">𝑺𝒄𝒆𝒍𝒕𝒂 𝒅𝒆𝒈𝒍𝒊 𝑰𝒏𝒈𝒓𝒆𝒅𝒊𝒆𝒏𝒕𝒊</p>
                 <hr class="linea2">
-                <p class="ajojodescmin">𝒑𝒆𝒓 𝒄𝒉𝒊 𝒆' 𝒂𝒍𝒍𝒂 𝒓𝒊𝒄𝒆𝒓𝒄𝒂 𝒅𝒊 𝒖𝒏𝒂 𝒔𝒇𝒊𝒅𝒂</p>
-                <p class="ajojodescmin">𝒐 𝒗𝒖𝒐𝒍𝒆 𝒔𝒕𝒖𝒑𝒊𝒓𝒆 𝒊 𝒑𝒓𝒐𝒑𝒓𝒊 𝒐𝒔𝒑𝒊𝒕𝒊</p>
+                <p class="ajojodescmin">𝒔𝒄𝒐𝒑𝒓𝒊 𝒍'𝒊𝒎𝒑𝒐𝒓𝒕𝒂𝒏𝒛𝒂 𝒅𝒊 𝒔𝒄𝒆𝒈𝒍𝒊𝒆𝒓𝒆</p>
+                <p class="ajojodescmin">𝒎𝒂𝒕𝒆𝒓𝒊𝒆 𝒑𝒓𝒊𝒎𝒆 𝒅𝒊 𝒒𝒖𝒂𝒍𝒊𝒕𝒂' 𝒔𝒖𝒑𝒆𝒓𝒊𝒐𝒓𝒆</p>
             <br><br><br><br>
 
             <div class="ingredienticontainer1">
-                <img src="immaginiindex/michelinimg1.jpg" >
+                <img src="immaginiindex/orto.jpg" >
                 <div class="ingredientitesto1">
-                    <h2>La Storia</h2>
-                    <p>La guida Michelin venne pubblicata per la prima volta nel 1900. Essa conteneva mappe, procedure per cambiare una ruota, una lista di stazioni di servizio e una lista di ristoranti e alberghi per il pernottamento. Per due decenni queste informazioni vennero fornite gratuitamente, fino al 1920, anno in cui iniziò ad essere venduta al prezzo di 7 franchi poiché André Michelin arrivò in un negozio di gomme e trovò la sua guida utilizzata come supporto per un banco di lavoro. Di conseguenza, la guida abbandonò le inserzioni a pagamento all'interno delle proprie pagine. Poco dopo, i fratelli Michelin decisero di impiegare ispettori in incognito per visitare e recensire i ristoranti e gli alberghi.
-                        Nel 1926 la guida iniziò ad assegnare le stelle agli indirizzi di alta cucina, evidenziandoli inizialmente con una sola stella e dopo cinque anni, venne introdotta la scala attuale da una a tre stelle
+                    <h2>L'importanza delle Materie Prime</h2>
+                    <p>
+                        Nel mondo della cucina è risaputo quanto sia importante, per poter presentare un buon piatto, l'abilità dello Chef nella gestione delle risorse a disposizione. Molti però spesso trascurano ciò che per primo renderà appetibile o meno le tue portate, ovvero una materia prima di qualità. Spesso l'errore più comune che le persone commettono nella cucina di tutti i giorni sta nel modo in cui si fa la spesa al supermercato, poichè spesso nel momento della scelta tra due ingredienti uguali ma dello stesso prezzo si sceglie in automatico quello meno costoso
                     </p>
                 </div>
             </div> 
@@ -1980,10 +1981,11 @@
             <br><br>
 
             <div class="ingredienticontainer2">
-                <img src="immaginiindex/michelinverde.jpg" >
+                <img src="immaginiindex/salute-e-cibo.jpg" >
                 <div class="ingredientitesto2">
-                    <h2>Stella Verde Michelin</h2>
-                    <p>Oltre alla tradizionale stella Michelin, nel 2020 nasce un nuovo criterio di giudizio per il quale molti ristoratori si dedicano alla revisione delle politiche dei loro locali. La Stella Verde Michelin infatti nasce come iniziativa, da parte della Guida stessa, per incentivare la battaglia all'eco-sostenibilità del globo. Come però è subito facile giungere a conclusione, la Stella Verde porta i ristoratori a selezionare materie prime di qualità e spesso ad impatto zero, e ciò porta all'aumento generale della qualità dei prodotti serviti dai vari ristoratori. Si potrebbe dire essere una "doppia vittoria"
+                    <h2>Cibo e Salute</h2>
+                    <p>
+                        La problematica maggiore di questo errore che si commette è ignorare completamente ciò che è sotto gli occhi di tutti: le etichette dei prodotti. Infatti a volte se dei prodotti risultano più economici di altri è perche per realizzarli si usano materie prime di bassa qualità, e a volte anche dannose per la salute dell'uomo. Raccomandiamo quindi che, nel momento della spesa, si controllino bene questi valori e ci si informi a riguardo per assicurarsi che ciò che si compra rispetti gli standard desiderati di qualità
                     </p>
                 </div>
             </div>
@@ -1991,10 +1993,12 @@
             <br><br>
 
             <div class="ingredienticontainer3">
-                <img src="immaginiindex/michelinimg1.jpg" >
+                <img src="immaginiindex/frigorifero-cibo.jpg" >
                 <div class="ingredientitesto3">
-                    <h2>La Storia</h2>
-                    <p> beie efeufefue fhehfheu fjfjfjfjfjfjfjfjfjfj fjfjfjfjfjfjfjfjfjf jfjfjfjfjfjfjfjf jfjfjjuhf jf uouwyoi4uhyew4 oiy fw4g yi34 gi4g uyoiwfguyirf i  iu4 giuwr g3up9i4 gfjfjfjfjf jfjfjfjfjfjfjf jfjfjfjfjfjfjfjfjf jfjfjfjfjfjf jfjfjfjfjfjfj fjfjfjfjfjf hehfehf fhef fe feufuefue  uefuefue fefeufe</p>
+                    <h2>Le Nostre Raccomandazioni</h2>
+                    <p>
+                        Noi di Ajojo & Zafferano ci sentiamo in dovere di dare dei consigli basilari, che però spesso a molte persone sfuggono, per non essere mai a corto di ingredienti nel momento in cui si deve cucinare. D'altronde la mancanza di idee non sarà mai un problema grazie alla nostra funzione in grado di suggerire delle ricette, basterà dirci che ingredienti hai a disposizione. Il consiglio che ci preme darvi è di selezionare, anche in base ai propri gusti, una serie di dieci o venti ingredienti che siano il più universali possbibili. In questo modo non avrai mai la frustrante sensazione di essere ipnotizzato da un bel piatto visto in tv o su instagram, ma di doversi accontentare di una pasta in bianco...
+                    </p>
                 </div>
             </div>
 
@@ -2122,7 +2126,7 @@
                 }
 
                 // Aggiungi un evento di click a tutte le immagini
-                var CardsRicette = document.getElementsByClassName("card");
+                var CardsRicette = document.getElementsByClassName("card_mini");
                 for (var i = 0; i < CardsRicette.length; i++) {
                     // salva in una variabile l'id della card cliccata
                     CardsRicette[i].addEventListener("click", inviaForm);
