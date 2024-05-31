@@ -7,6 +7,12 @@ Questo sito web è stato realizzato come progetto di gruppo per il corso di Ling
 Ajojo & Zafferano è un sito web che permette di consultare un ampio ricettario online, con la possibilità di cercare ricette in base agli ingredienti presenti nel proprio frigorifero. Infatti tramite l'inserimento di una lista di ingredienti nella seconda pagina del sito sarà possibile visualizzare tutte le ricette contenenti quest'ultimi. Sarà inoltre possibile lasciarsi ispirare dalle varie sezioni della pagina principale, nella quale in base alle categorie alla quale appartengono verranno consigliate ricette selezionate.
 Per ottenere completo accesso al sito sarà possibile creare un proprio account personale, tramite il quale si potranno salvare le ricette preferite o filtrarle segnalando le proprie intolleranze o preferenze alimentari.
 
+
+<p align="center">
+  <img width=400 alt="Logo" src="logo.png">
+</p>
+
+
 # Documentazione
 
 ## index.php
@@ -46,7 +52,7 @@ sono una serie di file _PHP_ che vengono chiamati solamente tramite richieste _X
 - file di testo contenente la query _SQL_ necessaria per creare o aggiornare il DataBase, necessario da usare almeno una volta per far funzionare correttamente il sito.
 
 
-# COME USARE
+# Come Usare
 per utilizzare questo sito è necessario scaricare PostGreSQL (ad esempio tramite PgAdmin), XAMPP e un IDE che permette di hostare un server PHP (come VSCode con le estenzioni del caso).
 Per prima cosa è necessario creare un profilo per SQL con cui creare un nuovo DataBase chiamato "ajojo",
 successivamente popolare le tabelle del DB mandando la query scritta in query_frigo.txt,
