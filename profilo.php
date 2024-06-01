@@ -263,7 +263,7 @@
     </div>
 
 <?php
-$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+$dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
 or die('Could not connect: ' . pg_last_error());
 
 $utente=$_SESSION['user'];
@@ -493,7 +493,7 @@ pg_close($dbconn);
     //preferiti -> ricettario
     function inviaForm(event) {
                 // form nascosta 
-                console.log(event.target.id);
+                resetFiltri();
                 var form = document.createElement("form");
                 form.setAttribute("method", "post");
                 form.setAttribute("action", "ricettario.php");
@@ -516,6 +516,13 @@ pg_close($dbconn);
         ricettapreferita[i].addEventListener("click", inviaForm);
         
     }
+
+    function resetFiltri() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'filtri.php');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send('buttonclicked=reset');
+                }
 
 </script>
         

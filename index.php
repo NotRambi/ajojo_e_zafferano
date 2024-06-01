@@ -2108,6 +2108,7 @@
                 // Funzioni php
 
                 function inviaForm(event) {
+                    resetFiltri();
                     // form nascosta 
                     var form = document.createElement("form");
                     form.setAttribute("method", "post");
@@ -2330,9 +2331,10 @@
     </body>
 
     <?php
+        
         // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
         //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=admin") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());    
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = $_POST['tipo'];

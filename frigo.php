@@ -385,7 +385,7 @@
     <!-- vado a prendere gli ingredienti possibili dal db -->
     <?php
         //connessione al db
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
         or die('Could not connect: ' . pg_last_error());
         $result = pg_query($dbconn,'SELECT distinct ingrediente FROM ingredienti');
         //creao la datalist
@@ -564,9 +564,12 @@
 
         function submitForm() {
             if(!controllaCampionSubmit())
-            return false;
+                return false;
             else
-            document.getElementById("myForm").submit();
+            {
+                resetFiltri();
+                document.getElementById("myForm").submit();
+            }
         }
 
         function controllaCampionSubmit() {
@@ -580,7 +583,15 @@
             }
             }
             return true;
+
         }
+
+        function resetFiltri() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'filtri.php');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send('buttonclicked=reset');
+                }
 
         // funzione per ridurre il fontsize della nav a in base ai breakpoint
         var nav = document.querySelector('.nav');
