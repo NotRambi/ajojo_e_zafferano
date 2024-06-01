@@ -13,11 +13,9 @@
         <!-- Swiper JS -->
         <script src="librerie/script/swiper-bundle.min.js"></script>
         
-
         <title>Ajojo & Zafferano</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
         <style>
-
             *{
                 font-family: "Poppins", sans-serif;
             }
@@ -28,6 +26,9 @@
                 margin: 0;
                 padding: 0;
             }
+            
+            /* stili riferiti agli elementi comuni della pagina */
+            /* con adattabilità alla dimensione della finestra */
             .ajojotitolo{
                 display: flex;
                 justify-content: center;
@@ -67,8 +68,7 @@
             @media (max-width: 840px){
                 .ajojodesc{
                     font-size: 150%;
-                }
-                
+                } 
             }
             .ajojodescmin{
                 display: flex;
@@ -120,7 +120,7 @@
                 'opsz' 24
             }
 
-            /* stili nav */
+            /* stili barra di navigazione */
             .navbgr{
                 background-color: #f8fadd;
                 height: 5rem;
@@ -305,7 +305,7 @@
                 }
             }
 
-            /* SLIDER */
+            /* slider seconda sezione */
             .slide-container{
                 max-width: 1400px;
                 width: 100%;
@@ -577,10 +577,8 @@
                 }
             }
 
-            /* style carte */
+            /* style carte per muoversi tra le sezioni della pagina */
             @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
-
-            
             img {
                 width: 100%;
                 height: 100%;
@@ -613,9 +611,7 @@
                 width: 1320px;
                 height: 550px;
                 gap: 5px;
-                margin: 1rem;
-                
-                
+                margin: 1rem;  
             }
             @media (max-width: 800px){
                 .container-carte{
@@ -720,7 +716,6 @@
             /* classi div michelin */
 
             /* container 1 */
-
             .michelincontainer1{
                 max-width: 100%;
                 display: flex;
@@ -743,14 +738,12 @@
                 order: 0;
                 border-radius: 5%;
             }
-        
             .michelincontainer1 p {
                 font-size: 20px;
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
             }
-
             .michelincontainer1 h3 {
                 text-wrap: balance;
                 margin: 0;
@@ -758,8 +751,6 @@
                 margin-bottom: 0.7rem;
 
             }
-
-        
             @media (max-width: 1000px) {
                 .michelincontainer1 {
                     flex-direction: column;
@@ -778,7 +769,6 @@
             }
 
             /* container 2 */
-
             .michelincontainer2{
                 max-width: 100%;
                 display: flex;
@@ -801,14 +791,12 @@
                 order: 1;
                 border-radius: 5%;
             }
-        
             .michelincontainer2 p {
                 font-size: 20px;
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
             }
-
             .michelincontainer2 h3 {
                 text-wrap: balance;
                 margin: 0;
@@ -816,8 +804,6 @@
                 margin-bottom: 0.7rem;
 
             }
-
-        
             @media (max-width: 1000px) {
                 .michelincontainer2 {
                     flex-direction: column;
@@ -835,10 +821,7 @@
                 }
             }
 
-            
-
             /* container 3 */
-
             .michelincontainer3{
                 max-width: 100%;
                 display: flex;
@@ -866,14 +849,12 @@
                 order: 0;
                 border-radius: 5%;
             }
-        
             .michelincontainer3 p {
                 font-size: 20px;
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
             }
-
             .michelincontainer3 h3 {
                 text-wrap: balance;
                 margin: 0;
@@ -881,8 +862,6 @@
                 margin-bottom: 0.7rem;
 
             }
-
-        
             @media (max-width: 1000px) {
                 .michelincontainer3 {
                     flex-direction: column;
@@ -903,7 +882,6 @@
             /* container sezioni scelta ingredienti */
 
             /*container 1*/ 
-
             .ingredienticontainer1{
                 max-width: 100%;
                 display: flex;
@@ -926,14 +904,12 @@
                 order: 1;
                 border-radius: 5%;
             }
-        
             .ingredienticontainer1 p {
                 font-size: 20px;
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
             }
-
             .ingredienticontainer1 h3 {
                 text-wrap: balance;
                 margin: 0;
@@ -941,8 +917,6 @@
                 margin-bottom: 0.7rem;
 
             }
-
-        
             @media (max-width: 1000px) {
                 .ingredienticontainer1 {
                     flex-direction: column;
@@ -961,7 +935,6 @@
             }
 
             /* container 2 */
-
             .ingredienticontainer2{
                 max-width: 100%;
                 display: flex;
@@ -984,23 +957,19 @@
                 order: 0;
                 border-radius: 5%;
             }
-        
             .ingredienticontainer2 p {
                 font-size: 20px;
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
             }
-
             .ingredienticontainer2 h3 {
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
                 margin-bottom: 0.7rem;
 
-            }
-
-        
+            }        
             @media (max-width: 1000px) {
                 .ingredienticontainer2 {
                     flex-direction: column;
@@ -1018,10 +987,7 @@
                 }
             }
 
-            
-
             /* container 3 */
-
             .ingredienticontainer3{
                 max-width: 100%;
                 display: flex;
@@ -1044,14 +1010,12 @@
                 order: 1;
                 border-radius: 5%;
             }
-        
             .ingredienticontainer3 p {
                 font-size: 20px;
                 text-wrap: balance;
                 margin: 0;
                 padding: 0;
             }
-
             .ingredienticontainer3 h3 {
                 text-wrap: balance;
                 margin: 0;
@@ -1059,8 +1023,6 @@
                 margin-bottom: 0.7rem;
 
             }
-
-        
             @media (max-width: 1000px) {
                 .ingredienticontainer3 {
                     flex-direction: column;
@@ -1078,8 +1040,7 @@
                 }
             }
 
-            /* ultima sezione */
-
+            /* footer */
             .lastSection{
                 padding: 2rem;
                 padding-top: 4rem;
@@ -1146,12 +1107,12 @@
             
         </style>
     </head>
-    <body>
 
+    <body>
+        <!-- scorrimento ad inizio pagina -->
         <div id="destinazione0"></div>
 
         <!-- div barra di navigazione -->
-
         <div class="navbgr">
             <div class="nav">
                 <a class="MainLogo" id="scroll0">
@@ -1168,6 +1129,7 @@
             </div>
         </div>
 
+        <!-- codice php per visualizzare accedi o profilo nella nav bar in base al sessione dell'utente -->
         <?php
         if(isset($_SESSION['user'])){
             echo "<script>document.getElementById('profileBtn').style.display = 'block';</script>";
@@ -1179,12 +1141,9 @@
         }
         ?>
         
-
-        
         <br><br><br><br><br><br>
 
         <!-- titolo e descrizione index -->
-
         <p class="ajojotitolo">𝓐𝓙𝓞𝓙𝓞 & 𝓩𝓐𝓕𝓕𝓔𝓡𝓐𝓝𝓞</p>
         <p class="ajojodesc">𝑳𝒂 𝑺𝒆𝒎𝒑𝒍𝒊𝒄𝒊𝒕𝒂' 𝒅𝒆𝒍 𝑪𝒐𝒎𝒑𝒍𝒆𝒔𝒔𝒐</p>
         <br>
@@ -1192,12 +1151,9 @@
         <br>
         <p class="ajojodesc">𝑺𝒄𝒐𝒑𝒓𝒊 𝒕𝒖𝒕𝒕𝒐 𝒄𝒊𝒐' 𝒄𝒉𝒆 𝑨𝒃𝒃𝒊𝒂𝒎𝒐 𝒅𝒂 𝑶𝒇𝒇𝒓𝒊𝒓𝒕𝒊</p>
 
-        
-
         <br><br><br>
 
         <!-- codice carte index -->
-
         <div class="carte-div">
             <div class="container-carte">
                 <div id="scroll1" class="carta">
@@ -1263,10 +1219,10 @@
         </div>
 
         <div id="destinazione1"></div>
+
         <br>
 
         <!-- div hai voglia di... -->
-
         <div class="background-div"> 
             <br><br><br>
             <p class="ajojoconsigliati">𝑯𝒂𝒊 𝒗𝒐𝒈𝒍𝒊𝒂 𝒅𝒊...</p>
@@ -1293,7 +1249,6 @@
         <br><br>
 
         <!-- div piatti consigliati -->
-
         <div class= "background_chiaro">
             <br><br>
             <p class="ajojoconsigliati">𝑷𝒊𝒂𝒕𝒕𝒊 𝒅𝒆𝒍 𝑴𝒐𝒎𝒆𝒏𝒕𝒐</p>
@@ -1304,7 +1259,6 @@
             <br><br><br><br><br><br>
 
             <!-- slider carte consigliati -->
-
             <h1 class="title-section">Piatti Consigliati</h1>
             <div class="consigliati-div">
                 <div class="slide-container">
@@ -1908,7 +1862,6 @@
         <br><br>
         
         <!-- div stella michelin... -->
-
         <div class="background-div"> 
             <br><br>
             <p class="ajojoconsigliati">𝑺𝒕𝒆𝒍𝒍𝒂 𝑴𝒊𝒄𝒉𝒆𝒍𝒊𝒏</p>
@@ -2006,8 +1959,7 @@
 
         </div>
 
-        <!-- div contatti -->
-
+        <!-- div footer -->
         <div id='destinazione5'></div>
         
         <div class="lastSection">
@@ -2044,355 +1996,360 @@
             </div>
         </div>
 
-            <!--Modal ad apparizione dei tasti login e signin-->
+        <!--Modal ad apparizione dei tasti login e signin-->
 
-            <!-- Modal di login -->
-            <div id="loginModal" class="modal">
-                <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <input type="hidden" name="tipo" value="login">
-                    <p class="title">Login </p>
-                    <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
-                    <label>
-                        <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
-                        <span>Username</span>
-                    </label> 
-                        
-                    <label>
-                        <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
-                        <span>Password</span>
-                    </label>
-                    <button class="submit" value="Accedi">Accedi</button>
-                    <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
-                                                                                document.getElementById('loginModal').style.display='none';
-                                                                                document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
-                </form>
-            </div>
+        <!-- Modal di login -->
+        <div id="loginModal" class="modal">
+            <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <input type="hidden" name="tipo" value="login">
+                <p class="title">Login </p>
+                <p class="errorLabelLogin" id="erroreLogin"> credenziali errate </p>
+                <label>
+                    <input class="input" type="text" id="usernameLogin" name="usernameLogin" placeholder="" required="">
+                    <span>Username</span>
+                </label> 
+                    
+                <label>
+                    <input class="input" type="password" id="passwordLogin" name="passwordLogin" placeholder="" required="">
+                    <span>Password</span>
+                </label>
+                <button class="submit" value="Accedi">Accedi</button>
+                <p class="signin">Non hai un account ? <a href="#" onclick="document.getElementById('registerModal').style.display='block';
+                                                                            document.getElementById('loginModal').style.display='none';
+                                                                            document.getElementById('erroreLogin').style.display = 'none'; document.getElementById('erroreSignin').style.display = 'none';">Registrati</a> </p>
+            </form>
+        </div>
             
-                        
-                        
-
-            <!-- Modal di registrazione -->
-            <div id="registerModal" class="modal">
-                <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <input type="hidden" name="tipo" value="registrazione">
-                    <p class="title">Registrazione </p>
-                    <p class="errorLabelSignin"  id="erroreSignin"> errore registrazione </p>
-                    <p class="message">Registrati ora per avere accesso al servizio completo </p>
-                        <div class="flex">
-                        <label>
-                            <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
-                            <span>Nome</span>
-                        </label>
-                
-                        <label>
-                            <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
-                            <span>Cognome</span>
-                        </label>
-                    </div>  
-                            
+        <!-- Modal di registrazione -->
+        <div id="registerModal" class="modal">
+            <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <input type="hidden" name="tipo" value="registrazione">
+                <p class="title">Registrazione </p>
+                <p class="errorLabelSignin"  id="erroreSignin"> errore registrazione </p>
+                <p class="message">Registrati ora per avere accesso al servizio completo </p>
+                    <div class="flex">
                     <label>
-                        <input class="input" type="text" id="username"  name="username" placeholder="" required="">
-                        <span>Username</span>
-                    </label> 
-                        
-                    <label>
-                        <input class="input" type="password" id="password"  name="password" placeholder="" required="">
-                        <span>Password</span>
+                        <input class="input" type="text" id="nome"  name="nome" placeholder="" required="">
+                        <span>Nome</span>
                     </label>
-                    <button class="submit" value="Registrati">Registrati</button>
-                    <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
-                </form>
-            </div>
+            
+                    <label>
+                        <input class="input" type="text" id="cognome"  name="cognome" placeholder="" required="">
+                        <span>Cognome</span>
+                    </label>
+                </div>  
+                        
+                <label>
+                    <input class="input" type="text" id="username"  name="username" placeholder="" required="">
+                    <span>Username</span>
+                </label> 
+                    
+                <label>
+                    <input class="input" type="password" id="password"  name="password" placeholder="" required="">
+                    <span>Password</span>
+                </label>
+                <button class="submit" value="Registrati">Registrati</button>
+                <p class="signin">Hai già un account ? <a href="#" onclick="document.getElementById('loginModal').style.display='block'; document.getElementById('registerModal').style.display='none';document.getElementById('erroreSignin').style.display = 'none';">Login</a> </p>
+            </form>
+        </div>
 
-            <script>
-                // Funzioni php
+        <script>
+            // Funzioni php
 
-                function inviaForm(event) {
-                    resetFiltri();
-                    // form nascosta 
-                    var form = document.createElement("form");
-                    form.setAttribute("method", "post");
-                    form.setAttribute("action", "ricettario.php");
+            function inviaForm(event) {
+                resetFiltri();
+                // form nascosta 
+                var form = document.createElement("form");
+                form.setAttribute("method", "post");
+                form.setAttribute("action", "ricettario.php");
 
-                    // input nascosto con il nome della ricetta
-                    var input = document.createElement("input");
-                    input.setAttribute("type", "hidden");
-                    input.setAttribute("name", "ricetta");
-                    input.setAttribute("value", event.target.id);
+                // input nascosto con il nome della ricetta
+                var input = document.createElement("input");
+                input.setAttribute("type", "hidden");
+                input.setAttribute("name", "ricetta");
+                input.setAttribute("value", event.target.id);
 
-                    // Aggiunta input alla form e submit
-                    form.appendChild(input);
-                    document.body.appendChild(form);
-                    form.submit();
-                }
+                // Aggiunta input alla form e submit
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
 
-                // Aggiungi un evento di click a tutte le immagini
-                var CardsRicette = document.getElementsByClassName("card_mini");
-                for (var i = 0; i < CardsRicette.length; i++) {
-                    // salva in una variabile l'id della card cliccata
-                    CardsRicette[i].addEventListener("click", inviaForm);
-                }
+            // Aggiungi un evento di click a tutte le immagini
+            var CardsRicette = document.getElementsByClassName("card_mini");
+            for (var i = 0; i < CardsRicette.length; i++) {
+                // salva in una variabile l'id della card cliccata
+                CardsRicette[i].addEventListener("click", inviaForm);
+            }
 
-                // Funzione slider ricette
-                var swiper_consigliati = new Swiper('.slide-content1', {
-                    slidesPerView: 5,
-                    spaceBetween: 20,
-                    loop: true,
-                    centerSlides: 'true',
-                    fade: 'true',
-                    breakpoints: {
-                        0: {
-                            slidesPerView: 2,
-                        },
-                        835: {
-                            slidesPerView: 3,
-                        },
-                        1100: {
-                            slidesPerView: 4,
-                        },
-                        1416: {
-                            slidesPerView: 5,
-                        },
+            // Funzione slider ricette
+            var swiper_consigliati = new Swiper('.slide-content1', {
+                slidesPerView: 5,
+                spaceBetween: 20,
+                loop: true,
+                centerSlides: 'true',
+                fade: 'true',
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
                     },
-                });
-
-                var swiper_romana = new Swiper('.slide-content2', {
-                    slidesPerView: 5,
-                    spaceBetween: 20,
-                    loop: true,
-                    centerSlides: 'true',
-                    fade: 'true',
-                    breakpoints: {
-                        0: {
-                            slidesPerView: 2,
-                        },
-                        835: {
-                            slidesPerView: 3,
-                        },
-                        1100: {
-                            slidesPerView: 4,
-                        },
-                        1416: {
-                            slidesPerView: 5,
-                        },
+                    835: {
+                        slidesPerView: 3,
                     },
-                });
-
-                var swiper_pesce = new Swiper('.slide-content3', {
-                    slidesPerView: 5,
-                    spaceBetween: 20,
-                    loop: true,
-                    centerSlides: 'true',
-                    fade: 'true',
-                    breakpoints: {
-                        0: {
-                            slidesPerView: 2,
-                        },
-                        835: {
-                            slidesPerView: 3,
-                        },
-                        1100: {
-                            slidesPerView: 4,
-                        },
-                        1416: {
-                            slidesPerView: 5,
-                        },
+                    1100: {
+                        slidesPerView: 4,
                     },
-                });
+                    1416: {
+                        slidesPerView: 5,
+                    },
+                },
+            });
 
-                // funzione per ridurre il fontsize della nav a in base ai breakpoint
-                var nav = document.querySelector('.nav');
-                var nav_a = document.querySelectorAll('.nav a');
-                var logo_title_p = document.querySelectorAll('.logo_title p');
+            var swiper_romana = new Swiper('.slide-content2', {
+                slidesPerView: 5,
+                spaceBetween: 20,
+                loop: true,
+                centerSlides: 'true',
+                fade: 'true',
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                    },
+                    835: {
+                        slidesPerView: 3,
+                    },
+                    1100: {
+                        slidesPerView: 4,
+                    },
+                    1416: {
+                        slidesPerView: 5,
+                    },
+                },
+            });
 
-                function adapt_size(){
-                    if(window.outerWidth < 890 && window.outerWidth > 590){
-                        var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
-                        var newfontnav = 20 + (window.outerWidth-590)/60*2;
-                        var newfontlogo = 15 + (window.outerWidth-590)/60;
+            var swiper_pesce = new Swiper('.slide-content3', {
+                slidesPerView: 5,
+                spaceBetween: 20,
+                loop: true,
+                centerSlides: 'true',
+                fade: 'true',
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                    },
+                    835: {
+                        slidesPerView: 3,
+                    },
+                    1100: {
+                        slidesPerView: 4,
+                    },
+                    1416: {
+                        slidesPerView: 5,
+                    },
+                },
+            });
 
-                        nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
-                        nav_a.forEach(element => {
-                            element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
-                        });
-                        logo_title_p.forEach(element => {
-                            element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
-                        });
-                    }
-                    else if(window.outerWidth <= 590 && window.outerWidth >= 0){
-                        nav.style.gap = '0.5rem';
-                        nav_a.forEach(element => {
-                            element.style.fontSize = '20px';
-                        });
-                        logo_title_p.forEach(element => {
-                            element.style.fontSize = '15px';
-                        });
-                    }
-                    else{
-                        nav.style.gap = '1.5rem';
-                        nav_a.forEach(element => {
-                            element.style.fontSize = '30px';
-                        });
-                        logo_title_p.forEach(element => {
-                            element.style.fontSize = '20px';
-                        });
-                    }
+            // funzione per ridurre il fontsize della nav a in base ai breakpoint
+            var nav = document.querySelector('.nav');
+            var nav_a = document.querySelectorAll('.nav a');
+            var logo_title_p = document.querySelectorAll('.logo_title p');
+
+            function adapt_size(){
+                if(window.outerWidth < 890 && window.outerWidth > 590){
+                    var newgap = 0.5 + (window.outerWidth-590)/60*0.2;
+                    var newfontnav = 20 + (window.outerWidth-590)/60*2;
+                    var newfontlogo = 15 + (window.outerWidth-590)/60;
+
+                    nav.style.gap = newgap+'rem';   //0.5 + (width-590)/60*0.2
+                    nav_a.forEach(element => {
+                        element.style.fontSize = newfontnav+'px';  //20 + (width-590)/60*2
+                    });
+                    logo_title_p.forEach(element => {
+                        element.style.fontSize = newfontlogo+'px'; //15 + (width-590)/60*1
+                    });
                 }
-                window.addEventListener('resize', function() {
-                    adapt_size();
-                });
+                else if(window.outerWidth <= 590 && window.outerWidth >= 0){
+                    nav.style.gap = '0.5rem';
+                    nav_a.forEach(element => {
+                        element.style.fontSize = '20px';
+                    });
+                    logo_title_p.forEach(element => {
+                        element.style.fontSize = '15px';
+                    });
+                }
+                else{
+                    nav.style.gap = '1.5rem';
+                    nav_a.forEach(element => {
+                        element.style.fontSize = '30px';
+                    });
+                    logo_title_p.forEach(element => {
+                        element.style.fontSize = '20px';
+                    });
+                }
+            }
+            window.addEventListener('resize', function() {
                 adapt_size();
+            });
+            adapt_size();
 
-                // Funzioni modal Login/Signin
-                // Fa apparire il modal del login
-                document.getElementById('loginBtn').addEventListener('click', function(event) {
-                    document.getElementById('loginModal').style.display = 'block';
-                });
+            // Funzioni modal Login/Signin
+            // Fa apparire il modal del login
+            document.getElementById('loginBtn').addEventListener('click', function(event) {
+                document.getElementById('loginModal').style.display = 'block';
+            });
 
-                // Chiudi il modal cliccando fuori
-                window.onclick = function(event) {
-                    if (event.target == document.getElementById('loginModal')) {
-                        document.getElementById('loginModal').style.display = "none";
-                        document.getElementById('erroreLogin').style.display = "none";
-                        document.getElementById('erroreSignin').style.display = "none";
-                    }
-                    if (event.target == document.getElementById('registerModal')) {
-                        document.getElementById('registerModal').style.display = "none";
-                        document.getElementById('erroreLogin').style.display = "none";
-                        document.getElementById('erroreSignin').style.display = "none";
-                    }
-                } 
+            // Chiudi il modal cliccando fuori
+            window.onclick = function(event) {
+                if (event.target == document.getElementById('loginModal')) {
+                    document.getElementById('loginModal').style.display = "none";
+                    document.getElementById('erroreLogin').style.display = "none";
+                    document.getElementById('erroreSignin').style.display = "none";
+                }
+                if (event.target == document.getElementById('registerModal')) {
+                    document.getElementById('registerModal').style.display = "none";
+                    document.getElementById('erroreLogin').style.display = "none";
+                    document.getElementById('erroreSignin').style.display = "none";
+                }
+            } 
 
-                // Script href carte
+            // Script href carte
 
-                document.getElementById('scroll0').addEventListener('click', function() {
-                    document.getElementById('destinazione0').scrollIntoView({ behavior: 'smooth' });
-                });
+            document.getElementById('scroll0').addEventListener('click', function() {
+                document.getElementById('destinazione0').scrollIntoView({ behavior: 'smooth' });
+            });
 
-                document.getElementById('scroll1').addEventListener('click', function() {
-                    document.getElementById('destinazione1').scrollIntoView({ behavior: 'smooth' });
-                });
+            document.getElementById('scroll1').addEventListener('click', function() {
+                document.getElementById('destinazione1').scrollIntoView({ behavior: 'smooth' });
+            });
 
-                document.getElementById('scroll2').addEventListener('click', function() {
-                    document.getElementById('destinazione2').scrollIntoView({ behavior: 'smooth' });
-                });
+            document.getElementById('scroll2').addEventListener('click', function() {
+                document.getElementById('destinazione2').scrollIntoView({ behavior: 'smooth' });
+            });
 
-                document.getElementById('scroll3').addEventListener('click', function() {
-                    document.getElementById('destinazione3').scrollIntoView({ behavior: 'smooth' });
-                });
+            document.getElementById('scroll3').addEventListener('click', function() {
+                document.getElementById('destinazione3').scrollIntoView({ behavior: 'smooth' });
+            });
 
-                document.getElementById('scroll4').addEventListener('click', function() {
-                    document.getElementById('destinazione4').scrollIntoView({ behavior: 'smooth' });
-                });
+            document.getElementById('scroll4').addEventListener('click', function() {
+                document.getElementById('destinazione4').scrollIntoView({ behavior: 'smooth' });
+            });
 
-                document.getElementById('scroll5').addEventListener('click', function() {
-                    document.getElementById('destinazione5').scrollIntoView({ behavior: 'smooth' });
-                });
+            document.getElementById('scroll5').addEventListener('click', function() {
+                document.getElementById('destinazione5').scrollIntoView({ behavior: 'smooth' });
+            });
 
-                // Script href categorie
+            // Script href categorie
 
-                // reset filtri
-                function resetFiltri() {
+            // reset filtri
+            function resetFiltri() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'filtri.php');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('buttonclicked=reset');
+            }
+
+            // categorie portata
+            function selezionaPortata(portata) {
+                resetFiltri();
+                setTimeout(function() {
+                var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'filtri.php');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send('buttonclicked=flagPortata&portata=' + encodeURIComponent(portata));
+                    setTimeout(function() {
+                        window.location.href = 'ricettario.php';
+                    }, 10); 
+                }, 10);
+            }
+
+            // categorie filtri
+            function selezionaFiltro(filtro) {
+                resetFiltri();
+                setTimeout(function() {
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'filtri.php');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    xhr.send('buttonclicked=reset');
-                }
-
-                // categorie portata
-                function selezionaPortata(portata) {
-                    resetFiltri();
+                    xhr.send('buttonclicked='+ encodeURIComponent(filtro) +'&'+ filtro +'=' + encodeURIComponent('false'));
                     setTimeout(function() {
-                    var xhr = new XMLHttpRequest();
-                        xhr.open('POST', 'filtri.php');
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.send('buttonclicked=flagPortata&portata=' + encodeURIComponent(portata));
-                        setTimeout(function() {
-                            window.location.href = 'ricettario.php';
-                        }, 10); 
+                        window.location.href = 'ricettario.php';
                     }, 10);
-                }
-                // categorie filtri
-                function selezionaFiltro(filtro) {
-                    resetFiltri();
-                    setTimeout(function() {
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', 'filtri.php');
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.send('buttonclicked='+ encodeURIComponent(filtro) +'&'+ filtro +'=' + encodeURIComponent('false'));
-                        setTimeout(function() {
-                            window.location.href = 'ricettario.php';
-                        }, 10);
-                    }, 10);
-                }
+                }, 10);
+            }
 
+        </script>
 
-            </script>
-    </body>
-
-    <?php
-        
-        // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
-        //DATABASE:
-        $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
-        or die('Could not connect: ' . pg_last_error());    
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $tipo = $_POST['tipo'];
-            //CASO LOGIN
-            if($tipo == "login"){
-                $username = $_POST['usernameLogin'];
-                $password = $_POST['passwordLogin'];
-                $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
-                $result = pg_query($dbconn, $query);
-                if ($result) {
-                    if (pg_num_rows($result) > 0) {
-                        if(!isset($_SESSION['user'])){               
-                            $_SESSION['user'] = $username;
-                            echo "<script>location.reload();</script>";
+        <?php
+            // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
+            $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+            or die('Could not connect: ' . pg_last_error());    
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $tipo = $_POST['tipo'];
+                //CASO LOGIN
+                if($tipo == "login"){
+                    $username = $_POST['usernameLogin'];
+                    $password = $_POST['passwordLogin'];
+                    $username = pg_escape_string($username);
+                    $password = pg_escape_string($password);
+                    $query = "SELECT * FROM utenti WHERE username = '$username' AND password = '$password'";
+                    $result = pg_query($dbconn, $query);
+                    if ($result) {
+                        if (pg_num_rows($result) > 0) {
+                            if(!isset($_SESSION['user'])){               
+                                $_SESSION['user'] = $username;
+                                echo "<script>location.reload();</script>";
+                            }
+                        } 
+                        else {
+                            //echo "Nome utente o password non validi.";
+                            echo "<script>
+                            document.getElementById('loginModal').style.display = 'block';
+                            document.getElementById('erroreLogin').style.display = 'block';
+                            </script>";
                         }
-                    } 
+                    }
                     else {
-                        //echo "Nome utente o password non validi.";
-                        echo "<script>
-                        document.getElementById('loginModal').style.display = 'block';
-                        document.getElementById('erroreLogin').style.display = 'block';
+                        echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
+                    }
+                    pg_free_result($result);
+                }
+                //CASO REGISTRAZIONE
+                if($tipo == "registrazione"){
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $nome = $_POST['nome'];
+                    $cognome = $_POST['cognome'];
+                    if(!isset($_POST['isvegan'])) $isvegan="false"; else
+                        $isvegan = $_POST['isvegan'];
+                    if(!isset($_POST['intgluten'])) $intgluten = "false"; else
+                        $intgluten = $_POST['intgluten'];  
+                    $username = pg_escape_string($username);
+                    $password = pg_escape_string($password);
+                    $nome = pg_escape_string($nome);
+                    $cognome = pg_escape_string($cognome);
+                    $query="select * from utenti where username='$username'";
+                    $result=pg_query($dbconn, $query);
+                    if(pg_num_rows($result)>0){
+                        echo "
+                        <script>
+                        document.getElementById('registerModal').style.display = 'block';
+                        document.getElementById('erroreSignin').style.display = 'block';
                         </script>";
-                    }
-                }
-                else {
-                    echo "Errore nella ricerca dell'utente: " . pg_last_error($dbconn);
-                }
-                pg_free_result($result);
-            }
-            //CASO REGISTRAZIONE
-            if($tipo == "registrazione"){
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $nome = $_POST['nome'];
-                $cognome = $_POST['cognome'];
-                if(!isset($_POST['isvegan'])) $isvegan="false"; else
-                    $isvegan = $_POST['isvegan'];
-                if(!isset($_POST['intgluten'])) $intgluten = "false"; else
-                    $intgluten = $_POST['intgluten'];  
-                $query="select * from utenti where username='$username'";
-                $result=pg_query($dbconn, $query);
-                if(pg_num_rows($result)>0){
-                    echo "
-                    <script>
-                    document.getElementById('registerModal').style.display = 'block';
-                    document.getElementById('erroreSignin').style.display = 'block';
-                    </script>";
-                } else { 
-                    if($username==""||$password=="")
-                        echo "Registrazione fallita<br>inserisci i dati correttamente";
-                    else{
-                        $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
-                        pg_query($dbconn, $query);
-                        echo "registrazione avvenuta con successo";
+                    } else { 
+                        if($username==""||$password=="")
+                            echo "Registrazione fallita<br>inserisci i dati correttamente";
+                        else{
+                            $query="insert into utenti values ('$username','$nome','$cognome','$password',$isvegan,$intgluten); ";
+                            pg_query($dbconn, $query);
+                            // apri login
+                            echo "<script>
+                                document.getElementById('loginModal').style.display = 'block';
+                            </script>";
+                        }
                     }
                 }
             }
-        }
-        pg_close($dbconn);    
+            pg_close($dbconn); 
         ?>
+
+    </body>
 </html>
