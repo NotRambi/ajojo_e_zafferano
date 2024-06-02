@@ -2054,8 +2054,7 @@
         </div>
 
         <script>
-            // Funzioni php
-
+            // funzione form nascosta ricetta
             function inviaForm(event) {
                 resetFiltri();
                 // form nascosta 
