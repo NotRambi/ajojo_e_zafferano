@@ -592,7 +592,7 @@
         <!-- funzione php per controllare lo stato dei filtri nella sessione -->
         <?php
             // aggiorna stato filtri
-            $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=180402") 
+            $dbconn = pg_connect("host=localhost port=5432 dbname=ajojo user=postgres password=biar") 
             or die('Could not connect: ' . pg_last_error());
             if(!isset($_SESSION['flagpiccante']))
                 $_SESSION['flagpiccante']='t';
@@ -637,6 +637,8 @@
                 <button name="flagStar" id="flagStar" value="<?php if($_SESSION['flagstar']=='t') echo 'true'; else echo 'false';?>" class="butFiltro">stellato</button>
                 <button name="flagVegan" id="flagVegan" value="<?php if($_SESSION['flagvegan']=='t') echo 'true'; else echo 'false';?>" class="butFiltro">vegano</button>
             </div>
+
+            
             
             
         </div>
@@ -700,7 +702,9 @@
         
         <!-- HTML del sito che visualizza le ricette gestito dalle funzioni PHP -->
         <?php
-        $query="SELECT * from ricetta";
+        //GENERAZIONE QUERY:
+
+        $query="SELECT * from ricetta";//caso default nessuna chiamata POST
         $flagFromFrigo=false;//una flag che mi serve bella stampa per un controllo
         if ($_SERVER["REQUEST_METHOD"] == "POST") {   
             
@@ -709,7 +713,7 @@
                 $ricetta=pg_escape_string($_POST["ricetta"]);
                 $query="select * from ricetta where nomericetta='$ricetta'";
             } 
-            // arrivo dal frigo
+            // HO PASSATO DEGLI INGREDIENTI DAL FRIFO
             else if(isset($_POST["frigo"])){
                     
                 $flagFromFrigo=true;
@@ -745,10 +749,6 @@
                 }
                 $query.= "))";
             }
-            
-        } 
-        else {
-            $query="SELECT * from ricetta";
         }
 
         //METTO I FILTRI E INTOLLERANZE
@@ -760,6 +760,39 @@
         if($_SESSION['flagglut']=='t') $gluten="true"; else $gluten="false";
         $portata=$_SESSION['portata'];
 
+        $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
+        from utenti,(";
+
+        $postquery=") as a where ";
+        if(isset($_SESSION['user'])){
+            $utente=$_SESSION['user'];
+            $postquery=$postquery."username='$utente' and
+            (a.isvegan or ('$flagvegan' and not utenti.isvegan)) and
+            (a.isglutenfree or ('$gluten' and not utenti.intgluten)) and
+            ";
+        }
+        else{
+            //non sono loggato
+            $postquery=$postquery."
+            (a.isvegan or '$flagvegan') and
+            (a.isglutenfree or '$gluten') and
+            ";
+        }
+
+        if($portata!='seleziona')
+            $postquery=$postquery."(a.tipologia = '$portata') and";
+
+        //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
+        $postquery=$postquery."
+        (a.isspicy or '$piccante') and
+        (a.isstar or '$star') and
+        (a.islite or '$lite')
+        order by a.nomericetta;
+        ";
+        $query=$prequery.$query.$postquery;
+
+
+        // SCURISCO IL BOTTONE QUANDO CLICCO UN FILTRO
         if($piccante=="true")
             echo "<script>
                 document.getElementById('flagPiccante').style.backgroundColor= '#333';
@@ -814,39 +847,8 @@
                 document.getElementById('flagGlutine').style.backgroundColor= '#222';
                 document.getElementById('flagGlutine').style.scale= 0.9;
             </script>";
-
-
-        $prequery="select distinct nomericetta,tempo,tipologia,difficolta,isspicy,isglutenfree,a.isvegan,isstar,islite,descrizione
-        from utenti,(";
-
-        $postquery=") as a where ";
-        if(isset($_SESSION['user'])){
-            $utente=$_SESSION['user'];
-            $postquery=$postquery."username='$utente' and
-            (a.isvegan or ('$flagvegan' and not utenti.isvegan)) and
-            (a.isglutenfree or ('$gluten' and not utenti.intgluten)) and
-            ";
-        }
-        else{
-            //non sono loggato
-            $postquery=$postquery."
-            (a.isvegan or '$flagvegan') and
-            (a.isglutenfree or '$gluten') and
-            ";
-        }
-
-        if($portata!='seleziona')
-            $postquery=$postquery."(a.tipologia = '$portata') and";
-
-        //per aggiungere il filtro non piccante (not a.isspicy or '$Notpiccante') and
-        $postquery=$postquery."
-        (a.isspicy or '$piccante') and
-        (a.isstar or '$star') and
-        (a.islite or '$lite')
-        order by a.nomericetta;
-        ";
-        $query=$prequery.$query.$postquery;
         
+            
         //CONTROLLO LA QUERY SIA NON VUOTA IN CASO
         //LA RICREO CON RICETTE INCOMPLETE
         $result = pg_query($dbconn,$query);

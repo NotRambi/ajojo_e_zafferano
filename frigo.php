@@ -483,7 +483,8 @@
             // FUNZIONI RELATIVE AL FORM DEGLI INGREDIENTI
             var nuovoCampoNum=1;
             var invalid=0;
-        
+            
+            //funzioni ausiliarie:
             function validaInput() {
                 //all'inizio di ogni chiamata resetto i campi errore
                 invalid=0;
@@ -526,6 +527,20 @@
                 return true;
             }
 
+            function controllaCampionSubmit() {
+                if(validaInput==false) 
+                    return false;
+                for(var z=1;z<nuovoCampoNum+1;z++){
+                    var campoz='campo'+z;
+                    if(document.getElementById(campoz).value==""){
+                        alert('Si prega di compilare tutti i campi.');
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            //funzioni pulsanti:
             function aggiungiCampo() {
 
                 if(!validaInput()){
@@ -574,19 +589,7 @@
                 }
             }
 
-            function controllaCampionSubmit() {
-                if(validaInput==false) 
-                    return false;
-                for(var z=1;z<nuovoCampoNum+1;z++){
-                    var campoz='campo'+z;
-                    if(document.getElementById(campoz).value==""){
-                        //DA CAMBIARE CON QUALCOSA DI PIU CARINO
-                        alert('Si prega di compilare tutti i campi.');
-                        return false;
-                    }
-                }
-                return true;
-            }
+            
 
             // FUNZIONI PER RIDURRE IL FONTSIZE DELLA NAV BAR IN BASE ALLA FINESTRA
             var nav = document.querySelector('.nav');
@@ -662,7 +665,6 @@
         </script>
         
         <?php
-            // IL CODICE PHP GERSTISCE IL LOGIN/REGISTRAZIONE E IL PROFILO
             
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $tipo = $_POST['tipo'];
